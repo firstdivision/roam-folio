@@ -3,6 +3,7 @@ import type { Page } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
 import pool from '../../data/countries/pool.v1.json' with { type: 'json' };
 import schedule from '../../data/schedules/schedule.v1.json' with { type: 'json' };
+import distances from '../../data/geography/distances.v1.json' with { type: 'json' };
 
 const date = '2026-10-24';
 const targetId = schedule.assignments[date];
@@ -26,6 +27,83 @@ test('country entry and submit are above the fold, including a small phone', asy
   await expect(page.getByRole('button', { name: 'Guess', exact: false })).toBeInViewport({ ratio: 1 });
   expect(await page.evaluate(() => window.scrollY)).toBe(0);
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
+});
+
+test('entry sits immediately above the map and guess results follow it', async ({ page }) => {
+  await page.goto('/');
+  const checkOrder = async () => {
+    const entry = (await page.locator('.guess-panel').boundingBox())!;
+    const map = (await page.locator('.map-panel').boundingBox())!;
+    expect(map.y - entry.y - entry.height).toBeGreaterThanOrEqual(0);
+    expect(map.y - entry.y - entry.height).toBeLessThanOrEqual(16);
+    expect(Math.abs(map.x - entry.x)).toBeLessThan(1);
+    expect(Math.abs(map.width - entry.width)).toBeLessThan(1);
+  };
+  await checkOrder();
+  await guess(page, wrong.name);
+  const map = (await page.locator('.map-panel').boundingBox())!;
+  const result = (await page.locator('.latest-feedback').boundingBox())!;
+  expect(result.y).toBeGreaterThanOrEqual(map.y + map.height);
+  await checkOrder();
+  await page.setViewportSize({ width: 320, height: 568 });
+  await checkOrder();
+  const canvas = (await page.locator('.map-canvas').boundingBox())!;
+  expect(canvas.height).toBeGreaterThanOrEqual(360);
+  // The actual geography fills the taller viewport rather than letterboxing.
+  const svgScale = await page.locator('.map-canvas svg').evaluate(element => (element as SVGSVGElement).getScreenCTM()!.a);
+  expect(svgScale).toBeCloseTo(canvas.height / 530, 3);
+});
+
+test('history sorts by exact distance while persistence and sharing retain guess order', async ({ page }) => {
+  const candidates = pool.filter(country => country.id !== targetId).map(country => {
+    const key = [country.id, targetId].sort().join(':') as keyof typeof distances.pairs;
+    return { ...country, ...distances.pairs[key] };
+  }).sort((a, b) => a.meters - b.meters);
+  const nearest = candidates[0], farthest = candidates.at(-1)!;
+  const middle = candidates[Math.floor(candidates.length / 2)];
+  // Include two land neighbors so stable zero-distance ties are exercised.
+  const neighbor = candidates.find(country => country.id !== nearest.id && country.meters === nearest.meters)!;
+  expect(neighbor).toBeDefined();
+  const entered = [farthest, nearest, middle, neighbor];
+  const ordered = [nearest, neighbor, middle, farthest];
+  const names = page.locator('.guess-country strong');
+  await page.goto('/');
+  for (const country of entered) await guess(page, country.name);
+  await expect(names).toHaveText(ordered.map(country => country.name));
+  await expect(page.locator('.guess-number')).toHaveText(['02', '04', '03', '01']);
+  await page.reload();
+  await expect(names).toHaveText(ordered.map(country => country.name));
+  const saved = await page.evaluate(() => JSON.parse(localStorage.getItem(Object.keys(localStorage).find(key => key.startsWith('roamfolio:progress:'))!)!).guesses);
+  expect(saved).toEqual(entered.map(country => country.id));
+  await guess(page, target.name);
+  await expect(names).toHaveText([target, ...ordered].map(country => country.name));
+  await page.evaluate(() => Object.defineProperty(navigator, 'share', { value: undefined, configurable: true }));
+  await page.getByRole('button', { name: 'Share your journey' }).click();
+  const emoji = (meters: number) => meters / 1609.344 <= 250 ? '🟥' : meters / 1609.344 <= 1000 ? '🟧' : meters / 1609.344 <= 3000 ? '🟨' : '⬜';
+  await expect(page.getByLabel('Your spoiler-free result')).toHaveValue(new RegExp(entered.map(country => emoji(country.meters)).join('') + '🎯'));
+});
+
+test('a tall mobile map can pan to both sides at the initial zoom', async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto('/');
+  const map = page.locator('.map-canvas svg');
+  await expect(map).toBeVisible();
+  await map.scrollIntoViewIfNeeded();
+  const box = (await map.boundingBox())!;
+  const x = box.x + box.width / 2, y = box.y + box.height / 2;
+  const drag = async (offset: number) => {
+    await page.mouse.move(x, y);
+    await page.mouse.down();
+    await page.mouse.move(x + offset, y, { steps: 5 });
+    await page.mouse.up();
+  };
+  await drag(90);
+  await expect(page.locator('.map-countries')).toHaveAttribute('transform', /translate\([1-9]/);
+  await page.getByRole('button', { name: 'Reset map', exact: true }).click();
+  await drag(-90);
+  await expect(page.locator('.map-countries')).toHaveAttribute('transform', /translate\(-/);
+  await expect(page.getByLabel('Map zoom level')).toHaveText('100%');
+  await expect(page.locator('.guess-list li')).toHaveCount(0);
 });
 
 test('map controls, keyboard, wheel and drag navigate without submitting guesses', async ({ page }) => {

@@ -17,17 +17,20 @@ main{max-width:1144px;margin:0 auto;padding:0 0 30px}.eyebrow{font-size:11px;let
 .content-credit{margin-top:24px;padding-top:15px;border-top:1px solid #d6d8c6;font-size:11px;line-height:1.8;color:#566653;overflow-wrap:anywhere}.content-credit a{text-underline-offset:3px}
 @media(max-width:700px){.map-topline{flex-wrap:wrap;gap:7px}.map-topline h2{font-size:12px}.map-topline>span{letter-spacing:.7px}.map-bottomline{flex-wrap:wrap;row-gap:7px}.eyebrow{line-height:1.8;letter-spacing:1px}.input-hint{font-size:11px}.guess-country>span{font-size:11px}.site-footer>div{font-size:11px}}
 
-/* Start with the country field; the map and log follow in reading order. */
+/* Keep entry, map, and latest result together in reading order. */
 .game-heading{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:22px 0 18px}
 .game-heading h1{font-size:20px;line-height:1.3;letter-spacing:-.5px;margin:0;font-weight:650}
 .daily-label{display:flex;align-items:center;gap:9px;font-size:12px;color:var(--muted);margin:0}
 .daily-label span{font-size:10px;font-weight:700;letter-spacing:1px;border-left:1px solid var(--line);padding-left:9px}
-.play-area{display:grid;grid-template-columns:minmax(0,2fr) minmax(260px,1fr);grid-template-areas:"guess guess" "map history";align-items:start;gap:24px;scroll-margin-top:16px;outline:none}
-.guess-panel{grid-area:guess;min-width:0}
-.guess-form{max-width:680px}
+.play-area{display:grid;grid-template-columns:minmax(0,2fr) minmax(260px,1fr);grid-template-areas:"map-column history";align-items:start;gap:24px;scroll-margin-top:16px;outline:none}
+.map-column{grid-area:map-column;min-width:0;display:flex;flex-direction:column;gap:12px}
+.guess-panel{min-width:0}
+.feedback-panel:empty{display:none}
+.history-order{font-size:11px;color:var(--muted);margin-top:9px}
+.guess-form{width:100%}
 .guess-form label{font-size:19px;margin-bottom:9px}
-.latest-feedback,.storage-warning{max-width:680px}
-.map-panel{grid-area:map;min-width:0}
+.latest-feedback,.storage-warning{margin-top:0}
+.map-panel{min-width:0}
 .history-panel{grid-area:history;min-width:0}
 .map-topline{flex-wrap:wrap;padding:12px 14px;gap:8px}
 .map-controls{display:flex;align-items:center;gap:4px}
@@ -45,5 +48,5 @@ main{max-width:1144px;margin:0 auto;padding:0 0 30px}.eyebrow{font-size:11px;let
 .map-detail-status{padding:8px 14px;font-size:11px;color:var(--muted)}
 .map-bottomline{border-top:1px solid #dfe2d6;padding:12px 14px}
 .site-footer{margin-top:26px}
-@media(max-width:900px){.play-area{grid-template-columns:minmax(0,1fr);grid-template-areas:"guess" "map" "history";gap:22px}.guess-form{max-width:none}}
-@media(max-width:700px){.site-header{padding-top:14px;padding-bottom:14px}.game-heading{padding:18px 0 16px;align-items:flex-start}.game-heading h1{font-size:18px}.daily-label{font-size:11px;flex-wrap:wrap;justify-content:flex-end;gap:5px}.daily-label span{font-size:10px}.map-controls .map-reset{margin-left:0}.map-canvas{min-height:220px}.map-navigation-help span{font-size:11px}.map-bottomline{flex-wrap:nowrap}.success-panel h2{font-size:28px}}
+@media(max-width:900px){.play-area{grid-template-columns:minmax(0,1fr);grid-template-areas:"map-column" "history";gap:22px}.guess-form{max-width:none}}
+@media(max-width:700px){.site-header{padding-top:14px;padding-bottom:14px}.game-heading{padding:18px 0 16px;align-items:flex-start}.game-heading h1{font-size:18px}.daily-label{font-size:11px;flex-wrap:wrap;justify-content:flex-end;gap:5px}.daily-label span{font-size:10px}.map-controls .map-reset{margin-left:0}.map-canvas{aspect-ratio:auto;height:clamp(360px,65svh,520px);min-height:360px}.map-navigation-help span{font-size:11px}.map-bottomline{flex-wrap:nowrap}.success-panel h2{font-size:28px}}

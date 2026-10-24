@@ -8,20 +8,20 @@ Legend: **MVP** = first playable release; **Later** = planned enhancement; **Ope
 - **MVP:** Select the day's target deterministically from a curated eligible-country list; never pick independently for each visitor.
 - **MVP:** Avoid repeating a target until the current eligible-country cycle is exhausted; use a stable, versioned schedule or deterministic permutation.
 - **MVP:** Players guess by typing a country name through an accessible search interface with suggestions. Map clicks do not select or submit guesses; the map only displays countries and the guesses made.
-- **MVP:** Keep the country field and submit button above the fold on desktop and mobile, with a compact header and no large introductory banner.
+- **MVP:** Keep the country field and submit button above the fold on desktop and mobile, with a compact header and no large introductory banner. Place the entry directly above the map in the same column.
 - **MVP:** The display map supports drag/touch panning, wheel/pinch zoom up to 32×, explicit zoom/reset controls, and keyboard navigation. Navigating the map never selects or submits a guess.
 - **MVP:** Country shapes have no hover-name tooltips, including previously guessed countries. Guess names and results remain available in the travel log.
 - **MVP:** Load the overview map initially and fetch more detailed boundaries on zoom. If detail is unavailable, keep the overview usable and offer a retry.
 - **MVP:** Allow unlimited guesses until the target is found. There is no give-up option or alternative discovery unlock.
 - **MVP:** After every guess, display **numeric nearest-border distance to the target** (default miles; optional kilometers) and color the guessed country according to proximity.
 - **MVP:** Feedback should be consistent for every player and guess. Use minimum distance between country boundaries; shared land borders display 0 miles and an explicit bordering message (see architecture).
-- **MVP:** Track guess count and history; mark guesses on the map; clearly indicate when the target is found.
+- **MVP:** Show the latest guess result directly below the map. Track guess count and history; mark guesses on the map; clearly indicate when the target is found. Sort history by unrounded distance, closest first. Show a correct guess first among zero-distance results; retain guess order for other ties and keep original guess numbers. Persistence and share emojis retain chronological guess order.
 - **MVP:** Repeating a guessed country returns its existing result without increasing the guess count.
 - **MVP:** Proximity uses a continuous gradient from white (very far away), through yellow and orange, to red (very close). Map and history share a fixed global distance-to-color scale; labels and share emojis use the same distance bands. Labels and numeric distances accompany color; outlines distinguish white guesses from unguessed countries.
 - **MVP:** Preserve current day's guesses and completion status across reloads on the same device, without an account.
 - **MVP:** Do not reveal the destination's name, facts, or food before the player solves the puzzle.
 - **MVP:** After solving, show a destination postcard with three sourced facts, one cultural note, and at least one signature food. No recipes are required for MVP.
-- **MVP:** Responsive and accessible on mobile and desktop.
+- **MVP:** Responsive and accessible on mobile and desktop. Use a taller mobile map viewport (360–520 px); enlarge the map to fill it and allow panning across the cropped world at the initial zoom.
 - **MVP:** Once solved, offer spoiler-free text sharing with the UTC puzzle date, guess count, and ordered proximity emojis: white square for very far away, yellow and orange squares for intermediate distances, red square for very close, and a distinct success marker. Do not include country names or discovery content. Provide a copyable text fallback when native sharing is unavailable.
 
 ## Country pool
@@ -54,6 +54,8 @@ Legend: **MVP** = first playable release; **Later** = planned enhancement; **Ope
 13. Map zoom, drag, pinch, reset, and keyboard navigation work without changing the guess count or country input; map gestures do not scroll the whole page.
 14. Hovering a map country never shows its name.
 15. Detailed boundaries load only when zooming in, remain cached for subsequent zooms, support 32× zoom, and fall back to the usable overview on failure.
+16. Entry sits immediately above the map; the latest result and completion appear below it. Mobile map height is at least 360 px, with sideways panning available at the initial zoom.
+17. History is ordered closest first, including after reload. Correct guesses lead zero-distance ties; other ties retain guess order. Saved progress and share emojis retain the original chronological order.
 
 ## Decision status
 

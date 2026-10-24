@@ -11,9 +11,14 @@ type View = Point & { scale: number };
 const WIDTH = 1000, HEIGHT = 530, MAX_ZOOM = 32;
 const initialView: View = { x: 0, y: 0, scale: 1 };
 
-function constrain(view: View): View {
+function constrain(view: View, viewport: { width: number; height: number }): View {
   const scale = Math.max(1, Math.min(MAX_ZOOM, view.scale));
-  return { scale, x: Math.max(WIDTH * (1 - scale), Math.min(0, view.x)), y: Math.max(HEIGHT * (1 - scale), Math.min(0, view.y)) };
+  // Fill taller phone viewports by cropping the sides. Allow panning across
+  // that crop even at 1×, with bounds expressed in SVG coordinates.
+  const ratio = Math.max(viewport.width / WIDTH, viewport.height / HEIGHT);
+  const width = viewport.width / ratio, height = viewport.height / ratio;
+  const left = (WIDTH - width) / 2, top = (HEIGHT - height) / 2;
+  return { scale, x: Math.max(left + width - WIDTH * scale, Math.min(left, view.x)), y: Math.max(top + height - HEIGHT * scale, Math.min(top, view.y)) };
 }
 const midpoint = (a: Point, b: Point): Point => ({ x: (a.x + b.x) / 2, y: (a.y + b.y) / 2 });
 const separation = (a: Point, b: Point) => Math.hypot(a.x - b.x, a.y - b.y);
@@ -34,7 +39,8 @@ export function WorldMap({ guesses }: { guesses: Guess[] }) {
   const needsDetail = view.scale >= 3;
 
   const updateView = useCallback((next: View) => {
-    const bounded = constrain(next);
+    const element = svg.current;
+    const bounded = constrain(next, element ? { width: element.clientWidth, height: element.clientHeight } : { width: WIDTH, height: HEIGHT });
     viewRef.current = bounded;
     setView(bounded);
   }, []);
@@ -156,7 +162,7 @@ export function WorldMap({ guesses }: { guesses: Guess[] }) {
     }}>
       {!world && !failed && <p className="map-message" role="status">Unfolding the map…</p>}
       {failed && <div className="map-message"><p>The map couldn’t load. You can still guess above.</p><button type="button" className="text-button" onClick={() => setAttempt(value => value + 1)}>Try loading the map again</button></div>}
-      {world && <svg ref={svg} viewBox="0 0 1000 530" role="img" aria-label={`World map showing ${guesses.length} guessed ${guesses.length === 1 ? 'country' : 'countries'}. Exact results are listed in your travel log.`} onPointerDown={pointerDown} onPointerMove={pointerMove} onPointerUp={pointerEnd} onPointerCancel={pointerEnd} onLostPointerCapture={pointerEnd}>
+      {world && <svg ref={svg} viewBox="0 0 1000 530" preserveAspectRatio="xMidYMid slice" role="img" aria-label={`World map showing ${guesses.length} guessed ${guesses.length === 1 ? 'country' : 'countries'}. Exact results are listed in your travel log.`} onPointerDown={pointerDown} onPointerMove={pointerMove} onPointerUp={pointerEnd} onPointerCancel={pointerEnd} onLostPointerCapture={pointerEnd}>
         <defs><pattern id="map-dots" width="16" height="16" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r="0.65" fill="#c4c7be" opacity=".45"/></pattern></defs>
         <rect width="1000" height="530" fill="url(#map-dots)"/>
         <g className="map-countries" transform={`translate(${view.x} ${view.y}) scale(${view.scale})`}>{countryPaths}</g>

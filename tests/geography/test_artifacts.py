@@ -52,5 +52,15 @@ class GeographicArtifactTests(unittest.TestCase):
         self.assertFalse(data['FRA:GBR']['borders'])
         self.assertGreater(data['FRA:GBR']['meters'], 0)
 
+    def test_detailed_display_artifacts_have_source_and_output_checksums(self):
+        manifest = json.loads((ROOT / 'data/geography/display.v1.json').read_text())
+        self.assertEqual(manifest['sourceVersion'], 'natural-earth-5.1.1-policy-1')
+        self.assertEqual(manifest['sourceLockSha256'], hashlib.sha256((ROOT / 'data/geography/sources.lock.json').read_bytes()).hexdigest())
+        for name, variant in manifest['variants'].items():
+            content = (ROOT / 'public/data' / name).read_bytes()
+            self.assertEqual(len(content), variant['bytes'])
+            self.assertEqual(hashlib.sha256(content).hexdigest(), variant['sha256'])
+        self.assertLess(manifest['variants']['world.detail.v1.geojson']['simplificationDegrees'], manifest['variants']['world.v1.geojson']['simplificationDegrees'])
+
 
 if __name__ == '__main__': unittest.main()

@@ -129,7 +129,11 @@ Work in small, testable increments within each phase. Required checks cover UTC 
 
 The user approved removal of the large introductory banner, country entry above the fold, and zoomable/pannable map navigation on 2026-10-24. The country field precedes the map and travel log in DOM and visual order. Desktop places the map beside history; narrower screens stack them beneath country entry.
 
-SVG geography remains static; a bounded group transform handles navigation without affecting distance calculations or game state. Native pointer events support dragging and two-finger pinch, with pointer capture and touch-action handling. A non-passive wheel handler zooms around the cursor. Zoom ranges from 1× to 12×. Visible controls provide zoom in/out and reset; a focusable map region supports +/−, arrow keys, and 0/Home to reset. At 1× the full world view is restored. No map click or gesture submits a guess, and no new runtime dependencies were added.
+SVG geography remains static; a bounded group transform handles navigation without affecting distance calculations or game state. Native pointer events support dragging and two-finger pinch, with pointer capture and touch-action handling. A non-passive wheel handler zooms around the cursor. Zoom ranges from 1× to 32×. Visible controls provide zoom in/out and reset; a focusable map region supports +/−, arrow keys, and 0/Home to reset. At 1× the full world view is restored. No map click or gesture submits a guess, and no new runtime dependencies were added.
+
+Map country paths have no name tooltips, whether guessed or unguessed. Their accessible image label refers to the travel log for exact results.
+
+The original overview asset loads first. At 3× zoom, the app requests `world.detail.v1.geojson`, generated from the same licensed source and territory mapping with less simplification. The detailed data is retained in component memory for subsequent zooms. Both layers share the overview projection to avoid a position jump when switching. If the detail request fails, the overview remains navigable and a retry is available. The detailed display does not change the answer schedule, distance matrix, or country pool. `data/geography/display.v1.json` records separate display-asset provenance and hashes; `--display-only` regenerates map files without rewriting game data.
 
 ## Security and content integrity
 
@@ -142,9 +146,9 @@ SVG geography remains static; a bounded group transform handles navigation witho
 ## Local verification — 2026-10-24
 
 - Clean installation through the committed npm lockfile and production builds pass.
-- 16 unit tests cover UTC dates, schedule cycles, eligibility, distance lookup, persistence, sharing, and spherical display geometry.
-- 13 geographic tests cover source checksums, approved territory components, shared borders, continuous minima, islands, enclaves, antimeridian seams, and GeographicLib reference agreement.
-- 20 browser tests pass across desktop and mobile Chromium, including country entry above the fold at 320 × 568, wheel/button/keyboard zoom, mouse/touch panning, pinch gestures, typed-only guessing, reloads, UTC rollover, timezone consistency, discovery visibility, sharing, unavailable storage, and automated WCAG AA scans of initial/solved views.
+- 19 unit tests cover UTC dates, schedule cycles, eligibility, distance lookup, persistence, sharing, and spherical display geometry for both map detail levels.
+- 14 geographic tests cover source checksums, display asset provenance, approved territory components, shared borders, continuous minima, islands, enclaves, antimeridian seams, and GeographicLib reference agreement.
+- 26 browser tests pass across desktop and mobile Chromium, including country entry above the fold at 320 × 568, wheel/button/keyboard zoom, mouse/touch panning, pinch gestures, absent country hover names, detailed map loading and retries, the 32× zoom limit, typed-only guessing, reloads, UTC rollover, timezone consistency, discovery visibility, sharing, unavailable storage, and automated WCAG AA scans of initial/solved views.
 - The built app was also checked under a `/roamfolio/` repository subpath: map assets, guesses, restored progress, and solved discovery all loaded correctly.
 - Desktop/mobile screenshots were inspected; a tiny-island winding issue found during visual QA is fixed and covered by a regression test.
 - GitHub Pages workflows are prepared, with deployment gated on validation. No remote publication has been performed. Safari, Firefox, and physical-device checks remain outside this verification pass.

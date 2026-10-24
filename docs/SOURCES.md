@@ -47,4 +47,4 @@ Most cultural/food claims were checked against community-edited travel guides; s
 
 ## Validation records
 
-Geographic metadata is in `data/geography/sources.lock.json`, `crosswalk.v1.json`, and `generation.v1.json`. Geographic tests exercise continuous segment minima, islands, enclave rings, antimeridian seams, geodesic reference agreement, and source policy. App/browser tests cover eligibility, deterministic UTC schedules, persistence, typed-only guessing, discovery visibility, and accessibility.
+Geographic metadata is in `data/geography/sources.lock.json`, `crosswalk.v1.json`, and `generation.v1.json`. The overview and on-demand detailed display assets have independent provenance, processing settings, and checksums in `data/geography/display.v1.json`; both derive from the same approved source archives. Geographic tests exercise continuous segment minima, islands, enclave rings, antimeridian seams, geodesic reference agreement, and source policy. App/browser tests cover eligibility, deterministic UTC schedules, persistence, typed-only guessing, discovery visibility, and accessibility.

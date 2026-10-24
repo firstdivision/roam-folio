@@ -89,6 +89,59 @@ test('touch gestures pinch and pan the map without scrolling the page', async ({
   await client.detach();
 });
 
+test('map hover never labels countries, including guessed countries', async ({ page }) => {
+  await page.goto('/');
+  await expect(page.locator('.map-countries path').first()).toBeAttached();
+  await page.locator('.map-canvas svg').hover();
+  await expect(page.locator('.map-canvas title, .map-canvas [title]')).toHaveCount(0);
+  expect(await page.locator('.map-countries').textContent()).toBe('');
+  await guess(page, wrong.name);
+  await page.locator('.map-canvas svg').hover();
+  await expect(page.locator('.map-canvas title, .map-canvas [title]')).toHaveCount(0);
+  expect(await page.locator('.map-countries').textContent()).toBe('');
+});
+
+test('more detailed boundaries load only on zoom and support 32x magnification', async ({ page }) => {
+  const detailRequests: string[] = [];
+  page.on('request', request => { if (request.url().endsWith('/world.detail.v1.geojson')) detailRequests.push(request.url()); });
+  await page.goto('/');
+  const paths = page.locator('.map-countries path');
+  await expect(paths.first()).toBeAttached();
+  const drawingLength = () => paths.evaluateAll(elements => elements.reduce((sum, element) => sum + (element.getAttribute('d')?.length ?? 0), 0));
+  const overviewLength = await drawingLength();
+  expect(detailRequests).toHaveLength(0);
+  const zoomIn = page.getByRole('button', { name: 'Zoom in', exact: true });
+  const response = page.waitForResponse(response => response.url().endsWith('/world.detail.v1.geojson'));
+  for (let i = 0; i < 3; i++) await zoomIn.click();
+  expect((await response).ok()).toBe(true);
+  await expect.poll(drawingLength).toBeGreaterThan(overviewLength * 2);
+  for (let i = 0; i < 12 && await zoomIn.isEnabled(); i++) await zoomIn.click();
+  await expect(page.getByLabel('Map zoom level')).toHaveText('3200%');
+  await expect(zoomIn).toBeDisabled();
+  await page.getByRole('button', { name: 'Reset map', exact: true }).click();
+  await expect(page.getByLabel('Map zoom level')).toHaveText('100%');
+  for (let i = 0; i < 3; i++) await zoomIn.click();
+  await expect.poll(drawingLength).toBeGreaterThan(overviewLength * 2);
+  expect(detailRequests).toHaveLength(1);
+  await expect(page.locator('.guess-list li')).toHaveCount(0);
+});
+
+test('overview stays usable when detail fails, and detail can be retried', async ({ page }) => {
+  await page.route('**/world.detail.v1.geojson', route => route.fulfill({ status: 503, body: 'Unavailable' }));
+  await page.goto('/');
+  await expect(page.locator('.map-countries path').first()).toBeAttached();
+  const paths = page.locator('.map-countries path');
+  const drawingLength = () => paths.evaluateAll(elements => elements.reduce((sum, element) => sum + (element.getAttribute('d')?.length ?? 0), 0));
+  const overviewLength = await drawingLength();
+  for (let i = 0; i < 3; i++) await page.getByRole('button', { name: 'Zoom in', exact: true }).click();
+  await expect(page.getByRole('button', { name: 'Retry map detail' })).toBeVisible();
+  expect(await drawingLength()).toBe(overviewLength);
+  await page.unroute('**/world.detail.v1.geojson');
+  await page.getByRole('button', { name: 'Retry map detail' }).click();
+  await expect.poll(drawingLength).toBeGreaterThan(overviewLength * 2);
+  await expect(page.getByRole('button', { name: 'Retry map detail' })).toHaveCount(0);
+});
+
 test('typed guesses persist; duplicate guesses and map clicks never increase count', async ({ page }) => {
   const errors: string[] = [];
   page.on('pageerror', error => errors.push(error.message));

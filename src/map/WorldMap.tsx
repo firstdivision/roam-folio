@@ -8,7 +8,7 @@ import type { Guess } from '../game';
 type World = FeatureCollection<Geometry, { id: string; name: string; eligible: boolean }>;
 type Point = { x: number; y: number };
 type View = Point & { scale: number };
-const WIDTH = 1000, HEIGHT = 530, MAX_ZOOM = 12;
+const WIDTH = 1000, HEIGHT = 530, MAX_ZOOM = 32;
 const initialView: View = { x: 0, y: 0, scale: 1 };
 
 function constrain(view: View): View {
@@ -20,6 +20,9 @@ const separation = (a: Point, b: Point) => Math.hypot(a.x - b.x, a.y - b.y);
 
 export function WorldMap({ guesses }: { guesses: Guess[] }) {
   const [world, setWorld] = useState<World | null>(null);
+  const [detail, setDetail] = useState<World | null>(null);
+  const [detailFailed, setDetailFailed] = useState(false);
+  const [detailAttempt, setDetailAttempt] = useState(0);
   const [failed, setFailed] = useState(false);
   const [attempt, setAttempt] = useState(0);
   const [view, setView] = useState(initialView);
@@ -28,6 +31,7 @@ export function WorldMap({ guesses }: { guesses: Guess[] }) {
   const canvas = useRef<HTMLDivElement>(null);
   const svg = useRef<SVGSVGElement>(null);
   const pointers = useRef(new Map<number, Point>());
+  const needsDetail = view.scale >= 3;
 
   const updateView = useCallback((next: View) => {
     const bounded = constrain(next);
@@ -55,6 +59,16 @@ export function WorldMap({ guesses }: { guesses: Guess[] }) {
   }, [attempt]);
 
   useEffect(() => {
+    if (!world || !needsDetail || detail) return;
+    const controller = new AbortController();
+    setDetailFailed(false);
+    fetch(assetUrl('data/world.detail.v1.geojson'), { signal: controller.signal })
+      .then(response => { if (!response.ok) throw new Error('Map detail unavailable'); return response.json() as Promise<World>; })
+      .then(setDetail).catch(error => { if (error.name !== 'AbortError') setDetailFailed(true); });
+    return () => controller.abort();
+  }, [world, needsDetail, detail, detailAttempt]);
+
+  useEffect(() => {
     const element = canvas.current;
     if (!element || !world) return;
     const wheel = (event: WheelEvent) => {
@@ -68,18 +82,23 @@ export function WorldMap({ guesses }: { guesses: Guess[] }) {
     return () => element.removeEventListener('wheel', wheel);
   }, [world, pointAt, zoom]);
 
-  const paths = useMemo(() => {
-    if (!world) return [];
+  const projection = useMemo(() => {
+    if (!world) return null;
     const mapWorld = { ...world, features: world.features.filter(feature => feature.properties.id !== 'ATA') };
-    const projection = geoEqualEarth().fitExtent([[16, 10], [984, 510]], mapWorld);
-    const path = geoPath(projection);
-    return mapWorld.features.map((feature, index) => ({ key: `${feature.properties.id}-${index}`, ...feature.properties, d: path(feature) ?? '' }));
+    return geoEqualEarth().fitExtent([[16, 10], [984, 510]], mapWorld);
   }, [world]);
+  const displayedWorld = needsDetail && detail ? detail : world;
+  const paths = useMemo(() => {
+    if (!displayedWorld || !projection) return [];
+    // Keep the overview projection when swapping detail to avoid shifting the view.
+    const path = geoPath(projection);
+    return displayedWorld.features.filter(feature => feature.properties.id !== 'ATA').map((feature, index) => ({ key: `${feature.properties.id}-${index}`, ...feature.properties, d: path(feature) ?? '' }));
+  }, [displayedWorld, projection]);
   const countryPaths = useMemo(() => {
     const results = new Map(guesses.map(guess => [guess.countryId, guess]));
     return paths.map(country => {
       const guess = results.get(country.id);
-      return <path key={country.key} d={country.d} fill={guess ? guess.correct ? '#c74332' : proximity(guess.meters).color : '#d8ddd3'} stroke={guess ? '#253c3e' : '#f7f7f0'} strokeWidth={guess ? 1.8 : .8} vectorEffect="non-scaling-stroke"><title>{country.name}{guess ? guess.correct ? ' — Found!' : ` — ${proximity(guess.meters).label}` : ''}</title></path>;
+      return <path key={country.key} d={country.d} fill={guess ? guess.correct ? '#c74332' : proximity(guess.meters).color : '#d8ddd3'} stroke={guess ? '#253c3e' : '#f7f7f0'} strokeWidth={guess ? 1.8 : .8} vectorEffect="non-scaling-stroke"/>;
     });
   }, [paths, guesses]);
 
@@ -143,6 +162,7 @@ export function WorldMap({ guesses }: { guesses: Guess[] }) {
         <g className="map-countries" transform={`translate(${view.x} ${view.y}) scale(${view.scale})`}>{countryPaths}</g>
       </svg>}
     </div>
+    {needsDetail && !detail && <p className="map-detail-status" role="status">{detailFailed ? <>Showing the overview map. <button className="text-button" type="button" onClick={() => setDetailAttempt(value => value + 1)}>Retry map detail</button></> : 'Loading map detail…'}</p>}
     <div className="map-bottomline"><span className="legend-label">FARTHER</span><span className="distance-gradient" aria-hidden="true"/><span className="legend-label">CLOSER</span></div>
     <p id="map-navigation-help" className="map-navigation-help">Drag to pan. Scroll or pinch to zoom.<span> Keyboard: + / − to zoom, arrow keys to pan, 0 to reset.</span></p>
   </section>;

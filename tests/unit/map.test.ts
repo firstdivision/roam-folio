@@ -3,9 +3,10 @@ import { describe, expect, it } from 'vitest';
 import { geoArea, geoEqualEarth, geoPath } from 'd3-geo';
 import type { FeatureCollection } from 'geojson';
 
-const world = JSON.parse(readFileSync(new URL('../../public/data/world.v1.geojson', import.meta.url), 'utf8')) as FeatureCollection;
+const readWorld = (file: string) => JSON.parse(readFileSync(new URL(`../../public/data/${file}`, import.meta.url), 'utf8')) as FeatureCollection;
 
-describe('licensed display geometry', () => {
+describe.each(['world.v1.geojson', 'world.detail.v1.geojson'])('licensed display geometry: %s', file => {
+  const world = readWorld(file);
   it('renders country interiors rather than the complement of the globe', () => {
     for (const feature of world.features) {
       // No country in this dataset occupies a hemisphere. A reversed tiny ring
@@ -24,4 +25,15 @@ describe('licensed display geometry', () => {
       expect(drawing).not.toMatch(/NaN|Infinity/);
     }
   });
+});
+
+it('retains more boundary detail with the same country identities and components', () => {
+  const overview = readWorld('world.v1.geojson'), detail = readWorld('world.detail.v1.geojson');
+  expect(detail.features.map(feature => feature.properties)).toEqual(overview.features.map(feature => feature.properties));
+  function countCoordinates(value: unknown): number {
+    if (!Array.isArray(value)) return 0;
+    return typeof value[0] === 'number' ? 1 : value.reduce((sum, item) => sum + countCoordinates(item), 0);
+  }
+  const vertices = (world: FeatureCollection) => world.features.reduce((sum, feature) => sum + ('coordinates' in feature.geometry ? countCoordinates(feature.geometry.coordinates) : 0), 0);
+  expect(vertices(detail)).toBeGreaterThan(vertices(overview) * 2);
 });

@@ -5,6 +5,7 @@ The full matrix is checkpointed so interrupted generation can resume safely.
 """
 
 from pathlib import Path
+import argparse
 import hashlib
 import io
 import json
@@ -79,14 +80,58 @@ def json_write(path, value):
     path.write_text(json.dumps(value, separators=(",", ":"), ensure_ascii=False) + "\n")
 
 
-def display_coordinates(value):
-    """Four decimal places are ample for the display map; source stays intact."""
+def display_coordinates(value, decimals):
+    """Round display derivatives only; original distance geometry stays intact."""
     if isinstance(value, (float, int)):
-        return round(value, 4)
-    return [display_coordinates(item) for item in value]
+        return round(value, decimals)
+    return [display_coordinates(item, decimals) for item in value]
 
 
-def main():
+def write_display(source, pool, filename, tolerance, decimals):
+    ids = {country["id"] for country in pool}
+    features = []
+    for id_, (props, geometry) in source.items():
+        if not geometry.is_valid:
+            raise ValueError(f"Invalid display geometry {id_}")
+        # Shapefile/D3 winding is clockwise exterior; keep tiny components.
+        display = orient_polygons(geometry.simplify(tolerance, preserve_topology=True), exterior_cw=True)
+        display_geometry = mapping(display)
+        display_geometry["coordinates"] = display_coordinates(display_geometry["coordinates"], decimals)
+        rounded = shape(display_geometry)
+        if rounded.is_valid and not rounded.is_empty:
+            # Rounding can reverse a very thin island triangle. Reassert winding
+            # AFTER rounding so D3 never interprets it as the rest of the globe.
+            display_geometry = mapping(orient_polygons(rounded, exterior_cw=True))
+        else:
+            # Tiny features that collapse under rounding retain source precision.
+            display_geometry = mapping(display)
+        features.append({"type": "Feature", "properties": {
+            "id": id_, "name": next((c["name"] for c in pool if c["id"] == id_), props["ADMIN"]),
+            "eligible": id_ in ids,
+        }, "geometry": display_geometry})
+    json_write(OUTPUT / filename, {"type": "FeatureCollection", "features": features})
+
+
+    path = OUTPUT / filename
+    return {"simplificationDegrees": tolerance, "coordinateDecimals": decimals,
+            "bytes": path.stat().st_size, "sha256": hashlib.sha256(path.read_bytes()).hexdigest()}
+
+
+def write_display_assets(source, pool):
+    variants = {
+        "world.v1.geojson": write_display(source, pool, "world.v1.geojson", 0.035, 4),
+        "world.detail.v1.geojson": write_display(source, pool, "world.detail.v1.geojson", 0.005, 5),
+    }
+    json_write(DATA / "display.v1.json", {
+        "sourceVersion": VERSION,
+        "sourceLockSha256": hashlib.sha256((DATA / "sources.lock.json").read_bytes()).hexdigest(),
+        "poolSha256": hashlib.sha256((ROOT / "data/countries/pool.v1.json").read_bytes()).hexdigest(),
+        "generatorSha256": hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
+        "variants": variants,
+    })
+
+
+def main(display_only=False):
     start = time.monotonic()
     pool = json.loads((ROOT / "data/countries/pool.v1.json").read_text())
     ids = [country["id"] for country in pool]
@@ -97,6 +142,11 @@ def main():
     for id_, geometry in geometries.items():
         if not geometry.is_valid or geometry.is_empty:
             raise ValueError(f"Invalid source geometry {id_}")
+
+    if display_only:
+        write_display_assets(source, pool)
+        print("Regenerated overview and detailed display maps; distance/schedule artifacts untouched.", flush=True)
+        return
 
     # Use source ID, never ISO_A3 or sovereign code. Record full per-country crosswalk.
     crosswalk = {
@@ -113,27 +163,7 @@ def main():
     crosswalk["EGY"]["repair"] = "Shapely make_valid splits source self-touch at (35.621087106,23.139292914); no vertex movement, area change <1e-9 square degrees."
     (DATA / "crosswalk.v1.json").write_text(json.dumps(crosswalk, indent=2) + "\n")
 
-    features = []
-    for id_, (props, geometry) in source.items():
-        if not geometry.is_valid:
-            raise ValueError(f"Invalid display geometry {id_}")
-        # Shapefile/D3 winding is clockwise exterior; keep tiny components.
-        display = orient_polygons(geometry.simplify(0.035, preserve_topology=True), exterior_cw=True)
-        display_geometry = mapping(display)
-        display_geometry["coordinates"] = display_coordinates(display_geometry["coordinates"])
-        rounded = shape(display_geometry)
-        if rounded.is_valid and not rounded.is_empty:
-            # Rounding can reverse a very thin island triangle. Reassert winding
-            # AFTER rounding so D3 never interprets it as the rest of the globe.
-            display_geometry = mapping(orient_polygons(rounded, exterior_cw=True))
-        else:
-            # Tiny features that collapse under rounding retain source precision.
-            display_geometry = mapping(display)
-        features.append({"type": "Feature", "properties": {
-            "id": id_, "name": next((c["name"] for c in pool if c["id"] == id_), props["ADMIN"]),
-            "eligible": id_ in ids,
-        }, "geometry": display_geometry})
-    json_write(OUTPUT / "world.v1.geojson", {"type": "FeatureCollection", "features": features})
+    write_display_assets(source, pool)
 
     print("Building continuous boundary trees", flush=True)
     trees = {i: build_tree(boundary_segments(geometry)) for i, geometry in geometries.items()}
@@ -197,4 +227,6 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--display-only", action="store_true", help="Regenerate map derivatives without rewriting country, distance, or schedule artifacts")
+    main(display_only=parser.parse_args().display_only)

@@ -9,7 +9,9 @@ Legend: **MVP** = first playable release; **Later** = planned enhancement; **Ope
 - **MVP:** Avoid repeating a target until the current eligible-country cycle is exhausted; use a stable, versioned schedule or deterministic permutation.
 - **MVP:** Players guess by typing a country name through an accessible search interface with suggestions. Map clicks do not select or submit guesses; the map only displays countries and the guesses made.
 - **MVP:** Keep the country field and submit button above the fold on desktop and mobile, with a compact header and no large introductory banner.
-- **MVP:** The display map supports drag/touch panning, wheel/pinch zoom, explicit zoom/reset controls, and keyboard navigation. Navigating the map never selects or submits a guess.
+- **MVP:** The display map supports drag/touch panning, wheel/pinch zoom up to 32×, explicit zoom/reset controls, and keyboard navigation. Navigating the map never selects or submits a guess.
+- **MVP:** Country shapes have no hover-name tooltips, including previously guessed countries. Guess names and results remain available in the travel log.
+- **MVP:** Load the overview map initially and fetch more detailed boundaries on zoom. If detail is unavailable, keep the overview usable and offer a retry.
 - **MVP:** Allow unlimited guesses until the target is found. There is no give-up option or alternative discovery unlock.
 - **MVP:** After every guess, display **numeric nearest-border distance to the target** (default miles; optional kilometers) and color the guessed country according to proximity.
 - **MVP:** Feedback should be consistent for every player and guess. Use minimum distance between country boundaries; shared land borders display 0 miles and an explicit bordering message (see architecture).
@@ -50,6 +52,8 @@ Legend: **MVP** = first playable release; **Later** = planned enhancement; **Ope
 11. There is no guess limit or give-up action; basic sharing becomes available only after solving.
 12. The country field and submit button are fully visible on initial load, including a 320 × 568 viewport.
 13. Map zoom, drag, pinch, reset, and keyboard navigation work without changing the guess count or country input; map gestures do not scroll the whole page.
+14. Hovering a map country never shows its name.
+15. Detailed boundaries load only when zooming in, remain cached for subsequent zooms, support 32× zoom, and fall back to the usable overview on failure.
 
 ## Decision status
 

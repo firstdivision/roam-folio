@@ -42,6 +42,7 @@ main{max-width:1144px;margin:0 auto;padding:0 0 30px}.eyebrow{font-size:11px;let
 .map-canvas svg{width:100%;height:100%;padding:0;touch-action:none;user-select:none}
 .map-navigation-help{font-size:11px;line-height:1.7;color:var(--muted);padding:0 14px 12px}
 .map-navigation-help span{display:block}
+.map-detail-status{padding:8px 14px;font-size:11px;color:var(--muted)}
 .map-bottomline{border-top:1px solid #dfe2d6;padding:12px 14px}
 .site-footer{margin-top:26px}
 @media(max-width:900px){.play-area{grid-template-columns:minmax(0,1fr);grid-template-areas:"guess" "map" "history";gap:22px}.guess-form{max-width:none}}

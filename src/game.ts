@@ -1,6 +1,6 @@
-import pool from '../data/countries/pool.v1.json';
+import pool from '../data/countries/pool.v2.json';
 import publishedSchedule from '../data/schedules/schedule.v1.json';
-import distances from '../data/geography/feedback.v1.json';
+import distances from '../data/geography/feedback.v2.json';
 
 export type Country = { id: string; name: string; aliases: string[] };
 export type Puzzle = { date: string; target: string; identity: string };
@@ -30,7 +30,9 @@ export function getPuzzle(date: string): Puzzle {
   }
   const target = assignments[date];
   if (!target || !countryIds.has(target)) throw new Error('No published puzzle for this date');
-  return { date, target, identity: `${publishedSchedule.version}:${publishedSchedule.poolVersion}:${publishedSchedule.geographyVersion}:${date}` };
+  const era = publishedSchedule.eras.find(era => date >= era.startsOn && date <= era.endsOn);
+  if (!era) throw new Error('No published pool version for this date');
+  return { date, target, identity: `${publishedSchedule.version}:${era.poolVersion}:${era.geographyVersion}:${date}` };
 }
 
 export function evaluateGuess(puzzle: Puzzle, countryId: string): Guess {
@@ -92,7 +94,9 @@ export async function refreshSchedule(): Promise<void> {
   if (!response.ok) throw new Error('Schedule could not be refreshed');
   const next = await response.json();
   if (next.version !== publishedSchedule.version || next.poolVersion !== publishedSchedule.poolVersion
-      || next.geographyVersion !== publishedSchedule.geographyVersion || !next.assignments || typeof next.assignments !== 'object') {
+      || next.geographyVersion !== publishedSchedule.geographyVersion
+      || JSON.stringify(next.eras) !== JSON.stringify(publishedSchedule.eras)
+      || !next.assignments || typeof next.assignments !== 'object') {
     throw new Error('A newer game version is required for this schedule');
   }
   const entries = Object.entries(next.assignments);

@@ -1,9 +1,9 @@
 import { test, expect } from '@playwright/test';
 import type { Page } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
-import pool from '../../data/countries/pool.v1.json' with { type: 'json' };
+import pool from '../../data/countries/pool.v2.json' with { type: 'json' };
 import schedule from '../../data/schedules/schedule.v1.json' with { type: 'json' };
-import distances from '../../data/geography/distances.v1.json' with { type: 'json' };
+import distances from '../../data/geography/distances.v2.json' with { type: 'json' };
 
 const date = '2026-10-24';
 const targetId = schedule.assignments[date];
@@ -15,6 +15,31 @@ async function guess(page: Page, name: string) {
 }
 test.beforeEach(async ({ page }) => {
   await page.clock.install({ time: new Date(`${date}T12:00:00Z`) });
+});
+
+test('link previews work without JavaScript and advertise a reachable PNG', async ({ browser, request }) => {
+  const context = await browser.newContext({ javaScriptEnabled: false });
+  try {
+    const page = await context.newPage();
+    await page.goto('/');
+    await expect(page.locator('meta[property="og:title"]')).toHaveAttribute('content', /Roamfolio/);
+    await expect(page.locator('meta[property="og:description"]')).toHaveAttribute('content', /mystery country/);
+    await expect(page.locator('meta[property="og:type"]')).toHaveAttribute('content', 'website');
+    await expect(page.locator('meta[property="og:url"]')).toHaveAttribute('content', 'https://roam-folio.com/');
+    await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', 'https://roam-folio.com/');
+    const image = new URL((await page.locator('meta[property="og:image"]').getAttribute('content'))!);
+    expect(image.href).toBe('https://roam-folio.com/social-preview.v1.png');
+    await expect(page.locator('meta[name="twitter:image"]')).toHaveAttribute('content', image.href);
+    await expect(page.locator('meta[name="twitter:card"]')).toHaveAttribute('content', 'summary_large_image');
+    const response = await request.get(image.pathname);
+    expect(response.ok()).toBe(true);
+    expect(response.headers()['content-type']).toContain('image/png');
+    const png = await response.body();
+    expect(png.subarray(0, 8).toString('hex')).toBe('89504e470d0a1a0a');
+    expect(png.readUInt32BE(16)).toBe(1200);
+    expect(png.readUInt32BE(20)).toBe(630);
+    expect(png.length).toBeLessThan(1_000_000);
+  } finally { await context.close(); }
 });
 
 test('country entry and submit are above the fold, including a small phone', async ({ page }) => {
@@ -32,12 +57,10 @@ test('country entry and submit are above the fold, including a small phone', asy
 test('entry sits immediately above the map and guess results follow it', async ({ page }) => {
   await page.goto('/');
   const checkOrder = async () => {
-    const entry = (await page.locator('.guess-panel').boundingBox())!;
-    const map = (await page.locator('.map-panel').boundingBox())!;
-    expect(map.y - entry.y - entry.height).toBeGreaterThanOrEqual(0);
-    expect(map.y - entry.y - entry.height).toBeLessThanOrEqual(16);
-    expect(Math.abs(map.x - entry.x)).toBeLessThan(1);
-    expect(Math.abs(map.width - entry.width)).toBeLessThan(1);
+    const entry = (await page.locator('.input-row').boundingBox())!;
+    const map = (await page.locator('.map-canvas').boundingBox())!;
+    expect(Math.abs(map.y - entry.y - entry.height)).toBeLessThan(1);
+    await expect(page.locator('.input-hint')).toHaveCount(0);
   };
   await checkOrder();
   await guess(page, wrong.name);
@@ -243,6 +266,45 @@ test('typed guesses persist; duplicate guesses and map clicks never increase cou
   await expect(page.getByRole('heading', { name: target.name, exact: true })).toHaveCount(0);
   expect(discoveryRequests).toEqual([]);
   expect(errors).toEqual([]);
+});
+
+test('Chad aliases are accepted alongside existing saved progress', async ({ page }) => {
+  await page.addInitScript(({ date, id }) => {
+    const identity = `schedule-v1:pool-v1:natural-earth-5.1.1-policy-1:${date}`;
+    const key = `roamfolio:progress:v1:${identity}`;
+    if (!localStorage.getItem(key)) localStorage.setItem(key, JSON.stringify({ schema: 1, identity, guesses: [id], completed: false }));
+  }, { date, id: wrong.id });
+  await page.goto('/');
+  await expect(page.locator('.guess-list li')).toHaveCount(1);
+  await expect(page.getByRole('combobox')).toBeVisible();
+  await guess(page, 'Republic of Chad');
+  await expect(page.locator('.guess-list li')).toHaveCount(2);
+  await expect(page.locator('.guess-country strong')).toContainText(['Chad']);
+  await expect(page.locator('.latest-feedback')).toContainText('Chad.');
+  await guess(page, 'Chad');
+  await expect(page.locator('.guess-list li')).toHaveCount(2);
+  await expect(page.locator('.latest-feedback')).toContainText('already guessed Chad');
+  await page.reload();
+  await expect(page.locator('.guess-list li')).toHaveCount(2);
+  await expect(page.locator('.guess-country strong')).toContainText(['Chad']);
+});
+
+test('a future Chad puzzle reveals its sourced discovery only after solving', async ({ page }) => {
+  const chadDate = Object.entries(schedule.assignments).find(([, id]) => id === 'TCD')![0];
+  await page.clock.setSystemTime(new Date(`${chadDate}T12:00:00Z`));
+  const requests: string[] = [];
+  page.on('request', request => { if (request.url().endsWith('/discovery/TCD.json')) requests.push(request.url()); });
+  await page.goto('/');
+  await expect(page.locator('.postcard')).toHaveCount(0);
+  expect(requests).toEqual([]);
+  await guess(page, 'Republic of Chad');
+  await expect(page.locator('.postcard h2')).toHaveText('Chad');
+  await expect(page.locator('.country-facts li')).toHaveCount(3);
+  await expect(page.locator('.postcard h4')).toHaveText('Boule');
+  await expect(page.locator('.postcard-content a.source-link')).toHaveCount(5);
+  expect(requests.length).toBeGreaterThan(0);
+  await page.reload();
+  await expect(page.locator('.postcard h2')).toHaveText('Chad');
 });
 
 test('keyboard users solve, unlock a sourced postcard and share without spoilers', async ({ page }) => {

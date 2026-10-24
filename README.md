@@ -21,7 +21,7 @@ Roamfolio is a daily country-guessing game inspired by geography games such as G
 - [Agent instructions](AGENTS.md)
 
 ## Project status
-Technical approach approved: React, TypeScript, Vite, an SVG/D3 display map, precomputed distances, and static GitHub Pages hosting through GitHub Actions. The first playable version is implemented with the approved 125-country pool, verified geographic mapping, persistent progress, and sourced discovery cards. GitHub Pages workflows are included; no remote deployment has been performed. Proposed website: `roamfolio.world` (domain ownership not asserted).
+Technical approach approved: React, TypeScript, Vite, an SVG/D3 display map, precomputed distances, and static GitHub Pages hosting through GitHub Actions. The first playable version is implemented with the approved 126-country pool, verified geographic mapping, persistent progress, and sourced discovery cards. GitHub Pages workflows are included; no remote deployment has been performed. GitHub Pages is configured with the custom domain `roam-folio.com`.
 
 ## Getting started
 
@@ -32,7 +32,7 @@ npm ci
 npm run dev
 ```
 
-Open the local URL printed by Vite. The puzzle uses the browser's UTC date; current schedules cover 2026-01-01 through 2032-11-04.
+Open the local URL printed by Vite. The puzzle uses the browser's UTC date; current schedules cover 2026-01-01 through 2033-03-10. Chad is accepted as a guess now; the expanded answer pool begins on 2032-11-05, after the original published assignments.
 
 ```sh
 npm test
@@ -50,18 +50,25 @@ python3 -m venv .venv
 .venv/bin/pip install -r scripts/geography/requirements.txt
 .venv/bin/python -m unittest discover -s tests/geography -v
 .venv/bin/python scripts/geography/generate.py
+.venv/bin/python scripts/geography/extend.py
 npm run data:schedule
 npm run data:discovery
 ```
 
 For map-display changes alone, use `.venv/bin/python scripts/geography/generate.py --display-only` to retain the existing puzzle and distance data.
 
-The geographic generator verifies retained source archive checksums, records component mapping and calculation bounds, and writes reproducible browser assets. Schedule generation refuses to rewrite existing assignments. Discovery generation validates exact pool coverage and citations. Read `AGENTS.md` and all documentation before changing rules or data policies.
+The geographic generator verifies retained source archive checksums, records component mapping and calculation bounds, and writes reproducible browser assets. The additive geography extension preserves every v1 distance exactly and computes the new pairs for pool-v2. Schedule generation refuses to rewrite existing assignments or their pool/geography versions. Discovery generation validates exact pool coverage and citations. Read `AGENTS.md` and all documentation before changing rules or data policies.
 
 ## GitHub Pages
 
 Push to `main` in a GitHub repository and enable **Settings → Pages → GitHub Actions**. The deployment workflow tests and builds the app, using Pages' supplied base path for either a repository URL or custom domain. The CI workflow also runs geographic and desktop/mobile browser tests. Publishing is not tied to the daily UTC reset.
 
+## Link previews
+
+The initial HTML includes Open Graph and Twitter card metadata and a spoiler-free 1200 × 630 PNG for messaging and social apps. The canonical URL defaults to `https://roam-folio.com/`. Set `VITE_SITE_URL` to the complete public site URL (including any repository subpath) for other deployments; the Pages workflow supplies it from `actions/configure-pages`.
+
+The preview image is committed and needs no runtime service or routine regeneration. To update its artwork after installing Playwright Chromium, run `npm run image:social`. It renders original brand artwork and the approved Natural Earth display data without reading puzzle answers.
+
 ## Attribution
 
-Map data: Natural Earth, public domain. Discovery summaries include Wikivoyage contributor material and an attributed country-reference extraction; license and modification notices are in [SOURCES.md](docs/SOURCES.md) and `public/data/attribution.html`. No images or recipes are included.
+Map data: Natural Earth, public domain. Discovery summaries include Wikivoyage contributor material and an attributed country-reference extraction; license and modification notices are in [SOURCES.md](docs/SOURCES.md) and `public/data/attribution.html`. No country photos or recipes are included.

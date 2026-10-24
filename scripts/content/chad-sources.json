@@ -1,0 +1,41 @@
+{
+  "retrieved": "2026-10-24",
+  "countryId": "TCD",
+  "review": "Claims checked against the cited pages; original condensed summaries, no images or recipes.",
+  "sources": [
+    {
+      "url": "https://en.wikivoyage.org/wiki/Chad",
+      "title": "Chad — Wikivoyage",
+      "publisher": "Wikivoyage contributors",
+      "claims": [
+        "facts[0]",
+        "food"
+      ],
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "contributorsUrl": "https://en.wikivoyage.org/w/index.php?title=Chad&action=history",
+      "revisionUrl": "https://en.wikivoyage.org/w/index.php?title=Chad&oldid=5396315"
+    },
+    {
+      "url": "https://whc.unesco.org/en/list/1400/",
+      "title": "Lakes of Ounianga",
+      "publisher": "UNESCO World Heritage Centre",
+      "claims": [
+        "facts[1]"
+      ],
+      "license": "CC BY-SA 3.0 IGO",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/igo/"
+    },
+    {
+      "url": "https://whc.unesco.org/en/list/1475/",
+      "title": "Ennedi Massif: Natural and Cultural Landscape",
+      "publisher": "UNESCO World Heritage Centre",
+      "claims": [
+        "facts[2]",
+        "culture"
+      ],
+      "license": "CC BY-SA 3.0 IGO",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/igo/"
+    }
+  ]
+}

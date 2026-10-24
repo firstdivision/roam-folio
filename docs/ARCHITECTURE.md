@@ -2,7 +2,7 @@
 
 ## Status and approved decisions
 
-The technical proposal was approved on 2026-10-24, with these product corrections: guesses are typed, the map is display-only, there is no give-up option, and proximity moves from white to red rather than green to red. The exact 125-country pool and territory policy were subsequently approved on the same date. The first playable version is implemented locally; deployment has not been performed.
+The technical proposal was approved on 2026-10-24, with these product corrections: guesses are typed, the map is display-only, there is no give-up option, and proximity moves from white to red rather than green to red. The initial 125-country pool and territory policy were subsequently approved on the same date; the user later approved adding Chad, bringing the current registry to 126. The first playable version is implemented locally; deployment has not been performed.
 
 - **Client:** React, TypeScript, and Vite; plain CSS and React's built-in state tools initially.
 - **Map:** SVG country shapes projected with D3 geographic utilities. The map displays countries and guesses, with pan/zoom navigation; it does not select or submit guesses.
@@ -38,7 +38,7 @@ The technical proposal was approved on 2026-10-24, with these product correction
 ## Guess rules and feedback
 
 - Accept guesses only from typed country search. Suggestions may resolve a typed name; map clicks never choose a guess.
-- Use the same approved country pool for answers and guesses. Countries outside the pool remain neutral on the map.
+- Use the current approved registry for guesses and new answer cycles; retain the previous pool for already published answer cycles. Countries outside the pool remain neutral on the map.
 - Normalize case, surrounding whitespace, and reviewed aliases to a stable ID. Ambiguous or unknown input requires correction rather than an arbitrary guess.
 - Allow unlimited guesses and no give-up action. Only solving unlocks discovery.
 - A repeated country returns its existing result without increasing the guess count.
@@ -117,17 +117,25 @@ Work in small, testable increments within each phase. Required checks cover UTC 
 
 ## Implementation notes
 
-- All 125 approved IDs resolve through `data/geography/crosswalk.v1.json`. Checksummed source archives are retained under `data/geography/source/`.
-- The full matrix records 7,750 pairwise upper/lower bounds. A compact triangular matrix supplies browser feedback without shipping proof metadata in the JavaScript bundle.
-- Twenty deterministic 125-country cycles cover 2026-01-01 through 2032-11-04. Published assignments and pinned geography are immutable. The generation command refuses to overwrite existing dates with different answers.
+- All 126 approved IDs resolve through `data/geography/crosswalk.v2.json`; the original 125-country crosswalk remains unchanged. Checksummed source archives are retained under `data/geography/source/`.
+- The v2 matrix records 7,875 pairwise upper/lower bounds, preserving all 7,750 original records exactly and adding 125 Chad pairs. A compact triangular matrix supplies browser feedback without shipping proof metadata in the JavaScript bundle.
+- Twenty deterministic 125-country cycles cover 2026-01-01 through 2032-11-04. Published assignments and pinned geography are immutable. The expanded 126-country cycle begins on 2032-11-05 and runs through 2033-03-10. The generation command refuses to overwrite existing dates or published era metadata. `data/schedules/legacy.v1.json` records a regression hash of the original 2,500 assignments.
 - The gradient has fixed mile/color anchors: 0/red, 250/red-orange, 1,000/orange, 2,000/yellow, and 3,000/white; distances above 3,000 remain white. Share labels use the approved bands above.
 - Geographic generation uses pyproj/PROJ's compiled GeographicLib C routines for performance; tests compare against the independent Python GeographicLib interface.
 - Browser preview and CI use committed geographic artifacts. Recomputing geography is a separate offline command, not part of every frontend build.
 - Deployment workflows are prepared for GitHub Pages; an actual deployment needs a GitHub checkout with Pages enabled.
 
+## Chad / pool-v2 expansion
+
+`pool.v2.json` appends Chad (`TCD`) and reviewed aliases to the preserved v1 registry. Eligibility counts in search validation errors are derived from this registry; no country-count/tagline helper line is displayed. The original map files already contain TCD; their source geometry and historical eligibility metadata remain unchanged. Runtime eligibility is derived from the current registry.
+
+`scripts/geography/extend.py` verifies the pinned sources and base artifact hashes, retains all original pair records, computes only missing pairs using the same 100-meter certified method, and writes separate v2 crosswalk, proof matrix, compact feedback, and generation manifest. The browser uses the v2 compact matrix, whose original-pair distances are identical to v1. Historical v1 assets remain available.
+
+The schedule retains its original top-level version identifiers for compatibility and adds explicit `eras` with date ranges, pool version, geography version, seed, and cycle length. Puzzle identity uses the matching era; all original dates retain their exact identity and browser storage keys. Chad is accepted as a guess immediately. It first becomes eligible for daily selection in the appended pool-v2 cycle after the original published schedule. Schedule refresh rejects changed era metadata. Discovery generation includes `data/discovery/chad.json` with claim-level sources tracked separately.
+
 ## Map navigation and layout
 
-The user approved removal of the large introductory banner, country entry above the fold, and zoomable/pannable map navigation on 2026-10-24. The country field precedes the map and travel log in DOM and visual order. The country field sits directly above the map in the same column. Latest guess feedback, storage notices, and completion/share content sit below the map. Desktop places history alongside this column; narrower screens place history below it.
+The user approved removal of the large introductory banner, country entry above the fold, and zoomable/pannable map navigation on 2026-10-24. The country field precedes the map canvas and travel log in DOM and visual order. The country field is inside the map panel, below the map heading/controls and directly against the canvas with no intervening helper line or gap. Its visible label remains above the search row. Latest guess feedback, storage notices, and completion/share content sit below the map. Desktop places history alongside this column; narrower screens place history below it.
 
 SVG geography remains static; a bounded group transform handles navigation without affecting distance calculations or game state. Native pointer events support dragging and two-finger pinch, with pointer capture and touch-action handling. A non-passive wheel handler zooms around the cursor. Zoom ranges from 1× to 32×. Visible controls provide zoom in/out and reset; a focusable map region supports +/−, arrow keys, and 0/Home to reset. At 1× the centered initial view is restored. On phones (up to 700 px wide), the canvas is 65% of the small viewport height, clamped to 360–520 px. The SVG fills the canvas while preserving proportions, cropping the sides to enlarge the geography. Navigation bounds account for the visible crop, allowing sideways panning even at 1× to reach the whole world. No map click or gesture submits a guess, and no new runtime dependencies were added.
 
@@ -136,6 +144,14 @@ Map country paths have no name tooltips, whether guessed or unguessed. Their acc
 The original overview asset loads first. At 3× zoom, the app requests `world.detail.v1.geojson`, generated from the same licensed source and territory mapping with less simplification. The detailed data is retained in component memory for subsequent zooms. Both layers share the overview projection to avoid a position jump when switching. If the detail request fails, the overview remains navigable and a retry is available. The detailed display does not change the answer schedule, distance matrix, or country pool. `data/geography/display.v1.json` records separate display-asset provenance and hashes; `--display-only` regenerates map files without rewriting game data.
 
 The travel log sorts a derived copy of guesses by unrounded meters ascending. A correct guess leads zero-distance ties; other ties retain chronological order. Each row keeps its original guess number. Session state, saved progress, and share emojis remain chronological.
+
+## Link preview metadata
+
+`index.html` declares Open Graph and Twitter card metadata in the initial HTML so crawlers do not need to run React. Vite replaces `%SITE_URL%` with a normalized absolute public URL, defaulting to `https://roam-folio.com/`. The Pages workflow supplies `VITE_SITE_URL` from `actions/configure-pages`' `base_url`, preserving custom domains and repository subpaths. The canonical URL, `og:url`, and image URLs share that base.
+
+`public/social-preview.v1.png` is a committed 1200 × 630 PNG (101,602 bytes). `npm run image:social` uses the existing Playwright Chromium and D3 dependencies to render original brand artwork with the approved Natural Earth overview geometry. It never reads the schedule or player state. Image dimensions, MIME type, and descriptive alternative text accompany the image metadata. Updating the image later should use a new versioned filename and matching metadata to distinguish it from cached artwork. No preview image is generated during ordinary builds.
+
+References: [Apple Messages rich previews](https://developer.apple.com/documentation/technotes/tn3156-create-rich-previews-for-messages), [Open Graph protocol](https://ogp.me/).
 
 ## Security and content integrity
 
@@ -148,9 +164,10 @@ The travel log sorts a derived copy of guesses by unrounded meters ascending. A 
 ## Local verification — 2026-10-24
 
 - Clean installation through the committed npm lockfile and production builds pass.
-- 19 unit tests cover UTC dates, schedule cycles, eligibility, distance lookup, persistence, sharing, and spherical display geometry for both map detail levels.
-- 14 geographic tests cover source checksums, display asset provenance, approved territory components, shared borders, continuous minima, islands, enclaves, antimeridian seams, and GeographicLib reference agreement.
-- 32 browser tests pass across desktop and mobile Chromium, including country entry above the fold at 320 × 568, entry/map/result placement, a taller mobile viewport with panning at 1×, closest-first history with stable ties and chronological persistence/sharing, wheel/button/keyboard zoom, mouse/touch panning, pinch gestures, absent country hover names, detailed map loading and retries, the 32× zoom limit, typed-only guessing, reloads, UTC rollover, timezone consistency, discovery visibility, sharing, unavailable storage, and automated WCAG AA scans of initial/solved views.
+- 22 unit tests cover UTC dates, schedule cycles, eligibility, distance lookup, persistence, sharing, and spherical display geometry for both map detail levels.
+- 16 geographic tests cover source checksums, display asset provenance, approved territory components, shared borders, continuous minima, islands, enclaves, antimeridian seams, and GeographicLib reference agreement.
+- 38 browser tests pass across desktop and mobile Chromium, including Chad aliases, old progress compatibility, its future puzzle and sourced postcard, link preview metadata and PNG delivery without JavaScript, country entry above the fold at 320 × 568, entry/map/result placement, a taller mobile viewport with panning at 1×, closest-first history with stable ties and chronological persistence/sharing, wheel/button/keyboard zoom, mouse/touch panning, pinch gestures, absent country hover names, detailed map loading and retries, the 32× zoom limit, typed-only guessing, reloads, UTC rollover, timezone consistency, discovery visibility, sharing, unavailable storage, and automated WCAG AA scans of initial/solved views.
+- Production preview metadata and PNG output were checked for both `https://roam-folio.com/` and a `/roam-folio/` repository subpath.
 - The built app was also checked under a `/roamfolio/` repository subpath: map assets, guesses, restored progress, and solved discovery all loaded correctly.
 - Desktop/mobile screenshots were inspected; a tiny-island winding issue found during visual QA is fixed and covered by a regression test.
 - GitHub Pages workflows are prepared, with deployment gated on validation. No remote publication has been performed. Safari, Firefox, and physical-device checks remain outside this verification pass.

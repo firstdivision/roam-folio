@@ -15,10 +15,10 @@ class GeographicArtifactTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.source, cls.units = load_geometries()
-        cls.pool = json.loads((ROOT / 'data/countries/pool.v1.json').read_text())
+        cls.pool = json.loads((ROOT / 'data/countries/pool.v2.json').read_text())
 
     def test_all_approved_countries_resolve_to_valid_source_geometries(self):
-        self.assertEqual(len(self.pool), 125)
+        self.assertEqual(len(self.pool), 126)
         for country in self.pool:
             self.assertIn(country['id'], self.source)
             geometry = self.source[country['id']][1]
@@ -61,6 +61,33 @@ class GeographicArtifactTests(unittest.TestCase):
             self.assertEqual(len(content), variant['bytes'])
             self.assertEqual(hashlib.sha256(content).hexdigest(), variant['sha256'])
         self.assertLess(manifest['variants']['world.detail.v1.geojson']['simplificationDegrees'], manifest['variants']['world.v1.geojson']['simplificationDegrees'])
+
+    def test_extended_artifacts_preserve_all_original_pairs_and_have_provenance(self):
+        base = json.loads((ROOT / 'data/geography/distances.v1.json').read_text())
+        extended = json.loads((ROOT / 'data/geography/distances.v2.json').read_text())
+        manifest = json.loads((ROOT / 'data/geography/generation.v2.json').read_text())
+        self.assertEqual(len(extended['pairs']), 7875)
+        self.assertEqual(manifest['newPairCount'], 125)
+        self.assertEqual(manifest['baseMatrixSha256'], hashlib.sha256((ROOT / 'data/geography/distances.v1.json').read_bytes()).hexdigest())
+        self.assertEqual(manifest['poolSha256'], hashlib.sha256((ROOT / 'data/countries/pool.v2.json').read_bytes()).hexdigest())
+        self.assertLessEqual(manifest['maxCertifiedGapMeters'], 100)
+        for key, pair in base['pairs'].items():
+            self.assertEqual(extended['pairs'][key], pair)
+        for name, expected in manifest['outputSha256'].items():
+            self.assertEqual(hashlib.sha256((ROOT / 'data/geography' / name).read_bytes()).hexdigest(), expected)
+            if name != 'crosswalk.v2.json':
+                self.assertEqual((ROOT / 'public/data' / name).read_bytes(), (ROOT / 'data/geography' / name).read_bytes())
+
+    def test_chad_uses_real_source_boundaries_and_reviewed_land_neighbors(self):
+        crosswalk = json.loads((ROOT / 'data/geography/crosswalk.v2.json').read_text())
+        self.assertEqual(crosswalk['TCD']['sourceValue'], 'TCD')
+        self.assertEqual(crosswalk['TCD']['sourceLabel'], 'Chad')
+        pairs = json.loads((ROOT / 'data/geography/distances.v2.json').read_text())['pairs']
+        for neighbor in ['CMR', 'NGA', 'SDN']:
+            self.assertGreater(self.source['TCD'][1].boundary.intersection(self.source[neighbor][1].boundary).length, 0)
+            self.assertEqual(pairs[':'.join(sorted(['TCD', neighbor]))]['meters'], 0)
+            self.assertTrue(pairs[':'.join(sorted(['TCD', neighbor]))]['borders'])
+        self.assertGreater(pairs['EGY:TCD']['lowerMeters'], 0)
 
 
 if __name__ == '__main__': unittest.main()

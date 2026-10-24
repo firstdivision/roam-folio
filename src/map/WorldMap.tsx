@@ -1,13 +1,16 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import type { PointerEvent as ReactPointerEvent } from 'react';
+import type { PointerEvent as ReactPointerEvent, ReactNode } from 'react';
 import { geoEqualEarth, geoPath } from 'd3-geo';
 import type { FeatureCollection, Geometry } from 'geojson';
-import { assetUrl, proximity } from '../game';
+import { assetUrl, countries, proximity } from '../game';
 import type { Guess } from '../game';
 
 type World = FeatureCollection<Geometry, { id: string; name: string; eligible: boolean }>;
 type Point = { x: number; y: number };
 type View = Point & { scale: number };
+// Eligibility lives in the current registry. Display geometry retains its
+// original provenance, including the historical pool-v1 eligibility property.
+const eligibleIds = new Set(countries.map(country => country.id));
 const WIDTH = 1000, HEIGHT = 530, MAX_ZOOM = 32;
 const initialView: View = { x: 0, y: 0, scale: 1 };
 
@@ -23,7 +26,7 @@ function constrain(view: View, viewport: { width: number; height: number }): Vie
 const midpoint = (a: Point, b: Point): Point => ({ x: (a.x + b.x) / 2, y: (a.y + b.y) / 2 });
 const separation = (a: Point, b: Point) => Math.hypot(a.x - b.x, a.y - b.y);
 
-export function WorldMap({ guesses }: { guesses: Guess[] }) {
+export function WorldMap({ guesses, children }: { guesses: Guess[]; children?: ReactNode }) {
   const [world, setWorld] = useState<World | null>(null);
   const [detail, setDetail] = useState<World | null>(null);
   const [detailFailed, setDetailFailed] = useState(false);
@@ -98,7 +101,7 @@ export function WorldMap({ guesses }: { guesses: Guess[] }) {
     if (!displayedWorld || !projection) return [];
     // Keep the overview projection when swapping detail to avoid shifting the view.
     const path = geoPath(projection);
-    return displayedWorld.features.filter(feature => feature.properties.id !== 'ATA').map((feature, index) => ({ key: `${feature.properties.id}-${index}`, ...feature.properties, d: path(feature) ?? '' }));
+    return displayedWorld.features.filter(feature => feature.properties.id !== 'ATA').map((feature, index) => ({ key: `${feature.properties.id}-${index}`, ...feature.properties, eligible: eligibleIds.has(feature.properties.id), d: path(feature) ?? '' }));
   }, [displayedWorld, projection]);
   const countryPaths = useMemo(() => {
     const results = new Map(guesses.map(guess => [guess.countryId, guess]));
@@ -148,6 +151,7 @@ export function WorldMap({ guesses }: { guesses: Guess[] }) {
         <button type="button" className="map-reset" disabled={!world} onClick={() => updateView(initialView)}>Reset map</button>
       </div>
     </div>
+    {children && <div className="map-entry">{children}</div>}
     <div ref={canvas} className={`map-canvas${dragging ? ' is-dragging' : ''}`} role="region" aria-label="Map navigation" aria-describedby="map-navigation-help" tabIndex={world ? 0 : undefined} onKeyDown={event => {
       if (!world) return;
       const current = viewRef.current;

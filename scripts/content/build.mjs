@@ -1,6 +1,6 @@
 import { readFile, readdir, mkdir, writeFile, copyFile } from 'node:fs/promises';
 import { createHash } from 'node:crypto';
-const pool = JSON.parse(await readFile(new URL('../../data/countries/pool.v1.json', import.meta.url), 'utf8'));
+const pool = JSON.parse(await readFile(new URL('../../data/countries/pool.v2.json', import.meta.url), 'utf8'));
 const directory = new URL('../../data/discovery/', import.meta.url);
 const files = (await readdir(directory)).filter(name => name.endsWith('.json')).sort();
 const cards = {};

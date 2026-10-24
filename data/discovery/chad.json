@@ -1,0 +1,32 @@
+{
+  "TCD": {
+    "facts": [
+      {
+        "text": "Chad is a landlocked country in Central Africa.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Chad",
+        "sourceTitle": "Chad — Wikivoyage"
+      },
+      {
+        "text": "The Lakes of Ounianga include eighteen desert lakes supplied by groundwater.",
+        "sourceUrl": "https://whc.unesco.org/en/list/1400/",
+        "sourceTitle": "UNESCO — Lakes of Ounianga"
+      },
+      {
+        "text": "The Ennedi Massif is a sandstone plateau shaped into canyons and natural arches.",
+        "sourceUrl": "https://whc.unesco.org/en/list/1475/",
+        "sourceTitle": "UNESCO — Ennedi Massif"
+      }
+    ],
+    "culture": {
+      "text": "Paintings and engravings on rocks in Ennedi record human life in the Sahara.",
+      "sourceUrl": "https://whc.unesco.org/en/list/1475/",
+      "sourceTitle": "UNESCO — Ennedi Massif"
+    },
+    "food": {
+      "name": "Boule",
+      "text": "This staple is made from millet, sorghum or maize and served with sauces.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Chad#Eat",
+      "sourceTitle": "Chad — Wikivoyage — Eat"
+    }
+  }
+}

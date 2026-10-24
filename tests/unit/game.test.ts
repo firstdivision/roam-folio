@@ -1,7 +1,11 @@
+import { createHash } from 'node:crypto';
+import legacyPool from '../../data/countries/pool.v1.json';
+import legacySchedule from '../../data/schedules/legacy.v1.json';
+import oldMatrix from '../../data/geography/distances.v1.json';
 import { describe, expect, it, vi, afterEach } from 'vitest';
 import { countries, evaluateGuess, formatMiles, getPuzzle, getUtcDate, loadProgress, nextReset, proximity, refreshSchedule, resolveCountry, saveProgress, shareResult } from '../../src/game';
 import schedule from '../../data/schedules/schedule.v1.json';
-import matrix from '../../data/geography/distances.v1.json';
+import matrix from '../../data/geography/distances.v2.json';
 
 afterEach(() => vi.unstubAllGlobals());
 
@@ -24,12 +28,31 @@ describe('UTC puzzle dates', () => {
   });
   it('contains every eligible country exactly once per cycle with no adjacent repeats', () => {
     const entries = Object.entries(schedule.assignments);
-    const expected = countries.map(c => c.id).sort();
-    for (let i = 0; i < entries.length; i += countries.length) expect(entries.slice(i, i + countries.length).map(([, id]) => id).sort()).toEqual(expected);
+    for (const era of schedule.eras) {
+      const expected = (era.poolVersion === 'pool-v1' ? legacyPool : countries).map(c => c.id).sort();
+      const days = entries.filter(([date]) => date >= era.startsOn && date <= era.endsOn);
+      expect(days).toHaveLength(era.cycleLength * era.cycles);
+      for (let i = 0; i < days.length; i += era.cycleLength) expect(days.slice(i, i + era.cycleLength).map(([, id]) => id).sort()).toEqual(expected);
+    }
     for (let i = 1; i < entries.length; i++) {
       expect(entries[i][1]).not.toBe(entries[i - 1][1]);
       expect(Date.parse(entries[i][0]) - Date.parse(entries[i - 1][0])).toBe(86_400_000);
     }
+  });
+  it('preserves every published v1 answer and progress identity across the pool expansion', () => {
+    const legacy = Object.fromEntries(Object.entries(schedule.assignments).filter(([date]) => date <= legacySchedule.endsOn));
+    expect(Object.keys(legacy)).toHaveLength(legacySchedule.count);
+    expect(createHash('sha256').update(JSON.stringify(legacy)).digest('hex')).toBe(legacySchedule.assignmentsSha256);
+    expect(getPuzzle('2026-10-24').identity).toBe('schedule-v1:pool-v1:natural-earth-5.1.1-policy-1:2026-10-24');
+    expect(getPuzzle('2032-11-05').identity).toContain(':pool-v2:natural-earth-5.1.1-policy-1-pool-2:');
+    const chadDay = Object.entries(schedule.assignments).find(([, id]) => id === 'TCD')![0];
+    expect(chadDay > legacySchedule.endsOn).toBe(true);
+    expect(getPuzzle(chadDay).target).toBe('TCD');
+  });
+  it('rejects fetched schedules that change published pool/geography eras', async () => {
+    const eras = schedule.eras.map(era => ({ ...era, poolVersion: 'pool-v2' }));
+    vi.stubGlobal('fetch', vi.fn().mockResolvedValue({ ok: true, json: async () => ({ ...schedule, eras }) }));
+    await expect(refreshSchedule()).rejects.toThrow('newer game version');
   });
   it('rejects fetched schedules that rewrite existing assignments', async () => {
     vi.stubGlobal('fetch', vi.fn().mockResolvedValue({ ok: true, json: async () => ({ ...schedule, assignments: { ...schedule.assignments, '2026-10-24': 'USA' } }) }));
@@ -43,14 +66,15 @@ describe('UTC puzzle dates', () => {
 });
 
 describe('eligible guesses and geographic feedback', () => {
-  it('has the approved 125 unique countries and rejects ambiguous/ineligible input', () => {
-    expect(countries).toHaveLength(125);
-    expect(new Set(countries.map(c => c.id)).size).toBe(125);
+  it('has the approved 126 unique countries and rejects ambiguous/ineligible input', () => {
+    expect(countries).toHaveLength(126);
+    expect(new Set(countries.map(c => c.id)).size).toBe(126);
     for (const country of countries) expect(resolveCountry(country.name)?.id).toBe(country.id);
     for (const input of ['Congo', 'Korea', 'Atlantis', 'Greenland']) expect(resolveCountry(input)).toBeUndefined();
     expect(resolveCountry('  U.S.A.  ')?.id).toBe('USA');
     expect(resolveCountry('Türkiye')?.id).toBe('TUR');
     expect(resolveCountry('tUrKiYe')?.id).toBe('TUR');
+    for (const name of ['Chad', 'Republic of Chad', 'Tchad', 'République du Tchad', 'TCD']) expect(resolveCountry(name)?.id).toBe('TCD');
   });
   it('returns zero and separate adjacency for shared land borders, and success for a correct guess', () => {
     const puzzle = { ...getPuzzle('2026-10-24'), target: 'FRA' };
@@ -61,7 +85,7 @@ describe('eligible guesses and geographic feedback', () => {
     expect(() => evaluateGuess(puzzle, 'GRL')).toThrow('Ineligible');
   });
   it('has complete finite, nonnegative, symmetric pair lookup with certified bounds', () => {
-    expect(Object.keys(matrix.pairs)).toHaveLength(7750);
+    expect(Object.keys(matrix.pairs)).toHaveLength(7875);
     for (const [key, pair] of Object.entries(matrix.pairs)) {
       const [a, b] = key.split(':');
       expect(Number.isFinite(pair.meters)).toBe(true);
@@ -73,6 +97,13 @@ describe('eligible guesses and geographic feedback', () => {
       expect(evaluateGuess({ ...getPuzzle('2026-10-24'), target: b }, a).meters).toBe(pair.meters);
       if (pair.borders) expect(pair.meters).toBe(0);
     }
+  });
+  it('adds Chad distances while preserving every original pair exactly', () => {
+    for (const [key, pair] of Object.entries(oldMatrix.pairs)) expect(matrix.pairs[key as keyof typeof matrix.pairs]).toEqual(pair);
+    const puzzle = { ...getPuzzle('2026-10-24'), target: 'TCD' };
+    for (const id of ['CMR', 'NGA', 'SDN']) expect(evaluateGuess(puzzle, id)).toMatchObject({ meters: 0, borders: true });
+    expect(evaluateGuess(puzzle, 'EGY').meters).toBeGreaterThan(0);
+    expect(evaluateGuess(puzzle, 'TCD').correct).toBe(true);
   });
   it('never rounds positive sub-mile distances to zero and validates numeric input', () => {
     expect(formatMiles(0)).toBe('0 miles');

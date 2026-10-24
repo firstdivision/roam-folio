@@ -97,8 +97,9 @@ export default function App() {
       {!session ? <section className="unavailable" role="status"><h2>Today’s journey isn’t available yet.</h2><p>There is no published puzzle for {date}. Please check back when the schedule has been updated.</p></section> : <>
         <div className="play-area" id="guess-section" tabIndex={-1}>
           <div className="map-column">
-            {!solved && <section className="guess-panel" aria-label="Guess a country"><CountrySearch key={date} onGuess={guess}/></section>}
-            <WorldMap guesses={session.guesses}/>
+            <WorldMap guesses={session.guesses}>
+              {!solved && <section className="guess-panel" aria-label="Guess a country"><CountrySearch key={date} onGuess={guess}/></section>}
+            </WorldMap>
             <section className="feedback-panel" aria-label={solved ? 'Journey complete' : 'Latest guess result'}>
               {solved ? <div className="success-panel"><p className="eyebrow">DESTINATION DISCOVERED</p><h2>You’ve arrived in<br/>{nameFor(session.puzzle.target)}<span>!</span></h2><p>{session.guesses.length} {session.guesses.length === 1 ? 'guess' : 'guesses'}, a world of discovery. Your postcard awaits below.</p><button className="primary-button" type="button" onClick={share}>Share your journey <span aria-hidden="true">↗</span></button><p className="next-puzzle">Next destination in <strong>{countdown}</strong><span>Resets at midnight UTC</span></p>{showShare && <div className="share-fallback"><label htmlFor="share-result">Your spoiler-free result</label><textarea id="share-result" readOnly value={shareResult(session.puzzle, session.guesses)} rows={4} onFocus={event => event.target.select()}/><p role="status">{shareMessage}</p></div>}</div> : null}
               {!session.storageAvailable && <p className="storage-warning" role="status">Browser storage is unavailable. You can play, but your guesses may not survive a refresh.</p>}

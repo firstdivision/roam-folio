@@ -8,7 +8,7 @@ Legend: **MVP** = first playable release; **Later** = planned enhancement; **Ope
 - **MVP:** Select the day's target deterministically from a curated eligible-country list; never pick independently for each visitor.
 - **MVP:** Avoid repeating a target until the current eligible-country cycle is exhausted; use a stable, versioned schedule or deterministic permutation.
 - **MVP:** Players guess by typing a country name through an accessible search interface with suggestions. Map clicks do not select or submit guesses; the map only displays countries and the guesses made.
-- **MVP:** Keep the country field and submit button above the fold on desktop and mobile, with a compact header and no large introductory banner. Place the entry directly above the map in the same column.
+- **MVP:** Keep the country field and submit button above the fold on desktop and mobile, with a compact header and no large introductory banner. Place the entry directly against the map canvas, with the map toolbar above the entry and no country-count/tagline line beneath the input.
 - **MVP:** The display map supports drag/touch panning, wheel/pinch zoom up to 32×, explicit zoom/reset controls, and keyboard navigation. Navigating the map never selects or submits a guess.
 - **MVP:** Country shapes have no hover-name tooltips, including previously guessed countries. Guess names and results remain available in the travel log.
 - **MVP:** Load the overview map initially and fetch more detailed boundaries on zoom. If detail is unavailable, keep the overview usable and offer a retry.
@@ -23,13 +23,14 @@ Legend: **MVP** = first playable release; **Later** = planned enhancement; **Ope
 - **MVP:** After solving, show a destination postcard with three sourced facts, one cultural note, and at least one signature food. No recipes are required for MVP.
 - **MVP:** Responsive and accessible on mobile and desktop. Use a taller mobile map viewport (360–520 px); enlarge the map to fill it and allow panning across the cropped world at the initial zoom.
 - **MVP:** Once solved, offer spoiler-free text sharing with the UTC puzzle date, guess count, and ordered proximity emojis: white square for very far away, yellow and orange squares for intermediate distances, red square for very close, and a distinct success marker. Do not include country names or discovery content. Provide a copyable text fallback when native sharing is unavailable.
+- **MVP:** Shared website links include static, spoiler-free Open Graph metadata and a branded preview image readable without JavaScript.
 
 ## Country pool
-- **MVP:** Begin with approximately 100–130 curated, widely recognizable countries; the exact 125-country list was approved on 2026-10-24.
+- **MVP:** Begin with approximately 100–130 curated, widely recognizable countries; the initial 125-country list was approved on 2026-10-24, followed by the approved addition of Chad for a current total of 126.
 - **MVP:** Avoid making tiny or highly obscure island nations frequent or mandatory answers.
 - **MVP:** Do not categorically exclude the Caribbean or Oceania; familiar countries may be included.
 - **MVP:** Country identifiers and boundaries must be stable and consistent between map, guess input, and distance data.
-- **MVP:** Use the same approved pool for guesses and targets. Display countries outside the pool neutrally, without accepting them as guesses. See [the approved list](COUNTRIES.md).
+- **MVP:** Use the current approved pool for guesses and future target cycles. Preserve all published targets when the pool expands: the original 125-country cycles end on 2032-11-04, and the 126-country answer pool begins on 2032-11-05. Display countries outside the pool neutrally, without accepting them as guesses. See [the approved list](COUNTRIES.md).
 
 ## Later — Discovery and retention
 - Recipes with ingredients, steps, and source attribution.
@@ -54,8 +55,10 @@ Legend: **MVP** = first playable release; **Later** = planned enhancement; **Ope
 13. Map zoom, drag, pinch, reset, and keyboard navigation work without changing the guess count or country input; map gestures do not scroll the whole page.
 14. Hovering a map country never shows its name.
 15. Detailed boundaries load only when zooming in, remain cached for subsequent zooms, support 32× zoom, and fall back to the usable overview on failure.
-16. Entry sits immediately above the map; the latest result and completion appear below it. Mobile map height is at least 360 px, with sideways panning available at the initial zoom.
+16. Entry sits directly against the map canvas, below its toolbar, with no intervening helper line or spacing; the latest result and completion appear below it. Mobile map height is at least 360 px, with sideways panning available at the initial zoom.
 17. History is ordered closest first, including after reload. Correct guesses lead zero-distance ties; other ties retain guess order. Saved progress and share emojis retain the original chronological order.
+18. With JavaScript disabled, the initial HTML still advertises the title, description, canonical URL, and a reachable 1200 × 630 PNG preview.
+19. Chad and Republic of Chad resolve to TCD, return certified border distances, preserve pre-expansion browser progress, and unlock a sourced postcard when solved in the expanded answer schedule.
 
 ## Decision status
 

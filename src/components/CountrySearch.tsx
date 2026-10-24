@@ -45,7 +45,7 @@ export function CountrySearch({ onGuess }: { onGuess: (id: string) => void }) {
   return <form className="guess-form" onSubmit={event => {
     event.preventDefault();
     const country = resolveCountry(query);
-    if (!country) { setError('Choose a country from the suggestions. Only the 125 countries in this puzzle’s pool are eligible.'); return; }
+    if (!country) { setError(`Choose a country from the suggestions. Only the ${countries.length} countries in this puzzle’s pool are eligible.`); return; }
     onGuess(country.id);
     setQuery(''); setError(''); setOpen(false); setActive(-1);
     input.current?.focus();
@@ -54,14 +54,13 @@ export function CountrySearch({ onGuess }: { onGuess: (id: string) => void }) {
     <div className="input-row">
       <div className="search-field">
         <span className="search-symbol" aria-hidden="true">⌕</span>
-        <input ref={input} id={id} role="combobox" aria-autocomplete="list" aria-expanded={expanded} aria-controls={`${id}-options`} aria-activedescendant={expanded && active >= 0 ? `${id}-option-${active}` : undefined} aria-describedby={`${id}-hint${error ? ` ${id}-error` : ''}`} aria-invalid={Boolean(error)} autoComplete="off" spellCheck={false} placeholder="Type a country name…" value={query} onChange={event => { setQuery(event.target.value); setOpen(true); setActive(-1); setError(''); }} onKeyDown={onKeyDown} onFocus={() => setOpen(true)} onBlur={() => { setOpen(false); setActive(-1); }}/>
+        <input ref={input} id={id} role="combobox" aria-autocomplete="list" aria-expanded={expanded} aria-controls={`${id}-options`} aria-activedescendant={expanded && active >= 0 ? `${id}-option-${active}` : undefined} aria-describedby={error ? `${id}-error` : undefined} aria-invalid={Boolean(error)} autoComplete="off" spellCheck={false} placeholder="Type a country name…" value={query} onChange={event => { setQuery(event.target.value); setOpen(true); setActive(-1); setError(''); }} onKeyDown={onKeyDown} onFocus={() => setOpen(true)} onBlur={() => { setOpen(false); setActive(-1); }}/>
         {expanded && <ul id={`${id}-options`} role="listbox" aria-label="Country suggestions" className="suggestions">
           {suggestions.map((country, index) => <li key={country.id} id={`${id}-option-${index}`} role="option" aria-selected={index === active} className={index === active ? 'active' : ''} onMouseDown={event => event.preventDefault()} onClick={() => select(country.name)}>{country.name}<span aria-hidden="true">↖</span></li>)}
         </ul>}
       </div>
       <button className="primary-button" type="submit" disabled={!query.trim()}>Guess <span aria-hidden="true">↗</span></button>
     </div>
-    <p id={`${id}-hint`} className="input-hint">125 countries. Unlimited guesses. One destination.</p>
     {error && <p id={`${id}-error`} className="form-error" role="alert">{error}</p>}
   </form>;
 }

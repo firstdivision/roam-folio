@@ -1,0 +1,1832 @@
+{
+  "ALB": {
+    "facts": [
+      {
+        "text": "Tirana is the capital.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      },
+      {
+        "text": "Albanian is spoken here.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      },
+      {
+        "text": "It is a coastal country in Southeast Europe.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      }
+    ],
+    "culture": {
+      "text": "Albanian iso-polyphony layers solo voices over a sustained choral drone, often accompanying celebrations.",
+      "sourceUrl": "https://ich.unesco.org/en/lists?RL=00155",
+      "sourceTitle": "UNESCO — Albanian folk iso-polyphony"
+    },
+    "food": {
+      "name": "Tasqebap",
+      "text": "A warming lamb stew with tomatoes and onions, one of Albania's traditional dishes.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Albania#Eat",
+      "sourceTitle": "Wikivoyage — Albania — Eat"
+    }
+  },
+  "AUT": {
+    "facts": [
+      {
+        "text": "Vienna is the capital.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      },
+      {
+        "text": "German is spoken here.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      },
+      {
+        "text": "It is a landlocked country in Central Europe.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      }
+    ],
+    "culture": {
+      "text": "Village bakeries are part of Austria's food tradition, with rye loaves and sweet and savoury rolls.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Austria",
+      "sourceTitle": "Wikivoyage — Austria"
+    },
+    "food": {
+      "name": "Wiener Schnitzel",
+      "text": "A thin veal cutlet coated in breadcrumbs and fried until crisp.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Austria#Eat",
+      "sourceTitle": "Wikivoyage — Austria — Eat"
+    }
+  },
+  "BLR": {
+    "facts": [
+      {
+        "text": "Minsk is the capital.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      },
+      {
+        "text": "Languages spoken here include Belarusian and Russian.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      },
+      {
+        "text": "It is a landlocked country in Eastern Europe.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      }
+    ],
+    "culture": {
+      "text": "Belarusian straw weavers make baskets, hats, toys and symbolic decorations, passing skills through families and craft communities.",
+      "sourceUrl": "https://ich.unesco.org/en/RL/straw-weaving-in-belarus-art-craft-and-skills-01889?RL=01889",
+      "sourceTitle": "UNESCO — Straw weaving in Belarus, art, craft and skills"
+    },
+    "food": {
+      "name": "Draniki",
+      "text": "Potato pancakes are a familiar dish to discover in Belarusian cooking.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Belarus#Eat",
+      "sourceTitle": "Wikivoyage — Belarus — Eat"
+    }
+  },
+  "BEL": {
+    "facts": [
+      {
+        "text": "Brussels is the capital.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      },
+      {
+        "text": "Languages spoken here include German, French and Dutch.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      },
+      {
+        "text": "It is a coastal country in Western Europe.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      }
+    ],
+    "culture": {
+      "text": "Belgian comic-book culture has a strong presence in Brussels, including shops devoted to comics and their characters.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Belgium",
+      "sourceTitle": "Wikivoyage — Belgium"
+    },
+    "food": {
+      "name": "Moules-frites",
+      "text": "Mussels served with fries; white wine, onions and celery are common additions to the cooking pot.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Belgium#Eat",
+      "sourceTitle": "Wikivoyage — Belgium — Eat"
+    }
+  },
+  "BIH": {
+    "facts": [
+      {
+        "text": "Sarajevo is the capital.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      },
+      {
+        "text": "Languages spoken here include Bosnian, Croatian and Serbian.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      },
+      {
+        "text": "It is a coastal country in Southeast Europe.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      }
+    ],
+    "culture": {
+      "text": "Bosnian coffee is an established local tradition, with a preparation reminiscent of Turkish coffee.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Bosnia_and_Herzegovina",
+      "sourceTitle": "Wikivoyage — Bosnia and Herzegovina"
+    },
+    "food": {
+      "name": "Ćevapi",
+      "text": "Small grilled kebabs, with distinct regional styles associated with Sarajevo and Banja Luka.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Bosnia_and_Herzegovina#Eat",
+      "sourceTitle": "Wikivoyage — Bosnia and Herzegovina — Eat"
+    }
+  },
+  "BGR": {
+    "facts": [
+      {
+        "text": "Sofia is the capital.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      },
+      {
+        "text": "Bulgarian is spoken here.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      },
+      {
+        "text": "It is a coastal country in Southeast Europe.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      }
+    ],
+    "culture": {
+      "text": "Salads and dairy foods are prominent in Bulgarian food traditions, alongside vegetable soups and stews.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Bulgaria",
+      "sourceTitle": "Wikivoyage — Bulgaria"
+    },
+    "food": {
+      "name": "Banitsa",
+      "text": "Layers of filo pastry surround a filling, often cheese; it is a popular breakfast option.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Bulgaria#Eat",
+      "sourceTitle": "Wikivoyage — Bulgaria — Eat"
+    }
+  },
+  "HRV": {
+    "facts": [
+      {
+        "text": "Zagreb is the capital.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      },
+      {
+        "text": "Croatian is spoken here.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      },
+      {
+        "text": "It is a coastal country in Southeast Europe.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      }
+    ],
+    "culture": {
+      "text": "Croatian cooking varies by region, from paprika-rich inland stews to seafood along the Adriatic coast.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Croatia",
+      "sourceTitle": "Wikivoyage — Croatia"
+    },
+    "food": {
+      "name": "Štrukli",
+      "text": "Cheese-filled dough is a speciality of Hrvatsko Zagorje and central Croatia.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Croatia#Eat",
+      "sourceTitle": "Wikivoyage — Croatia — Eat"
+    }
+  },
+  "CYP": {
+    "facts": [
+      {
+        "text": "Nicosia is the capital.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      },
+      {
+        "text": "Languages spoken here include Greek and Turkish.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      },
+      {
+        "text": "The country has a coastline.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      }
+    ],
+    "culture": {
+      "text": "The village of Lefkara is known for its intricate lacework.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Cyprus",
+      "sourceTitle": "Wikivoyage — Cyprus"
+    },
+    "food": {
+      "name": "Halloumi",
+      "text": "This salty Cypriot cheese, also called hellim, is often served grilled.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Cyprus#Eat",
+      "sourceTitle": "Wikivoyage — Cyprus — Eat"
+    }
+  },
+  "CZE": {
+    "facts": [
+      {
+        "text": "Prague is the capital.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      },
+      {
+        "text": "Languages spoken here include Czech and Slovak.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      },
+      {
+        "text": "It is a landlocked country in Central Europe.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      }
+    ],
+    "culture": {
+      "text": "Knedlíky, made in several styles, are an important accompaniment to traditional Czech main courses.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Czech_Republic",
+      "sourceTitle": "Wikivoyage — Czech Republic"
+    },
+    "food": {
+      "name": "Svíčková na smetaně",
+      "text": "Beef with a creamy root-vegetable sauce, commonly accompanied by sliced bread dumplings.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Czech_Republic#Eat",
+      "sourceTitle": "Wikivoyage — Czech Republic — Eat"
+    }
+  },
+  "DNK": {
+    "facts": [
+      {
+        "text": "Copenhagen is the capital.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      },
+      {
+        "text": "Danish is spoken here.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      },
+      {
+        "text": "The country has a coastline.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      }
+    ],
+    "culture": {
+      "text": "Danish design is associated with practical, restrained forms in architecture, furniture and household objects.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Denmark",
+      "sourceTitle": "Wikivoyage — Denmark"
+    },
+    "food": {
+      "name": "Smørrebrød",
+      "text": "An open sandwich, commonly on rye bread, with toppings such as herring, cheese or cold cuts.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Denmark#Eat",
+      "sourceTitle": "Wikivoyage — Denmark — Eat"
+    }
+  },
+  "EST": {
+    "facts": [
+      {
+        "text": "Tallinn is the capital.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      },
+      {
+        "text": "Estonian is spoken here.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      },
+      {
+        "text": "It is a coastal country in Northern Europe.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      }
+    ],
+    "culture": {
+      "text": "Estonian food traditions bring together Baltic, Nordic, German and Russian influences.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Estonia",
+      "sourceTitle": "Wikivoyage — Estonia"
+    },
+    "food": {
+      "name": "Verivorst",
+      "text": "A blood sausage often paired with lingonberry jam, especially during the winter festive season.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Estonia#Eat",
+      "sourceTitle": "Wikivoyage — Estonia — Eat"
+    }
+  },
+  "FIN": {
+    "facts": [
+      {
+        "text": "Helsinki is the capital.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      },
+      {
+        "text": "Languages spoken here include Finnish and Swedish.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      },
+      {
+        "text": "It is a coastal country in Northern Europe.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      }
+    ],
+    "culture": {
+      "text": "Sauna bathing is woven into Finnish life as a time for relaxation, refreshment and quiet conversation.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Finland",
+      "sourceTitle": "Wikivoyage — Finland"
+    },
+    "food": {
+      "name": "Smoked salmon",
+      "text": "Smoked fish can be part of a Finnish meal with potatoes and seasonal accompaniments.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Finland#Eat",
+      "sourceTitle": "Wikivoyage — Finland — Eat"
+    }
+  },
+  "FRA": {
+    "facts": [
+      {
+        "text": "Paris is the capital.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      },
+      {
+        "text": "French is spoken here.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      },
+      {
+        "text": "The country has a coastline.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      }
+    ],
+    "culture": {
+      "text": "Meals and discovering regional dishes play an important role in French cultural life.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/France",
+      "sourceTitle": "Wikivoyage — France"
+    },
+    "food": {
+      "name": "Bouillabaisse",
+      "text": "A fish soup associated with Marseille and the Mediterranean coast, traditionally flavoured with saffron.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/France#Eat",
+      "sourceTitle": "Wikivoyage — France — Eat"
+    }
+  },
+  "DEU": {
+    "facts": [
+      {
+        "text": "Berlin is the capital.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      },
+      {
+        "text": "German is spoken here.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      },
+      {
+        "text": "It is a coastal country in Western Europe.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      }
+    ],
+    "culture": {
+      "text": "Modern German cooking draws on regional traditions and influences from immigrant communities, including Turkish cuisine.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Germany",
+      "sourceTitle": "Wikivoyage — Germany"
+    },
+    "food": {
+      "name": "Currywurst",
+      "text": "Sliced sausage dressed with spiced ketchup and curry powder, closely associated with Berlin.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Germany#Eat",
+      "sourceTitle": "Wikivoyage — Germany — Eat"
+    }
+  },
+  "GRC": {
+    "facts": [
+      {
+        "text": "Athens is the capital.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      },
+      {
+        "text": "Greek is spoken here.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      },
+      {
+        "text": "It is a coastal country in Southern Europe.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      }
+    ],
+    "culture": {
+      "text": "Olive oil, vegetables, herbs and seafood are important to Greece's Mediterranean food traditions.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Greece",
+      "sourceTitle": "Wikivoyage — Greece"
+    },
+    "food": {
+      "name": "Horiatiki salad",
+      "text": "A Greek village salad combines tomatoes, cucumber, onion, feta and olives, commonly dressed with olive oil and oregano.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Greece#Eat",
+      "sourceTitle": "Wikivoyage — Greece — Eat"
+    }
+  },
+  "HUN": {
+    "facts": [
+      {
+        "text": "Budapest is the capital.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      },
+      {
+        "text": "Hungarian is spoken here.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      },
+      {
+        "text": "It is a landlocked country in Central Europe.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      }
+    ],
+    "culture": {
+      "text": "Kalocsa and Matyó embroidery are among Hungary's regional decorative arts.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Hungary",
+      "sourceTitle": "Wikivoyage — Hungary"
+    },
+    "food": {
+      "name": "Gulyás",
+      "text": "In Hungary, gulyás refers to a paprika-flavoured soup; the thicker meat stew is called pörkölt.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Hungary#Eat",
+      "sourceTitle": "Wikivoyage — Hungary — Eat"
+    }
+  },
+  "ISL": {
+    "facts": [
+      {
+        "text": "Reykjavik is the capital.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      },
+      {
+        "text": "Icelandic is spoken here.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      },
+      {
+        "text": "It is a coastal country in Northern Europe.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      }
+    ],
+    "culture": {
+      "text": "Iceland has a varied local music scene that extends beyond its internationally known performers.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Iceland",
+      "sourceTitle": "Wikivoyage — Iceland"
+    },
+    "food": {
+      "name": "Skyr",
+      "text": "A thick, tangy dairy food resembling yoghurt, available plain or flavoured.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Iceland#Eat",
+      "sourceTitle": "Wikivoyage — Iceland — Eat"
+    }
+  },
+  "IRL": {
+    "facts": [
+      {
+        "text": "Dublin is the capital.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      },
+      {
+        "text": "Languages spoken here include English and Irish.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      },
+      {
+        "text": "It is a coastal country in Northern Europe.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      }
+    ],
+    "culture": {
+      "text": "Traditional music sessions in pubs are one way to encounter Ireland's living Gaelic cultural traditions.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Ireland",
+      "sourceTitle": "Wikivoyage — Ireland"
+    },
+    "food": {
+      "name": "Brown soda bread",
+      "text": "A substantial brown bread made with buttermilk and raised with bicarbonate of soda rather than yeast.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Ireland#Eat",
+      "sourceTitle": "Wikivoyage — Ireland — Eat"
+    }
+  },
+  "ITA": {
+    "facts": [
+      {
+        "text": "Rome is the capital.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      },
+      {
+        "text": "Italian is spoken here.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      },
+      {
+        "text": "It is a coastal country in Southern Europe.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      }
+    ],
+    "culture": {
+      "text": "Coffee has its own daily rhythms: cappuccino is commonly a breakfast drink, paired with a pastry.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Italy",
+      "sourceTitle": "Wikivoyage — Italy"
+    },
+    "food": {
+      "name": "Trofie al pesto",
+      "text": "Trofie pasta served with pesto alla genovese is one regional dish to discover.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Italy#Eat",
+      "sourceTitle": "Wikivoyage — Italy — Eat"
+    }
+  },
+  "LVA": {
+    "facts": [
+      {
+        "text": "Riga is the capital.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      },
+      {
+        "text": "Latvian is spoken here.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      },
+      {
+        "text": "It is a coastal country in Northern Europe.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      }
+    ],
+    "culture": {
+      "text": "Rye bread and dairy foods are longstanding staples of Latvia's agricultural food traditions.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Latvia",
+      "sourceTitle": "Wikivoyage — Latvia"
+    },
+    "food": {
+      "name": "Sklandrausis",
+      "text": "A sweet rye-dough pie filled with potato and carrot, linked to Livonian food traditions.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Latvia#Eat",
+      "sourceTitle": "Wikivoyage — Latvia — Eat"
+    }
+  },
+  "LTU": {
+    "facts": [
+      {
+        "text": "Vilnius is the capital.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      },
+      {
+        "text": "Lithuanian is spoken here.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      },
+      {
+        "text": "It is a coastal country in Northern Europe.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      }
+    ],
+    "culture": {
+      "text": "Amber jewellery is a Baltic craft tradition visible in Lithuanian shops and markets, especially around Klaipėda.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Lithuania",
+      "sourceTitle": "Wikivoyage — Lithuania"
+    },
+    "food": {
+      "name": "Cepelinai",
+      "text": "These substantial potato dumplings are filled with meat and named after their zeppelin-like shape.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Lithuania#Eat",
+      "sourceTitle": "Wikivoyage — Lithuania — Eat"
+    }
+  },
+  "NLD": {
+    "facts": [
+      {
+        "text": "Amsterdam is the capital.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      },
+      {
+        "text": "Dutch is spoken here.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      },
+      {
+        "text": "It is a coastal country in Western Europe.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      }
+    ],
+    "culture": {
+      "text": "Regional dairy traditions include cheeses such as Gouda and Edam, while coastal communities have a strong seafood tradition.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Netherlands",
+      "sourceTitle": "Wikivoyage — Netherlands"
+    },
+    "food": {
+      "name": "Stamppot",
+      "text": "Potatoes mashed with vegetables form a hearty dish; hutspot is a version with carrots and onions.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Netherlands#Eat",
+      "sourceTitle": "Wikivoyage — Netherlands — Eat"
+    }
+  },
+  "MKD": {
+    "facts": [
+      {
+        "text": "Skopje is the capital.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      },
+      {
+        "text": "Macedonian is spoken here.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      },
+      {
+        "text": "It is a landlocked country in Southeast Europe.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      }
+    ],
+    "culture": {
+      "text": "Ohrid's old town is associated with religious painting as well as pearl jewellery.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/North_Macedonia",
+      "sourceTitle": "Wikivoyage — North Macedonia"
+    },
+    "food": {
+      "name": "Shopska salata",
+      "text": "A salad of tomato and cucumber finished with grated white sirenje cheese.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/North_Macedonia#Eat",
+      "sourceTitle": "Wikivoyage — North Macedonia — Eat"
+    }
+  },
+  "NOR": {
+    "facts": [
+      {
+        "text": "Oslo is the capital.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      },
+      {
+        "text": "Norwegian Bokmål, Norwegian Nynorsk and Sami are among the languages used here.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      },
+      {
+        "text": "The country has a coastline.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      }
+    ],
+    "culture": {
+      "text": "Coastal communities in western and northern Norway have long preserved cod by drying or salting it.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Norway",
+      "sourceTitle": "Wikivoyage — Norway"
+    },
+    "food": {
+      "name": "Fårikål",
+      "text": "A slow-cooked combination of lamb and cabbage, part of Norway's traditional food repertoire.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Norway#Eat",
+      "sourceTitle": "Wikivoyage — Norway — Eat"
+    }
+  },
+  "POL": {
+    "facts": [
+      {
+        "text": "Warsaw is the capital.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      },
+      {
+        "text": "Polish is spoken here.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      },
+      {
+        "text": "It is a coastal country in Central Europe.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      }
+    ],
+    "culture": {
+      "text": "Weekly town markets bring together produce, bread, dairy and flowers; seasonal stalls may offer mushrooms and forest berries.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Poland",
+      "sourceTitle": "Wikivoyage — Poland"
+    },
+    "food": {
+      "name": "Pierogi",
+      "text": "Dumplings with varied fillings, including cheese and onion, meat, or forest fruit.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Poland#Eat",
+      "sourceTitle": "Wikivoyage — Poland — Eat"
+    }
+  },
+  "PRT": {
+    "facts": [
+      {
+        "text": "Lisbon is the capital.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      },
+      {
+        "text": "Portuguese is spoken here.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      },
+      {
+        "text": "It is a coastal country in Southern Europe.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      }
+    ],
+    "culture": {
+      "text": "Portugal's food traditions combine coastal seafood with inland farming and spices introduced through trade and colonial expansion.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Portugal",
+      "sourceTitle": "Wikivoyage — Portugal"
+    },
+    "food": {
+      "name": "Caldo verde",
+      "text": "A soup associated with Minho, made with greens, potatoes and slices of smoked sausage.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Portugal#Eat",
+      "sourceTitle": "Wikivoyage — Portugal — Eat"
+    }
+  },
+  "ROU": {
+    "facts": [
+      {
+        "text": "Bucharest is the capital.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      },
+      {
+        "text": "Romanian is spoken here.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      },
+      {
+        "text": "It is a coastal country in Southeast Europe.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      }
+    ],
+    "culture": {
+      "text": "Traditional fairs can combine market stalls with music and dancing, bringing together people from surrounding villages.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Romania",
+      "sourceTitle": "Wikivoyage — Romania"
+    },
+    "food": {
+      "name": "Bulz",
+      "text": "Roasted polenta filled with cheeses and, in some versions, bacon and sour cream.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Romania#Eat",
+      "sourceTitle": "Wikivoyage — Romania — Eat"
+    }
+  },
+  "RUS": {
+    "facts": [
+      {
+        "text": "Moscow is the capital.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      },
+      {
+        "text": "Russian is spoken here.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      },
+      {
+        "text": "The country has a coastline.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      }
+    ],
+    "culture": {
+      "text": "Rye, buckwheat, mushrooms and berries belong to a food tradition shaped by seasonal harvests and storing food for winter.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Russia",
+      "sourceTitle": "Wikivoyage — Russia"
+    },
+    "food": {
+      "name": "Pelmeni",
+      "text": "Meat-filled dumplings especially associated with the Urals and Siberia.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Russia#Eat",
+      "sourceTitle": "Wikivoyage — Russia — Eat"
+    }
+  },
+  "SRB": {
+    "facts": [
+      {
+        "text": "Belgrade is the capital.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      },
+      {
+        "text": "Serbian is spoken here.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      },
+      {
+        "text": "It is a landlocked country in Southeast Europe.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      }
+    ],
+    "culture": {
+      "text": "Neighbourhood bakeries, called pekara, offer sweet and savoury pastries; a pastry with drinkable yoghurt is a familiar snack.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Serbia",
+      "sourceTitle": "Wikivoyage — Serbia"
+    },
+    "food": {
+      "name": "Pljeskavica",
+      "text": "A grilled minced-meat patty often sold as a quick meal in a bread roll.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Serbia#Eat",
+      "sourceTitle": "Wikivoyage — Serbia — Eat"
+    }
+  },
+  "SVK": {
+    "facts": [
+      {
+        "text": "Bratislava is the capital.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      },
+      {
+        "text": "Slovak is spoken here.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      },
+      {
+        "text": "It is a landlocked country in Central Europe.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      }
+    ],
+    "culture": {
+      "text": "Sheep farming and mountain agriculture helped shape Slovak traditions of cheese, potatoes and dumplings.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Slovakia",
+      "sourceTitle": "Wikivoyage — Slovakia"
+    },
+    "food": {
+      "name": "Bryndzové halušky",
+      "text": "Small potato dumplings with bryndza sheep's cheese, often finished with fried bacon.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Slovakia#Eat",
+      "sourceTitle": "Wikivoyage — Slovakia — Eat"
+    }
+  },
+  "SVN": {
+    "facts": [
+      {
+        "text": "Ljubljana is the capital.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      },
+      {
+        "text": "Slovene is spoken here.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      },
+      {
+        "text": "It is a coastal country in Central Europe.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      }
+    ],
+    "culture": {
+      "text": "Rural inns called gostilna or gostišče are traditional places to find hearty Slovenian cooking.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Slovenia",
+      "sourceTitle": "Wikivoyage — Slovenia"
+    },
+    "food": {
+      "name": "Potica",
+      "text": "A rolled cake, often filled with nuts, prepared for holidays in many variations.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Slovenia#Eat",
+      "sourceTitle": "Wikivoyage — Slovenia — Eat"
+    }
+  },
+  "ESP": {
+    "facts": [
+      {
+        "text": "Madrid is the capital.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      },
+      {
+        "text": "Spanish is spoken here.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      },
+      {
+        "text": "It is a coastal country in Southern Europe.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      }
+    ],
+    "culture": {
+      "text": "A New Year's custom is to eat twelve grapes as the midnight clock chimes, one for each chime.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Spain",
+      "sourceTitle": "Wikivoyage — Spain"
+    },
+    "food": {
+      "name": "Churros con chocolate",
+      "text": "Freshly fried pastries are dipped into thick hot chocolate, sometimes enjoyed after a late night out.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Spain#Eat",
+      "sourceTitle": "Wikivoyage — Spain — Eat"
+    }
+  },
+  "SWE": {
+    "facts": [
+      {
+        "text": "Stockholm is the capital.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      },
+      {
+        "text": "Swedish is spoken here.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      },
+      {
+        "text": "It is a coastal country in Northern Europe.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      }
+    ],
+    "culture": {
+      "text": "Fika is a social pause over coffee, at home or in a café, for conversation and spending time together.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Sweden",
+      "sourceTitle": "Wikivoyage — Sweden"
+    },
+    "food": {
+      "name": "Raggmunk",
+      "text": "Thin potato pancakes are commonly accompanied by pork and lingonberries.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Sweden#Eat",
+      "sourceTitle": "Wikivoyage — Sweden — Eat"
+    }
+  },
+  "CHE": {
+    "facts": [
+      {
+        "text": "Bern is Switzerland's federal city.",
+        "sourceUrl": "https://www.aboutswitzerland.eda.admin.ch/en/political-system",
+        "sourceTitle": "Swiss Federal Department of Foreign Affairs — Political system"
+      },
+      {
+        "text": "Languages spoken here include French, German, Italian and Romansh.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      },
+      {
+        "text": "It is a landlocked country in Western Europe.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      }
+    ],
+    "culture": {
+      "text": "Swiss handicraft traditions include woodcarving around Brienz and lace and fine linens associated with St. Gallen.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Switzerland",
+      "sourceTitle": "Wikivoyage — Switzerland"
+    },
+    "food": {
+      "name": "Cheese fondue",
+      "text": "Bread is dipped on long forks into a shared pot of melted cheese, commonly blending several cheeses.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Switzerland#Eat",
+      "sourceTitle": "Wikivoyage — Switzerland — Eat"
+    }
+  },
+  "UKR": {
+    "facts": [
+      {
+        "text": "Kyiv is the capital.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      },
+      {
+        "text": "Ukrainian is spoken here.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      },
+      {
+        "text": "It is a coastal country in Eastern Europe.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      }
+    ],
+    "culture": {
+      "text": "Petrykivka decorative painting uses flowers and other natural motifs to decorate homes and everyday objects.",
+      "sourceUrl": "https://www.youtube.com/watch?v=1-kBLT0O2ag",
+      "sourceTitle": "UNESCO — Petrykivka decorative painting"
+    },
+    "food": {
+      "name": "Borshch",
+      "text": "A beet-based soup, often accompanied by sour cream; regional versions vary.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Ukraine#Eat",
+      "sourceTitle": "Wikivoyage — Ukraine — Eat"
+    }
+  },
+  "GBR": {
+    "facts": [
+      {
+        "text": "London is the capital.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      },
+      {
+        "text": "English is spoken here.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      },
+      {
+        "text": "The country has a coastline.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      }
+    ],
+    "culture": {
+      "text": "England, Scotland, Wales and Northern Ireland have distinct cultural identities within the United Kingdom.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/United_Kingdom",
+      "sourceTitle": "Wikivoyage — United Kingdom"
+    },
+    "food": {
+      "name": "Fish and chips",
+      "text": "A fish-and-chip shop is a familiar place to buy a takeaway meal across the United Kingdom.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/United_Kingdom#Eat",
+      "sourceTitle": "Wikivoyage — United Kingdom — Eat"
+    }
+  },
+  "DZA": {
+    "facts": [
+      {
+        "text": "Algiers is the capital.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      },
+      {
+        "text": "Arabic is spoken here.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      },
+      {
+        "text": "It is a coastal country in Northern Africa.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      }
+    ],
+    "culture": {
+      "text": "Taguella bread is associated with nomadic food traditions in the Sahara.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Algeria",
+      "sourceTitle": "Wikivoyage — Algeria"
+    },
+    "food": {
+      "name": "Couscous",
+      "text": "Steamed semolina grains accompany a sauce with vegetables and sometimes meat.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Algeria#Eat",
+      "sourceTitle": "Wikivoyage — Algeria — Eat"
+    }
+  },
+  "AGO": {
+    "facts": [
+      {
+        "text": "Luanda is the capital.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      },
+      {
+        "text": "Portuguese is spoken here.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      },
+      {
+        "text": "It is a coastal country in Middle Africa.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      }
+    ],
+    "culture": {
+      "text": "At Benfica's craft market near Luanda, artists and artisans display sculpture, paintings, jewellery and batik cloth.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Angola",
+      "sourceTitle": "Wikivoyage — Angola"
+    },
+    "food": {
+      "name": "Mufete",
+      "text": "Grilled fish is served with sweet potatoes and a chopped onion, pepper and tomato mixture.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Angola#Eat",
+      "sourceTitle": "Wikivoyage — Angola — Eat"
+    }
+  },
+  "BWA": {
+    "facts": [
+      {
+        "text": "Gaborone is the capital.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      },
+      {
+        "text": "Languages spoken here include English and Tswana.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      },
+      {
+        "text": "It is a landlocked country in Southern Africa.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      }
+    ],
+    "culture": {
+      "text": "Pula means rain in Setswana, reflecting rain's value in a country that includes much of the Kalahari.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Botswana",
+      "sourceTitle": "Wikivoyage — Botswana"
+    },
+    "food": {
+      "name": "Seswaa",
+      "text": "Beef, goat or lamb is cooked until tender, then shredded or pounded and served with porridge.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Botswana#Eat",
+      "sourceTitle": "Wikivoyage — Botswana — Eat"
+    }
+  },
+  "CMR": {
+    "facts": [
+      {
+        "text": "Yaoundé is the capital.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      },
+      {
+        "text": "Languages spoken here include English and French.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      },
+      {
+        "text": "It is a coastal country in Middle Africa.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      }
+    ],
+    "culture": {
+      "text": "Douala's craft markets offer an introduction to Cameroonian handicrafts.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Cameroon",
+      "sourceTitle": "Wikivoyage — Cameroon"
+    },
+    "food": {
+      "name": "Ndolé",
+      "text": "Bitter greens and peanuts form the basis of a dish that may also include fish, prawns or beef.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Cameroon#Eat",
+      "sourceTitle": "Wikivoyage — Cameroon — Eat"
+    }
+  },
+  "COD": {
+    "facts": [
+      {
+        "text": "Kinshasa is the capital.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      },
+      {
+        "text": "Languages spoken here include French, Lingala and Swahili.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      },
+      {
+        "text": "It is a coastal country in Middle Africa.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      }
+    ],
+    "culture": {
+      "text": "Congolese rumba is a music and dance tradition shared by the Democratic Republic of the Congo and the Republic of the Congo.",
+      "sourceUrl": "https://ich.unesco.org/en/RL/congolese-rumba-01711",
+      "sourceTitle": "UNESCO — Congolese rumba"
+    },
+    "food": {
+      "name": "Moambe",
+      "text": "A dish featuring palm nuts and chicken, served with accompaniments such as rice and vegetables.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Democratic_Republic_of_the_Congo#Eat",
+      "sourceTitle": "Wikivoyage — Democratic Republic of the Congo — Eat"
+    }
+  },
+  "EGY": {
+    "facts": [
+      {
+        "text": "Cairo is the capital.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      },
+      {
+        "text": "Arabic is spoken here.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      },
+      {
+        "text": "It is a coastal country in Northern Africa.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      }
+    ],
+    "culture": {
+      "text": "The ancient Memphis region preserves temples and tombs, including the pyramid fields from Giza to Dahshur.",
+      "sourceUrl": "https://whc.unesco.org/en/list/86/",
+      "sourceTitle": "UNESCO — Memphis and its Necropolis"
+    },
+    "food": {
+      "name": "Koshari",
+      "text": "Rice, pasta, lentils and chickpeas are topped with tomato sauce and fried onions.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Egypt#Eat",
+      "sourceTitle": "Wikivoyage — Egypt — Eat"
+    }
+  },
+  "ETH": {
+    "facts": [
+      {
+        "text": "Addis Ababa is the capital.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      },
+      {
+        "text": "Amharic is spoken here.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      },
+      {
+        "text": "It is a landlocked country in Eastern Africa.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      }
+    ],
+    "culture": {
+      "text": "Ethiopian coffee ceremonies bring people together as beans are roasted, ground, brewed and served to guests.",
+      "sourceUrl": "https://ethiocta.gov.et/wp-content/uploads/2022/09/ECTA-new-Coffee-Booklet-.pdf",
+      "sourceTitle": "Ethiopian Coffee and Tea Authority — Coffee Ceremony"
+    },
+    "food": {
+      "name": "Injera with wat",
+      "text": "Tangy, spongy teff bread serves as both the base and the utensil for scooping up stews.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Ethiopia#Eat",
+      "sourceTitle": "Wikivoyage — Ethiopia — Eat"
+    }
+  },
+  "GHA": {
+    "facts": [
+      {
+        "text": "Accra is the capital.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      },
+      {
+        "text": "English is spoken here.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      },
+      {
+        "text": "It is a coastal country in Western Africa.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      }
+    ],
+    "culture": {
+      "text": "Craft traditions around Kumasi include Adinkra cloth designs, woodcarving and Kente weaving.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Ghana",
+      "sourceTitle": "Wikivoyage — Ghana"
+    },
+    "food": {
+      "name": "Fufu",
+      "text": "Pounded yam, cassava or plantain forms a soft accompaniment to soups and stews.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Ghana#Eat",
+      "sourceTitle": "Wikivoyage — Ghana — Eat"
+    }
+  },
+  "KEN": {
+    "facts": [
+      {
+        "text": "Nairobi is the capital.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      },
+      {
+        "text": "Languages spoken here include English and Swahili.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      },
+      {
+        "text": "It is a coastal country in Eastern Africa.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      }
+    ],
+    "culture": {
+      "text": "Tea and coffee are part of Kenyan social life; Kenyan tea is commonly prepared strong and sweet.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Kenya",
+      "sourceTitle": "Wikivoyage — Kenya"
+    },
+    "food": {
+      "name": "Ugali",
+      "text": "A firm maize porridge is served alongside stews or sauces with vegetables, beans or meat.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Kenya#Eat",
+      "sourceTitle": "Wikivoyage — Kenya — Eat"
+    }
+  },
+  "MDG": {
+    "facts": [
+      {
+        "text": "Antananarivo is the capital.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      },
+      {
+        "text": "Languages spoken here include Malagasy and French.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      },
+      {
+        "text": "It is a coastal country in Eastern Africa.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      }
+    ],
+    "culture": {
+      "text": "A hotely is a local eatery where rice and its accompaniments are served as an everyday meal.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Madagascar",
+      "sourceTitle": "Wikivoyage — Madagascar"
+    },
+    "food": {
+      "name": "Rice with laoka",
+      "text": "Rice is paired with laoka, a side dish such as beans, chicken or pork.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Madagascar#Eat",
+      "sourceTitle": "Wikivoyage — Madagascar — Eat"
+    }
+  },
+  "MLI": {
+    "facts": [
+      {
+        "text": "Bamako is the capital.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      },
+      {
+        "text": "French is spoken here.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      },
+      {
+        "text": "It is a landlocked country in Western Africa.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      }
+    ],
+    "culture": {
+      "text": "Mali's craft traditions include masks, musical instruments and Tuareg silver and leatherwork.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Mali",
+      "sourceTitle": "Wikivoyage — Mali"
+    },
+    "food": {
+      "name": "Tiga diga na",
+      "text": "A peanut-based sauce is served with rice, sometimes accompanied by fish or meat.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Mali#Eat",
+      "sourceTitle": "Wikivoyage — Mali — Eat"
+    }
+  },
+  "MUS": {
+    "facts": [
+      {
+        "text": "Port Louis is the capital.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      },
+      {
+        "text": "Languages spoken here include English, French and Mauritian Creole.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      },
+      {
+        "text": "It is a coastal country in Eastern Africa.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      }
+    ],
+    "culture": {
+      "text": "Mauritian street snacks reflect varied cultural connections, including samosas and gateaux piments related to Indian vadai.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Mauritius",
+      "sourceTitle": "Wikivoyage — Mauritius"
+    },
+    "food": {
+      "name": "Rougaille",
+      "text": "A tomato-and-onion preparation commonly served with meat or seafood.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Mauritius#Eat",
+      "sourceTitle": "Wikivoyage — Mauritius — Eat"
+    }
+  },
+  "MAR": {
+    "facts": [
+      {
+        "text": "Rabat is the capital.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      },
+      {
+        "text": "Languages spoken here include Arabic and Berber.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      },
+      {
+        "text": "It is a coastal country in Northern Africa.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      }
+    ],
+    "culture": {
+      "text": "Serving mint green tea is a familiar gesture of hospitality in Morocco.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Morocco",
+      "sourceTitle": "Wikivoyage — Morocco"
+    },
+    "food": {
+      "name": "Tagine",
+      "text": "A slowly cooked dish named for its clay vessel, with combinations such as chicken and preserved lemon.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Morocco#Eat",
+      "sourceTitle": "Wikivoyage — Morocco — Eat"
+    }
+  },
+  "MOZ": {
+    "facts": [
+      {
+        "text": "Maputo is the capital.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      },
+      {
+        "text": "Portuguese is spoken here.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      },
+      {
+        "text": "It is a coastal country in Eastern Africa.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      }
+    ],
+    "culture": {
+      "text": "Portuguese influences are visible in Mozambique's food traditions, including bread rolls and the use of piri-piri sauces.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Mozambique",
+      "sourceTitle": "Wikivoyage — Mozambique"
+    },
+    "food": {
+      "name": "Matapa",
+      "text": "A cassava-leaf stew, sometimes with shellfish, often served with rice.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Mozambique#Eat",
+      "sourceTitle": "Wikivoyage — Mozambique — Eat"
+    }
+  },
+  "NAM": {
+    "facts": [
+      {
+        "text": "Windhoek is the capital.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      },
+      {
+        "text": "Languages spoken here include Ndonga, English and Afrikaans.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      },
+      {
+        "text": "It is a coastal country in Southern Africa.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      }
+    ],
+    "culture": {
+      "text": "A braai is both a wood-fired barbecue and an occasion for people to socialise.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Namibia",
+      "sourceTitle": "Wikivoyage — Namibia"
+    },
+    "food": {
+      "name": "Kingklip",
+      "text": "This fish is one of the seafood specialities available in Namibia's coastal towns.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Namibia#Eat",
+      "sourceTitle": "Wikivoyage — Namibia — Eat"
+    }
+  },
+  "NGA": {
+    "facts": [
+      {
+        "text": "Abuja is the capital.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      },
+      {
+        "text": "English is spoken here.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      },
+      {
+        "text": "It is a coastal country in Western Africa.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      }
+    ],
+    "culture": {
+      "text": "Nigeria's regional food traditions include Niger Delta soups and Yoruba iyan, or pounded yam.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Nigeria",
+      "sourceTitle": "Wikivoyage — Nigeria"
+    },
+    "food": {
+      "name": "Suya",
+      "text": "Grilled meat kebabs are one dish to discover within Nigeria's varied regional cuisines.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Nigeria#Eat",
+      "sourceTitle": "Wikivoyage — Nigeria — Eat"
+    }
+  },
+  "RWA": {
+    "facts": [
+      {
+        "text": "Kigali is the capital.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      },
+      {
+        "text": "Languages spoken here include Kinyarwanda, English and French.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      },
+      {
+        "text": "It is a landlocked country in Eastern Africa.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      }
+    ],
+    "culture": {
+      "text": "Imigongo is a geometric decorative art from eastern Rwanda, traditionally made using cow dung.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Rwanda",
+      "sourceTitle": "Wikivoyage — Rwanda"
+    },
+    "food": {
+      "name": "Brochettes",
+      "text": "Grilled skewers, often goat, are commonly served with fries or cooked starchy bananas.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Rwanda#Eat",
+      "sourceTitle": "Wikivoyage — Rwanda — Eat"
+    }
+  },
+  "SEN": {
+    "facts": [
+      {
+        "text": "Dakar is the capital.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      },
+      {
+        "text": "French is spoken here.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      },
+      {
+        "text": "It is a coastal country in Western Africa.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      }
+    ],
+    "culture": {
+      "text": "Sharing food around a communal bowl is one way meals bring Senegalese families together.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Senegal",
+      "sourceTitle": "Wikivoyage — Senegal"
+    },
+    "food": {
+      "name": "Ceebu jën",
+      "text": "Fish and rice form the heart of this Senegalese dish, prepared with different sauces.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Senegal#Eat",
+      "sourceTitle": "Wikivoyage — Senegal — Eat"
+    }
+  },
+  "ZAF": {
+    "facts": [
+      {
+        "text": "Pretoria, Bloemfontein and Cape Town share capital-city roles.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      },
+      {
+        "text": "Languages spoken here include Zulu, Xhosa, Afrikaans and English.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      },
+      {
+        "text": "It is a coastal country in Southern Africa.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      }
+    ],
+    "culture": {
+      "text": "A braai combines cooking over a wood or charcoal fire with a social gathering, often at weekends.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/South_Africa",
+      "sourceTitle": "Wikivoyage — South Africa"
+    },
+    "food": {
+      "name": "Bunny chow",
+      "text": "A hollowed bread loaf filled with curry is associated with Durban's Indian community.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/South_Africa#Eat",
+      "sourceTitle": "Wikivoyage — South Africa — Eat"
+    }
+  },
+  "SDN": {
+    "facts": [
+      {
+        "text": "Khartoum is the capital.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      },
+      {
+        "text": "Languages spoken here include Arabic and English.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      },
+      {
+        "text": "It is a coastal country in Northern Africa.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      }
+    ],
+    "culture": {
+      "text": "Meroe's pyramids, temples and settlements preserve the cultural legacy of the ancient Kingdom of Kush.",
+      "sourceUrl": "https://whc.unesco.org/en/list/1336/",
+      "sourceTitle": "UNESCO — Archaeological Sites of the Island of Meroe"
+    },
+    "food": {
+      "name": "Gurassa bil damaa",
+      "text": "A thick wheat flatbread is topped with a meat or chicken stew.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Sudan#Eat",
+      "sourceTitle": "Wikivoyage — Sudan — Eat"
+    }
+  },
+  "TZA": {
+    "facts": [
+      {
+        "text": "Dodoma is the capital.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      },
+      {
+        "text": "Languages spoken here include English and Swahili.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      },
+      {
+        "text": "It is a coastal country in Eastern Africa.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      }
+    ],
+    "culture": {
+      "text": "Zanzibar's Stone Town reflects Swahili trading culture, with African, Arab, Indian and European architectural influences.",
+      "sourceUrl": "https://whc.unesco.org/en/list/173/",
+      "sourceTitle": "UNESCO — Stone Town of Zanzibar"
+    },
+    "food": {
+      "name": "Chipsi mayai",
+      "text": "French fries cooked into an omelette are a popular Tanzanian street-food dish.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Tanzania#Eat",
+      "sourceTitle": "Wikivoyage — Tanzania — Eat"
+    }
+  },
+  "TUN": {
+    "facts": [
+      {
+        "text": "Tunis is the capital.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      },
+      {
+        "text": "Arabic is spoken here.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      },
+      {
+        "text": "It is a coastal country in Northern Africa.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      }
+    ],
+    "culture": {
+      "text": "Harissa chilli paste is often offered with bread and olive oil at the start of a Tunisian meal.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Tunisia",
+      "sourceTitle": "Wikivoyage — Tunisia"
+    },
+    "food": {
+      "name": "Brik",
+      "text": "A thin, crisp pastry commonly encloses egg, herbs and sometimes tuna or meat.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Tunisia#Eat",
+      "sourceTitle": "Wikivoyage — Tunisia — Eat"
+    }
+  },
+  "UGA": {
+    "facts": [
+      {
+        "text": "Kampala is the capital.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      },
+      {
+        "text": "Languages spoken here include English and Swahili.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      },
+      {
+        "text": "It is a landlocked country in Eastern Africa.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      }
+    ],
+    "culture": {
+      "text": "Baganda artisans make barkcloth by beating the inner bark of the mutuba tree into a soft textile.",
+      "sourceUrl": "https://ich.unesco.org/en/RL/barkcloth-making-in-uganda-00139",
+      "sourceTitle": "UNESCO — Barkcloth making in Uganda"
+    },
+    "food": {
+      "name": "Luwombo",
+      "text": "Meat or groundnut sauce is steamed inside banana leaves, which give the dish its distinctive aroma.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Uganda#Eat",
+      "sourceTitle": "Wikivoyage — Uganda — Eat"
+    }
+  },
+  "ZMB": {
+    "facts": [
+      {
+        "text": "Lusaka is the capital.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      },
+      {
+        "text": "English is spoken here.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      },
+      {
+        "text": "It is a landlocked country in Eastern Africa.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      }
+    ],
+    "culture": {
+      "text": "Makishi masked performances are part of initiation traditions among communities in western and northwestern Zambia.",
+      "sourceUrl": "https://ich.unesco.org/en/projects/action-plan-for-the-safeguarding-of-the-makishi-masquerade-in-zambia-00026",
+      "sourceTitle": "UNESCO — Safeguarding the Makishi Masquerade in Zambia"
+    },
+    "food": {
+      "name": "Nshima",
+      "text": "A thick maize porridge accompanies relishes such as vegetables, beans, fish or meat.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Zambia#Eat",
+      "sourceTitle": "Wikivoyage — Zambia — Eat"
+    }
+  },
+  "ZWE": {
+    "facts": [
+      {
+        "text": "Harare is the capital.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      },
+      {
+        "text": "Languages spoken here include Shona, Ndebele and English.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      },
+      {
+        "text": "It is a landlocked country in Eastern Africa.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — country reference"
+      }
+    ],
+    "culture": {
+      "text": "The mbira is central to Shona musical traditions, often played with hosho rattles in layered rhythms.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Zimbabwe",
+      "sourceTitle": "Wikivoyage — Zimbabwe"
+    },
+    "food": {
+      "name": "Sadza",
+      "text": "A thick maize preparation is served with vegetable relishes or stews.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Zimbabwe#Eat",
+      "sourceTitle": "Wikivoyage — Zimbabwe — Eat"
+    }
+  }
+}

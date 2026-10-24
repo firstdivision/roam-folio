@@ -1,0 +1,1922 @@
+{
+  "ARG": {
+    "facts": [
+      {
+        "text": "Buenos Aires stands beside the Río de la Plata.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Argentina",
+        "sourceTitle": "Argentina — Wikivoyage"
+      },
+      {
+        "text": "The Andes run along the border with Chile.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Argentina",
+        "sourceTitle": "Argentina — Wikivoyage"
+      },
+      {
+        "text": "Patagonia occupies much of the country’s southern half.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Argentina",
+        "sourceTitle": "Argentina — Wikivoyage"
+      }
+    ],
+    "culture": {
+      "text": "Tango is one of Argentina’s best-known partner dances.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Argentina",
+      "sourceTitle": "Argentina — Wikivoyage"
+    },
+    "food": {
+      "name": "Empanadas",
+      "text": "These filled pastries are often baked with a savory meat filling.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Argentina",
+      "sourceTitle": "Argentina — Wikivoyage"
+    }
+  },
+  "BHS": {
+    "facts": [
+      {
+        "text": "The Bahamas is an Atlantic archipelago near Florida.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Bahamas",
+        "sourceTitle": "Bahamas — Wikivoyage"
+      },
+      {
+        "text": "Nassau is on the island of New Providence.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Bahamas",
+        "sourceTitle": "Bahamas — Wikivoyage"
+      },
+      {
+        "text": "Mount Alvernia, the country’s highest point, is on Cat Island.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Bahamas",
+        "sourceTitle": "Bahamas — Wikivoyage"
+      }
+    ],
+    "culture": {
+      "text": "Junkanoo street celebrations combine elaborate costumes, brass instruments, cowbells, and African rhythms.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Bahamas",
+      "sourceTitle": "Bahamas — Wikivoyage"
+    },
+    "food": {
+      "name": "Cracked conch",
+      "text": "Conch, a marine mollusk, is served deep-fried in this island dish.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Bahamas",
+      "sourceTitle": "Bahamas — Wikivoyage"
+    }
+  },
+  "BLZ": {
+    "facts": [
+      {
+        "text": "Belize faces the Caribbean Sea rather than the Pacific.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Belize",
+        "sourceTitle": "Belize — Wikivoyage"
+      },
+      {
+        "text": "English is the country’s official language.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Belize",
+        "sourceTitle": "Belize — Wikivoyage"
+      },
+      {
+        "text": "Maya archaeological sites and coral reefs are among its landmarks.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Belize",
+        "sourceTitle": "Belize — Wikivoyage"
+      }
+    ],
+    "culture": {
+      "text": "Garifuna, Maya, Creole, and other communities contribute to Belize’s varied cultural life.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Belize",
+      "sourceTitle": "Belize — Wikivoyage"
+    },
+    "food": {
+      "name": "Rice and beans",
+      "text": "This Belizean staple combines rice and beans, commonly flavored with coconut milk.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Belize",
+      "sourceTitle": "Belize — Wikivoyage"
+    }
+  },
+  "BOL": {
+    "facts": [
+      {
+        "text": "Bolivia is landlocked.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Bolivia",
+        "sourceTitle": "Bolivia — Wikivoyage"
+      },
+      {
+        "text": "La Paz is the seat of national government.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Bolivia",
+        "sourceTitle": "Bolivia — Wikivoyage"
+      },
+      {
+        "text": "Bolivia shares Lake Titicaca with Peru.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Bolivia",
+        "sourceTitle": "Bolivia — Wikivoyage"
+      }
+    ],
+    "culture": {
+      "text": "Quechua and Aymara traditions remain important parts of the country’s living Indigenous cultures.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Bolivia",
+      "sourceTitle": "Bolivia — Wikivoyage"
+    },
+    "food": {
+      "name": "Silpancho",
+      "text": "A thin beef patty is served with rice, potatoes, and a fried egg.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Bolivia",
+      "sourceTitle": "Bolivia — Wikivoyage"
+    }
+  },
+  "BRA": {
+    "facts": [
+      {
+        "text": "Brazil is South America’s largest country.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Brazil",
+        "sourceTitle": "Brazil — Wikivoyage"
+      },
+      {
+        "text": "Brasília is its purpose-built capital.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Brazil",
+        "sourceTitle": "Brazil — Wikivoyage"
+      },
+      {
+        "text": "Portuguese is the official language.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Brazil",
+        "sourceTitle": "Brazil — Wikivoyage"
+      }
+    ],
+    "culture": {
+      "text": "Samba, choro, and bossa nova are distinct parts of Brazil’s musical traditions.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Brazil",
+      "sourceTitle": "Brazil — Wikivoyage"
+    },
+    "food": {
+      "name": "Feijoada",
+      "text": "This hearty black-bean stew includes pork and is often served with rice, greens, and orange slices.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Brazil",
+      "sourceTitle": "Brazil — Wikivoyage"
+    }
+  },
+  "CAN": {
+    "facts": [
+      {
+        "text": "Canada has Atlantic, Pacific, and Arctic coasts.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Canada",
+        "sourceTitle": "Canada — Wikivoyage"
+      },
+      {
+        "text": "Ottawa is the national capital.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Canada",
+        "sourceTitle": "Canada — Wikivoyage"
+      },
+      {
+        "text": "English and French are official languages at the federal level.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Canada",
+        "sourceTitle": "Canada — Wikivoyage"
+      }
+    ],
+    "culture": {
+      "text": "Canadian cultural life includes many Indigenous, French-speaking, English-speaking, and immigrant traditions.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Canada",
+      "sourceTitle": "Canada — Wikivoyage"
+    },
+    "food": {
+      "name": "Tourtière",
+      "text": "This savory meat pie is associated with French Canadian cooking.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Canada",
+      "sourceTitle": "Canada — Wikivoyage"
+    }
+  },
+  "CHL": {
+    "facts": [
+      {
+        "text": "Chile lies between the Andes and the Pacific Ocean.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Chile",
+        "sourceTitle": "Chile — Wikivoyage"
+      },
+      {
+        "text": "Santiago is its capital.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Chile",
+        "sourceTitle": "Chile — Wikivoyage"
+      },
+      {
+        "text": "Chile borders Peru, Bolivia, and Argentina.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Chile",
+        "sourceTitle": "Chile — Wikivoyage"
+      }
+    ],
+    "culture": {
+      "text": "Northern festivals such as La Tirana bring together Andean Indigenous and Spanish religious influences.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Chile",
+      "sourceTitle": "Chile — Wikivoyage"
+    },
+    "food": {
+      "name": "Curanto",
+      "text": "Associated with Chiloé, this meal combines seafood, meat, and potatoes, traditionally cooked in an earth pit.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Chile",
+      "sourceTitle": "Chile — Wikivoyage"
+    }
+  },
+  "COL": {
+    "facts": [
+      {
+        "text": "Colombia has both Caribbean and Pacific coastlines.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Colombia",
+        "sourceTitle": "Colombia — Wikivoyage"
+      },
+      {
+        "text": "Bogotá is the capital, high in the Andes.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Colombia",
+        "sourceTitle": "Colombia — Wikivoyage"
+      },
+      {
+        "text": "Its landscapes include Amazon rainforest and eastern plains.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Colombia",
+        "sourceTitle": "Colombia — Wikivoyage"
+      }
+    ],
+    "culture": {
+      "text": "Cali is especially associated with salsa music and dance.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Colombia",
+      "sourceTitle": "Colombia — Wikivoyage"
+    },
+    "food": {
+      "name": "Sancocho",
+      "text": "This substantial soup has many regional versions, including chicken and coastal fish preparations.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Colombia",
+      "sourceTitle": "Colombia — Wikivoyage"
+    }
+  },
+  "CRI": {
+    "facts": [
+      {
+        "text": "San José is the capital.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Costa_Rica",
+        "sourceTitle": "Costa Rica — Wikivoyage"
+      },
+      {
+        "text": "Costa Rica has both Caribbean and Pacific coasts.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Costa_Rica",
+        "sourceTitle": "Costa Rica — Wikivoyage"
+      },
+      {
+        "text": "Its landscapes include rainforests, volcanoes, and high mountains.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Costa_Rica",
+        "sourceTitle": "Costa Rica — Wikivoyage"
+      }
+    ],
+    "culture": {
+      "text": "Along the Caribbean coast, Limonese Creole reflects connections with other English-speaking Caribbean communities.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Costa_Rica",
+      "sourceTitle": "Costa Rica — Wikivoyage"
+    },
+    "food": {
+      "name": "Gallo pinto",
+      "text": "Rice and beans are cooked together, often with onion or cilantro, and commonly served at breakfast.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Costa_Rica",
+      "sourceTitle": "Costa Rica — Wikivoyage"
+    }
+  },
+  "CUB": {
+    "facts": [
+      {
+        "text": "Cuba is the largest island in the Caribbean.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Cuba",
+        "sourceTitle": "Cuba — Wikivoyage"
+      },
+      {
+        "text": "Havana is the capital.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Cuba",
+        "sourceTitle": "Cuba — Wikivoyage"
+      },
+      {
+        "text": "Pico Turquino is the island’s highest mountain.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Cuba",
+        "sourceTitle": "Cuba — Wikivoyage"
+      }
+    ],
+    "culture": {
+      "text": "Cuban music draws on African and European influences and helped shape Latin jazz.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Cuba",
+      "sourceTitle": "Cuba — Wikivoyage"
+    },
+    "food": {
+      "name": "Moros y cristianos",
+      "text": "Rice and black beans form this familiar Cuban dish.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Cuba",
+      "sourceTitle": "Cuba — Wikivoyage"
+    }
+  },
+  "DOM": {
+    "facts": [
+      {
+        "text": "The Dominican Republic shares Hispaniola with Haiti.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Dominican_Republic",
+        "sourceTitle": "Dominican Republic — Wikivoyage"
+      },
+      {
+        "text": "It occupies the island’s eastern portion.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Dominican_Republic",
+        "sourceTitle": "Dominican Republic — Wikivoyage"
+      },
+      {
+        "text": "Santo Domingo is the capital.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Dominican_Republic",
+        "sourceTitle": "Dominican Republic — Wikivoyage"
+      }
+    ],
+    "culture": {
+      "text": "Dominican cooking brings together Taíno, African, and Spanish influences.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Dominican_Republic",
+      "sourceTitle": "Dominican Republic — Wikivoyage"
+    },
+    "food": {
+      "name": "La bandera",
+      "text": "A familiar plate combines rice, red beans, and meat.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Dominican_Republic",
+      "sourceTitle": "Dominican Republic — Wikivoyage"
+    }
+  },
+  "ECU": {
+    "facts": [
+      {
+        "text": "The Equator crosses Ecuador.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Ecuador",
+        "sourceTitle": "Ecuador — Wikivoyage"
+      },
+      {
+        "text": "The Andes run north to south through the country.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Ecuador",
+        "sourceTitle": "Ecuador — Wikivoyage"
+      },
+      {
+        "text": "The Galápagos Islands belong to Ecuador.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Ecuador",
+        "sourceTitle": "Ecuador — Wikivoyage"
+      }
+    ],
+    "culture": {
+      "text": "Quechua-speaking communities are part of the cultural landscape of Ecuador’s highlands.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Ecuador",
+      "sourceTitle": "Ecuador — Wikivoyage"
+    },
+    "food": {
+      "name": "Pan de yuca",
+      "text": "This yuca-based bread is one of Ecuador’s regional snacks.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Ecuador",
+      "sourceTitle": "Ecuador — Wikivoyage"
+    }
+  },
+  "SLV": {
+    "facts": [
+      {
+        "text": "El Salvador has a Pacific coastline.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/El_Salvador",
+        "sourceTitle": "El Salvador — Wikivoyage"
+      },
+      {
+        "text": "San Salvador is the capital.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/El_Salvador",
+        "sourceTitle": "El Salvador — Wikivoyage"
+      },
+      {
+        "text": "Guatemala and Honduras are its land neighbors.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/El_Salvador",
+        "sourceTitle": "El Salvador — Wikivoyage"
+      }
+    ],
+    "culture": {
+      "text": "Nawat, also called Pipil, is an Indigenous language associated with western El Salvador.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/El_Salvador",
+      "sourceTitle": "El Salvador — Wikivoyage"
+    },
+    "food": {
+      "name": "Pupusas",
+      "text": "These thick corn tortillas contain fillings such as cheese or pork.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/El_Salvador",
+      "sourceTitle": "El Salvador — Wikivoyage"
+    }
+  },
+  "GTM": {
+    "facts": [
+      {
+        "text": "Guatemala City is the capital.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Guatemala",
+        "sourceTitle": "Guatemala — Wikivoyage"
+      },
+      {
+        "text": "The country’s landscapes include volcanic mountains and dense jungle.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Guatemala",
+        "sourceTitle": "Guatemala — Wikivoyage"
+      },
+      {
+        "text": "Antigua Guatemala is a UNESCO World Heritage city.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Guatemala",
+        "sourceTitle": "Guatemala — Wikivoyage"
+      }
+    ],
+    "culture": {
+      "text": "Living Maya languages and traditions are central to Guatemala’s cultural diversity.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Guatemala",
+      "sourceTitle": "Guatemala — Wikivoyage"
+    },
+    "food": {
+      "name": "Tamales",
+      "text": "Corn dough and fillings are steamed in a leaf wrapping.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Guatemala",
+      "sourceTitle": "Guatemala — Wikivoyage"
+    }
+  },
+  "HTI": {
+    "facts": [
+      {
+        "text": "Haiti occupies western Hispaniola.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Haiti",
+        "sourceTitle": "Haiti — Wikivoyage"
+      },
+      {
+        "text": "Port-au-Prince is the capital.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Haiti",
+        "sourceTitle": "Haiti — Wikivoyage"
+      },
+      {
+        "text": "French and Haitian Creole are official languages.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Haiti",
+        "sourceTitle": "Haiti — Wikivoyage"
+      }
+    ],
+    "culture": {
+      "text": "Haitian Vodou is an Afro-diasporic religious tradition that also interacts with Catholic practices.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Haiti",
+      "sourceTitle": "Haiti — Wikivoyage"
+    },
+    "food": {
+      "name": "Griot",
+      "text": "This Haitian dish features morsels of fried pork.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Haiti",
+      "sourceTitle": "Haiti — Wikivoyage"
+    }
+  },
+  "HND": {
+    "facts": [
+      {
+        "text": "Honduras has Pacific and Caribbean coastlines.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Honduras",
+        "sourceTitle": "Honduras — Wikivoyage"
+      },
+      {
+        "text": "Tegucigalpa is the capital.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Honduras",
+        "sourceTitle": "Honduras — Wikivoyage"
+      },
+      {
+        "text": "Copán preserves the remains of an ancient Maya city.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Honduras",
+        "sourceTitle": "Honduras — Wikivoyage"
+      }
+    ],
+    "culture": {
+      "text": "Garifuna, Miskitu, and other Indigenous languages contribute to the country’s cultural diversity.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Honduras",
+      "sourceTitle": "Honduras — Wikivoyage"
+    },
+    "food": {
+      "name": "Baleadas",
+      "text": "A thick flour tortilla holds refried beans, cheese, and cream; other fillings vary.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Honduras",
+      "sourceTitle": "Honduras — Wikivoyage"
+    }
+  },
+  "JAM": {
+    "facts": [
+      {
+        "text": "Jamaica is an island in the Caribbean.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Jamaica",
+        "sourceTitle": "Jamaica — Wikivoyage"
+      },
+      {
+        "text": "Kingston is the capital.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Jamaica",
+        "sourceTitle": "Jamaica — Wikivoyage"
+      },
+      {
+        "text": "English is the official language.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Jamaica",
+        "sourceTitle": "Jamaica — Wikivoyage"
+      }
+    ],
+    "culture": {
+      "text": "Jamaican Patois is widely spoken, and reggae is one of the island’s best-known musical traditions.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Jamaica",
+      "sourceTitle": "Jamaica — Wikivoyage"
+    },
+    "food": {
+      "name": "Ackee and saltfish",
+      "text": "Ackee fruit is paired with salted cod, often with onion and tomato.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Jamaica",
+      "sourceTitle": "Jamaica — Wikivoyage"
+    }
+  },
+  "MEX": {
+    "facts": [
+      {
+        "text": "Mexico City is the national capital.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Mexico",
+        "sourceTitle": "Mexico — Wikivoyage"
+      },
+      {
+        "text": "Mexico’s landscapes range from northern deserts to southern rainforests.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Mexico",
+        "sourceTitle": "Mexico — Wikivoyage"
+      },
+      {
+        "text": "The country has a long coastline and extensive mountain ranges.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Mexico",
+        "sourceTitle": "Mexico — Wikivoyage"
+      }
+    ],
+    "culture": {
+      "text": "Guadalajara is closely associated with mariachi music.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Mexico",
+      "sourceTitle": "Mexico — Wikivoyage"
+    },
+    "food": {
+      "name": "Tamales",
+      "text": "Leaf-wrapped tamales vary across Mexico; banana-leaf versions are found in the south.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Mexico",
+      "sourceTitle": "Mexico — Wikivoyage"
+    }
+  },
+  "NIC": {
+    "facts": [
+      {
+        "text": "Managua is the capital.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Nicaragua",
+        "sourceTitle": "Nicaragua — Wikivoyage"
+      },
+      {
+        "text": "Lake Nicaragua is also called Cocibolca.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Nicaragua",
+        "sourceTitle": "Nicaragua — Wikivoyage"
+      },
+      {
+        "text": "The volcanic island of Ometepe rises from Lake Nicaragua.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Nicaragua",
+        "sourceTitle": "Nicaragua — Wikivoyage"
+      }
+    ],
+    "culture": {
+      "text": "Creole English and Indigenous languages are part of the cultural life of Nicaragua’s Caribbean region.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Nicaragua",
+      "sourceTitle": "Nicaragua — Wikivoyage"
+    },
+    "food": {
+      "name": "Nacatamales",
+      "text": "These large, savory tamales are wrapped in banana leaves and often eaten on Sundays.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Nicaragua",
+      "sourceTitle": "Nicaragua — Wikivoyage"
+    }
+  },
+  "PAN": {
+    "facts": [
+      {
+        "text": "Panama forms part of the land connection between North and South America.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Panama",
+        "sourceTitle": "Panama — Wikivoyage"
+      },
+      {
+        "text": "Panama City is the capital.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Panama",
+        "sourceTitle": "Panama — Wikivoyage"
+      },
+      {
+        "text": "The country has Caribbean and Pacific coastlines.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Panama",
+        "sourceTitle": "Panama — Wikivoyage"
+      }
+    ],
+    "culture": {
+      "text": "Afro-Caribbean influences are especially visible in the culture of Colón.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Panama",
+      "sourceTitle": "Panama — Wikivoyage"
+    },
+    "food": {
+      "name": "Patacones",
+      "text": "Fried green plantains are a common accompaniment to Panamanian meals.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Panama",
+      "sourceTitle": "Panama — Wikivoyage"
+    }
+  },
+  "PRY": {
+    "facts": [
+      {
+        "text": "Paraguay is landlocked.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Paraguay",
+        "sourceTitle": "Paraguay — Wikivoyage"
+      },
+      {
+        "text": "Asunción is the capital.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Paraguay",
+        "sourceTitle": "Paraguay — Wikivoyage"
+      },
+      {
+        "text": "The Paraguay River separates the eastern region from the western Chaco.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Paraguay",
+        "sourceTitle": "Paraguay — Wikivoyage"
+      }
+    ],
+    "culture": {
+      "text": "Spanish and Guaraní coexist in daily life, including the mixed speech known as Jopara.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Paraguay",
+      "sourceTitle": "Paraguay — Wikivoyage"
+    },
+    "food": {
+      "name": "Chipa",
+      "text": "This bread is commonly made with manioc flour and traditionally baked in an outdoor oven.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Paraguay",
+      "sourceTitle": "Paraguay — Wikivoyage"
+    }
+  },
+  "PER": {
+    "facts": [
+      {
+        "text": "Lima is the capital.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Peru",
+        "sourceTitle": "Peru — Wikivoyage"
+      },
+      {
+        "text": "Peru’s landscapes include Pacific coastal desert, the Andes, and Amazon rainforest.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Peru",
+        "sourceTitle": "Peru — Wikivoyage"
+      },
+      {
+        "text": "Machu Picchu preserves an Inca citadel.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Peru",
+        "sourceTitle": "Peru — Wikivoyage"
+      }
+    ],
+    "culture": {
+      "text": "Ancient Andean artistic traditions include stone carving, ceramics, and metalwork.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Peru",
+      "sourceTitle": "Peru — Wikivoyage"
+    },
+    "food": {
+      "name": "Ceviche",
+      "text": "Fish or seafood is marinated in citrus juice; preparations vary across the country.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Peru",
+      "sourceTitle": "Peru — Wikivoyage"
+    }
+  },
+  "TTO": {
+    "facts": [
+      {
+        "text": "The country’s two main islands lie near Venezuela.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Trinidad_and_Tobago",
+        "sourceTitle": "Trinidad and Tobago — Wikivoyage"
+      },
+      {
+        "text": "English is the official language.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Trinidad_and_Tobago",
+        "sourceTitle": "Trinidad and Tobago — Wikivoyage"
+      },
+      {
+        "text": "Trinidad’s Northern Range runs along the island’s northern coast.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Trinidad_and_Tobago",
+        "sourceTitle": "Trinidad and Tobago — Wikivoyage"
+      }
+    ],
+    "culture": {
+      "text": "Carnival brings costumed street parades together with steelband, calypso, and soca music.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Trinidad_and_Tobago",
+      "sourceTitle": "Trinidad and Tobago — Wikivoyage"
+    },
+    "food": {
+      "name": "Doubles",
+      "text": "Curried chickpeas are tucked between two pieces of fried flatbread and served with condiments.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Trinidad_and_Tobago",
+      "sourceTitle": "Trinidad and Tobago — Wikivoyage"
+    }
+  },
+  "USA": {
+    "facts": [
+      {
+        "text": "Washington, D.C. is the capital.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/United_States",
+        "sourceTitle": "United States — Wikivoyage"
+      },
+      {
+        "text": "The country includes Alaska and the Hawaiian Islands.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/United_States",
+        "sourceTitle": "United States — Wikivoyage"
+      },
+      {
+        "text": "Canada and Mexico are its land neighbors.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/United_States",
+        "sourceTitle": "United States — Wikivoyage"
+      }
+    ],
+    "culture": {
+      "text": "State and county fairs grew from agricultural exhibitions and now also feature music, rides, and local food.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/United_States",
+      "sourceTitle": "United States — Wikivoyage"
+    },
+    "food": {
+      "name": "Barbecue",
+      "text": "Regional traditions slowly smoke meats such as pork shoulder, ribs, and beef brisket over wood.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/United_States",
+      "sourceTitle": "United States — Wikivoyage"
+    }
+  },
+  "URY": {
+    "facts": [
+      {
+        "text": "Montevideo is the capital.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Uruguay",
+        "sourceTitle": "Uruguay — Wikivoyage"
+      },
+      {
+        "text": "Uruguay lies between Argentina and Brazil.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Uruguay",
+        "sourceTitle": "Uruguay — Wikivoyage"
+      },
+      {
+        "text": "Colonia del Sacramento has a UNESCO-listed historic district.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Uruguay",
+        "sourceTitle": "Uruguay — Wikivoyage"
+      }
+    ],
+    "culture": {
+      "text": "Gaucho traditions connect Uruguay’s rural culture with neighboring parts of Argentina and Brazil.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Uruguay",
+      "sourceTitle": "Uruguay — Wikivoyage"
+    },
+    "food": {
+      "name": "Chivito",
+      "text": "This steak sandwich can include ham, cheese, egg, and vegetables; toppings vary.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Uruguay",
+      "sourceTitle": "Uruguay — Wikivoyage"
+    }
+  },
+  "VEN": {
+    "facts": [
+      {
+        "text": "Caracas is the capital.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Venezuela",
+        "sourceTitle": "Venezuela — Wikivoyage"
+      },
+      {
+        "text": "Angel Falls is in Venezuela.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Venezuela",
+        "sourceTitle": "Venezuela — Wikivoyage"
+      },
+      {
+        "text": "The country’s landscapes include the Andes, the Llanos plains, and the Guiana Highlands.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Venezuela",
+        "sourceTitle": "Venezuela — Wikivoyage"
+      }
+    ],
+    "culture": {
+      "text": "Hallacas, savory leaf-wrapped parcels, are a Christmas food tradition.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Venezuela",
+      "sourceTitle": "Venezuela — Wikivoyage"
+    },
+    "food": {
+      "name": "Arepas",
+      "text": "Thick corn cakes are split and filled with ingredients such as cheese, beans, or chicken and avocado.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Venezuela",
+      "sourceTitle": "Venezuela — Wikivoyage"
+    }
+  },
+  "ARM": {
+    "facts": [
+      {
+        "text": "Armenia is landlocked in the Caucasus.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Armenia",
+        "sourceTitle": "Armenia — Wikivoyage"
+      },
+      {
+        "text": "Yerevan is the capital.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Armenia",
+        "sourceTitle": "Armenia — Wikivoyage"
+      },
+      {
+        "text": "Lake Sevan lies among Armenia’s mountains.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Armenia",
+        "sourceTitle": "Armenia — Wikivoyage"
+      }
+    ],
+    "culture": {
+      "text": "Armenian has its own alphabet, used since the early fifth century.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Armenia",
+      "sourceTitle": "Armenia — Wikivoyage"
+    },
+    "food": {
+      "name": "Khorovats",
+      "text": "This Armenian barbecue grills meat and often accompanies it with vegetables such as tomato and eggplant.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Armenia",
+      "sourceTitle": "Armenia — Wikivoyage"
+    }
+  },
+  "AZE": {
+    "facts": [
+      {
+        "text": "Baku is the capital.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Azerbaijan",
+        "sourceTitle": "Azerbaijan — Wikivoyage"
+      },
+      {
+        "text": "The Absheron Peninsula projects into the Caspian Sea.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Azerbaijan",
+        "sourceTitle": "Azerbaijan — Wikivoyage"
+      },
+      {
+        "text": "The Greater Caucasus mountains rise in the north.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Azerbaijan",
+        "sourceTitle": "Azerbaijan — Wikivoyage"
+      }
+    ],
+    "culture": {
+      "text": "Azerbaijani is a Turkic language with close connections to Turkish.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Azerbaijan",
+      "sourceTitle": "Azerbaijan — Wikivoyage"
+    },
+    "food": {
+      "name": "Piti",
+      "text": "Mutton and vegetables are cooked slowly in a covered pot; the Sheki version uses chestnuts.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Azerbaijan",
+      "sourceTitle": "Azerbaijan — Wikivoyage"
+    }
+  },
+  "BGD": {
+    "facts": [
+      {
+        "text": "Dhaka is the capital.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Bangladesh",
+        "sourceTitle": "Bangladesh — Wikivoyage"
+      },
+      {
+        "text": "Bangladesh borders India and Myanmar.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Bangladesh",
+        "sourceTitle": "Bangladesh — Wikivoyage"
+      },
+      {
+        "text": "Bengali, also called Bangla, is the official language.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Bangladesh",
+        "sourceTitle": "Bangladesh — Wikivoyage"
+      }
+    ],
+    "culture": {
+      "text": "Pohela Boishakh marks the Bengali New Year with cultural gatherings and festive clothing.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Bangladesh",
+      "sourceTitle": "Bangladesh — Wikivoyage"
+    },
+    "food": {
+      "name": "Hilsa",
+      "text": "This much-loved river fish is prepared in many regional styles and often served with rice.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Bangladesh",
+      "sourceTitle": "Bangladesh — Wikivoyage"
+    }
+  },
+  "KHM": {
+    "facts": [
+      {
+        "text": "Phnom Penh is the capital.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Cambodia",
+        "sourceTitle": "Cambodia — Wikivoyage"
+      },
+      {
+        "text": "Angkor Wat is one of Cambodia’s major historic landmarks.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Cambodia",
+        "sourceTitle": "Cambodia — Wikivoyage"
+      },
+      {
+        "text": "Khmer is the official language.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Cambodia",
+        "sourceTitle": "Cambodia — Wikivoyage"
+      }
+    ],
+    "culture": {
+      "text": "Cambodia’s artistic and religious heritage draws deeply on the Khmer Empire and Theravada Buddhism.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Cambodia",
+      "sourceTitle": "Cambodia — Wikivoyage"
+    },
+    "food": {
+      "name": "Amok",
+      "text": "A steamed curry, traditionally made with fish, is served in banana leaves or a coconut shell.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Cambodia",
+      "sourceTitle": "Cambodia — Wikivoyage"
+    }
+  },
+  "CHN": {
+    "facts": [
+      {
+        "text": "Beijing is the capital.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/China",
+        "sourceTitle": "China — Wikivoyage"
+      },
+      {
+        "text": "The Forbidden City is in Beijing.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/China",
+        "sourceTitle": "China — Wikivoyage"
+      },
+      {
+        "text": "Guilin is known for its karst landscapes.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/China",
+        "sourceTitle": "China — Wikivoyage"
+      }
+    ],
+    "culture": {
+      "text": "Dragon Boat Festival traditions include boat races and eating zongzi.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/China",
+      "sourceTitle": "China — Wikivoyage"
+    },
+    "food": {
+      "name": "Zongzi",
+      "text": "These steamed sticky-rice dumplings are associated with Dragon Boat Festival.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/China",
+      "sourceTitle": "China — Wikivoyage"
+    }
+  },
+  "GEO": {
+    "facts": [
+      {
+        "text": "Tbilisi is the capital.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Georgia_(country)",
+        "sourceTitle": "Georgia — Wikivoyage"
+      },
+      {
+        "text": "Georgia has a Black Sea coast.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Georgia_(country)",
+        "sourceTitle": "Georgia — Wikivoyage"
+      },
+      {
+        "text": "The Caucasus mountains shape much of the country’s landscape.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Georgia_(country)",
+        "sourceTitle": "Georgia — Wikivoyage"
+      }
+    ],
+    "culture": {
+      "text": "A supra is a celebratory feast guided by a tamada, or toastmaster.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Georgia_(country)",
+      "sourceTitle": "Georgia — Wikivoyage"
+    },
+    "food": {
+      "name": "Khachapuri",
+      "text": "This cheese-filled bread appears in several regional forms.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Georgia_(country)",
+      "sourceTitle": "Georgia — Wikivoyage"
+    }
+  },
+  "IND": {
+    "facts": [
+      {
+        "text": "India occupies much of the South Asian peninsula.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/India",
+        "sourceTitle": "India — Wikivoyage"
+      },
+      {
+        "text": "The Himalayas form a major part of its northern landscape.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/India",
+        "sourceTitle": "India — Wikivoyage"
+      },
+      {
+        "text": "Rajasthan includes extensive desert landscapes.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/India",
+        "sourceTitle": "India — Wikivoyage"
+      }
+    ],
+    "culture": {
+      "text": "Hindustani and Carnatic are two major traditions of Indian classical music.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/India",
+      "sourceTitle": "India — Wikivoyage"
+    },
+    "food": {
+      "name": "Biryani",
+      "text": "This rice dish has many local forms; Hyderabad is particularly associated with it.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/India",
+      "sourceTitle": "India — Wikivoyage"
+    }
+  },
+  "IDN": {
+    "facts": [
+      {
+        "text": "Indonesia is an archipelago between the Indian and Pacific oceans.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Indonesia",
+        "sourceTitle": "Indonesia — Wikivoyage"
+      },
+      {
+        "text": "Its islands lie on both sides of the Equator.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Indonesia",
+        "sourceTitle": "Indonesia — Wikivoyage"
+      },
+      {
+        "text": "Indonesian, or Bahasa Indonesia, is the official language.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Indonesia",
+        "sourceTitle": "Indonesia — Wikivoyage"
+      }
+    ],
+    "culture": {
+      "text": "Wayang kulit uses shadow puppets, often accompanied by a gamelan orchestra.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Indonesia",
+      "sourceTitle": "Indonesia — Wikivoyage"
+    },
+    "food": {
+      "name": "Nasi goreng",
+      "text": "Indonesian fried rice is found across the archipelago, with many variations.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Indonesia",
+      "sourceTitle": "Indonesia — Wikivoyage"
+    }
+  },
+  "IRN": {
+    "facts": [
+      {
+        "text": "Tehran is the capital.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Iran",
+        "sourceTitle": "Iran — Wikivoyage"
+      },
+      {
+        "text": "Persian, also called Farsi, is the official language.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Iran",
+        "sourceTitle": "Iran — Wikivoyage"
+      },
+      {
+        "text": "Isfahan was a historic capital and remains known for its architecture.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Iran",
+        "sourceTitle": "Iran — Wikivoyage"
+      }
+    ],
+    "culture": {
+      "text": "Nowruz celebrates the New Year around the beginning of spring.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Iran",
+      "sourceTitle": "Iran — Wikivoyage"
+    },
+    "food": {
+      "name": "Ghormeh sabzi",
+      "text": "This stew combines herbs, dried limes, and kidney beans and is commonly served with rice.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Iran",
+      "sourceTitle": "Iran — Wikivoyage"
+    }
+  },
+  "IRQ": {
+    "facts": [
+      {
+        "text": "Baghdad is the capital.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Iraq",
+        "sourceTitle": "Iraq — Wikivoyage"
+      },
+      {
+        "text": "The Tigris and Euphrates cross Iraq.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Iraq",
+        "sourceTitle": "Iraq — Wikivoyage"
+      },
+      {
+        "text": "Arabic and Kurdish are official languages.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Iraq",
+        "sourceTitle": "Iraq — Wikivoyage"
+      }
+    ],
+    "culture": {
+      "text": "Baghdad was a center of scholarship and the arts during the Islamic Golden Age.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Iraq",
+      "sourceTitle": "Iraq — Wikivoyage"
+    },
+    "food": {
+      "name": "Masgouf",
+      "text": "Freshwater carp is opened and roasted slowly, traditionally over a wood fire.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Iraq",
+      "sourceTitle": "Iraq — Wikivoyage"
+    }
+  },
+  "ISR": {
+    "facts": [
+      {
+        "text": "Israel has a Mediterranean coastline.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Israel",
+        "sourceTitle": "Israel — Wikivoyage"
+      },
+      {
+        "text": "The Negev contains desert canyons and oases.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Israel",
+        "sourceTitle": "Israel — Wikivoyage"
+      },
+      {
+        "text": "Haifa lies beside Mount Carmel.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Israel",
+        "sourceTitle": "Israel — Wikivoyage"
+      }
+    ],
+    "culture": {
+      "text": "Jewish, Muslim, Christian, Bahá’í, and other religious traditions have important sites in the region.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Israel",
+      "sourceTitle": "Israel — Wikivoyage"
+    },
+    "food": {
+      "name": "Falafel",
+      "text": "These fried legume balls are popular in pita with salads and tahini, as they are elsewhere in the Levant.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Israel",
+      "sourceTitle": "Israel — Wikivoyage"
+    }
+  },
+  "JPN": {
+    "facts": [
+      {
+        "text": "Japan is an East Asian island country.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Japan",
+        "sourceTitle": "Japan — Wikivoyage"
+      },
+      {
+        "text": "Tokyo is the capital.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Japan",
+        "sourceTitle": "Japan — Wikivoyage"
+      },
+      {
+        "text": "Kyoto was an earlier capital.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Japan",
+        "sourceTitle": "Japan — Wikivoyage"
+      }
+    ],
+    "culture": {
+      "text": "Matsuri festivals often feature processions of floats and portable shrines.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Japan",
+      "sourceTitle": "Japan — Wikivoyage"
+    },
+    "food": {
+      "name": "Takoyaki",
+      "text": "These octopus-filled balls are especially associated with Osaka.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Japan",
+      "sourceTitle": "Japan — Wikivoyage"
+    }
+  },
+  "JOR": {
+    "facts": [
+      {
+        "text": "Amman is the country’s political and cultural center.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Jordan",
+        "sourceTitle": "Jordan — Wikivoyage"
+      },
+      {
+        "text": "Aqaba lies on the Red Sea’s Gulf of Aqaba.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Jordan",
+        "sourceTitle": "Jordan — Wikivoyage"
+      },
+      {
+        "text": "Jerash preserves extensive Roman ruins.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Jordan",
+        "sourceTitle": "Jordan — Wikivoyage"
+      }
+    ],
+    "culture": {
+      "text": "Hospitality and shared tea are part of Bedouin encounters described by visitors to Jordan.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Jordan",
+      "sourceTitle": "Jordan — Wikivoyage"
+    },
+    "food": {
+      "name": "Mansaf",
+      "text": "Lamb, rice, and thin bread are served with a sauce made from jameed, a dried yogurt.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Jordan",
+      "sourceTitle": "Jordan — Wikivoyage"
+    }
+  },
+  "KAZ": {
+    "facts": [
+      {
+        "text": "Astana is the capital.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Kazakhstan",
+        "sourceTitle": "Kazakhstan — Wikivoyage"
+      },
+      {
+        "text": "Kazakhstan is the largest country in Central Asia.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Kazakhstan",
+        "sourceTitle": "Kazakhstan — Wikivoyage"
+      },
+      {
+        "text": "Wide steppe landscapes are a defining geographic feature.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Kazakhstan",
+        "sourceTitle": "Kazakhstan — Wikivoyage"
+      }
+    ],
+    "culture": {
+      "text": "Kazakh is a Turkic language closely related to Kyrgyz.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Kazakhstan",
+      "sourceTitle": "Kazakhstan — Wikivoyage"
+    },
+    "food": {
+      "name": "Beshbarmak",
+      "text": "Boiled meat is served with pasta and onion; it is commonly prepared for special occasions.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Kazakhstan",
+      "sourceTitle": "Kazakhstan — Wikivoyage"
+    }
+  },
+  "LAO": {
+    "facts": [
+      {
+        "text": "Laos is landlocked.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Laos",
+        "sourceTitle": "Laos — Wikivoyage"
+      },
+      {
+        "text": "Vientiane stands on the Mekong River.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Laos",
+        "sourceTitle": "Laos — Wikivoyage"
+      },
+      {
+        "text": "Luang Prabang is a UNESCO World Heritage city.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Laos",
+        "sourceTitle": "Laos — Wikivoyage"
+      }
+    ],
+    "culture": {
+      "text": "Sticky rice has a central cultural role, including as an offering to Buddhist monks.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Laos",
+      "sourceTitle": "Laos — Wikivoyage"
+    },
+    "food": {
+      "name": "Laap",
+      "text": "Minced meat or fish is combined with herbs, lime, and seasonings in this Lao dish.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Laos",
+      "sourceTitle": "Laos — Wikivoyage"
+    }
+  },
+  "LBN": {
+    "facts": [
+      {
+        "text": "Lebanon lies on the Mediterranean Sea.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Lebanon",
+        "sourceTitle": "Lebanon — Wikivoyage"
+      },
+      {
+        "text": "Beirut is the capital.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Lebanon",
+        "sourceTitle": "Lebanon — Wikivoyage"
+      },
+      {
+        "text": "Two major mountain ridges run roughly parallel to the coast.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Lebanon",
+        "sourceTitle": "Lebanon — Wikivoyage"
+      }
+    ],
+    "culture": {
+      "text": "Everyday Lebanese speech may move between Arabic, French, and English.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Lebanon",
+      "sourceTitle": "Lebanon — Wikivoyage"
+    },
+    "food": {
+      "name": "Manaeesh",
+      "text": "These flatbreads are often topped with zaatar or cheese and eaten for breakfast.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Lebanon",
+      "sourceTitle": "Lebanon — Wikivoyage"
+    }
+  },
+  "MYS": {
+    "facts": [
+      {
+        "text": "Malaysia includes territory on the Malay Peninsula and Borneo.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Malaysia",
+        "sourceTitle": "Malaysia — Wikivoyage"
+      },
+      {
+        "text": "The South China Sea separates its two main regions.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Malaysia",
+        "sourceTitle": "Malaysia — Wikivoyage"
+      },
+      {
+        "text": "Kuala Lumpur is the national capital.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Malaysia",
+        "sourceTitle": "Malaysia — Wikivoyage"
+      }
+    ],
+    "culture": {
+      "text": "Dikir barat is a Malay vocal tradition performed by groups, sometimes with percussion.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Malaysia",
+      "sourceTitle": "Malaysia — Wikivoyage"
+    },
+    "food": {
+      "name": "Laksa",
+      "text": "This family of noodle dishes takes markedly different forms in places such as Penang and Sarawak.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Malaysia",
+      "sourceTitle": "Malaysia — Wikivoyage"
+    }
+  },
+  "MNG": {
+    "facts": [
+      {
+        "text": "Ulaanbaatar is the capital.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Mongolia",
+        "sourceTitle": "Mongolia — Wikivoyage"
+      },
+      {
+        "text": "Mongolia is landlocked between Russia and China.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Mongolia",
+        "sourceTitle": "Mongolia — Wikivoyage"
+      },
+      {
+        "text": "Karakorum was a capital of the Mongol Empire.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Mongolia",
+        "sourceTitle": "Mongolia — Wikivoyage"
+      }
+    ],
+    "culture": {
+      "text": "Naadam celebrations feature wrestling, horse racing, and archery.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Mongolia",
+      "sourceTitle": "Mongolia — Wikivoyage"
+    },
+    "food": {
+      "name": "Buuz",
+      "text": "These steamed dumplings contain a savory meat filling.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Mongolia",
+      "sourceTitle": "Mongolia — Wikivoyage"
+    }
+  },
+  "MMR": {
+    "facts": [
+      {
+        "text": "Naypyidaw is the capital.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Myanmar",
+        "sourceTitle": "Myanmar — Wikivoyage"
+      },
+      {
+        "text": "Mandalay was a royal capital.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Myanmar",
+        "sourceTitle": "Myanmar — Wikivoyage"
+      },
+      {
+        "text": "Burmese is the official language.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Myanmar",
+        "sourceTitle": "Myanmar — Wikivoyage"
+      }
+    ],
+    "culture": {
+      "text": "Theravada Buddhist temples and stupas are an important part of Myanmar’s architectural heritage.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Myanmar",
+      "sourceTitle": "Myanmar — Wikivoyage"
+    },
+    "food": {
+      "name": "Mohinga",
+      "text": "Rice noodles are served in a fish-based broth, often for breakfast.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Myanmar",
+      "sourceTitle": "Myanmar — Wikivoyage"
+    }
+  },
+  "NPL": {
+    "facts": [
+      {
+        "text": "Nepal is landlocked in the Himalayas.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Nepal",
+        "sourceTitle": "Nepal — Wikivoyage"
+      },
+      {
+        "text": "Kathmandu is the capital.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Nepal",
+        "sourceTitle": "Nepal — Wikivoyage"
+      },
+      {
+        "text": "Mount Everest stands on Nepal’s border with Tibet.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Nepal",
+        "sourceTitle": "Nepal — Wikivoyage"
+      }
+    ],
+    "culture": {
+      "text": "Newar cultural traditions in the Kathmandu Valley include both Hindu and Buddhist practices.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Nepal",
+      "sourceTitle": "Nepal — Wikivoyage"
+    },
+    "food": {
+      "name": "Daal-bhaat-tarkaari",
+      "text": "Lentils, rice, and seasoned vegetables make up this everyday meal.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Nepal",
+      "sourceTitle": "Nepal — Wikivoyage"
+    }
+  },
+  "OMN": {
+    "facts": [
+      {
+        "text": "Oman lies on the eastern Arabian Peninsula.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Oman",
+        "sourceTitle": "Oman — Wikivoyage"
+      },
+      {
+        "text": "Muscat is the capital.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Oman",
+        "sourceTitle": "Oman — Wikivoyage"
+      },
+      {
+        "text": "The southern city of Salalah has a seasonal monsoon climate.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Oman",
+        "sourceTitle": "Oman — Wikivoyage"
+      }
+    ],
+    "culture": {
+      "text": "Craftspeople in Sur continue the tradition of building wooden dhows.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Oman",
+      "sourceTitle": "Oman — Wikivoyage"
+    },
+    "food": {
+      "name": "Shuwa",
+      "text": "Spiced lamb wrapped in leaves is traditionally cooked slowly in an underground oven.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Oman",
+      "sourceTitle": "Oman — Wikivoyage"
+    }
+  },
+  "PAK": {
+    "facts": [
+      {
+        "text": "Islamabad is the planned national capital.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Pakistan",
+        "sourceTitle": "Pakistan — Wikivoyage"
+      },
+      {
+        "text": "Pakistan has an Arabian Sea coast.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Pakistan",
+        "sourceTitle": "Pakistan — Wikivoyage"
+      },
+      {
+        "text": "Mohenjo-daro and Harappa preserve remains of ancient civilizations.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Pakistan",
+        "sourceTitle": "Pakistan — Wikivoyage"
+      }
+    ],
+    "culture": {
+      "text": "Urdu, Punjabi, Pashto, Sindhi, Balochi, and other languages reflect Pakistan’s cultural diversity.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Pakistan",
+      "sourceTitle": "Pakistan — Wikivoyage"
+    },
+    "food": {
+      "name": "Nihari",
+      "text": "Beef or mutton is simmered for hours in a seasoned gravy and commonly eaten with bread.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Pakistan",
+      "sourceTitle": "Pakistan — Wikivoyage"
+    }
+  },
+  "PHL": {
+    "facts": [
+      {
+        "text": "The Philippines is a Southeast Asian archipelago.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Philippines",
+        "sourceTitle": "Philippines — Wikivoyage"
+      },
+      {
+        "text": "English and Filipino are official languages.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Philippines",
+        "sourceTitle": "Philippines — Wikivoyage"
+      },
+      {
+        "text": "Filipino is based on Tagalog.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Philippines",
+        "sourceTitle": "Philippines — Wikivoyage"
+      }
+    ],
+    "culture": {
+      "text": "Bayanihan expresses ideals of community cooperation and helping one another.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Philippines",
+      "sourceTitle": "Philippines — Wikivoyage"
+    },
+    "food": {
+      "name": "Adobo",
+      "text": "Meat is marinated and cooked with vinegar and soy sauce; preparations differ between households.",
+      "sourceUrl": "https://www.vancouverpcg.org/vpcg-resources/yamang-pinoy/filipino-sauces-dips-and-mixes/",
+      "sourceTitle": "Philippine Consulate General in Vancouver — Filipino sauces, dips and mixes"
+    }
+  },
+  "QAT": {
+    "facts": [
+      {
+        "text": "Qatar occupies a peninsula in the Persian Gulf.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Qatar",
+        "sourceTitle": "Qatar — Wikivoyage"
+      },
+      {
+        "text": "Doha is the capital.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Qatar",
+        "sourceTitle": "Qatar — Wikivoyage"
+      },
+      {
+        "text": "Khor al Adaid combines coastal waters and sand dunes.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Qatar",
+        "sourceTitle": "Qatar — Wikivoyage"
+      }
+    ],
+    "culture": {
+      "text": "Bedouin traditions are part of Qatari cultural heritage.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Qatar",
+      "sourceTitle": "Qatar — Wikivoyage"
+    },
+    "food": {
+      "name": "Machboos",
+      "text": "Rice is cooked with spices and meat in this well-known Qatari dish.",
+      "sourceUrl": "https://visitqatar.com/intl-en/about-qatar/cuisine",
+      "sourceTitle": "Visit Qatar — The local cuisine of Qatar"
+    }
+  },
+  "SAU": {
+    "facts": [
+      {
+        "text": "Riyadh is the capital.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Saudi_Arabia",
+        "sourceTitle": "Saudi Arabia — Wikivoyage"
+      },
+      {
+        "text": "Saudi Arabia occupies much of the Arabian Peninsula.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Saudi_Arabia",
+        "sourceTitle": "Saudi Arabia — Wikivoyage"
+      },
+      {
+        "text": "Jeddah is a major city on the Red Sea.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Saudi_Arabia",
+        "sourceTitle": "Saudi Arabia — Wikivoyage"
+      }
+    ],
+    "culture": {
+      "text": "Cardamom-flavored coffee served with dates is associated with Bedouin hospitality.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Saudi_Arabia",
+      "sourceTitle": "Saudi Arabia — Wikivoyage"
+    },
+    "food": {
+      "name": "Kabsa",
+      "text": "Basmati rice is cooked with meat, vegetables, and spices.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Saudi_Arabia",
+      "sourceTitle": "Saudi Arabia — Wikivoyage"
+    }
+  },
+  "SGP": {
+    "facts": [
+      {
+        "text": "Singapore is a Southeast Asian city-state.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Singapore",
+        "sourceTitle": "Singapore — Wikivoyage"
+      },
+      {
+        "text": "It has a tropical climate.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Singapore",
+        "sourceTitle": "Singapore — Wikivoyage"
+      },
+      {
+        "text": "English, Mandarin, Malay, and Tamil are official languages.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Singapore",
+        "sourceTitle": "Singapore — Wikivoyage"
+      }
+    ],
+    "culture": {
+      "text": "Hawker centers bring together Chinese, Malay, Indian, and other food traditions in shared public dining spaces.",
+      "sourceUrl": "https://ich.unesco.org/en/RL/hawker-culture-in-singapore-community-dining-and-multicultural-urban-living-01568",
+      "sourceTitle": "UNESCO — Hawker culture in Singapore"
+    },
+    "food": {
+      "name": "Hainanese chicken rice",
+      "text": "Chicken accompanies fragrant rice cooked in broth, with sauces served on the side.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Singapore",
+      "sourceTitle": "Singapore — Wikivoyage"
+    }
+  },
+  "KOR": {
+    "facts": [
+      {
+        "text": "Seoul is the capital.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/South_Korea",
+        "sourceTitle": "South Korea — Wikivoyage"
+      },
+      {
+        "text": "South Korea occupies the southern part of the Korean Peninsula.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/South_Korea",
+        "sourceTitle": "South Korea — Wikivoyage"
+      },
+      {
+        "text": "Gyeongju was the capital of the ancient Silla kingdom.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/South_Korea",
+        "sourceTitle": "South Korea — Wikivoyage"
+      }
+    ],
+    "culture": {
+      "text": "Meals commonly include banchan, an assortment of small side dishes.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/South_Korea",
+      "sourceTitle": "South Korea — Wikivoyage"
+    },
+    "food": {
+      "name": "Kimchi",
+      "text": "Vegetables such as cabbage or radish are seasoned and fermented in many regional styles.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/South_Korea",
+      "sourceTitle": "South Korea — Wikivoyage"
+    }
+  },
+  "LKA": {
+    "facts": [
+      {
+        "text": "Sri Lanka is an Indian Ocean island south of India.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Sri_Lanka",
+        "sourceTitle": "Sri Lanka — Wikivoyage"
+      },
+      {
+        "text": "Sinhala and Tamil are official languages.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Sri_Lanka",
+        "sourceTitle": "Sri Lanka — Wikivoyage"
+      },
+      {
+        "text": "The south-central interior is mountainous.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Sri_Lanka",
+        "sourceTitle": "Sri Lanka — Wikivoyage"
+      }
+    ],
+    "culture": {
+      "text": "Buddhist, Hindu, Muslim, and Christian communities contribute to Sri Lanka’s cultural landscape.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Sri_Lanka",
+      "sourceTitle": "Sri Lanka — Wikivoyage"
+    },
+    "food": {
+      "name": "Pol sambol",
+      "text": "Grated coconut is mixed with chili and lime in this flavorful accompaniment.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Sri_Lanka",
+      "sourceTitle": "Sri Lanka — Wikivoyage"
+    }
+  },
+  "TWN": {
+    "facts": [
+      {
+        "text": "Taipei is the capital.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Taiwan",
+        "sourceTitle": "Taiwan — Wikivoyage"
+      },
+      {
+        "text": "A chain of mountains runs through the island’s center.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Taiwan",
+        "sourceTitle": "Taiwan — Wikivoyage"
+      },
+      {
+        "text": "Western Taiwan includes extensive plains.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Taiwan",
+        "sourceTitle": "Taiwan — Wikivoyage"
+      }
+    ],
+    "culture": {
+      "text": "Taiwan’s Indigenous Austronesian communities maintain distinct languages and cultural traditions.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Taiwan",
+      "sourceTitle": "Taiwan — Wikivoyage"
+    },
+    "food": {
+      "name": "Beef noodle soup",
+      "text": "Tender stewed beef and noodles are served in broth, with clear and red-braised styles among the variations.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Taiwan",
+      "sourceTitle": "Taiwan — Wikivoyage"
+    }
+  },
+  "THA": {
+    "facts": [
+      {
+        "text": "Bangkok is the capital.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Thailand",
+        "sourceTitle": "Thailand — Wikivoyage"
+      },
+      {
+        "text": "Ayutthaya was an earlier capital of Siam.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Thailand",
+        "sourceTitle": "Thailand — Wikivoyage"
+      },
+      {
+        "text": "The Chao Phraya River drains Thailand’s central plain.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Thailand",
+        "sourceTitle": "Thailand — Wikivoyage"
+      }
+    ],
+    "culture": {
+      "text": "Songkran celebrates the Thai New Year with water rituals and public festivities.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Thailand",
+      "sourceTitle": "Thailand — Wikivoyage"
+    },
+    "food": {
+      "name": "Pad Thai",
+      "text": "These stir-fried noodles are widely served by street vendors and restaurants.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Thailand",
+      "sourceTitle": "Thailand — Wikivoyage"
+    }
+  },
+  "TUR": {
+    "facts": [
+      {
+        "text": "Ankara is the capital.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Turkey",
+        "sourceTitle": "Turkey — Wikivoyage"
+      },
+      {
+        "text": "Turkey spans parts of Europe and Asia.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Turkey",
+        "sourceTitle": "Turkey — Wikivoyage"
+      },
+      {
+        "text": "Istanbul was a capital of both the Byzantine and Ottoman empires.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Turkey",
+        "sourceTitle": "Turkey — Wikivoyage"
+      }
+    ],
+    "culture": {
+      "text": "Sharing tea is a common part of daily social life, including after meals and during visits.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Turkey",
+      "sourceTitle": "Turkey — Wikivoyage"
+    },
+    "food": {
+      "name": "Baklava",
+      "text": "Thin layers of pastry enclose nuts and a sweet syrup; Gaziantep is especially known for its pistachio version.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Turkey",
+      "sourceTitle": "Turkey — Wikivoyage"
+    }
+  },
+  "ARE": {
+    "facts": [
+      {
+        "text": "Abu Dhabi is the national capital.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/United_Arab_Emirates",
+        "sourceTitle": "United Arab Emirates — Wikivoyage"
+      },
+      {
+        "text": "The UAE is a federation of seven emirates.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/United_Arab_Emirates",
+        "sourceTitle": "United Arab Emirates — Wikivoyage"
+      },
+      {
+        "text": "Its landscapes include desert, mountains, and coastal mangroves.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/United_Arab_Emirates",
+        "sourceTitle": "United Arab Emirates — Wikivoyage"
+      }
+    ],
+    "culture": {
+      "text": "Preparing and sharing harees is associated with hospitality, Ramadan, and family celebrations.",
+      "sourceUrl": "https://ich.unesco.org/en/RL/harees-dish-know-how-skills-and-practices-01744",
+      "sourceTitle": "UNESCO — Harees dish: know-how, skills and practices"
+    },
+    "food": {
+      "name": "Harees",
+      "text": "Wheat, meat, and ghee are cooked into a rich dish traditionally made for sharing.",
+      "sourceUrl": "https://ich.unesco.org/en/RL/harees-dish-know-how-skills-and-practices-01744",
+      "sourceTitle": "UNESCO — Harees dish: know-how, skills and practices"
+    }
+  },
+  "UZB": {
+    "facts": [
+      {
+        "text": "Tashkent is the capital.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Uzbekistan",
+        "sourceTitle": "Uzbekistan — Wikivoyage"
+      },
+      {
+        "text": "Bukhara was an important Silk Road city.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Uzbekistan",
+        "sourceTitle": "Uzbekistan — Wikivoyage"
+      },
+      {
+        "text": "The Ferghana Valley lies in the country’s east.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Uzbekistan",
+        "sourceTitle": "Uzbekistan — Wikivoyage"
+      }
+    ],
+    "culture": {
+      "text": "Traditional round breads, including Samarkand’s obi-non, are baked in clay ovens and accompany meals.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Uzbekistan",
+      "sourceTitle": "Uzbekistan — Wikivoyage"
+    },
+    "food": {
+      "name": "Plov",
+      "text": "Rice, carrots, onion, and meat form this dish, with ingredients and methods varying by region.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Uzbekistan",
+      "sourceTitle": "Uzbekistan — Wikivoyage"
+    }
+  },
+  "VNM": {
+    "facts": [
+      {
+        "text": "Hanoi is the capital.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Vietnam",
+        "sourceTitle": "Vietnam — Wikivoyage"
+      },
+      {
+        "text": "Ho Chi Minh City was formerly called Saigon.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Vietnam",
+        "sourceTitle": "Vietnam — Wikivoyage"
+      },
+      {
+        "text": "Hoi An preserves the character of an old trading port.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Vietnam",
+        "sourceTitle": "Vietnam — Wikivoyage"
+      }
+    ],
+    "culture": {
+      "text": "Tết, the Lunar New Year, is a time for family gatherings, gifts, and visits.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Vietnam",
+      "sourceTitle": "Vietnam — Wikivoyage"
+    },
+    "food": {
+      "name": "Phở",
+      "text": "Rice noodles are served in an aromatic broth, with beef and chicken among the familiar versions.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Vietnam",
+      "sourceTitle": "Vietnam — Wikivoyage"
+    }
+  },
+  "AUS": {
+    "facts": [
+      {
+        "text": "Canberra is the planned national capital.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Australia",
+        "sourceTitle": "Australia — Wikivoyage"
+      },
+      {
+        "text": "The country includes mainland Australia and Tasmania.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Australia",
+        "sourceTitle": "Australia — Wikivoyage"
+      },
+      {
+        "text": "Cairns is a gateway to the Great Barrier Reef.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Australia",
+        "sourceTitle": "Australia — Wikivoyage"
+      }
+    ],
+    "culture": {
+      "text": "Aboriginal peoples and Torres Strait Islander peoples have distinct cultures, languages, and connections to place.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Australia",
+      "sourceTitle": "Australia — Wikivoyage"
+    },
+    "food": {
+      "name": "Meat pie",
+      "text": "A savory pastry encloses meat and gravy, with many variations found in bakeries.",
+      "sourceUrl": "https://www.australia.com/en/things-to-do/food-and-drinks/typical-aussie-foods-to-try.html",
+      "sourceTitle": "Tourism Australia — The best Australian foods to try"
+    }
+  },
+  "FJI": {
+    "facts": [
+      {
+        "text": "Fiji is a Pacific archipelago.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Fiji",
+        "sourceTitle": "Fiji — Wikivoyage"
+      },
+      {
+        "text": "Viti Levu and Vanua Levu are its largest islands.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Fiji",
+        "sourceTitle": "Fiji — Wikivoyage"
+      },
+      {
+        "text": "Suva is the capital.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Fiji",
+        "sourceTitle": "Fiji — Wikivoyage"
+      }
+    ],
+    "culture": {
+      "text": "Yaqona, also called kava, has a ceremonial role in village visits and hospitality.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Fiji",
+      "sourceTitle": "Fiji — Wikivoyage"
+    },
+    "food": {
+      "name": "Kokoda",
+      "text": "Fish or other seafood is marinated with citrus and coconut milk.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Fiji",
+      "sourceTitle": "Fiji — Wikivoyage"
+    }
+  },
+  "NZL": {
+    "facts": [
+      {
+        "text": "Wellington is the capital.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/New_Zealand",
+        "sourceTitle": "New Zealand — Wikivoyage"
+      },
+      {
+        "text": "The two main islands are Te Ika-a-Māui and Te Waipounamu.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/New_Zealand",
+        "sourceTitle": "New Zealand — Wikivoyage"
+      },
+      {
+        "text": "Kiwi and kākāpō are distinctive native flightless birds.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/New_Zealand",
+        "sourceTitle": "New Zealand — Wikivoyage"
+      }
+    ],
+    "culture": {
+      "text": "Te reo Māori is a living Indigenous language heard in broadcasting, education, and place names.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/New_Zealand",
+      "sourceTitle": "New Zealand — Wikivoyage"
+    },
+    "food": {
+      "name": "Hāngī",
+      "text": "Food is slowly steam-cooked over heated stones in a covered earth oven, often for gatherings.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/New_Zealand",
+      "sourceTitle": "New Zealand — Wikivoyage"
+    }
+  },
+  "PNG": {
+    "facts": [
+      {
+        "text": "Port Moresby is the capital.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Papua_New_Guinea",
+        "sourceTitle": "Papua New Guinea — Wikivoyage"
+      },
+      {
+        "text": "The country includes eastern New Guinea and many offshore islands.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Papua_New_Guinea",
+        "sourceTitle": "Papua New Guinea — Wikivoyage"
+      },
+      {
+        "text": "The New Guinea Highlands form a mountainous interior.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Papua_New_Guinea",
+        "sourceTitle": "Papua New Guinea — Wikivoyage"
+      }
+    ],
+    "culture": {
+      "text": "Sing-sing performances at events such as the Goroka Show bring different cultural ensembles together.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Papua_New_Guinea",
+      "sourceTitle": "Papua New Guinea — Wikivoyage"
+    },
+    "food": {
+      "name": "Mumu",
+      "text": "An earth oven slowly cooks meat and vegetables such as kaukau, or sweet potato.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Papua_New_Guinea",
+      "sourceTitle": "Papua New Guinea — Wikivoyage"
+    }
+  }
+}

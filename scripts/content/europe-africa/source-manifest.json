@@ -1,0 +1,582 @@
+{
+  "retrievedAt": "2026-10-24",
+  "countryReference": {
+    "publisher": "mledoze/countries contributors",
+    "commit": "6031f5df137c41c76d180c55a0782185ae3ed05b",
+    "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+    "dataSha256": "0d92fb23b43ae080bd439f5dc5d61a8845395fdd0af1479b433c59fe079bd6fd",
+    "license": "ODbL 1.0",
+    "licenseUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/LICENSE",
+    "licenseSha256": "a221a27af5e4ef5a9cecce097c718c28f1aaf7d368cb57c994aa447c68d9defc"
+  },
+  "claimSources": {
+    "ALB": {
+      "facts": [
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json"
+      ],
+      "culture": "https://ich.unesco.org/en/lists?RL=00155",
+      "food": "https://en.wikivoyage.org/wiki/Albania#Eat"
+    },
+    "AUT": {
+      "facts": [
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json"
+      ],
+      "culture": "https://en.wikivoyage.org/wiki/Austria",
+      "food": "https://en.wikivoyage.org/wiki/Austria#Eat"
+    },
+    "BLR": {
+      "facts": [
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json"
+      ],
+      "culture": "https://ich.unesco.org/en/RL/straw-weaving-in-belarus-art-craft-and-skills-01889?RL=01889",
+      "food": "https://en.wikivoyage.org/wiki/Belarus#Eat"
+    },
+    "BEL": {
+      "facts": [
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json"
+      ],
+      "culture": "https://en.wikivoyage.org/wiki/Belgium",
+      "food": "https://en.wikivoyage.org/wiki/Belgium#Eat"
+    },
+    "BIH": {
+      "facts": [
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json"
+      ],
+      "culture": "https://en.wikivoyage.org/wiki/Bosnia_and_Herzegovina",
+      "food": "https://en.wikivoyage.org/wiki/Bosnia_and_Herzegovina#Eat"
+    },
+    "BGR": {
+      "facts": [
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json"
+      ],
+      "culture": "https://en.wikivoyage.org/wiki/Bulgaria",
+      "food": "https://en.wikivoyage.org/wiki/Bulgaria#Eat"
+    },
+    "HRV": {
+      "facts": [
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json"
+      ],
+      "culture": "https://en.wikivoyage.org/wiki/Croatia",
+      "food": "https://en.wikivoyage.org/wiki/Croatia#Eat"
+    },
+    "CYP": {
+      "facts": [
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json"
+      ],
+      "culture": "https://en.wikivoyage.org/wiki/Cyprus",
+      "food": "https://en.wikivoyage.org/wiki/Cyprus#Eat"
+    },
+    "CZE": {
+      "facts": [
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json"
+      ],
+      "culture": "https://en.wikivoyage.org/wiki/Czech_Republic",
+      "food": "https://en.wikivoyage.org/wiki/Czech_Republic#Eat"
+    },
+    "DNK": {
+      "facts": [
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json"
+      ],
+      "culture": "https://en.wikivoyage.org/wiki/Denmark",
+      "food": "https://en.wikivoyage.org/wiki/Denmark#Eat"
+    },
+    "EST": {
+      "facts": [
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json"
+      ],
+      "culture": "https://en.wikivoyage.org/wiki/Estonia",
+      "food": "https://en.wikivoyage.org/wiki/Estonia#Eat"
+    },
+    "FIN": {
+      "facts": [
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json"
+      ],
+      "culture": "https://en.wikivoyage.org/wiki/Finland",
+      "food": "https://en.wikivoyage.org/wiki/Finland#Eat"
+    },
+    "FRA": {
+      "facts": [
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json"
+      ],
+      "culture": "https://en.wikivoyage.org/wiki/France",
+      "food": "https://en.wikivoyage.org/wiki/France#Eat"
+    },
+    "DEU": {
+      "facts": [
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json"
+      ],
+      "culture": "https://en.wikivoyage.org/wiki/Germany",
+      "food": "https://en.wikivoyage.org/wiki/Germany#Eat"
+    },
+    "GRC": {
+      "facts": [
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json"
+      ],
+      "culture": "https://en.wikivoyage.org/wiki/Greece",
+      "food": "https://en.wikivoyage.org/wiki/Greece#Eat"
+    },
+    "HUN": {
+      "facts": [
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json"
+      ],
+      "culture": "https://en.wikivoyage.org/wiki/Hungary",
+      "food": "https://en.wikivoyage.org/wiki/Hungary#Eat"
+    },
+    "ISL": {
+      "facts": [
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json"
+      ],
+      "culture": "https://en.wikivoyage.org/wiki/Iceland",
+      "food": "https://en.wikivoyage.org/wiki/Iceland#Eat"
+    },
+    "IRL": {
+      "facts": [
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json"
+      ],
+      "culture": "https://en.wikivoyage.org/wiki/Ireland",
+      "food": "https://en.wikivoyage.org/wiki/Ireland#Eat"
+    },
+    "ITA": {
+      "facts": [
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json"
+      ],
+      "culture": "https://en.wikivoyage.org/wiki/Italy",
+      "food": "https://en.wikivoyage.org/wiki/Italy#Eat"
+    },
+    "LVA": {
+      "facts": [
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json"
+      ],
+      "culture": "https://en.wikivoyage.org/wiki/Latvia",
+      "food": "https://en.wikivoyage.org/wiki/Latvia#Eat"
+    },
+    "LTU": {
+      "facts": [
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json"
+      ],
+      "culture": "https://en.wikivoyage.org/wiki/Lithuania",
+      "food": "https://en.wikivoyage.org/wiki/Lithuania#Eat"
+    },
+    "NLD": {
+      "facts": [
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json"
+      ],
+      "culture": "https://en.wikivoyage.org/wiki/Netherlands",
+      "food": "https://en.wikivoyage.org/wiki/Netherlands#Eat"
+    },
+    "MKD": {
+      "facts": [
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json"
+      ],
+      "culture": "https://en.wikivoyage.org/wiki/North_Macedonia",
+      "food": "https://en.wikivoyage.org/wiki/North_Macedonia#Eat"
+    },
+    "NOR": {
+      "facts": [
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json"
+      ],
+      "culture": "https://en.wikivoyage.org/wiki/Norway",
+      "food": "https://en.wikivoyage.org/wiki/Norway#Eat"
+    },
+    "POL": {
+      "facts": [
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json"
+      ],
+      "culture": "https://en.wikivoyage.org/wiki/Poland",
+      "food": "https://en.wikivoyage.org/wiki/Poland#Eat"
+    },
+    "PRT": {
+      "facts": [
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json"
+      ],
+      "culture": "https://en.wikivoyage.org/wiki/Portugal",
+      "food": "https://en.wikivoyage.org/wiki/Portugal#Eat"
+    },
+    "ROU": {
+      "facts": [
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json"
+      ],
+      "culture": "https://en.wikivoyage.org/wiki/Romania",
+      "food": "https://en.wikivoyage.org/wiki/Romania#Eat"
+    },
+    "RUS": {
+      "facts": [
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json"
+      ],
+      "culture": "https://en.wikivoyage.org/wiki/Russia",
+      "food": "https://en.wikivoyage.org/wiki/Russia#Eat"
+    },
+    "SRB": {
+      "facts": [
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json"
+      ],
+      "culture": "https://en.wikivoyage.org/wiki/Serbia",
+      "food": "https://en.wikivoyage.org/wiki/Serbia#Eat"
+    },
+    "SVK": {
+      "facts": [
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json"
+      ],
+      "culture": "https://en.wikivoyage.org/wiki/Slovakia",
+      "food": "https://en.wikivoyage.org/wiki/Slovakia#Eat"
+    },
+    "SVN": {
+      "facts": [
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json"
+      ],
+      "culture": "https://en.wikivoyage.org/wiki/Slovenia",
+      "food": "https://en.wikivoyage.org/wiki/Slovenia#Eat"
+    },
+    "ESP": {
+      "facts": [
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json"
+      ],
+      "culture": "https://en.wikivoyage.org/wiki/Spain",
+      "food": "https://en.wikivoyage.org/wiki/Spain#Eat"
+    },
+    "SWE": {
+      "facts": [
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json"
+      ],
+      "culture": "https://en.wikivoyage.org/wiki/Sweden",
+      "food": "https://en.wikivoyage.org/wiki/Sweden#Eat"
+    },
+    "CHE": {
+      "facts": [
+        "https://www.aboutswitzerland.eda.admin.ch/en/political-system",
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json"
+      ],
+      "culture": "https://en.wikivoyage.org/wiki/Switzerland",
+      "food": "https://en.wikivoyage.org/wiki/Switzerland#Eat"
+    },
+    "UKR": {
+      "facts": [
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json"
+      ],
+      "culture": "https://www.youtube.com/watch?v=1-kBLT0O2ag",
+      "food": "https://en.wikivoyage.org/wiki/Ukraine#Eat"
+    },
+    "GBR": {
+      "facts": [
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json"
+      ],
+      "culture": "https://en.wikivoyage.org/wiki/United_Kingdom",
+      "food": "https://en.wikivoyage.org/wiki/United_Kingdom#Eat"
+    },
+    "DZA": {
+      "facts": [
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json"
+      ],
+      "culture": "https://en.wikivoyage.org/wiki/Algeria",
+      "food": "https://en.wikivoyage.org/wiki/Algeria#Eat"
+    },
+    "AGO": {
+      "facts": [
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json"
+      ],
+      "culture": "https://en.wikivoyage.org/wiki/Angola",
+      "food": "https://en.wikivoyage.org/wiki/Angola#Eat"
+    },
+    "BWA": {
+      "facts": [
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json"
+      ],
+      "culture": "https://en.wikivoyage.org/wiki/Botswana",
+      "food": "https://en.wikivoyage.org/wiki/Botswana#Eat"
+    },
+    "CMR": {
+      "facts": [
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json"
+      ],
+      "culture": "https://en.wikivoyage.org/wiki/Cameroon",
+      "food": "https://en.wikivoyage.org/wiki/Cameroon#Eat"
+    },
+    "COD": {
+      "facts": [
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json"
+      ],
+      "culture": "https://ich.unesco.org/en/RL/congolese-rumba-01711",
+      "food": "https://en.wikivoyage.org/wiki/Democratic_Republic_of_the_Congo#Eat"
+    },
+    "EGY": {
+      "facts": [
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json"
+      ],
+      "culture": "https://whc.unesco.org/en/list/86/",
+      "food": "https://en.wikivoyage.org/wiki/Egypt#Eat"
+    },
+    "ETH": {
+      "facts": [
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json"
+      ],
+      "culture": "https://ethiocta.gov.et/wp-content/uploads/2022/09/ECTA-new-Coffee-Booklet-.pdf",
+      "food": "https://en.wikivoyage.org/wiki/Ethiopia#Eat"
+    },
+    "GHA": {
+      "facts": [
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json"
+      ],
+      "culture": "https://en.wikivoyage.org/wiki/Ghana",
+      "food": "https://en.wikivoyage.org/wiki/Ghana#Eat"
+    },
+    "KEN": {
+      "facts": [
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json"
+      ],
+      "culture": "https://en.wikivoyage.org/wiki/Kenya",
+      "food": "https://en.wikivoyage.org/wiki/Kenya#Eat"
+    },
+    "MDG": {
+      "facts": [
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json"
+      ],
+      "culture": "https://en.wikivoyage.org/wiki/Madagascar",
+      "food": "https://en.wikivoyage.org/wiki/Madagascar#Eat"
+    },
+    "MLI": {
+      "facts": [
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json"
+      ],
+      "culture": "https://en.wikivoyage.org/wiki/Mali",
+      "food": "https://en.wikivoyage.org/wiki/Mali#Eat"
+    },
+    "MUS": {
+      "facts": [
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json"
+      ],
+      "culture": "https://en.wikivoyage.org/wiki/Mauritius",
+      "food": "https://en.wikivoyage.org/wiki/Mauritius#Eat"
+    },
+    "MAR": {
+      "facts": [
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json"
+      ],
+      "culture": "https://en.wikivoyage.org/wiki/Morocco",
+      "food": "https://en.wikivoyage.org/wiki/Morocco#Eat"
+    },
+    "MOZ": {
+      "facts": [
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json"
+      ],
+      "culture": "https://en.wikivoyage.org/wiki/Mozambique",
+      "food": "https://en.wikivoyage.org/wiki/Mozambique#Eat"
+    },
+    "NAM": {
+      "facts": [
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json"
+      ],
+      "culture": "https://en.wikivoyage.org/wiki/Namibia",
+      "food": "https://en.wikivoyage.org/wiki/Namibia#Eat"
+    },
+    "NGA": {
+      "facts": [
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json"
+      ],
+      "culture": "https://en.wikivoyage.org/wiki/Nigeria",
+      "food": "https://en.wikivoyage.org/wiki/Nigeria#Eat"
+    },
+    "RWA": {
+      "facts": [
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json"
+      ],
+      "culture": "https://en.wikivoyage.org/wiki/Rwanda",
+      "food": "https://en.wikivoyage.org/wiki/Rwanda#Eat"
+    },
+    "SEN": {
+      "facts": [
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json"
+      ],
+      "culture": "https://en.wikivoyage.org/wiki/Senegal",
+      "food": "https://en.wikivoyage.org/wiki/Senegal#Eat"
+    },
+    "ZAF": {
+      "facts": [
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json"
+      ],
+      "culture": "https://en.wikivoyage.org/wiki/South_Africa",
+      "food": "https://en.wikivoyage.org/wiki/South_Africa#Eat"
+    },
+    "SDN": {
+      "facts": [
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json"
+      ],
+      "culture": "https://whc.unesco.org/en/list/1336/",
+      "food": "https://en.wikivoyage.org/wiki/Sudan#Eat"
+    },
+    "TZA": {
+      "facts": [
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json"
+      ],
+      "culture": "https://whc.unesco.org/en/list/173/",
+      "food": "https://en.wikivoyage.org/wiki/Tanzania#Eat"
+    },
+    "TUN": {
+      "facts": [
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json"
+      ],
+      "culture": "https://en.wikivoyage.org/wiki/Tunisia",
+      "food": "https://en.wikivoyage.org/wiki/Tunisia#Eat"
+    },
+    "UGA": {
+      "facts": [
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json"
+      ],
+      "culture": "https://ich.unesco.org/en/RL/barkcloth-making-in-uganda-00139",
+      "food": "https://en.wikivoyage.org/wiki/Uganda#Eat"
+    },
+    "ZMB": {
+      "facts": [
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json"
+      ],
+      "culture": "https://ich.unesco.org/en/projects/action-plan-for-the-safeguarding-of-the-makishi-masquerade-in-zambia-00026",
+      "food": "https://en.wikivoyage.org/wiki/Zambia#Eat"
+    },
+    "ZWE": {
+      "facts": [
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json"
+      ],
+      "culture": "https://en.wikivoyage.org/wiki/Zimbabwe",
+      "food": "https://en.wikivoyage.org/wiki/Zimbabwe#Eat"
+    }
+  },
+  "reviewStatus": "Basic fact fields and every culture/food summary checked against consulted structured records or webpage excerpts; independent specialist editorial review not performed.",
+  "sourceLicenses": {
+    "Wikivoyage": {
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "policyUrl": "https://en.wikivoyage.org/wiki/Wikivoyage:Copyleft",
+      "attribution": "Wikivoyage contributors; source article and its linked edit history",
+      "transformation": "Original concise factual summaries; no images, copied passages, or recipes."
+    },
+    "UNESCO World Heritage Centre descriptions": {
+      "license": "CC BY-SA IGO 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/igo/",
+      "transformation": "Original short factual summaries; no images copied."
+    },
+    "Other cited publishers": {
+      "license": "No reproduction license asserted",
+      "transformation": "Only short original factual summaries; no copied prose or media."
+    }
+  }
+}

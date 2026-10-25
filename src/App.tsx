@@ -28,6 +28,8 @@ export default function App() {
   const solved = Boolean(session?.guesses.some(guess => guess.correct));
   const rankedGuesses = session?.guesses.map((result, index) => ({ result, number: index + 1 }))
     .sort((a, b) => a.result.meters - b.result.meters || Number(b.result.correct) - Number(a.result.correct) || a.number - b.number) ?? [];
+  const latest = session?.guesses.at(-1);
+  const feedback = message || (latest ? `${nameFor(latest.countryId)}. ${describe(latest, session?.guesses.slice(0, -1))}` : '');
 
   const reloadSchedule = useCallback(() => {
     if (scheduleRequest.current) return scheduleRequest.current;
@@ -64,12 +66,12 @@ export default function App() {
     if (getUtcDate() !== date) { refreshDate(); return; }
     if (!session || solved) return;
     const existing = session.guesses.find(item => item.countryId === countryId);
-    if (existing) { setMessage(`You already guessed ${nameFor(countryId)}. ${describe(existing)} Your guess count stays the same.`); return; }
+    if (existing) { setMessage(`You already guessed ${nameFor(countryId)}. ${describe(existing, session.guesses.length > 1 ? session.guesses : [])} Your guess count stays the same.`); return; }
     const result = evaluateGuess(session.puzzle, countryId);
     const guesses = [...session.guesses, result];
     const storageAvailable = saveProgress(session.puzzle, guesses.map(item => item.countryId));
     setSession({ ...session, guesses, storageAvailable });
-    setMessage(result.correct ? `You found ${nameFor(countryId)} in ${guesses.length} ${guesses.length === 1 ? 'guess' : 'guesses'}! Your postcard is ready below.` : `${nameFor(countryId)}. ${describe(result)}`);
+    setMessage(result.correct ? `You found ${nameFor(countryId)} in ${guesses.length} ${guesses.length === 1 ? 'guess' : 'guesses'}! Your postcard is ready below.` : `${nameFor(countryId)}. ${describe(result, session.guesses)}`);
   }
 
   async function share() {
@@ -98,13 +100,12 @@ export default function App() {
         <div className="play-area" id="guess-section" tabIndex={-1}>
           <div className="map-column">
             <WorldMap guesses={session.guesses}>
-              {!solved && <section className="guess-panel" aria-label="Guess a country"><CountrySearch key={date} onGuess={guess}/></section>}
+              {!solved && <section className="guess-panel" aria-label="Guess a country"><CountrySearch key={date} onGuess={guess}/>{feedback && <p className="latest-feedback">{feedback}</p>}</section>}
             </WorldMap>
-            <section className="feedback-panel" aria-label={solved ? 'Journey complete' : 'Latest guess result'}>
+            <section className="feedback-panel" aria-label={solved ? 'Journey complete' : 'Journey status'}>
               {solved ? <div className="success-panel"><p className="eyebrow">DESTINATION DISCOVERED</p><h2>You’ve arrived in<br/>{nameFor(session.puzzle.target)}<span>!</span></h2><p>{session.guesses.length} {session.guesses.length === 1 ? 'guess' : 'guesses'}, a world of discovery. Your postcard awaits below.</p><button className="primary-button" type="button" onClick={share}>Share your journey <span aria-hidden="true">↗</span></button><p className="next-puzzle">Next destination in <strong>{countdown}</strong><span>Resets at midnight UTC</span></p>{showShare && <div className="share-fallback"><label htmlFor="share-result">Your spoiler-free result</label><textarea id="share-result" readOnly value={shareResult(session.puzzle, session.guesses)} rows={4} onFocus={event => event.target.select()}/><p role="status">{shareMessage}</p></div>}</div> : null}
               {!session.storageAvailable && <p className="storage-warning" role="status">Browser storage is unavailable. You can play, but your guesses may not survive a refresh.</p>}
-              <p className="sr-only" role="status" aria-live="polite" aria-atomic="true">{message}</p>
-              {!solved && message && <p className="latest-feedback">{message}</p>}
+              <p className="sr-only" role="status" aria-live="polite" aria-atomic="true">{feedback}</p>
             </section>
           </div>
           <section className="history-panel" aria-labelledby="history-heading"><div className="section-title"><h2 id="history-heading">Your travel log</h2><span>{session.guesses.length} {session.guesses.length === 1 ? 'GUESS' : 'GUESSES'}</span></div><p className="history-order">Closest guesses first</p>{!session.guesses.length ? <div className="empty-history"><span aria-hidden="true">⌁</span><p>Every journey starts somewhere.</p><span>Make your first guess to get your bearings.</span></div> : <ol className="guess-list">{rankedGuesses.map(({ result, number }) => <li key={result.countryId} value={number}><span className="guess-number" aria-label={`Guess ${number}`}>{String(number).padStart(2, '0')}</span><span className="guess-swatch" style={{ background: result.correct ? '#c74332' : proximity(result.meters).color }} aria-hidden="true">{result.correct ? '✓' : ''}</span><div className="guess-country"><strong>{nameFor(result.countryId)}</strong><span>{result.correct ? 'Destination found' : result.borders ? 'It borders this country!' : proximity(result.meters).label}</span></div><span className="guess-distance">{result.correct ? 'Found!' : formatMiles(result.meters)}</span></li>)}</ol>}</section>
@@ -116,7 +117,10 @@ export default function App() {
   </>;
 }
 
-function describe(guess: Guess) {
+function describe(guess: Guess, previous: Guess[] = []) {
   if (guess.correct) return 'Destination found!';
-  return `${formatMiles(guess.meters)} away. ${guess.borders ? 'It borders this country!' : proximity(guess.meters).label + '.'}`;
+  const closest = Math.min(...previous.map(item => item.meters));
+  const comparison = !previous.length ? '' : guess.meters < closest ? ' Closer than your previous closest guess.'
+    : guess.meters > closest ? ' Farther away than your closest guess so far.' : ' Matches your closest guess so far.';
+  return `${formatMiles(guess.meters)} away. ${guess.borders ? 'It borders this country!' : proximity(guess.meters).label + '.'}${comparison}`;
 }

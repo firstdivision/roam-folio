@@ -7,7 +7,7 @@ Roamfolio is a daily country-guessing game inspired by geography games such as G
 ## Core experience
 1. Open today's puzzle; no account required.
 2. Start typing an eligible country's name in the field directly above the map, using accessible search and suggestions. Map clicks do not select or submit guesses.
-3. See the nearest-border distance in miles and map proximity feedback, moving from white for very far away through yellow and orange to red for very close. Drag to pan the map, scroll or pinch to zoom, or use its keyboard and button controls. More detailed boundaries load when zooming in, up to 32×; map countries have no hover-name labels. On mobile, a taller map fills the viewport area and can be panned sideways. The latest result appears below the map, and the travel log lists closest guesses first.
+3. See the nearest-border distance in miles and map proximity feedback, moving from white for very far away through yellow and orange to red for very close. Drag to pan the map, scroll or pinch to zoom, or use its keyboard and button controls. More detailed boundaries load when zooming in, up to 32×; map countries have no hover-name labels. On mobile, a taller map fills the viewport area and can be panned sideways. A compact notice under the submit row shows the latest distance and, after the first guess, whether it is closer than, farther away than, or matches the best earlier guess. The travel log lists closest guesses first.
 4. Keep guessing until the target country is found; there is no guess limit or give-up option. Today's progress survives refreshes on the same browser.
 5. Explore country facts, cultural notes, and a signature food; share spoiler-free emoji results. Recipes and a passport collection come later.
 

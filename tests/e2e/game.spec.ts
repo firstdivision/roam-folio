@@ -72,19 +72,22 @@ for (const submit of ['button', 'Enter'] as const) {
   });
 }
 
-test('entry sits immediately above the map and guess results follow it', async ({ page }) => {
+test('entry and latest guess notice sit above the map without an initial helper line', async ({ page }) => {
   await page.goto('/');
   const checkOrder = async () => {
     const entry = (await page.locator('.input-row').boundingBox())!;
     const map = (await page.locator('.map-canvas').boundingBox())!;
-    expect(Math.abs(map.y - entry.y - entry.height)).toBeLessThan(1);
+    const notice = page.locator('.latest-feedback');
+    if (await notice.count()) {
+      const result = (await notice.boundingBox())!;
+      expect(result.y).toBeGreaterThanOrEqual(entry.y + entry.height);
+      expect(map.y).toBeGreaterThanOrEqual(result.y + result.height);
+      expect(result.y - entry.y - entry.height).toBeLessThanOrEqual(12);
+    } else expect(Math.abs(map.y - entry.y - entry.height)).toBeLessThan(1);
     await expect(page.locator('.input-hint')).toHaveCount(0);
   };
   await checkOrder();
   await guess(page, wrong.name);
-  const map = (await page.locator('.map-panel').boundingBox())!;
-  const result = (await page.locator('.latest-feedback').boundingBox())!;
-  expect(result.y).toBeGreaterThanOrEqual(map.y + map.height);
   await checkOrder();
   await page.setViewportSize({ width: 320, height: 568 });
   await checkOrder();
@@ -93,6 +96,52 @@ test('entry sits immediately above the map and guess results follow it', async (
   // The actual geography fills the taller viewport rather than letterboxing.
   const svgScale = await page.locator('.map-canvas svg').evaluate(element => (element as SVGSVGElement).getScreenCTM()!.a);
   expect(svgScale).toBeCloseTo(canvas.height / 530, 3);
+});
+
+test('latest notice compares with the best earlier guess and survives reloads', async ({ page }, testInfo) => {
+  const candidates = pool.filter(country => country.id !== targetId).map(country => {
+    const key = [country.id, targetId].sort().join(':') as keyof typeof distances.pairs;
+    return { ...country, ...distances.pairs[key] };
+  }).sort((a, b) => a.meters - b.meters);
+  const nearest = candidates[0], farthest = candidates.at(-1)!;
+  const middle = candidates[Math.floor(candidates.length / 2)];
+  const neighbor = candidates.find(country => country.id !== nearest.id && country.meters === nearest.meters)!;
+  const notice = page.locator('.latest-feedback');
+  await page.goto('/');
+  await expect(notice).toHaveCount(0);
+  await guess(page, farthest.name);
+  await expect(notice).toContainText(`${farthest.name}.`);
+  await expect(notice).toContainText(`${Math.round(farthest.meters / 1609.344).toLocaleString('en-US')} miles away.`);
+  await expect(notice).not.toContainText(/closer|farther|matches/i);
+  await page.reload();
+  await expect(notice).toContainText(`${farthest.name}.`);
+  await expect(notice).not.toContainText(/closer|farther|matches/i);
+  await guess(page, nearest.name);
+  await expect(notice).toContainText('0 miles away. It borders this country!');
+  await expect(notice).toContainText('Closer than your previous closest guess.');
+  await guess(page, middle.name);
+  await expect(notice).toContainText('Farther away than your closest guess so far.');
+  await page.reload();
+  await expect(notice).toContainText(`${middle.name}.`);
+  await expect(notice).toContainText('Farther away than your closest guess so far.');
+  await guess(page, neighbor.name);
+  await expect(notice).toContainText('Matches your closest guess so far.');
+  await guess(page, farthest.name);
+  await expect(notice).toContainText(`already guessed ${farthest.name}`);
+  await expect(notice).toContainText('Farther away than your closest guess so far.');
+  await expect(page.locator('.guess-list li')).toHaveCount(4);
+  await guess(page, nearest.name);
+  await expect(notice).toContainText('Matches your closest guess so far.');
+  await guess(page, 'Atlantis');
+  await expect(page.getByRole('alert')).toBeVisible();
+  await expect(notice).toContainText(`already guessed ${nearest.name}`);
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
+  const scan = await new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa']).analyze();
+  expect(scan.violations).toEqual([]);
+  await page.screenshot({ path: testInfo.outputPath('guess-notice.png'), fullPage: true });
+  await guess(page, target.name);
+  await expect(notice).toHaveCount(0);
+  await expect(page.locator('.success-panel')).toBeVisible();
 });
 
 test('history sorts by exact distance while persistence and sharing retain guess order', async ({ page }) => {

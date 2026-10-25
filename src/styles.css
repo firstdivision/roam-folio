@@ -31,6 +31,7 @@ main{max-width:1144px;margin:0 auto;padding:0 0 30px}.eyebrow{font-size:11px;let
 .guess-form{width:100%}
 .guess-form label{font-size:19px;margin-bottom:9px}
 .latest-feedback,.storage-warning{margin-top:0}
+.guess-panel .latest-feedback{margin-top:10px;margin-bottom:10px;padding:8px 10px}
 .map-panel{min-width:0}
 .history-panel{grid-area:history;min-width:0}
 .map-topline{flex-wrap:wrap;padding:12px 14px;gap:8px}

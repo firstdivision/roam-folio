@@ -142,15 +142,7 @@ export function WorldMap({ guesses, children }: { guesses: Guess[]; children?: R
     setDragging(pointers.current.size > 0);
   }
 
-  return <section className="map-panel" aria-labelledby="map-heading">
-    <div className="map-topline"><h2 id="map-heading">Your world of possibilities</h2>
-      <div className="map-controls" role="group" aria-label="Map controls">
-        <button type="button" aria-label="Zoom out" disabled={!world || view.scale === 1} onClick={() => zoom(1 / 1.5)}>−</button>
-        <output aria-label="Map zoom level" aria-live="off">{Math.round(view.scale * 100)}%</output>
-        <button type="button" aria-label="Zoom in" disabled={!world || view.scale === MAX_ZOOM} onClick={() => zoom(1.5)}>+</button>
-        <button type="button" className="map-reset" disabled={!world} onClick={() => updateView(initialView)}>Reset map</button>
-      </div>
-    </div>
+  return <section className="map-panel" aria-label="World map and guesses">
     {children && <div className="map-entry">{children}</div>}
     <div ref={canvas} className={`map-canvas${dragging ? ' is-dragging' : ''}`} role="region" aria-label="Map navigation" aria-describedby="map-navigation-help" tabIndex={world ? 0 : undefined} onKeyDown={event => {
       if (!world) return;

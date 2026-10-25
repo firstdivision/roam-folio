@@ -47,6 +47,10 @@ test('country entry and submit are above the fold, including a small phone', asy
   await expect(page.getByRole('combobox')).toBeInViewport({ ratio: 1 });
   await expect(page.getByRole('button', { name: 'Guess', exact: false })).toBeInViewport({ ratio: 1 });
   await expect(page.locator('.intro')).toHaveCount(0);
+  await expect(page.getByText('Your world of possibilities', { exact: true })).toHaveCount(0);
+  await expect(page.getByRole('group', { name: 'Map controls' })).toHaveCount(0);
+  await expect(page.getByRole('button', { name: /^(Zoom in|Zoom out|Reset map)$/ })).toHaveCount(0);
+  await expect(page.getByLabel('Map zoom level')).toHaveCount(0);
   await page.setViewportSize({ width: 320, height: 568 });
   await expect(page.getByRole('combobox')).toBeInViewport({ ratio: 1 });
   await expect(page.getByRole('button', { name: 'Guess', exact: false })).toBeInViewport({ ratio: 1 });
@@ -189,19 +193,19 @@ test('a tall mobile map can pan to both sides at the initial zoom', async ({ pag
   };
   await drag(90);
   await expect(page.locator('.map-countries')).toHaveAttribute('transform', /translate\([1-9]/);
-  await page.getByRole('button', { name: 'Reset map', exact: true }).click();
+  await page.getByRole('region', { name: 'Map navigation', exact: true }).press('0');
   await drag(-90);
   await expect(page.locator('.map-countries')).toHaveAttribute('transform', /translate\(-/);
-  await expect(page.getByLabel('Map zoom level')).toHaveText('100%');
+  await expect(page.locator('.map-countries')).toHaveAttribute('transform', /scale\(1\)/);
   await expect(page.locator('.guess-list li')).toHaveCount(0);
 });
 
-test('map controls, keyboard, wheel and drag navigate without submitting guesses', async ({ page }) => {
+test('keyboard, wheel and drag navigate without submitting guesses', async ({ page }) => {
   await page.goto('/');
   const navigation = page.getByRole('region', { name: 'Map navigation', exact: true });
   const layer = page.locator('.map-countries');
   await expect(layer).toHaveAttribute('transform', 'translate(0 0) scale(1)');
-  await page.getByRole('button', { name: 'Zoom in', exact: true }).click();
+  await navigation.press('+');
   await expect(layer).toHaveAttribute('transform', /scale\(1.5\)/);
   await navigation.focus();
   const beforeKey = await layer.getAttribute('transform');
@@ -224,9 +228,10 @@ test('map controls, keyboard, wheel and drag navigate without submitting guesses
   await page.mouse.wheel(0, -180);
   await expect(layer).not.toHaveAttribute('transform', beforeWheel!);
   expect(await page.evaluate(() => window.scrollY)).toBe(scrollBefore);
-  await page.getByRole('button', { name: 'Reset map', exact: true }).click();
+  await navigation.press('Home');
   await expect(layer).toHaveAttribute('transform', 'translate(0 0) scale(1)');
-  await expect(page.getByRole('button', { name: 'Zoom out', exact: true })).toBeDisabled();
+  await navigation.press('-');
+  await expect(layer).toHaveAttribute('transform', 'translate(0 0) scale(1)');
   await expect(page.locator('.guess-list li')).toHaveCount(0);
   await expect(page.getByRole('combobox')).toHaveValue('');
 });
@@ -278,17 +283,16 @@ test('more detailed boundaries load only on zoom and support 32x magnification',
   const drawingLength = () => paths.evaluateAll(elements => elements.reduce((sum, element) => sum + (element.getAttribute('d')?.length ?? 0), 0));
   const overviewLength = await drawingLength();
   expect(detailRequests).toHaveLength(0);
-  const zoomIn = page.getByRole('button', { name: 'Zoom in', exact: true });
+  const navigation = page.getByRole('region', { name: 'Map navigation', exact: true });
   const response = page.waitForResponse(response => response.url().endsWith('/world.detail.v1.geojson'));
-  for (let i = 0; i < 3; i++) await zoomIn.click();
+  for (let i = 0; i < 3; i++) await navigation.press('+');
   expect((await response).ok()).toBe(true);
   await expect.poll(drawingLength).toBeGreaterThan(overviewLength * 2);
-  for (let i = 0; i < 12 && await zoomIn.isEnabled(); i++) await zoomIn.click();
-  await expect(page.getByLabel('Map zoom level')).toHaveText('3200%');
-  await expect(zoomIn).toBeDisabled();
-  await page.getByRole('button', { name: 'Reset map', exact: true }).click();
-  await expect(page.getByLabel('Map zoom level')).toHaveText('100%');
-  for (let i = 0; i < 3; i++) await zoomIn.click();
+  for (let i = 0; i < 12; i++) await navigation.press('+');
+  await expect(page.locator('.map-countries')).toHaveAttribute('transform', /scale\(32\)/);
+  await navigation.press('0');
+  await expect(page.locator('.map-countries')).toHaveAttribute('transform', 'translate(0 0) scale(1)');
+  for (let i = 0; i < 3; i++) await navigation.press('+');
   await expect.poll(drawingLength).toBeGreaterThan(overviewLength * 2);
   expect(detailRequests).toHaveLength(1);
   await expect(page.locator('.guess-list li')).toHaveCount(0);
@@ -301,7 +305,7 @@ test('overview stays usable when detail fails, and detail can be retried', async
   const paths = page.locator('.map-countries path');
   const drawingLength = () => paths.evaluateAll(elements => elements.reduce((sum, element) => sum + (element.getAttribute('d')?.length ?? 0), 0));
   const overviewLength = await drawingLength();
-  for (let i = 0; i < 3; i++) await page.getByRole('button', { name: 'Zoom in', exact: true }).click();
+  for (let i = 0; i < 3; i++) await page.getByRole('region', { name: 'Map navigation', exact: true }).press('+');
   await expect(page.getByRole('button', { name: 'Retry map detail' })).toBeVisible();
   expect(await drawingLength()).toBe(overviewLength);
   await page.unroute('**/world.detail.v1.geojson');

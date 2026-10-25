@@ -54,6 +54,24 @@ test('country entry and submit are above the fold, including a small phone', asy
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
 });
 
+for (const submit of ['button', 'Enter'] as const) {
+  test(`${submit} submission releases touch input focus and preserves desktop focus`, async ({ page, isMobile }) => {
+    await page.goto('/');
+    const input = page.getByRole('combobox');
+    await input.fill(wrong.name);
+    await expect(input).toBeFocused();
+    if (submit === 'button') await page.getByRole('button', { name: 'Guess', exact: false }).click();
+    else await input.press('Enter');
+    await expect(page.locator('.guess-list li')).toHaveCount(1);
+    await expect(input).toHaveValue('');
+    if (isMobile) await expect(input).not.toBeFocused();
+    else await expect(input).toBeFocused();
+    // The next guess remains available after dismissing the keyboard.
+    await input.fill(wrong.name);
+    await expect(input).toBeFocused();
+  });
+}
+
 test('entry sits immediately above the map and guess results follow it', async ({ page }) => {
   await page.goto('/');
   const checkOrder = async () => {

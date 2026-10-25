@@ -48,7 +48,9 @@ export function CountrySearch({ onGuess }: { onGuess: (id: string) => void }) {
     if (!country) { setError(`Choose a country from the suggestions. Only the ${countries.length} countries in this puzzle’s pool are eligible.`); return; }
     onGuess(country.id);
     setQuery(''); setError(''); setOpen(false); setActive(-1);
-    input.current?.focus();
+    // Release the software keyboard so touch players can see the map result.
+    if (window.matchMedia('(pointer: coarse)').matches) input.current?.blur();
+    else input.current?.focus();
   }}>
     <label htmlFor={id}>Where shall we go?</label>
     <div className="input-row">

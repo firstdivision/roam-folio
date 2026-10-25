@@ -404,6 +404,81 @@ test('keyboard users solve, unlock a sourced postcard and share without spoilers
   await expect(page.getByRole('button', { name: /give up/i })).toHaveCount(0);
 });
 
+test('solving opens a focused modal that can close, reopen, and restore after reload', async ({ page }) => {
+  await page.goto('/');
+  const dialog = page.getByRole('dialog');
+  await expect(dialog).toHaveCount(0);
+  const overflow = await page.evaluate(() => document.documentElement.style.overflow);
+  await guess(page, target.name);
+  await expect(dialog).toBeVisible();
+  await expect(dialog).toHaveAccessibleName(`You’ve arrived in ${target.name}!`);
+  await expect(dialog.locator('.success-panel')).toContainText('DESTINATION DISCOVERED');
+  await expect(dialog.locator('#completion-heading')).toBeFocused();
+  await expect(dialog.locator('.country-facts li')).toHaveCount(3);
+  expect(await page.evaluate(() => document.documentElement.style.overflow)).toBe('hidden');
+  // Native modal behavior makes the underlying game inert to focus and clicks.
+  await page.locator('.help-button').evaluate(element => (element as HTMLButtonElement).focus());
+  await expect(dialog.locator('#completion-heading')).toBeFocused();
+  const close = dialog.getByRole('button', { name: 'Close', exact: true });
+  await close.focus();
+  await page.keyboard.press('Shift+Tab');
+  // A scrollable native dialog can itself be a Tab stop before its controls.
+  expect(await dialog.evaluate(element => element.contains(document.activeElement))).toBe(true);
+  await page.keyboard.press('Tab');
+  await expect(close).toBeFocused();
+  await page.keyboard.press('Tab');
+  await expect(dialog.getByRole('button', { name: 'Share your journey' })).toBeFocused();
+  await page.keyboard.press('Escape');
+  await expect(dialog).toHaveCount(0);
+  const reopen = page.getByRole('button', { name: 'View your postcard' });
+  await expect(reopen).toBeFocused();
+  expect(await page.evaluate(() => document.documentElement.style.overflow)).toBe(overflow);
+  await expect(page.locator('.guess-list li')).toHaveCount(1);
+  await reopen.click();
+  await expect(dialog).toBeVisible();
+  await expect(dialog.locator('#completion-heading')).toBeFocused();
+  await page.reload();
+  await expect(dialog).toBeVisible();
+  await expect(dialog.locator('.postcard h2')).toHaveText(target.name);
+  await expect(page.locator('.guess-list li')).toHaveCount(1);
+  await dialog.getByRole('button', { name: 'Close', exact: true }).click();
+  await expect(dialog).toHaveCount(0);
+  await expect(reopen).toBeFocused();
+});
+
+test('completion modal fits a small phone and keeps the postcard and close button reachable', async ({ page }, testInfo) => {
+  await page.setViewportSize({ width: 320, height: 568 });
+  await page.goto('/');
+  await guess(page, target.name);
+  const dialog = page.getByRole('dialog');
+  await expect(dialog).toBeInViewport({ ratio: 1 });
+  await expect(dialog.locator('.country-facts li')).toHaveCount(3);
+  await expect(dialog.locator('#completion-heading')).toBeInViewport({ ratio: 1 });
+  await expect(dialog.getByRole('button', { name: 'Close', exact: true })).toBeInViewport({ ratio: 1 });
+  expect(await dialog.evaluate(element => element.scrollWidth <= element.clientWidth)).toBe(true);
+  await page.screenshot({ path: testInfo.outputPath('completion-modal-top.png') });
+  await dialog.getByRole('link', { name: /Content credits and licenses/ }).scrollIntoViewIfNeeded();
+  await expect(dialog.getByRole('link', { name: /Content credits and licenses/ })).toBeInViewport({ ratio: 1 });
+  await expect(dialog.getByRole('button', { name: 'Close', exact: true })).toBeInViewport({ ratio: 1 });
+  await page.screenshot({ path: testInfo.outputPath('completion-modal-postcard.png') });
+  await dialog.getByRole('button', { name: 'Close', exact: true }).click();
+  await expect(dialog).toHaveCount(0);
+});
+
+test('a failed postcard can retry inside the completion modal without losing the win', async ({ page }) => {
+  await page.route('**/data/discovery/*.json', route => route.fulfill({ status: 503, body: 'Unavailable' }));
+  await page.goto('/');
+  await guess(page, target.name);
+  const dialog = page.getByRole('dialog');
+  await expect(dialog.locator('.success-panel')).toContainText('DESTINATION DISCOVERED');
+  await expect(dialog.locator('.postcard')).toContainText('The postcard couldn’t load.');
+  await page.unroute('**/data/discovery/*.json');
+  await dialog.getByRole('button', { name: 'Try again', exact: true }).click();
+  await expect(dialog.locator('.country-facts li')).toHaveCount(3);
+  await expect(page.locator('.guess-list li')).toHaveCount(1);
+  await expect(dialog).toBeVisible();
+});
+
 test('a new UTC day clears active guesses and completion', async ({ page }) => {
   await page.clock.setSystemTime(new Date(`${date}T23:59:00Z`));
   await page.goto('/');
@@ -413,6 +488,9 @@ test('a new UTC day clears active guesses and completion', async ({ page }) => {
   await expect(page.getByRole('combobox')).toBeVisible();
   await expect(page.locator('.guess-list li')).toHaveCount(0);
   await expect(page.locator('.postcard')).toHaveCount(0);
+  await expect(page.getByRole('dialog')).toHaveCount(0);
+  await expect(page.getByRole('button', { name: 'View your postcard' })).toHaveCount(0);
+  expect(await page.evaluate(() => document.documentElement.style.overflow)).not.toBe('hidden');
   await expect(page.locator('.daily-label')).toContainText('October 25');
 });
 

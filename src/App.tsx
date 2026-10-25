@@ -24,8 +24,13 @@ export default function App() {
   const [showShare, setShowShare] = useState(false);
   const [shareMessage, setShareMessage] = useState('');
   const [helpOpen, setHelpOpen] = useState(false);
+  const [dismissedCompletion, setDismissedCompletion] = useState<string | null>(null);
+  const completionDialog = useRef<HTMLDialogElement>(null);
+  const completionHeading = useRef<HTMLHeadingElement>(null);
+  const postcardButton = useRef<HTMLButtonElement>(null);
   const scheduleRequest = useRef<Promise<void> | null>(null);
   const solved = Boolean(session?.guesses.some(guess => guess.correct));
+  const completionOpen = solved && dismissedCompletion !== session?.puzzle.identity;
   const rankedGuesses = session?.guesses.map((result, index) => ({ result, number: index + 1 }))
     .sort((a, b) => a.result.meters - b.result.meters || Number(b.result.correct) - Number(a.result.correct) || a.number - b.number) ?? [];
   const latest = session?.guesses.at(-1);
@@ -62,6 +67,21 @@ export default function App() {
     return () => { window.clearInterval(timer); document.removeEventListener('visibilitychange', wake); window.removeEventListener('focus', wake); };
   }, [refreshDate, reloadSchedule]);
 
+  useEffect(() => {
+    if (!completionOpen) return;
+    const dialog = completionDialog.current;
+    if (!dialog) return;
+    const previousOverflow = document.documentElement.style.overflow;
+    dialog.showModal();
+    completionHeading.current?.focus({ preventScroll: true });
+    document.documentElement.style.overflow = 'hidden';
+    return () => {
+      dialog.close();
+      document.documentElement.style.overflow = previousOverflow;
+      (postcardButton.current ?? document.getElementById('guess-section'))?.focus({ preventScroll: true });
+    };
+  }, [completionOpen]);
+
   function guess(countryId: string) {
     if (getUtcDate() !== date) { refreshDate(); return; }
     if (!session || solved) return;
@@ -71,7 +91,7 @@ export default function App() {
     const guesses = [...session.guesses, result];
     const storageAvailable = saveProgress(session.puzzle, guesses.map(item => item.countryId));
     setSession({ ...session, guesses, storageAvailable });
-    setMessage(result.correct ? `You found ${nameFor(countryId)} in ${guesses.length} ${guesses.length === 1 ? 'guess' : 'guesses'}! Your postcard is ready below.` : `${nameFor(countryId)}. ${describe(result, session.guesses)}`);
+    setMessage(result.correct ? `You found ${nameFor(countryId)} in ${guesses.length} ${guesses.length === 1 ? 'guess' : 'guesses'}! Your postcard is ready.` : `${nameFor(countryId)}. ${describe(result, session.guesses)}`);
   }
 
   async function share() {
@@ -103,14 +123,20 @@ export default function App() {
               {!solved && <section className="guess-panel" aria-label="Guess a country"><CountrySearch key={date} onGuess={guess}/>{feedback && <p className="latest-feedback">{feedback}</p>}</section>}
             </WorldMap>
             <section className="feedback-panel" aria-label={solved ? 'Journey complete' : 'Journey status'}>
-              {solved ? <div className="success-panel"><p className="eyebrow">DESTINATION DISCOVERED</p><h2>You’ve arrived in<br/>{nameFor(session.puzzle.target)}<span>!</span></h2><p>{session.guesses.length} {session.guesses.length === 1 ? 'guess' : 'guesses'}, a world of discovery. Your postcard awaits below.</p><button className="primary-button" type="button" onClick={share}>Share your journey <span aria-hidden="true">↗</span></button><p className="next-puzzle">Next destination in <strong>{countdown}</strong><span>Resets at midnight UTC</span></p>{showShare && <div className="share-fallback"><label htmlFor="share-result">Your spoiler-free result</label><textarea id="share-result" readOnly value={shareResult(session.puzzle, session.guesses)} rows={4} onFocus={event => event.target.select()}/><p role="status">{shareMessage}</p></div>}</div> : null}
+              {solved && <div className="completed-journey"><p>You found <strong>{nameFor(session.puzzle.target)}</strong> in {session.guesses.length} {session.guesses.length === 1 ? 'guess' : 'guesses'}.</p><button ref={postcardButton} className="primary-button" type="button" aria-haspopup="dialog" onClick={() => setDismissedCompletion(null)}>View your postcard <span aria-hidden="true">↗</span></button></div>}
               {!session.storageAvailable && <p className="storage-warning" role="status">Browser storage is unavailable. You can play, but your guesses may not survive a refresh.</p>}
               <p className="sr-only" role="status" aria-live="polite" aria-atomic="true">{feedback}</p>
             </section>
           </div>
           <section className="history-panel" aria-labelledby="history-heading"><div className="section-title"><h2 id="history-heading">Your travel log</h2><span>{session.guesses.length} {session.guesses.length === 1 ? 'GUESS' : 'GUESSES'}</span></div><p className="history-order">Closest guesses first</p>{!session.guesses.length ? <div className="empty-history"><span aria-hidden="true">⌁</span><p>Every journey starts somewhere.</p><span>Make your first guess to get your bearings.</span></div> : <ol className="guess-list">{rankedGuesses.map(({ result, number }) => <li key={result.countryId} value={number}><span className="guess-number" aria-label={`Guess ${number}`}>{String(number).padStart(2, '0')}</span><span className="guess-swatch" style={{ background: result.correct ? '#c74332' : proximity(result.meters).color }} aria-hidden="true">{result.correct ? '✓' : ''}</span><div className="guess-country"><strong>{nameFor(result.countryId)}</strong><span>{result.correct ? 'Destination found' : result.borders ? 'It borders this country!' : proximity(result.meters).label}</span></div><span className="guess-distance">{result.correct ? 'Found!' : formatMiles(result.meters)}</span></li>)}</ol>}</section>
         </div>
-        {solved && <DiscoveryCard key={`${date}-${session.puzzle.target}`} countryId={session.puzzle.target}/>}
+        {completionOpen && <dialog ref={completionDialog} className="completion-dialog" aria-modal="true" aria-labelledby="completion-heading" aria-describedby="completion-summary" onCancel={event => { event.preventDefault(); setDismissedCompletion(session.puzzle.identity); }}>
+          <div className="completion-toolbar"><button className="dialog-close" type="button" onClick={() => setDismissedCompletion(session.puzzle.identity)}>Close <span aria-hidden="true">×</span></button></div>
+          <div className="completion-content">
+            <div className="success-panel"><p className="eyebrow">DESTINATION DISCOVERED</p><h2 ref={completionHeading} id="completion-heading" tabIndex={-1}>You’ve arrived in<br/>{nameFor(session.puzzle.target)}<span>!</span></h2><p id="completion-summary">{session.guesses.length} {session.guesses.length === 1 ? 'guess' : 'guesses'}, a world of discovery. Explore your postcard below.</p><button className="primary-button" type="button" onClick={share}>Share your journey <span aria-hidden="true">↗</span></button><p className="next-puzzle">Next destination in <strong>{countdown}</strong><span>Resets at midnight UTC</span></p>{showShare && <div className="share-fallback"><label htmlFor="share-result">Your spoiler-free result</label><textarea id="share-result" readOnly value={shareResult(session.puzzle, session.guesses)} rows={4} onFocus={event => event.target.select()}/><p role="status">{shareMessage}</p></div>}</div>
+            <DiscoveryCard key={`${date}-${session.puzzle.target}`} countryId={session.puzzle.target}/>
+          </div>
+        </dialog>}
       </>}
     </main>
     <footer className="site-footer"><p>Discover a country. Collect its story.</p><div><span>One world. One daily destination.</span><a href="https://www.naturalearthdata.com/about/terms-of-use/" target="_blank" rel="noreferrer">Map data: Natural Earth · public domain</a></div></footer>

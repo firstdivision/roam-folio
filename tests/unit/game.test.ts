@@ -243,8 +243,7 @@ describe('date-keyed local progress', () => {
     }
     expect(store.length).toBe(4); // No additional counter or migration writes.
     const shared = shareResult(puzzle, current.map(id => evaluateGuess(puzzle, id)), expected);
-    expect(shared).toContain('\nAverage: 2.7 guesses per solve\n');
-    expect(shared.endsWith('\nhttps://roam-folio.com/')).toBe(true);
+    expect(shared).toBe('Roam-folio: 2026-10-24\nToday: 1\nAverage: 2.7\n\n🎯');
     expect(shared).not.toContain(countries.find(country => country.id === puzzle.target)!.name);
   });
 
@@ -340,11 +339,11 @@ describe('date-keyed local progress', () => {
     const puzzle = getPuzzle('2026-10-24'), correct = evaluateGuess(puzzle, puzzle.target);
     expect(() => shareResult(puzzle, [])).toThrow();
     const text = shareResult(puzzle, [correct]);
-    expect(text).toContain('Roamfolio · 2026-10-24\n');
+    expect(text).toContain('Roam-folio: 2026-10-24\n');
     expect(text).not.toContain('UTC');
-    expect(text).toContain('1 guess');
+    expect(text).toContain('Today: 1');
     expect(text).toContain('🎯');
-    expect(text).toContain('\nAverage: 1.0 guesses per solve\nhttps://roam-folio.com/');
+    expect(text).toBe('Roam-folio: 2026-10-24\nToday: 1\nAverage: 1.0\n\n🎯');
     expect(text).not.toContain(countries.find(c => c.id === puzzle.target)!.name);
   });
 });

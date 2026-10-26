@@ -446,7 +446,7 @@ test('keyboard users solve, unlock a sourced postcard and share without spoilers
   // Avoid a native system share sheet so the copyable browser fallback is tested.
   await page.evaluate(() => Object.defineProperty(navigator, 'share', { value: undefined, configurable: true }));
   await page.getByRole('button', { name: 'Share your journey' }).click();
-  await expect(page.getByLabel('Your spoiler-free result')).toHaveValue(/Roamfolio · 2026-10-24\n/);
+  await expect(page.getByLabel('Your spoiler-free result')).toHaveValue('Roam-folio: 2026-10-24\nToday: 1\nAverage: 1.0\n\n🎯');
   expect(await page.getByLabel('Your spoiler-free result').inputValue()).not.toContain(target.name);
   await page.reload();
   await expect(page.getByRole('heading', { name: target.name, exact: true })).toBeVisible();
@@ -521,7 +521,8 @@ test('average guesses includes earlier saves and stays consistent across sharing
   await page.evaluate(() => Object.defineProperty(navigator, 'share', { value: undefined, configurable: true }));
   await page.getByRole('button', { name: 'Share your journey' }).click();
   const text = await page.getByLabel('Your spoiler-free result').inputValue();
-  expect(text).toContain('\nAverage: 2.5 guesses per solve\nhttps://roam-folio.com/');
+  expect(text).toMatch(/^Roam-folio: 2026-10-24\nToday: 2\nAverage: 2\.5\n\n.+🎯$/);
+  expect(text).not.toContain('https://');
   expect(text).not.toContain(target.name);
   await page.reload();
   await expect(statistic).toContainText('2.5 guesses per solve');
@@ -546,7 +547,7 @@ test('native sharing includes the same average as the postcard', async ({ page }
   await expect(page.locator('.postcard-statistic')).toContainText('Across 1 solved puzzle in this browser');
   await page.getByRole('button', { name: 'Share your journey' }).click();
   const text = await page.locator('html').getAttribute('data-shared-text');
-  expect(text).toContain('\nAverage: 1.0 guesses per solve\nhttps://roam-folio.com/');
+  expect(text).toBe('Roam-folio: 2026-10-24\nToday: 1\nAverage: 1.0\n\n🎯');
   expect(text).toBe(await page.getByLabel('Your spoiler-free result').inputValue());
 });
 
@@ -702,7 +703,7 @@ test('unknown input and denied storage keep play accessible without layout overf
   await expect(page.locator('.postcard-statistic')).toContainText('Your average: 2.0 guesses per solve');
   await page.evaluate(() => Object.defineProperty(navigator, 'share', { value: undefined, configurable: true }));
   await page.getByRole('button', { name: 'Share your journey' }).click();
-  await expect(page.getByLabel('Your spoiler-free result')).toHaveValue(/Average: 2\.0 guesses per solve/);
+  await expect(page.getByLabel('Your spoiler-free result')).toHaveValue(/\nAverage: 2\.0\n\n.+🎯$/);
 });
 
 test('unpublished date shows unavailable without inventing a target', async ({ page }) => {

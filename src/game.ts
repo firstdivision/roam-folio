@@ -189,5 +189,5 @@ export function getSolveStatistics(puzzle: Puzzle, guesses: string[], storage?: 
 export function shareResult(puzzle: Puzzle, guesses: Guess[], statistics?: SolveStatistics): string {
   if (!guesses.at(-1)?.correct) throw new Error('Solve the puzzle before sharing');
   const average = (statistics ?? getSolveStatistics(puzzle, guesses.map(guess => guess.countryId))).averageGuesses ?? guesses.length;
-  return `Roamfolio · ${puzzle.date}\n${guesses.length} ${guesses.length === 1 ? 'guess' : 'guesses'} to discover today's country\n${guesses.map(guess => guess.correct ? '🎯' : proximity(guess.meters).emoji).join('')}\nAverage: ${average.toFixed(1)} guesses per solve\nhttps://roam-folio.com/`;
+  return `Roam-folio: ${puzzle.date}\nToday: ${guesses.length}\nAverage: ${average.toFixed(1)}\n\n${guesses.map(guess => guess.correct ? '🎯' : proximity(guess.meters).emoji).join('')}`;
 }

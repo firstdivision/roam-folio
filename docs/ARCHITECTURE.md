@@ -77,7 +77,7 @@ Exact gradient colors and interpolation are styling choices to document and chec
 - The hidden target receives no special map styling, labels, or discovery content before completion. Country names remain available for ordinary guess input.
 - Fetch and render the postcard only after solving, inside the completion modal. Public static assets can still be inspected by technically skilled users; this is not a tamper-proof game.
 - Derive average guesses per solve from existing date-keyed progress in local storage. Validate each record against its published puzzle identity and guess rules, and count only completed puzzles once. Include the current in-memory solve even if saving fails. No separate counter, new storage schema, or migration is needed; earlier valid saved solves contribute automatically. Display one decimal place on the postcard with the solved puzzle count; synchronize statistics when another tab changes saved progress. History is local to this browser and is lost when browser data is cleared.
-- Share only the puzzle calendar date, guess count, ordered proximity symbols, success marker, and average guesses per solve, followed by `https://roam-folio.com/` on the final line. Supply copyable text when native sharing is unavailable.
+- Format shared results as `Roam-folio: <date>`, `Today: <guess count>`, and `Average: <average guesses>` on separate lines, followed by a blank line and the chronological proximity symbols with their success marker. The average uses one decimal place; no URL is included. Supply copyable text when native sharing is unavailable.
 
 ## Project structure
 

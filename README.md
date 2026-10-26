@@ -58,7 +58,7 @@ npm run data:discovery
 
 For map-display changes alone, use `.venv/bin/python scripts/geography/generate.py --display-only` to retain the existing puzzle and distance data.
 
-The geographic generator verifies retained source archive checksums, records component mapping and calculation bounds, and writes reproducible browser assets. The additive geography extensions preserve every earlier distance exactly. The v3 matrix covers all 197 guessable countries, while schedules and discovery cards use only the 146 answer-eligible countries. Schedule generation refuses to rewrite existing assignments or their pool/geography versions. Discovery generation validates exact pool coverage and citations. Read `AGENTS.md` and all documentation before changing rules or data policies.
+The geographic generator verifies retained source archive checksums, records component mapping and calculation bounds, and writes reproducible browser assets. The additive geography extensions preserve every earlier distance exactly. The v3 matrix covers all 197 guessable countries, while schedules and discovery cards use only the 146 answer-eligible countries. Schedule generation refuses to rewrite existing assignments or their pool/geography versions; `npm run data:schedule -- --check` verifies reproducibility without writing files. Discovery generation validates exact answer-pool coverage and citations. Read `AGENTS.md` and all documentation before changing rules or data policies.
 
 ## GitHub Pages
 

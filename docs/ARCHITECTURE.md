@@ -180,6 +180,14 @@ References: [Apple Messages rich previews](https://developer.apple.com/documenta
 - Desktop/mobile screenshots were inspected; a tiny-island winding issue found during visual QA is fixed and covered by a regression test.
 - GitHub Pages workflows are prepared, with deployment gated on validation. No remote publication has been performed. Safari, Firefox, and physical-device checks remain outside this verification pass.
 
+## Pool-v3 verification — 2026-10-25
+
+- 26 unit tests pass, including exact 146-answer/51-guess-only membership, 19,306 certified pair lookups, distances from every guess-only country to every answer, deterministic schedule generation in read-only `--check` mode, rejection of guess-only targets, and reload/storage compatibility.
+- 18 geographic tests pass, including all 197 source geometries, v3 provenance, preservation of all 7,875 v2 pair records, real enclave borders, and source mappings for Kosovo, Palestine and South Sudan.
+- All 92 desktop/mobile Chromium browser checks pass in a complete run. Each of the 20 added answers unlocks its sourced postcard only after solving and restores after reload. Guess-only countries receive suggestions, border/distance feedback, map color and persisted history without unlocking discovery. Existing UTC rollover, accessibility, map and sharing checks pass.
+- Discovery generation validates 146 complete sourced postcards. TypeScript and the production build pass. Vite reports a JavaScript chunk-size advisory (about 580 kB before compression, 218 kB gzip); no new runtime dependency was added.
+- All 2,626 pre-expansion assignments and their eras match the retained regression snapshot; the 146-answer cycle begins on 2033-03-11. No deployment was performed in this verification pass.
+
 ## Technical references
 
 - [React with a build tool](https://react.dev/learn/build-a-react-app-from-scratch)

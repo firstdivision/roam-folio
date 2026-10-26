@@ -251,8 +251,8 @@
         "facts[0]": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
         "facts[1]": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
         "facts[2]": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
-        "culture": "https://en.wikivoyage.org/wiki/Kuwait",
-        "food": "https://en.wikivoyage.org/wiki/Kuwait#Eat"
+        "culture": "https://www.kuna.net.kw/ArticleDetails.aspx?id=2480318&language=en",
+        "food": "https://www.kuna.net.kw/ArticleDetails.aspx?id=2480318&language=en"
       },
       "referenceFields": {
         "capital": [
@@ -423,6 +423,7 @@
     "Palestine uses geographic/language facts instead of the reference database’s capital field.",
     "Moldova avoids the reference database’s obsolete language label.",
     "Vatican pizza is explicitly shared Italian cuisine, not claimed as a distinct national dish.",
-    "Country reference classifications do not define game recognition or geometry; source IDs KOS, PSX and SDS map separately to reference codes UNK, PSE and SSD."
+    "Country reference classifications do not define game recognition or geometry; source IDs KOS, PSX and SDS map separately to reference codes UNK, PSE and SSD.",
+    "Kuwait’s winter craft/trade and khabeesa notes use a Kuwait News Agency report quoting local historians, replacing the initial broad travel-guide summaries."
   ]
 }

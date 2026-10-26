@@ -13,6 +13,7 @@ import schedule from '../../data/schedules/schedule.v1.json';
 import matrix from '../../data/geography/distances.v3.json';
 
 const newAnswers = 'BEN BDI SOM SDS SMR VAT MLT MDA MCO KOS LUX AFG KWT KGZ PRK PSX SYR TJK TKM YEM'.split(' ');
+const guessOnlyIds = 'BFA CPV CAF COM CIV DJI GNQ ERI SWZ GAB GMB GIN GNB LSO LBR LBY MWI MRT NER COG STP SYC SLE TGO AND LIE MNE BHR BTN BRN MDV TLS ATG BRB DMA GRD GUY KNA LCA VCT SUR KIR MHL FSM NRU PLW WSM SLB TON TUV VUT'.split(' ');
 
 afterEach(() => vi.unstubAllGlobals());
 
@@ -55,7 +56,7 @@ describe('UTC puzzle dates', () => {
     expect(getPuzzle('2033-03-11').identity).toContain(':pool-v3:natural-earth-5.1.1-policy-1-pool-3:');
     const path = new URL('../../data/schedules/schedule.v1.json', import.meta.url);
     const before = readFileSync(path, 'utf8');
-    execFileSync(process.execPath, ['scripts/schedules/generate.mjs']);
+    execFileSync(process.execPath, ['scripts/schedules/generate.mjs', '--check']);
     expect(readFileSync(path, 'utf8')).toBe(before);
     expect(readFileSync(new URL('../../public/data/schedule.v1.json', import.meta.url), 'utf8')).toBe(before);
     const scheduled = new Set(Object.values(schedule.assignments));
@@ -105,6 +106,7 @@ describe('eligible guesses and geographic feedback', () => {
     expect(new Set(countries.map(c => c.id)).size).toBe(197);
     expect(answerCountries).toHaveLength(146);
     expect(answerCountries.map(c => c.id).sort()).toEqual([...chadPool.map(c => c.id), ...newAnswers].sort());
+    expect(countries.filter(c => !c.answerEligible).map(c => c.id).sort()).toEqual(guessOnlyIds.sort());
     for (const country of countries) expect(resolveCountry(country.name)?.id).toBe(country.id);
     for (const input of ['Congo', 'Korea', 'Atlantis', 'Greenland']) expect(resolveCountry(input)).toBeUndefined();
     expect(resolveCountry('  U.S.A.  ')?.id).toBe('USA');
@@ -154,7 +156,7 @@ describe('eligible guesses and geographic feedback', () => {
     }
     expect(evaluateGuess({ ...getPuzzle('2026-10-24'), target: 'BEN' }, 'BFA')).toMatchObject({ meters: 0, borders: true, correct: false });
   });
-  it('adds Chad distances while preserving every original pair exactly', () => {
+  it('preserves every published v2 pair, including the Chad extension, exactly', () => {
     for (const [key, pair] of Object.entries(oldMatrix.pairs)) expect(matrix.pairs[key as keyof typeof matrix.pairs]).toEqual(pair);
     const puzzle = { ...getPuzzle('2026-10-24'), target: 'TCD' };
     for (const id of ['CMR', 'NGA', 'SDN']) expect(evaluateGuess(puzzle, id)).toMatchObject({ meters: 0, borders: true });

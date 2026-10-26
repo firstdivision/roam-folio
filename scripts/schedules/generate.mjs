@@ -48,9 +48,15 @@ try {
     throw new Error('Refusing to rewrite published pool/geography versions');
   }
 } catch (error) { if (error.code !== 'ENOENT') throw error; }
-await mkdir(new URL('../../data/schedules/', import.meta.url), { recursive: true });
-await mkdir(new URL('../../public/data/', import.meta.url), { recursive: true });
-for (const location of [path, new URL('../../public/data/schedule.v1.json', import.meta.url)]) {
-  await writeFile(location, JSON.stringify(schedule) + '\n');
+const text = JSON.stringify(schedule) + '\n';
+const locations = [path, new URL('../../public/data/schedule.v1.json', import.meta.url)];
+if (process.argv.includes('--check')) {
+  for (const location of locations) {
+    if (await readFile(location, 'utf8') !== text) throw new Error(`Schedule is not reproducible: ${location.pathname}`);
+  }
+} else {
+  await mkdir(new URL('../../data/schedules/', import.meta.url), { recursive: true });
+  await mkdir(new URL('../../public/data/', import.meta.url), { recursive: true });
+  for (const location of locations) await writeFile(location, text);
 }
-console.log(`Published ${Object.keys(assignments).length} immutable daily assignments through ${schedule.endsOn}; ${currentPool.length}-answer pool-v3 begins ${eras[2].startsOn}.`);
+console.log(`${process.argv.includes('--check') ? 'Verified' : 'Published'} ${Object.keys(assignments).length} immutable daily assignments through ${schedule.endsOn}; ${currentPool.length}-answer pool-v3 begins ${eras[2].startsOn}.`);

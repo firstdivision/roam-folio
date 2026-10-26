@@ -27,11 +27,11 @@ Legend: **MVP** = first playable release; **Later** = planned enhancement; **Ope
 - **MVP:** Shared website links include static, spoiler-free Open Graph metadata and a branded preview image readable without JavaScript.
 
 ## Country pool
-- **MVP:** Begin with approximately 100–130 curated, widely recognizable countries; the initial 125-country list was approved on 2026-10-24, followed by the approved addition of Chad for a current total of 126.
+- **MVP:** Use the explicitly approved 146-country answer pool and 197-country guess registry. The initial 125 answers and subsequent Chad addition are retained; on 2026-10-25 the user approved 20 more answers and 51 additional guess-only countries.
 - **MVP:** Avoid making tiny or highly obscure island nations frequent or mandatory answers.
 - **MVP:** Do not categorically exclude the Caribbean or Oceania; familiar countries may be included.
 - **MVP:** Country identifiers and boundaries must be stable and consistent between map, guess input, and distance data.
-- **MVP:** Use the current approved pool for guesses and future target cycles. Preserve all published targets when the pool expands: the original 125-country cycles end on 2032-11-04, and the 126-country answer pool begins on 2032-11-05. Display countries outside the pool neutrally, without accepting them as guesses. See [the approved list](COUNTRIES.md).
+- **MVP:** Use explicit, separate guess and answer eligibility. All 197 registry countries are guessable immediately with nearest-border feedback. Only 146 have `answerEligible: true`; the remaining 51 never become answers. Separate territories are excluded. Preserve all published targets: the 125-country cycles end on 2032-11-04, the published 126-country cycle runs through 2033-03-10, and the 146-country cycle begins on 2033-03-11. Countries outside the guess registry remain neutral and cannot be submitted. See [the approved list](COUNTRIES.md).
 
 ## Later — Discovery and retention
 - Recipes with ingredients, steps, and source attribution.
@@ -61,6 +61,9 @@ Legend: **MVP** = first playable release; **Later** = planned enhancement; **Ope
 18. With JavaScript disabled, the initial HTML still advertises the title, description, canonical URL, and a reachable 1200 × 630 PNG preview.
 19. Chad and Republic of Chad resolve to TCD, return certified border distances, preserve pre-expansion browser progress, and unlock a sourced postcard when solved in the expanded answer schedule.
 20. Solving opens a labeled modal with completion feedback and the postcard. Focus starts on the completion heading and stays inside the modal. Close and Escape restore focus to “View your postcard”; reopening and reloading preserve the win. Long postcards fit and scroll on a 320 × 568 viewport with a reachable close button. Postcard loading failures can retry inside the modal. UTC rollover closes the modal and unlocks the new puzzle.
+
+21. All 197 approved country names resolve as guesses; the 51 guess-only countries have finite distances to every answer and never appear in any schedule. The 20 approved new answers each have a sourced postcard, available only after solving. Preserve all 2,626 previously published assignments, their era metadata and storage identities.
+22. New tiny enclaves and special source IDs (Vatican City, San Marino, Monaco, Kosovo, Palestine and South Sudan) resolve to real source boundaries; shared land borders return exactly zero with a separate adjacency flag.
 
 ## Decision status
 

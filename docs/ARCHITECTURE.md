@@ -2,7 +2,7 @@
 
 ## Status and approved decisions
 
-The technical proposal was approved on 2026-10-24, with these product corrections: guesses are typed, the map is display-only, there is no give-up option, and proximity moves from white to red rather than green to red. The initial 125-country pool and territory policy were subsequently approved on the same date; the user later approved adding Chad, bringing the current registry to 126. The first playable version is implemented locally; deployment has not been performed.
+The technical proposal was approved on 2026-10-24, with these product corrections: guesses are typed, the map is display-only, there is no give-up option, and proximity moves from white to red rather than green to red. The initial 125-country pool and territory policy were subsequently approved on the same date; the user later approved adding Chad, bringing the registry to 126. On 2026-10-25, the user approved 20 additional answers and made the other 51 countries from the reviewed exclusions table guessable only. The current registry has 197 guesses and 146 possible answers; separate territories remain excluded. The first playable version is implemented locally; deployment has not been performed.
 
 - **Client:** React, TypeScript, and Vite; plain CSS and React's built-in state tools initially.
 - **Map:** SVG country shapes projected with D3 geographic utilities. The map displays countries and guesses, with pan/zoom navigation; it does not select or submit guesses.
@@ -15,7 +15,7 @@ The technical proposal was approved on 2026-10-24, with these product correction
 
 ## Required components
 
-1. **Country registry:** approved country IDs, names, aliases, eligibility, and an explicit mapping to source geometry.
+1. **Country registry:** approved country IDs, names, aliases, explicit answer eligibility, and an explicit mapping to source geometry. Registry membership permits a guess; `answerEligible` permits daily selection.
 2. **Geographic assets:** licensed boundaries for the display map, geographic source manifests, pairwise distances, and separate adjacency flags.
 3. **Daily schedule:** immutable date-to-country assignments and their schedule, country-pool, and geography versions.
 4. **Guess engine:** resolve typed input to an eligible country ID, retrieve distance, assign proximity feedback, and detect success.
@@ -38,7 +38,7 @@ The technical proposal was approved on 2026-10-24, with these product correction
 ## Guess rules and feedback
 
 - Accept guesses only from typed country search. Suggestions may resolve a typed name; map clicks never choose a guess.
-- Use the current approved registry for guesses and new answer cycles; retain the previous pool for already published answer cycles. Countries outside the pool remain neutral on the map.
+- Use all current registry entries for guesses, but filter `answerEligible: true` for new answer cycles. Retain previous answer pools for published cycles. Guess-only countries receive ordinary distance/color feedback and can persist in history, but cannot be targets. Countries outside the registry remain neutral.
 - Normalize case, surrounding whitespace, and reviewed aliases to a stable ID. Ambiguous or unknown input requires correction rather than an arbitrary guess.
 - Allow unlimited guesses and no give-up action. Only solving unlocks discovery.
 - A repeated country returns its existing result without increasing the guess count.
@@ -117,9 +117,9 @@ Work in small, testable increments within each phase. Required checks cover UTC 
 
 ## Implementation notes
 
-- All 126 approved IDs resolve through `data/geography/crosswalk.v2.json`; the original 125-country crosswalk remains unchanged. Checksummed source archives are retained under `data/geography/source/`.
-- The v2 matrix records 7,875 pairwise upper/lower bounds, preserving all 7,750 original records exactly and adding 125 Chad pairs. A compact triangular matrix supplies browser feedback without shipping proof metadata in the JavaScript bundle.
-- Twenty deterministic 125-country cycles cover 2026-01-01 through 2032-11-04. Published assignments and pinned geography are immutable. The expanded 126-country cycle begins on 2032-11-05 and runs through 2033-03-10. The generation command refuses to overwrite existing dates or published era metadata. `data/schedules/legacy.v1.json` records a regression hash of the original 2,500 assignments.
+- All 197 guessable IDs resolve through `data/geography/crosswalk.v3.json`; the v1 and v2 crosswalks remain unchanged. Checksummed source archives are retained under `data/geography/source/`.
+- The v3 matrix records 19,306 pairwise upper/lower bounds, preserving all 7,875 v2 records exactly and adding 11,431 pairs. The historical v2 matrix preserves all 7,750 v1 records and adds 125 Chad pairs. A compact triangular matrix supplies browser feedback without shipping proof metadata in the JavaScript bundle.
+- Twenty deterministic 125-country cycles cover 2026-01-01 through 2032-11-04. Published assignments and pinned geography are immutable. The expanded 126-country cycle begins on 2032-11-05 and runs through 2033-03-10. The appended 146-answer cycle runs from 2033-03-11 through 2033-08-03. The generation command refuses to overwrite existing dates or published era metadata. `data/schedules/legacy.v1.json` records a regression hash of the original 2,500 assignments, and `legacy.v2.json` preserves the 2,626 pre-v3 assignments and their eras.
 - The gradient has fixed mile/color anchors: 0/red, 250/red-orange, 1,000/orange, 2,000/yellow, and 3,000/white; distances above 3,000 remain white. Share labels use the approved bands above.
 - Geographic generation uses pyproj/PROJ's compiled GeographicLib C routines for performance; tests compare against the independent Python GeographicLib interface.
 - Browser preview and CI use committed geographic artifacts. Recomputing geography is a separate offline command, not part of every frontend build.
@@ -132,6 +132,14 @@ Work in small, testable increments within each phase. Required checks cover UTC 
 `scripts/geography/extend.py` verifies the pinned sources and base artifact hashes, retains all original pair records, computes only missing pairs using the same 100-meter certified method, and writes separate v2 crosswalk, proof matrix, compact feedback, and generation manifest. The browser uses the v2 compact matrix, whose original-pair distances are identical to v1. Historical v1 assets remain available.
 
 The schedule retains its original top-level version identifiers for compatibility and adds explicit `eras` with date ranges, pool version, geography version, seed, and cycle length. Puzzle identity uses the matching era; all original dates retain their exact identity and browser storage keys. Chad is accepted as a guess immediately. It first becomes eligible for daily selection in the appended pool-v2 cycle after the original published schedule. Schedule refresh rejects changed era metadata. Discovery generation includes `data/discovery/chad.json` with claim-level sources tracked separately.
+
+## Separate answer and guess eligibility / pool-v3
+
+`data/countries/pool.v3.json` preserves the v2 country names, IDs and aliases, appends the 20 approved answers followed by 51 guess-only countries, and sets an explicit boolean `answerEligible` on every entry. `countries` exposes all 197 choices; `answerCountries` exposes the 146 possible destinations. Typed search never presents guess-only countries as invalid. Runtime puzzle loading and downloaded-schedule validation check answer eligibility against the date’s era; direct guess evaluation also rejects a guess-only target. Browser progress retains its schema and keys and accepts the larger guess registry.
+
+`scripts/geography/expand.py` verifies v2 artifact hashes and source archives, preserves every v2 pair exactly, computes missing pairs, and writes separate v3 crosswalk, proof matrix, compact feedback and generation records. Generation is checkpointed with registry/source/code fingerprints. No map boundaries or historical map assets change. Source IDs KOS (Kosovo), PSX (Palestine), SDS (South Sudan) and VAT (Vatican City) are retained as application IDs; common alternative codes/names are reviewed aliases.
+
+The immutable v1/v2 schedule eras remain unchanged. The new 146-answer cycle begins on 2033-03-11, after every published date. Schedule generation filters answer eligibility, so none of the 51 guess-only countries enters the cycle. The 20 new sourced postcards live in `data/discovery/expansion.v3.json`; discovery build coverage is exactly the answer pool rather than the guess registry.
 
 ## Map navigation and layout
 

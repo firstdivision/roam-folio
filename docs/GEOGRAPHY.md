@@ -2,7 +2,7 @@
 
 ## Status
 
-The initial 125-country pool and territory policy were approved on 2026-10-24; the user subsequently approved adding Chad to make 126. Natural Earth 5.1.1 country and map-unit archives have been downloaded, verified, and retained. The original pipeline generated 7,750 pairwise distance records with upper/lower bounds; `data/geography/generation.v1.json` records the method, tool versions, checksums, and largest certified computational gap.
+The initial 125-country pool and territory policy were approved on 2026-10-24; subsequent approved expansions add Chad and then 20 further answers plus 51 guess-only countries. The current registry has 197 guessable countries and 146 possible answers. Natural Earth 5.1.1 country and map-unit archives have been downloaded, verified, and retained. The original pipeline generated 7,750 pairwise distance records with upper/lower bounds; `data/geography/generation.v1.json` records the method, tool versions, checksums, and largest certified computational gap.
 
 ## Source dataset
 
@@ -18,7 +18,7 @@ Maintain the same geographic interpretation for the display map and distance mat
 
 Default: include all integral land components, islands, and exclaves of an approved game country. Exclude separately administered dependencies unless explicitly included in the country registry. Do not merge features solely because they share a sovereign code.
 
-The source-feature crosswalk is recorded for every eligible ID in `data/geography/crosswalk.v2.json`. Use `ADM0_A3` rather than assuming `ISO_A3` is populated; France and Norway have `-99` ISO fields in this release.
+The source-feature crosswalk is recorded for every guessable ID in `data/geography/crosswalk.v3.json`. Use `ADM0_A3` rather than assuming `ISO_A3` is populated; France and Norway have `-99` ISO fields in this release.
 
 | Game country / case | Approved mapping |
 |---|---|
@@ -54,11 +54,11 @@ The component crosswalk retains the selected release's separate administrative f
 5. Use spatial indexing and conservative lower bounds to prune comparisons. Adaptively subdivide candidate segments until a global lower/upper distance bound meets the approved **100-meter computational tolerance**. A fixed set of sampled vertices alone is insufficient.
 6. Record each unordered pair's minimum distance in meters, adjacency flag, and generation metadata. Mirror values consistently for browser lookup. Reject missing, negative, or nonfinite results.
 
-With the current approved pool of 126 countries, there are **7,875 distinct unordered pairs** excluding self-pairs. The browser looks up these precomputed values; it does not download detailed source boundaries to calculate every guess.
+With the current approved registry of 197 guessable countries, there are **19,306 distinct unordered pairs** excluding self-pairs. The browser looks up these precomputed values; it does not download detailed source boundaries to calculate every guess.
 
 The implemented search uses geodesic metric balls centered on actual boundary points. By the triangle inequality, center distance minus the two radii is a conservative lower bound; center distance is an upper bound. A priority queue refines the smallest global bound until the gap is within tolerance. Source edges are shortest WGS84 geodesics between vertices. Artificial polygon closures at the antimeridian are excluded. Bounds are rounded outward to millimeters, with internal tolerance reduced to keep the recorded gap below 100 meters. Source generalization can exceed that computational tolerance.
 
-Generation takes about one minute on the development machine. The current full proof matrix is `data/geography/distances.v2.json`; `feedback.v2.json` packs browser lookup values into an upper triangular matrix. The overview display geometry is simplified with topology preservation at 0.035 degrees and rounded to four decimal places. A detailed derivative uses a 0.005-degree tolerance and five decimal places, retaining 282,385 boundary coordinates versus 81,152 in the overview. Both are wound clockwise after rounding for D3; if rounding invalidates a tiny feature, its display coordinates retain their original precision. Display changes never affect distance calculations.
+Generation takes about one minute on the development machine. The current full proof matrix is `data/geography/distances.v3.json`; `feedback.v3.json` packs browser lookup values into an upper triangular matrix. The overview display geometry is simplified with topology preservation at 0.035 degrees and rounded to four decimal places. A detailed derivative uses a 0.005-degree tolerance and five decimal places, retaining 282,385 boundary coordinates versus 81,152 in the overview. Both are wound clockwise after rounding for D3; if rounding invalidates a tiny feature, its display coordinates retain their original precision. Display changes never affect distance calculations.
 
 The overview is 1,560,175 bytes; the detailed asset is 5,863,307 bytes before HTTP compression. The app loads the detailed file only at 3× zoom or above and supports navigation to 32×. This restores source detail that the overview discards; it does not add new geography or improve the underlying Natural Earth source accuracy. Names are not shown on hover. Display hashes, tolerances, precision, and source provenance are recorded in `data/geography/display.v1.json`.
 
@@ -73,6 +73,14 @@ References: [GeographicLib Python interface](https://geographiclib.sourceforge.i
 `generation.v2.json` records the base matrix hash, current registry hash, source lock hash, code hashes, dependency versions, output hashes, and certified gap. All v1 geography and map files remain unchanged. The map already contains Chad's geometry; the client derives eligibility from the current registry rather than the legacy pool-v1 flags in those immutable display files. Original daily assignments and distance feedback are preserved. The expanded answer pool starts after all originally published cycles.
 
 Run `.venv/bin/python scripts/geography/extend.py` after generating the base assets to reproduce v2 geography. The original `generate.py --display-only` command still reproduces the pinned v1 display assets.
+
+## Answer/guess registry expansion
+
+`pool.v3.json` includes 197 explicitly approved countries; all have distance calculations, while only 146 can be daily answers. `scripts/geography/expand.py` retains all 7,875 v2 pairs exactly and computes the 11,431 missing pairs using the same continuous-boundary search and 100-meter tolerance. This full triangular matrix also includes guess-only/guess-only pairs for consistent indexing and validation; gameplay compares guesses only against answer-eligible targets. Source boundaries are unchanged.
+
+All 71 newly guessable IDs use their existing Natural Earth country features. In particular, KOS is Kosovo, PSX is Palestine, SDS is South Sudan, and VAT is Vatican City. Somalia uses the source SOM feature, with Somaliland kept separately neutral under the existing de facto policy. No claims or separately administered features are unioned. San Marino and Vatican City retain source enclave boundaries inside Italy; Monaco shares a land boundary with France. Malta uses its source island components. All are already present in both display assets.
+
+`generation.v3.json` records base, registry, source and code hashes, 19,306 total pairs, 11,431 new pairs, dependencies, output hashes and certified gap. `crosswalk.v3.json` covers all 197 IDs. Original v1/v2 geography and display artifacts remain unchanged. Run `.venv/bin/python scripts/geography/expand.py` after the v2 extension; its fingerprinted checkpoint supports resuming interrupted work.
 
 ## Display and adjacency
 

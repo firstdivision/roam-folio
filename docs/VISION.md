@@ -9,7 +9,7 @@ Roamfolio feels like a small journey: guess a destination, follow geographic clu
 ## Differentiation
 - A shared daily guessing ritual.
 - Immediate numeric distance and map proximity clues.
-- A curated set of recognizable countries to keep difficulty enjoyable.
+- A curated set of countries as daily answers to keep difficulty enjoyable, with a broader country list available as guesses for geographic clues.
 - A satisfying reveal featuring cultural facts, landmarks, signature foods, and optional recipes.
 - A growing digital passport of places discovered.
 

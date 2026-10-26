@@ -5,6 +5,9 @@ import { CountrySearch } from './components/CountrySearch';
 import { DiscoveryCard } from './components/DiscoveryCard';
 import { WorldMap } from './map/WorldMap';
 
+const buildTimestamp = import.meta.env.VITE_BUILD_TIMESTAMP as string;
+const buildLabel = buildTimestamp.replace('T', ' ').replace(/\.\d{3}Z$/, ' UTC');
+
 type Session = { puzzle: Puzzle; guesses: Guess[]; storageAvailable: boolean };
 function restore(date: string): Session | null {
   try {
@@ -115,7 +118,7 @@ export default function App() {
     <header className="site-header"><a className="wordmark" href="./" aria-label="Roamfolio home"><span className="brand-globe" aria-hidden="true">◎</span>roamfolio<span className="brand-dot">.</span></a><button className="help-button" aria-expanded={helpOpen} aria-controls="how-to-play" onClick={() => setHelpOpen(value => !value)}><span aria-hidden="true">?</span> How to play</button></header>
     <main>
       <div className="game-heading"><h1>Daily destination</h1><p className="daily-label"><time dateTime={date}>{utcDate}</time><span>UTC</span></p></div>
-      {helpOpen && <section className="how-to-play" id="how-to-play" aria-labelledby="help-heading"><h2 id="help-heading">A small journey, one guess at a time</h2><ol><li>Type a country name, choose a suggestion, then press Guess. The map displays your guesses.</li><li>Follow the shortest distance between country borders. Land neighbors return 0 miles.</li><li>White is very far away; yellow, orange, and red bring you closer. Keep guessing until you find the country.</li><li>Solve to open your country postcard. Everyone gets the same puzzle, changing at midnight UTC.</li></ol><p>Your progress stays in this browser. No account, no guess limit.</p></section>}
+      {helpOpen && <section className="how-to-play" id="how-to-play" aria-labelledby="help-heading"><h2 id="help-heading">A small journey, one guess at a time</h2><ol><li>Type a country name, choose a suggestion, then press Guess. The map displays your guesses.</li><li>Follow the shortest distance between country borders. Land neighbors return 0 miles.</li><li>White is very far away; yellow, orange, and red bring you closer. Keep guessing until you find the country.</li><li>Solve to open your country postcard. Everyone gets the same puzzle, changing at midnight UTC.</li></ol><p>Some countries can be guessed for clues but never appear as daily destinations.</p><p>Your progress stays in this browser. No account, no guess limit.</p></section>}
       {!session ? <section className="unavailable" role="status"><h2>Today’s journey isn’t available yet.</h2><p>There is no published puzzle for {date}. Please check back when the schedule has been updated.</p></section> : <>
         <div className="play-area" id="guess-section" tabIndex={-1}>
           <div className="map-column">
@@ -139,7 +142,7 @@ export default function App() {
         </dialog>}
       </>}
     </main>
-    <footer className="site-footer"><p>Discover a country. Collect its story.</p><div><span>One world. One daily destination.</span><a href="https://www.naturalearthdata.com/about/terms-of-use/" target="_blank" rel="noreferrer">Map data: Natural Earth · public domain</a></div></footer>
+    <footer className="site-footer"><p>Discover a country. Collect its story.</p><div><span>One world. One daily destination.</span><a href="https://www.naturalearthdata.com/about/terms-of-use/" target="_blank" rel="noreferrer">Map data: Natural Earth · public domain</a><span>Built <time dateTime={buildTimestamp}>{buildLabel}</time></span></div></footer>
   </>;
 }
 

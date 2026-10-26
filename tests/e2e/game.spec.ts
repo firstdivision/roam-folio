@@ -1,9 +1,9 @@
 import { test, expect } from '@playwright/test';
 import type { Page } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
-import pool from '../../data/countries/pool.v2.json' with { type: 'json' };
+import pool from '../../data/countries/pool.v3.json' with { type: 'json' };
 import schedule from '../../data/schedules/schedule.v1.json' with { type: 'json' };
-import distances from '../../data/geography/distances.v2.json' with { type: 'json' };
+import distances from '../../data/geography/distances.v3.json' with { type: 'json' };
 
 const date = '2026-10-24';
 const targetId = schedule.assignments[date];
@@ -377,6 +377,56 @@ test('a future Chad puzzle reveals its sourced discovery only after solving', as
   await page.reload();
   await expect(page.locator('.postcard h2')).toHaveText('Chad');
 });
+
+test('guess-only countries offer suggestions, distance feedback, map color and saved progress', async ({ page }) => {
+  const beninDate = Object.entries(schedule.assignments).find(([, id]) => id === 'BEN')![0];
+  await page.clock.setSystemTime(new Date(`${beninDate}T12:00:00Z`));
+  const requests: string[] = [];
+  page.on('request', request => { if (request.url().includes('/discovery/')) requests.push(request.url()); });
+  await page.goto('/');
+  await page.getByRole('combobox').fill('Burkina');
+  await expect(page.getByRole('option', { name: 'Burkina Faso' })).toBeVisible();
+  await page.getByRole('combobox').press('Escape');
+  await guess(page, 'Burkina Faso');
+  await expect(page.locator('.guess-list li')).toHaveCount(1);
+  await expect(page.locator('.latest-feedback')).toContainText('0 miles');
+  await expect(page.locator('.latest-feedback')).toContainText('It borders this country');
+  await expect(page.locator('.map-countries path[stroke="#253c3e"]').first()).toHaveAttribute('fill', /rgb/);
+  await expect(page.locator('.postcard')).toHaveCount(0);
+  expect(requests).toEqual([]);
+  await guess(page, 'Burkina Faso');
+  await expect(page.locator('.guess-list li')).toHaveCount(1);
+  await guess(page, 'Vanuatu');
+  await expect(page.locator('.guess-list li')).toHaveCount(2);
+  await expect(page.locator('.latest-feedback')).toContainText(/Vanuatu.+miles/);
+  await page.reload();
+  await expect(page.locator('.guess-list li')).toHaveCount(2);
+  await expect(page.locator('.guess-country strong')).toContainText(['Burkina Faso', 'Vanuatu']);
+  expect(requests).toEqual([]);
+  await guess(page, 'Benin');
+  await expect(page.locator('.postcard h2')).toHaveText('Benin');
+});
+
+for (const country of pool.slice(126).filter(country => country.answerEligible)) {
+  test(`new answer ${country.name} unlocks a sourced postcard only after solving`, async ({ page }) => {
+    const answerDate = Object.entries(schedule.assignments).find(([, id]) => id === country.id)![0];
+    await page.clock.setSystemTime(new Date(`${answerDate}T12:00:00Z`));
+    const requests: string[] = [];
+    page.on('request', request => { if (request.url().includes('/discovery/')) requests.push(request.url()); });
+    await page.goto('/');
+    await expect(page.getByRole('combobox')).toBeVisible();
+    await expect(page.locator('.postcard')).toHaveCount(0);
+    expect(requests).toEqual([]);
+    await guess(page, country.name);
+    await expect(page.locator('.postcard h2')).toHaveText(country.name);
+    await expect(page.locator('.country-facts li')).toHaveCount(3);
+    await expect(page.locator('.postcard-content a.source-link')).toHaveCount(5);
+    expect(requests.some(url => url.endsWith(`/discovery/${country.id}.json`))).toBe(true);
+    await page.reload();
+    await expect(page.locator('.postcard h2')).toHaveText(country.name);
+    await expect(page.locator('.guess-list li')).toHaveCount(1);
+  });
+}
 
 test('keyboard users solve, unlock a sourced postcard and share without spoilers', async ({ page }) => {
   await page.goto('/');

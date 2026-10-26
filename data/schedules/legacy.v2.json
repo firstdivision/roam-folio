@@ -1,0 +1,25 @@
+{
+  "endsOn": "2033-03-10",
+  "count": 2626,
+  "assignmentsSha256": "cc41454be64215a80e3ee0df44d32aa05d41bb3bb37232672eca7993695c6345",
+  "eras": [
+    {
+      "startsOn": "2026-01-01",
+      "endsOn": "2032-11-04",
+      "poolVersion": "pool-v1",
+      "geographyVersion": "natural-earth-5.1.1-policy-1",
+      "seed": "roamfolio/pool-v1/schedule-v1",
+      "cycleLength": 125,
+      "cycles": 20
+    },
+    {
+      "startsOn": "2032-11-05",
+      "endsOn": "2033-03-10",
+      "poolVersion": "pool-v2",
+      "geographyVersion": "natural-earth-5.1.1-policy-1-pool-2",
+      "seed": "roamfolio/pool-v2/schedule-v1",
+      "cycleLength": 126,
+      "cycles": 1
+    }
+  ]
+}

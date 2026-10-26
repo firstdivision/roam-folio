@@ -15,10 +15,10 @@ class GeographicArtifactTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.source, cls.units = load_geometries()
-        cls.pool = json.loads((ROOT / 'data/countries/pool.v2.json').read_text())
+        cls.pool = json.loads((ROOT / 'data/countries/pool.v3.json').read_text())
 
     def test_all_approved_countries_resolve_to_valid_source_geometries(self):
-        self.assertEqual(len(self.pool), 126)
+        self.assertEqual(len(self.pool), 197)
         for country in self.pool:
             self.assertIn(country['id'], self.source)
             geometry = self.source[country['id']][1]
@@ -88,6 +88,45 @@ class GeographicArtifactTests(unittest.TestCase):
             self.assertEqual(pairs[':'.join(sorted(['TCD', neighbor]))]['meters'], 0)
             self.assertTrue(pairs[':'.join(sorted(['TCD', neighbor]))]['borders'])
         self.assertGreater(pairs['EGY:TCD']['lowerMeters'], 0)
+
+    def test_guess_registry_extension_preserves_v2_and_records_provenance(self):
+        base = json.loads((ROOT / 'data/geography/distances.v2.json').read_text())
+        extended = json.loads((ROOT / 'data/geography/distances.v3.json').read_text())
+        manifest = json.loads((ROOT / 'data/geography/generation.v3.json').read_text())
+        crosswalk = json.loads((ROOT / 'data/geography/crosswalk.v3.json').read_text())
+        self.assertEqual(extended['ids'], [c['id'] for c in self.pool])
+        self.assertEqual(set(crosswalk), set(extended['ids']))
+        self.assertEqual(len(extended['pairs']), 19306)
+        self.assertEqual(manifest['newPairCount'], 11431)
+        self.assertEqual(manifest['baseMatrixSha256'], hashlib.sha256((ROOT / 'data/geography/distances.v2.json').read_bytes()).hexdigest())
+        self.assertEqual(manifest['poolSha256'], hashlib.sha256((ROOT / 'data/countries/pool.v3.json').read_bytes()).hexdigest())
+        self.assertEqual(manifest['sourceLockSha256'], hashlib.sha256((ROOT / 'data/geography/sources.lock.json').read_bytes()).hexdigest())
+        self.assertEqual(manifest['generatorSha256'], hashlib.sha256((ROOT / 'scripts/geography/expand.py').read_bytes()).hexdigest())
+        self.assertLessEqual(manifest['maxCertifiedGapMeters'], 100)
+        for key, value in base['pairs'].items():
+            self.assertEqual(extended['pairs'][key], value)
+        for name, expected in manifest['outputSha256'].items():
+            content = (ROOT / 'data/geography' / name).read_bytes()
+            self.assertEqual(hashlib.sha256(content).hexdigest(), expected)
+            if name != 'crosswalk.v3.json':
+                self.assertEqual((ROOT / 'public/data' / name).read_bytes(), content)
+        for country in self.pool:
+            id_ = country['id']
+            self.assertEqual(crosswalk[id_]['sourceValue'], id_)
+            self.assertEqual(crosswalk[id_]['sourceLabel'], self.source[id_][0]['ADMIN'])
+
+    def test_new_enclaves_source_ids_and_guess_only_borders(self):
+        pairs = json.loads((ROOT / 'data/geography/distances.v3.json').read_text())['pairs']
+        for a, b in [('ITA', 'VAT'), ('ITA', 'SMR'), ('FRA', 'MCO'), ('BEN', 'BFA'),
+                     ('BEN', 'NGA'), ('BDI', 'RWA'), ('SDS', 'SDN'), ('SOM', 'KEN'),
+                     ('KOS', 'SRB'), ('PSX', 'ISR'), ('AFG', 'TJK'), ('KWT', 'IRQ'),
+                     ('KGZ', 'KAZ'), ('PRK', 'KOR'), ('SYR', 'TUR'), ('TKM', 'IRN'), ('YEM', 'OMN')]:
+            self.assertGreater(self.source[a][1].boundary.intersection(self.source[b][1].boundary).length, 0, (a, b))
+            self.assertEqual(pairs[':'.join(sorted([a, b]))], {'meters': 0, 'lowerMeters': 0, 'borders': True})
+        for a, b in [('MLT', 'ITA'), ('VUT', 'FJI'), ('VAT', 'SMR')]:
+            pair = pairs[':'.join(sorted([a, b]))]
+            self.assertFalse(pair['borders'])
+            self.assertGreater(pair['lowerMeters'], 0)
 
 
 if __name__ == '__main__': unittest.main()

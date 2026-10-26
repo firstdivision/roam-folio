@@ -7,6 +7,7 @@ import distances from '../data/geography/feedback.v3.json';
 export type Country = { id: string; name: string; aliases: string[]; answerEligible: boolean };
 export type Puzzle = { date: string; target: string; identity: string };
 export type Guess = { countryId: string; meters: number; borders: boolean; correct: boolean };
+export type SolveStatistics = { solvedCount: number; totalGuesses: number; averageGuesses: number | null };
 export type CitedText = { text: string; sourceUrl: string; sourceTitle: string };
 export type Discovery = { facts: CitedText[]; culture: CitedText; food: CitedText & { name: string } };
 export const countries: Country[] = pool;
@@ -160,7 +161,33 @@ export function saveProgress(puzzle: Puzzle, guesses: string[], storage?: Storag
   } catch { return false; }
 }
 
-export function shareResult(puzzle: Puzzle, guesses: Guess[]): string {
+/** Derive lifetime statistics from saved progress, counting each solved puzzle once. */
+export function getSolveStatistics(puzzle: Puzzle, guesses: string[], storage?: StorageAccess & Pick<Storage, 'key' | 'length'>): SolveStatistics {
+  if (!validGuesses(puzzle, guesses)) throw new Error('Invalid progress');
+  const solves = new Map<string, number>();
+  try {
+    const store = storage ?? window.localStorage;
+    for (let index = 0; index < store.length; index++) {
+      const key = store.key(index);
+      if (!key?.startsWith('roamfolio:progress:v1:')) continue;
+      let savedPuzzle: Puzzle;
+      try { savedPuzzle = getPuzzle(key.slice(-10)); } catch { continue; }
+      if (key !== storageKey(savedPuzzle) || savedPuzzle.identity === puzzle.identity) continue;
+      const progress = loadProgress(savedPuzzle, store);
+      if (progress.completed) solves.set(savedPuzzle.identity, progress.guesses.length);
+    }
+  } catch {
+    // With storage denied, the current solve can still be displayed and shared.
+    solves.clear();
+  }
+  // Include the current in-memory solve even if saving failed, without double counting.
+  if (guesses.at(-1) === puzzle.target) solves.set(puzzle.identity, guesses.length);
+  const totalGuesses = [...solves.values()].reduce((total, count) => total + count, 0);
+  return { solvedCount: solves.size, totalGuesses, averageGuesses: solves.size ? totalGuesses / solves.size : null };
+}
+
+export function shareResult(puzzle: Puzzle, guesses: Guess[], statistics?: SolveStatistics): string {
   if (!guesses.at(-1)?.correct) throw new Error('Solve the puzzle before sharing');
-  return `Roamfolio · ${puzzle.date}\n${guesses.length} ${guesses.length === 1 ? 'guess' : 'guesses'} to discover today's country\n${guesses.map(guess => guess.correct ? '🎯' : proximity(guess.meters).emoji).join('')}\nDiscover a country. Collect its story.`;
+  const average = (statistics ?? getSolveStatistics(puzzle, guesses.map(guess => guess.countryId))).averageGuesses ?? guesses.length;
+  return `Roamfolio · ${puzzle.date}\n${guesses.length} ${guesses.length === 1 ? 'guess' : 'guesses'} to discover today's country\n${guesses.map(guess => guess.correct ? '🎯' : proximity(guess.meters).emoji).join('')}\nAverage: ${average.toFixed(1)} guesses per solve\nhttps://roam-folio.com/`;
 }

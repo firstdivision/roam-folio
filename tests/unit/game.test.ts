@@ -8,7 +8,7 @@ import packed from '../../data/geography/feedback.v3.json';
 import { execFileSync } from 'node:child_process';
 import { readFileSync } from 'node:fs';
 import { describe, expect, it, vi, afterEach } from 'vitest';
-import { answerCountries, countries, evaluateGuess, formatMiles, getPuzzle, getLocalDate, loadProgress, nextReset, proximity, refreshSchedule, resolveCountry, saveProgress, shareResult } from '../../src/game';
+import { answerCountries, countries, evaluateGuess, formatMiles, getPuzzle, getLocalDate, getSolveStatistics, loadProgress, nextReset, proximity, refreshSchedule, resolveCountry, saveProgress, shareResult } from '../../src/game';
 import schedule from '../../data/schedules/schedule.v1.json';
 import matrix from '../../data/geography/distances.v3.json';
 
@@ -223,8 +223,84 @@ describe('eligible guesses and geographic feedback', () => {
 describe('date-keyed local progress', () => {
   function memory() {
     const values = new Map<string, string>();
-    return { values, getItem: (key: string) => values.get(key) ?? null, setItem: (key: string, value: string) => { values.set(key, value); } };
+    return { values, get length() { return values.size; }, key: (index: number) => [...values.keys()][index] ?? null, getItem: (key: string) => values.get(key) ?? null, setItem: (key: string, value: string) => { values.set(key, value); } };
   }
+  const solvedGuesses = (puzzle: ReturnType<typeof getPuzzle>, count: number) => [...countries.filter(country => country.id !== puzzle.target).slice(0, count - 1).map(country => country.id), puzzle.target];
+
+  it('averages all saved solves and the current solve once, including after reload', () => {
+    const store = memory(), puzzle = getPuzzle('2026-10-24');
+    const earlier = getPuzzle('2026-10-23'), oldest = getPuzzle('2026-10-22');
+    const unfinished = getPuzzle('2026-10-21');
+    saveProgress(earlier, solvedGuesses(earlier, 2), store);
+    saveProgress(oldest, solvedGuesses(oldest, 5), store);
+    saveProgress(unfinished, countries.filter(country => country.id !== unfinished.target).slice(0, 3).map(country => country.id), store);
+    const current = [puzzle.target];
+    const expected = { solvedCount: 3, totalGuesses: 8, averageGuesses: 8 / 3 };
+    expect(getSolveStatistics(puzzle, current, store)).toEqual(expected);
+    saveProgress(puzzle, current, store);
+    for (let reload = 0; reload < 3; reload++) {
+      expect(getSolveStatistics(puzzle, loadProgress(puzzle, store).guesses, store)).toEqual(expected);
+    }
+    expect(store.length).toBe(4); // No additional counter or migration writes.
+    const shared = shareResult(puzzle, current.map(id => evaluateGuess(puzzle, id)), expected);
+    expect(shared).toContain('\nAverage: 2.7 guesses per solve\n');
+    expect(shared.endsWith('\nhttps://roam-folio.com/')).toBe(true);
+    expect(shared).not.toContain(countries.find(country => country.id === puzzle.target)!.name);
+  });
+
+  it('has no average before the first solve and retains past solves at the next date', () => {
+    const store = memory(), puzzle = getPuzzle('2026-10-24'), tomorrow = getPuzzle('2026-10-25');
+    expect(getSolveStatistics(puzzle, [], store)).toEqual({ solvedCount: 0, totalGuesses: 0, averageGuesses: null });
+    const unfinished = [countries.find(country => country.id !== puzzle.target)!.id];
+    saveProgress(puzzle, unfinished, store);
+    expect(getSolveStatistics(puzzle, unfinished, store).averageGuesses).toBeNull();
+    saveProgress(puzzle, solvedGuesses(puzzle, 4), store);
+    expect(getSolveStatistics(tomorrow, [], store)).toEqual({ solvedCount: 1, totalGuesses: 4, averageGuesses: 4 });
+    saveProgress(tomorrow, [tomorrow.target], store);
+    expect(getSolveStatistics(tomorrow, [tomorrow.target], store)).toEqual({ solvedCount: 2, totalGuesses: 5, averageGuesses: 2.5 });
+  });
+
+  it('includes previously saved solves across all published pool eras', () => {
+    const store = memory(), current = getPuzzle('2033-03-12');
+    for (const date of ['2026-10-24', '2032-11-05', '2033-03-11']) {
+      const puzzle = getPuzzle(date);
+      saveProgress(puzzle, solvedGuesses(puzzle, 3), store);
+    }
+    expect(getSolveStatistics(current, [], store)).toEqual({ solvedCount: 3, totalGuesses: 9, averageGuesses: 3 });
+  });
+
+  it('excludes corrupt progress, forged completion flags, and mismatched storage keys', () => {
+    const store = memory(), puzzle = getPuzzle('2026-10-24'), previous = getPuzzle('2026-10-23');
+    saveProgress(previous, [previous.target], store);
+    const key = [...store.values.keys()][0];
+    const wrong = countries.find(country => country.id !== previous.target)!.id;
+    for (const saved of [
+      '{broken', 'null', JSON.stringify({ schema: 2, identity: previous.identity, guesses: [previous.target] }),
+      ...[[wrong], ['GRL', previous.target], [wrong, wrong, previous.target], [previous.target, wrong]].map(guesses => JSON.stringify({ schema: 1, identity: previous.identity, guesses, completed: true })),
+      JSON.stringify({ schema: 1, identity: puzzle.identity, guesses: [previous.target], completed: true }),
+    ]) {
+      store.values.set(key, saved);
+      expect(getSolveStatistics(puzzle, [], store).solvedCount).toBe(0);
+    }
+    saveProgress(previous, [previous.target], store);
+    store.values.set(key.replace('pool-v1', 'pool-v2'), store.values.get(key)!);
+    store.values.set('unrelated-data', '{broken');
+    store.values.set('roamfolio:progress:v1:invalid-date', '{}');
+    expect(getSolveStatistics(puzzle, [], store)).toEqual({ solvedCount: 1, totalGuesses: 1, averageGuesses: 1 });
+  });
+
+  it('includes the in-memory solve when storage is denied or saving exceeds quota', () => {
+    const puzzle = getPuzzle('2026-10-24');
+    const denied = { get length(): number { throw new Error('denied'); }, key: () => null, getItem: () => null, setItem: () => {} };
+    expect(getSolveStatistics(puzzle, [], denied).averageGuesses).toBeNull();
+    expect(getSolveStatistics(puzzle, solvedGuesses(puzzle, 2), denied)).toEqual({ solvedCount: 1, totalGuesses: 2, averageGuesses: 2 });
+    const store = memory(), previous = getPuzzle('2026-10-23');
+    saveProgress(previous, solvedGuesses(previous, 4), store);
+    saveProgress(puzzle, [], store);
+    store.setItem = () => { throw new Error('quota'); };
+    expect(saveProgress(puzzle, solvedGuesses(puzzle, 2), store)).toBe(false);
+    expect(getSolveStatistics(puzzle, solvedGuesses(puzzle, 2), store)).toEqual({ solvedCount: 2, totalGuesses: 6, averageGuesses: 3 });
+  });
   it('restores ordered guesses and completion after a reload; separates puzzle dates', () => {
     const store = memory(), puzzle = getPuzzle('2026-10-24');
     const wrong = countries.find(c => c.id !== puzzle.target)!.id;
@@ -268,6 +344,7 @@ describe('date-keyed local progress', () => {
     expect(text).not.toContain('UTC');
     expect(text).toContain('1 guess');
     expect(text).toContain('🎯');
+    expect(text).toContain('\nAverage: 1.0 guesses per solve\nhttps://roam-folio.com/');
     expect(text).not.toContain(countries.find(c => c.id === puzzle.target)!.name);
   });
 });

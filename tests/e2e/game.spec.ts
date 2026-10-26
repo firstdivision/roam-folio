@@ -496,6 +496,60 @@ test('solving opens a focused modal that can close, reopen, and restore after re
   await expect(reopen).toBeFocused();
 });
 
+test('average guesses includes earlier saves and stays consistent across sharing, reloads, and midnight', async ({ page }) => {
+  await page.clock.setSystemTime(new Date('2026-10-24T23:59:00Z'));
+  await page.goto('/');
+  const previousDate = '2026-10-23';
+  const previousTarget = schedule.assignments[previousDate];
+  const previousGuesses = [...pool.filter(country => country.id !== previousTarget).slice(0, 2).map(country => country.id), previousTarget];
+  const era = schedule.eras.find(era => previousDate >= era.startsOn && previousDate <= era.endsOn)!;
+  const identity = `${schedule.version}:${era.poolVersion}:${era.geographyVersion}:${previousDate}`;
+  await page.evaluate(({ identity, guesses }) => {
+    localStorage.setItem(`roamfolio:progress:v1:${identity}`, JSON.stringify({ schema: 1, identity, guesses, completed: true }));
+  }, { identity, guesses: previousGuesses });
+  await page.reload();
+  await expect(page.locator('.postcard-statistic')).toHaveCount(0);
+  await guess(page, wrong.name);
+  await guess(page, wrong.name); // Repeated guesses do not change the average.
+  await guess(page, target.name);
+  const statistic = page.locator('.postcard-statistic');
+  await expect(statistic).toContainText('Your average: 2.5 guesses per solve');
+  await expect(statistic).toContainText('Across 2 solved puzzles in this browser');
+  await page.getByRole('button', { name: 'Close', exact: true }).click();
+  await page.getByRole('button', { name: 'View your postcard' }).click();
+  await expect(statistic).toContainText('2.5 guesses per solve');
+  await page.evaluate(() => Object.defineProperty(navigator, 'share', { value: undefined, configurable: true }));
+  await page.getByRole('button', { name: 'Share your journey' }).click();
+  const text = await page.getByLabel('Your spoiler-free result').inputValue();
+  expect(text).toContain('\nAverage: 2.5 guesses per solve\nhttps://roam-folio.com/');
+  expect(text).not.toContain(target.name);
+  await page.reload();
+  await expect(statistic).toContainText('2.5 guesses per solve');
+  await expect(statistic).toContainText('Across 2 solved puzzles');
+  await page.clock.fastForward(61_000);
+  await expect(page.getByRole('combobox')).toBeVisible();
+  const nextTarget = pool.find(country => country.id === schedule.assignments['2026-10-25'])!;
+  await guess(page, nextTarget.name);
+  await expect(statistic).toContainText('Your average: 2.0 guesses per solve');
+  await expect(statistic).toContainText('Across 3 solved puzzles');
+  await page.reload();
+  await expect(statistic).toContainText('2.0 guesses per solve');
+});
+
+test('native sharing includes the same average as the postcard', async ({ page }) => {
+  await page.goto('/');
+  await page.evaluate(() => Object.defineProperty(navigator, 'share', { configurable: true, value: async (data: ShareData) => {
+    document.documentElement.dataset.sharedText = data.text;
+  } }));
+  await guess(page, target.name);
+  await expect(page.locator('.postcard-statistic')).toContainText('Your average: 1.0 guesses per solve');
+  await expect(page.locator('.postcard-statistic')).toContainText('Across 1 solved puzzle in this browser');
+  await page.getByRole('button', { name: 'Share your journey' }).click();
+  const text = await page.locator('html').getAttribute('data-shared-text');
+  expect(text).toContain('\nAverage: 1.0 guesses per solve\nhttps://roam-folio.com/');
+  expect(text).toBe(await page.getByLabel('Your spoiler-free result').inputValue());
+});
+
 test('completion modal fits a small phone and keeps the postcard and close button reachable', async ({ page }, testInfo) => {
   await page.setViewportSize({ width: 320, height: 568 });
   await page.goto('/');
@@ -644,6 +698,11 @@ test('unknown input and denied storage keep play accessible without layout overf
   await guess(page, wrong.name);
   await expect(page.locator('.guess-list li')).toHaveCount(1);
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
+  await guess(page, target.name);
+  await expect(page.locator('.postcard-statistic')).toContainText('Your average: 2.0 guesses per solve');
+  await page.evaluate(() => Object.defineProperty(navigator, 'share', { value: undefined, configurable: true }));
+  await page.getByRole('button', { name: 'Share your journey' }).click();
+  await expect(page.getByLabel('Your spoiler-free result')).toHaveValue(/Average: 2\.0 guesses per solve/);
 });
 
 test('unpublished date shows unavailable without inventing a target', async ({ page }) => {

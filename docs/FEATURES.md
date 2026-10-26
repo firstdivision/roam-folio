@@ -20,10 +20,11 @@ Legend: **MVP** = first playable release; **Later** = planned enhancement; **Ope
 - **MVP:** Repeating a guessed country returns its existing result without increasing the guess count.
 - **MVP:** Proximity uses a continuous gradient from white (very far away), through yellow and orange, to red (very close). Map and history share a fixed global distance-to-color scale; labels and share emojis use the same distance bands. Labels and numeric distances accompany color; outlines distinguish white guesses from unguessed countries.
 - **MVP:** Preserve current day's guesses and completion status across reloads on the same device, without an account.
+- **MVP:** Track average guesses per solve across completed puzzles saved in this browser, including earlier saved completions and today's solve. Count each puzzle once; exclude unfinished puzzles and repeated guesses. Show the average to one decimal place on the postcard, with the number of solved puzzles, and include it in both native and copyable share text. Clearing browser data clears this history. If storage is unavailable, the current solve remains displayable and shareable.
 - **MVP:** Do not reveal the destination's name, facts, or food before the player solves the puzzle.
 - **MVP:** After solving, automatically open an accessible modal dialog containing “Destination discovered,” the destination name, guess count, sharing, local-midnight countdown, and a postcard with three sourced facts, one cultural note, and at least one signature food. The dialog opens for restored completed puzzles too. Include a visible close button, Escape dismissal, focus containment, background scroll locking, and focus restoration to a “View your postcard” button that reopens it. Keep long postcard content scrollable on small screens, with the close button reachable. No recipes are required for MVP.
 - **MVP:** Responsive and accessible on mobile and desktop. Use a taller mobile map viewport (360–520 px); enlarge the map to fill it and allow panning across the cropped world at the initial zoom.
-- **MVP:** Once solved, offer spoiler-free text sharing with the puzzle calendar date, guess count, and ordered proximity emojis: white square for very far away, yellow and orange squares for intermediate distances, red square for very close, and a distinct success marker. Do not include country names or discovery content. Provide a copyable text fallback when native sharing is unavailable.
+- **MVP:** Once solved, offer spoiler-free text sharing with the puzzle calendar date, guess count, and ordered proximity emojis: white square for very far away, yellow and orange squares for intermediate distances, red square for very close, and a distinct success marker. End the text with `https://roam-folio.com/`. Do not include country names or discovery content. Provide a copyable text fallback when native sharing is unavailable.
 - **MVP:** Shared website links include static, spoiler-free Open Graph metadata and a branded preview image readable without JavaScript.
 
 ## Country pool
@@ -37,7 +38,7 @@ Legend: **MVP** = first playable release; **Later** = planned enhancement; **Ope
 - Recipes with ingredients, steps, and source attribution.
 - Digital passport of solved countries and destination cards.
 - Saved recipes and favorites.
-- Daily streaks, statistics, and richer shareable results beyond the basic MVP emoji share.
+- Daily streaks, additional statistics, and richer shareable results beyond the MVP emoji share and average guesses per solve.
 - Regional challenges, cultural and food trivia, achievements.
 
 ## Acceptance tests
@@ -64,6 +65,7 @@ Legend: **MVP** = first playable release; **Later** = planned enhancement; **Ope
 
 21. All 197 approved country names resolve as guesses; the 51 guess-only countries have finite distances to every answer and never appear in any schedule. The 20 approved new answers each have a sourced postcard, available only after solving. Preserve all 2,626 previously published assignments, their era metadata and storage identities.
 22. New tiny enclaves and special source IDs (Vatican City, San Marino, Monaco, Kosovo, Palestine and South Sudan) resolve to real source boundaries; shared land borders return exactly zero with a separate adjacency flag.
+23. Average guesses equals total guesses across valid saved solves divided by solved puzzle count, including the current solve once. Earlier saved completions contribute automatically; unfinished and corrupt progress do not. The postcard and share text agree to one decimal place across reloads, modal reopening, and local-midnight rollover. Storage failures do not prevent completing or sharing the current puzzle.
 
 ## Decision status
 

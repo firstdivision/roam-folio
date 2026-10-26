@@ -55,6 +55,8 @@ main{max-width:1144px;margin:0 auto;padding:0 0 30px}.eyebrow{font-size:11px;let
 .completion-dialog .success-panel h2{font-size:38px}
 .completion-dialog .postcard{margin-top:24px;box-shadow:none}
 .completion-dialog .postcard h2{overflow-wrap:anywhere}
+.postcard-statistic{font-size:13px;line-height:1.6;margin:0 0 24px;color:var(--ink)}
+.postcard-statistic span{display:block;font-size:12px;color:#566653}
 @media(max-width:700px){.completion-dialog{width:calc(100% - 16px);max-height:calc(100dvh - 16px)}.completion-toolbar{padding:6px 12px}.completion-content{padding:20px 16px 24px}.completion-dialog .success-panel h2{font-size:30px}.completion-dialog .postcard{padding:20px 16px}.completion-dialog .postcard h2{font-size:28px}.completion-dialog .postcard-content{grid-template-columns:1fr;gap:20px}.completion-dialog .eyebrow{letter-spacing:1px}}
 @media(max-width:900px){.play-area{grid-template-columns:minmax(0,1fr);grid-template-areas:"map-column" "history";gap:22px}.guess-form{max-width:none}}
 @media(max-width:700px){.site-header{padding-top:14px;padding-bottom:14px}.game-heading{padding:18px 0 16px;align-items:flex-start}.game-heading h1{font-size:18px}.daily-label{font-size:11px;flex-wrap:wrap;justify-content:flex-end;gap:5px}.daily-label span{font-size:10px}.map-canvas{aspect-ratio:auto;height:clamp(360px,65svh,520px);min-height:360px}.map-navigation-help span{font-size:11px}.map-bottomline{flex-wrap:nowrap}.success-panel h2{font-size:28px}}

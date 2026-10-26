@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import { assetUrl, countries } from '../game';
-import type { Discovery } from '../game';
+import type { Discovery, SolveStatistics } from '../game';
 
-export function DiscoveryCard({ countryId }: { countryId: string }) {
+export function DiscoveryCard({ countryId, statistics }: { countryId: string; statistics: SolveStatistics }) {
   const [content, setContent] = useState<Discovery | null>(null);
   const [failed, setFailed] = useState(false);
   const [attempt, setAttempt] = useState(0);
@@ -18,6 +18,7 @@ export function DiscoveryCard({ countryId }: { countryId: string }) {
     <div className="postcard-top"><span className="eyebrow">A POSTCARD FROM</span><span className="postmark" aria-hidden="true">ARRIVED<br/>ROAMFOLIO</span></div>
     <h2 id="postcard-heading">{countries.find(country => country.id === countryId)?.name}</h2>
     <p className="postcard-intro">You found the place. Now discover its story.</p>
+    {statistics.averageGuesses !== null && <p className="postcard-statistic"><strong>Your average: {statistics.averageGuesses.toFixed(1)} guesses per solve</strong><span>Across {statistics.solvedCount} solved {statistics.solvedCount === 1 ? 'puzzle' : 'puzzles'} in this browser</span></p>}
     {!content && !failed && <p role="status">Opening your postcard…</p>}
     {failed && <p>The postcard couldn’t load. <button className="text-button" type="button" onClick={() => setAttempt(value => value + 1)}>Try again</button></p>}
     {content && <div className="postcard-content">

@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { countries, evaluateGuess, formatMiles, getPuzzle, getLocalDate, loadProgress, nextReset, proximity, refreshSchedule, saveProgress, shareResult } from './game';
-import type { Guess, Puzzle } from './game';
+import { countries, evaluateGuess, formatMiles, getPuzzle, getLocalDate, getSolveStatistics, loadProgress, nextReset, proximity, refreshSchedule, saveProgress, shareResult } from './game';
+import type { Guess, Puzzle, SolveStatistics } from './game';
 import { CountrySearch } from './components/CountrySearch';
 import { DiscoveryCard } from './components/DiscoveryCard';
 import { WorldMap } from './map/WorldMap';
@@ -8,12 +8,12 @@ import { WorldMap } from './map/WorldMap';
 const buildTimestamp = import.meta.env.VITE_BUILD_TIMESTAMP as string;
 const buildLabel = buildTimestamp.replace('T', ' ').replace(/\.\d{3}Z$/, ' UTC');
 
-type Session = { puzzle: Puzzle; guesses: Guess[]; storageAvailable: boolean };
+type Session = { puzzle: Puzzle; guesses: Guess[]; storageAvailable: boolean; statistics: SolveStatistics };
 function restore(date: string): Session | null {
   try {
     const puzzle = getPuzzle(date);
     const progress = loadProgress(puzzle);
-    return { puzzle, guesses: progress.guesses.map(id => evaluateGuess(puzzle, id)), storageAvailable: progress.storageAvailable };
+    return { puzzle, guesses: progress.guesses.map(id => evaluateGuess(puzzle, id)), storageAvailable: progress.storageAvailable, statistics: getSolveStatistics(puzzle, progress.guesses) };
   } catch { return null; }
 }
 const nameFor = (id: string) => countries.find(country => country.id === id)?.name ?? id;
@@ -71,6 +71,15 @@ export default function App() {
   }, [refreshDate, reloadSchedule]);
 
   useEffect(() => {
+    const refreshStatistics = (event: StorageEvent) => {
+      if (event.key !== null && !event.key.startsWith('roamfolio:progress:v1:')) return;
+      setSession(previous => previous ? { ...previous, statistics: getSolveStatistics(previous.puzzle, previous.guesses.map(guess => guess.countryId)) } : previous);
+    };
+    window.addEventListener('storage', refreshStatistics);
+    return () => window.removeEventListener('storage', refreshStatistics);
+  }, []);
+
+  useEffect(() => {
     if (!completionOpen) return;
     const dialog = completionDialog.current;
     if (!dialog) return;
@@ -93,13 +102,14 @@ export default function App() {
     const result = evaluateGuess(session.puzzle, countryId);
     const guesses = [...session.guesses, result];
     const storageAvailable = saveProgress(session.puzzle, guesses.map(item => item.countryId));
-    setSession({ ...session, guesses, storageAvailable });
+    const statistics = getSolveStatistics(session.puzzle, guesses.map(item => item.countryId));
+    setSession({ ...session, guesses, storageAvailable, statistics });
     setMessage(result.correct ? `You found ${nameFor(countryId)} in ${guesses.length} ${guesses.length === 1 ? 'guess' : 'guesses'}! Your postcard is ready.` : `${nameFor(countryId)}. ${describe(result, session.guesses)}`);
   }
 
   async function share() {
     if (!session) return;
-    const text = shareResult(session.puzzle, session.guesses);
+    const text = shareResult(session.puzzle, session.guesses, session.statistics);
     setShowShare(true); setShareMessage('');
     if (navigator.share) {
       try { await navigator.share({ title: 'Roamfolio', text }); setShareMessage('Your journey was shared.'); return; }
@@ -136,8 +146,8 @@ export default function App() {
         {completionOpen && <dialog ref={completionDialog} className="completion-dialog" aria-modal="true" aria-labelledby="completion-heading" aria-describedby="completion-summary" onCancel={event => { event.preventDefault(); setDismissedCompletion(session.puzzle.identity); }}>
           <div className="completion-toolbar"><button className="dialog-close" type="button" onClick={() => setDismissedCompletion(session.puzzle.identity)}>Close <span aria-hidden="true">×</span></button></div>
           <div className="completion-content">
-            <div className="success-panel"><p className="eyebrow">DESTINATION DISCOVERED</p><h2 ref={completionHeading} id="completion-heading" tabIndex={-1}>You’ve arrived in<br/>{nameFor(session.puzzle.target)}<span>!</span></h2><p id="completion-summary">{session.guesses.length} {session.guesses.length === 1 ? 'guess' : 'guesses'}, a world of discovery. Explore your postcard below.</p><button className="primary-button" type="button" onClick={share}>Share your journey <span aria-hidden="true">↗</span></button><p className="next-puzzle">Next destination in <strong>{countdown}</strong><span>Resets at midnight local time</span></p>{showShare && <div className="share-fallback"><label htmlFor="share-result">Your spoiler-free result</label><textarea id="share-result" readOnly value={shareResult(session.puzzle, session.guesses)} rows={4} onFocus={event => event.target.select()}/><p role="status">{shareMessage}</p></div>}</div>
-            <DiscoveryCard key={`${date}-${session.puzzle.target}`} countryId={session.puzzle.target}/>
+            <div className="success-panel"><p className="eyebrow">DESTINATION DISCOVERED</p><h2 ref={completionHeading} id="completion-heading" tabIndex={-1}>You’ve arrived in<br/>{nameFor(session.puzzle.target)}<span>!</span></h2><p id="completion-summary">{session.guesses.length} {session.guesses.length === 1 ? 'guess' : 'guesses'}, a world of discovery. Explore your postcard below.</p><button className="primary-button" type="button" onClick={share}>Share your journey <span aria-hidden="true">↗</span></button><p className="next-puzzle">Next destination in <strong>{countdown}</strong><span>Resets at midnight local time</span></p>{showShare && <div className="share-fallback"><label htmlFor="share-result">Your spoiler-free result</label><textarea id="share-result" readOnly value={shareResult(session.puzzle, session.guesses, session.statistics)} rows={5} onFocus={event => event.target.select()}/><p role="status">{shareMessage}</p></div>}</div>
+            <DiscoveryCard key={`${date}-${session.puzzle.target}`} countryId={session.puzzle.target} statistics={session.statistics}/>
           </div>
         </dialog>}
       </>}

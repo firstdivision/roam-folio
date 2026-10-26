@@ -19,18 +19,20 @@ The technical proposal was approved on 2026-10-24, with these product correction
 2. **Geographic assets:** licensed boundaries for the display map, geographic source manifests, pairwise distances, and separate adjacency flags.
 3. **Daily schedule:** immutable date-to-country assignments and their schedule, country-pool, and geography versions.
 4. **Guess engine:** resolve typed input to an eligible country ID, retrieve distance, assign proximity feedback, and detect success.
-5. **Client experience:** compact date/header, country picker above the fold, navigable display map, guess history, UTC countdown after solving, destination postcard, and basic emoji sharing.
-6. **Persistence:** validate and restore ordered guesses and completion for the current UTC puzzle.
+5. **Client experience:** compact date/header, country picker above the fold, navigable display map, guess history, local-midnight countdown after solving, destination postcard, and basic emoji sharing.
+6. **Persistence:** validate and restore ordered guesses and completion for the current local-date puzzle.
 7. **Discovery content:** three sourced facts, one cultural note, and at least one signature food for every eligible target; fetch and render only after solving.
 
 ## Shared daily puzzle
 
-- Interpret the day as `YYYY-MM-DD` in **UTC**, independent of the browser's local timezone.
+The user approved switching from a simultaneous UTC reset to local-midnight availability on 2026-10-25. Published date assignments, puzzle identities, and storage keys remain unchanged. Existing UTC-era progress restores when its date matches the browser's local date; progress for other dates stays saved. Changing the device clock or time zone selects that local date's saved puzzle rather than transferring guesses between answers. The next-reset calculation advances to local calendar midnight rather than adding 24 hours, so daylight saving days can last 23 or 25 hours.
+
+- Interpret the day as `YYYY-MM-DD` in the **browser's local time zone**. A new puzzle unlocks at local midnight. Everyone on the same calendar date receives the same published assignment; different time zones may be playing different dates at the same instant.
 - Generate seeded country permutations offline and publish explicit date assignments. Every country appears exactly once in each complete eligible-country cycle.
 - Never pick a country independently for a visitor, device, session, or page load.
 - Published assignments are immutable across deployments. Pool changes begin at a future full-cycle boundary beyond already published assignments.
 - Pin each assignment to its pool and geography versions so a deployment cannot silently change answers or distance feedback for an existing puzzle.
-- Recheck UTC date at midnight, before submitting a guess, and when a suspended tab resumes. Revalidate the schedule index on startup and rollover; use immutable versioned data assets.
+- Recheck the local date at midnight, before submitting a guess, and when a suspended tab resumes. Revalidate the schedule index on startup and rollover; use immutable versioned data assets.
 - A date missing from the available schedule is unavailable; never generate a local replacement. Publish future cycles ahead of time.
 - No daily build or server job is required to change the puzzle at midnight.
 - A static application relies on a reasonably correct device clock. Guaranteeing the current date on a misconfigured device would require a separately approved trusted time source.
@@ -69,12 +71,12 @@ Exact gradient colors and interpolation are styling choices to document and chec
 
 ## Persistence and content visibility
 
-- Key progress by UTC date and puzzle identity, with a storage schema version, ordered country IDs, and completion state.
+- Key progress by calendar date and puzzle identity, with a storage schema version, ordered country IDs, and completion state.
 - Restore the same day's history and completion after reload. Derive feedback from the puzzle's pinned geographic data.
 - On rollover, load the new date's progress rather than carrying guesses into it. Validate stored data; explain unavailable storage without blocking play.
 - The hidden target receives no special map styling, labels, or discovery content before completion. Country names remain available for ordinary guess input.
 - Fetch and render the postcard only after solving, inside the completion modal. Public static assets can still be inspected by technically skilled users; this is not a tamper-proof game.
-- Share only the UTC date, guess count, ordered proximity symbols, and success marker. Supply copyable text when native sharing is unavailable.
+- Share only the puzzle calendar date, guess count, ordered proximity symbols, and success marker. Supply copyable text when native sharing is unavailable.
 
 ## Project structure
 
@@ -92,7 +94,7 @@ scripts/
 public/data/            # Generated, versioned browser assets
 src/
   app/                  # Application composition
-  game/                 # UTC dates, schedule, guesses, feedback
+  game/                 # Local dates, schedule, guesses, feedback
   map/                  # Display rendering
   components/           # Picker, history, countdown, postcard, share
   storage/              # Progress validation and persistence
@@ -109,11 +111,11 @@ Create directories as their implementation increments need them. Keep geographic
 
 1. **Decisions:** approve the exact country list and geographic mapping. Resolve every country ID to the intended geometry, content entry, and schedule eligibility before application code.
 2. **Geographic foundation:** pin licensed data; prototype and validate distance generation; publish versioned map assets, adjacency, distances, and schedule. Test finite, nonnegative, symmetric distances, shared-border fixtures, eligibility, deterministic selection, and no repeats within a cycle.
-3. **First playable version:** build typed input, display map, unlimited guessing, numeric and color feedback, history, daily persistence, success, and a minimal sourced postcard. A user can solve, reload without losing progress, and receive the same puzzle in another timezone.
-4. **Complete MVP:** finish country content, UTC countdown, basic emoji sharing, mobile styling, and accessibility. Every eligible target has reviewed content; keyboard users can finish; the answer and discovery remain hidden before success.
+3. **First playable version:** build typed input, display map, unlimited guessing, numeric and color feedback, history, daily persistence, success, and a minimal sourced postcard. A user can solve, reload without losing progress, and receive the same puzzle for the same local calendar date in another time zone.
+4. **Complete MVP:** finish country content, local-midnight countdown, basic emoji sharing, mobile styling, and accessibility. Every eligible target has reviewed content; keyboard users can finish; the answer and discovery remain hidden before success.
 5. **Release:** run CI checks and deploy through GitHub Actions to GitHub Pages. Validate repository-subpath assets and preservation of existing puzzle assignments across builds.
 
-Work in small, testable increments within each phase. Required checks cover UTC midnight, leap days, year boundaries, timezone differences, suspended tabs, cached schedule versions, duplicate guesses, boundary segments, narrow water gaps, islands, enclaves, antimeridian cases, rounding, persistence, corrupt storage, pre-completion visibility, typed-only guessing, and mobile/keyboard play.
+Work in small, testable increments within each phase. Required checks cover local midnight, leap days, year boundaries, timezone differences, daylight saving transitions, suspended tabs, cached schedule versions, duplicate guesses, boundary segments, narrow water gaps, islands, enclaves, antimeridian cases, rounding, persistence, corrupt storage, pre-completion visibility, typed-only guessing, and mobile/keyboard play.
 
 ## Implementation notes
 
@@ -143,7 +145,7 @@ The immutable v1/v2 schedule eras remain unchanged. The new 146-answer cycle beg
 
 ## Map navigation and layout
 
-The user approved removal of the large introductory banner, country entry above the fold, and zoomable/pannable map navigation on 2026-10-24. The country field precedes the map canvas and travel log in DOM and visual order. The country field begins at the top of the map panel and sits directly against the canvas before guessing. The map heading and visible zoom/reset toolbar have been removed. Its visible label remains above the search row. A compact latest-guess notice appears directly under the submit row after guessing, showing the country's nearest-border distance and, after the first guess, a comparison with the best earlier unrounded distance (closer, farther, or matching). Repeated guesses compare their existing result with the current best; they do not add history. On reload, derive the notice from the last saved chronological guess and all earlier guesses. The status live region announces feedback without moving focus. Storage notices and a completed-journey summary with a “View your postcard” button sit below the map. Completion/share content and the postcard live together in a native `<dialog>` opened with `showModal()` immediately after solving and when restoring a completed puzzle. The dialog names its completion heading, initially focuses that heading, keeps background content inert, locks page scrolling, and contains focus through native modal behavior. A sticky close button and Escape dismiss it; focus returns to “View your postcard,” which reopens it. The dialog scrolls within the viewport on small screens. The dialog and postcard are removed on UTC rollover, and page scrolling is restored. Desktop places history alongside this column; narrower screens place history below it.
+The user approved removal of the large introductory banner, country entry above the fold, and zoomable/pannable map navigation on 2026-10-24. The country field precedes the map canvas and travel log in DOM and visual order. The country field begins at the top of the map panel and sits directly against the canvas before guessing. The map heading and visible zoom/reset toolbar have been removed. Its visible label remains above the search row. A compact latest-guess notice appears directly under the submit row after guessing, showing the country's nearest-border distance and, after the first guess, a comparison with the best earlier unrounded distance (closer, farther, or matching). Repeated guesses compare their existing result with the current best; they do not add history. On reload, derive the notice from the last saved chronological guess and all earlier guesses. The status live region announces feedback without moving focus. Storage notices and a completed-journey summary with a “View your postcard” button sit below the map. Completion/share content and the postcard live together in a native `<dialog>` opened with `showModal()` immediately after solving and when restoring a completed puzzle. The dialog names its completion heading, initially focuses that heading, keeps background content inert, locks page scrolling, and contains focus through native modal behavior. A sticky close button and Escape dismiss it; focus returns to “View your postcard,” which reopens it. The dialog scrolls within the viewport on small screens. The dialog and postcard are removed on local-date rollover, and page scrolling is restored. Desktop places history alongside this column; narrower screens place history below it.
 
 SVG geography remains static; a bounded group transform handles navigation without affecting distance calculations or game state. Native pointer events support dragging and two-finger pinch, with pointer capture and touch-action handling. A non-passive wheel handler zooms around the cursor. Zoom ranges from 1× to 32×. A focusable map region supports +/− to zoom, arrow keys to pan, and 0/Home to reset. The map retains an accessible region name and keyboard instructions without a visible heading, zoom buttons, zoom percentage, or reset button. At 1× the centered initial view is restored. On phones (up to 700 px wide), the canvas is 65% of the small viewport height, clamped to 360–520 px. The SVG fills the canvas while preserving proportions, cropping the sides to enlarge the geography. Navigation bounds account for the visible crop, allowing sideways panning even at 1× to reach the whole world. No map click or gesture submits a guess, and no new runtime dependencies were added.
 
@@ -187,6 +189,12 @@ References: [Apple Messages rich previews](https://developer.apple.com/documenta
 - All 92 desktop/mobile Chromium browser checks pass in a complete run. Each of the 20 added answers unlocks its sourced postcard only after solving and restores after reload. Guess-only countries receive suggestions, border/distance feedback, map color and persisted history without unlocking discovery. Existing UTC rollover, accessibility, map and sharing checks pass.
 - Discovery generation validates 146 complete sourced postcards. TypeScript and the production build pass. Vite reports a JavaScript chunk-size advisory (about 580 kB before compression, 218 kB gzip); no new runtime dependency was added.
 - All 2,626 pre-expansion assignments and their eras match the retained regression snapshot; the 146-answer cycle begins on 2033-03-11. No deployment was performed in this verification pass.
+
+## Local-midnight verification — 2026-10-25
+
+- All 36 unit tests pass, including local date boundaries in five time zones, leap days, year-end, unchanged local dates through UTC midnight, daylight saving transitions, calendar-date schedule validation, and existing progress identities.
+- All 110 desktop/mobile Chromium checks pass across focused and remaining regression runs. Local-midnight rollover, countdowns, restored dated progress, pre-guess/resume date checks, shared targets for matching local dates, and different targets for different local dates are covered alongside existing map, postcard, sharing, and accessibility checks.
+- TypeScript and the production build pass. The existing JavaScript chunk-size advisory remains. No schedule assignments, runtime dependencies, or storage keys changed.
 
 ## Technical references
 

@@ -8,27 +8,65 @@ import packed from '../../data/geography/feedback.v3.json';
 import { execFileSync } from 'node:child_process';
 import { readFileSync } from 'node:fs';
 import { describe, expect, it, vi, afterEach } from 'vitest';
-import { answerCountries, countries, evaluateGuess, formatMiles, getPuzzle, getUtcDate, loadProgress, nextReset, proximity, refreshSchedule, resolveCountry, saveProgress, shareResult } from '../../src/game';
+import { answerCountries, countries, evaluateGuess, formatMiles, getPuzzle, getLocalDate, loadProgress, nextReset, proximity, refreshSchedule, resolveCountry, saveProgress, shareResult } from '../../src/game';
 import schedule from '../../data/schedules/schedule.v1.json';
 import matrix from '../../data/geography/distances.v3.json';
 
 const newAnswers = 'BEN BDI SOM SDS SMR VAT MLT MDA MCO KOS LUX AFG KWT KGZ PRK PSX SYR TJK TKM YEM'.split(' ');
 const guessOnlyIds = 'BFA CPV CAF COM CIV DJI GNQ ERI SWZ GAB GMB GIN GNB LSO LBR LBY MWI MRT NER COG STP SYC SLE TGO AND LIE MNE BHR BTN BRN MDV TLS ATG BRB DMA GRD GUY KNA LCA VCT SUR KIR MHL FSM NRU PLW WSM SLB TON TUV VUT'.split(' ');
 
-afterEach(() => vi.unstubAllGlobals());
+afterEach(() => { vi.unstubAllGlobals(); vi.unstubAllEnvs(); });
 
-describe('UTC puzzle dates', () => {
-  it('switches at UTC midnight across local timezone offsets, leap day and year end', () => {
-    expect(getUtcDate(new Date('2026-10-24T18:59:59-05:00'))).toBe('2026-10-24');
-    expect(getUtcDate(new Date('2026-10-24T19:00:00-05:00'))).toBe('2026-10-25');
-    expect(getUtcDate(new Date('2026-10-25T08:00:00+09:00'))).toBe('2026-10-24');
-    expect(nextReset(new Date('2028-02-28T23:59:59Z')).toISOString()).toBe('2028-02-29T00:00:00.000Z');
-    expect(nextReset(new Date('2028-02-29T23:59:59Z')).toISOString()).toBe('2028-03-01T00:00:00.000Z');
-    expect(nextReset(new Date('2026-12-31T23:59:59Z')).toISOString()).toBe('2027-01-01T00:00:00.000Z');
+describe('local puzzle dates', () => {
+  it.each(['UTC', 'America/Chicago', 'Asia/Kolkata', 'Pacific/Honolulu', 'Pacific/Kiritimati'])(
+    'switches only at local midnight in %s, including leap day and year end', timezone => {
+      vi.stubEnv('TZ', timezone);
+      for (const [year, month, day, today, tomorrow] of [
+        [2026, 9, 24, '2026-10-24', '2026-10-25'],
+        [2028, 1, 28, '2028-02-28', '2028-02-29'],
+        [2028, 1, 29, '2028-02-29', '2028-03-01'],
+        [2026, 11, 31, '2026-12-31', '2027-01-01'],
+      ] as const) {
+        const now = new Date(year, month, day, 23, 59, 59);
+        expect(getLocalDate(now)).toBe(today);
+        const reset = nextReset(now);
+        expect(reset.getTime() - now.getTime()).toBe(1000);
+        expect(getLocalDate(reset)).toBe(tomorrow);
+        expect(reset.getHours()).toBe(0);
+        expect(getPuzzle(today)).toEqual(getPuzzle(getLocalDate(now)));
+      }
+    });
+  it.each([
+    ['America/Chicago', '2026-10-24'],
+    ['Asia/Kolkata', '2026-10-25'],
+    ['Pacific/Kiritimati', '2026-10-25'],
+  ])('uses the local date through UTC midnight in %s', (timezone, date) => {
+    vi.stubEnv('TZ', timezone);
+    expect(getLocalDate(new Date('2026-10-24T23:59:00Z'))).toBe(date);
+    expect(getLocalDate(new Date('2026-10-25T00:00:00Z'))).toBe(date);
+  });
+  it.each([
+    [2, 8, 23], // Spring forward.
+    [10, 1, 25], // Fall back.
+  ])('counts down to local midnight across DST on month %i day %i', (month, day, hours) => {
+    vi.stubEnv('TZ', 'America/New_York');
+    const now = new Date(2026, month, day);
+    const reset = nextReset(now);
+    expect(reset.getTime() - now.getTime()).toBe(hours * 3_600_000);
+    expect(reset.getDate()).toBe(day + 1);
+    expect(reset.getHours()).toBe(0);
+    expect(now.getDate()).toBe(day);
+  });
+  it('validates calendar dates and downloaded schedules independently of local time', async () => {
+    vi.stubEnv('TZ', 'Pacific/Honolulu');
+    expect(getPuzzle('2026-10-24').date).toBe('2026-10-24');
+    vi.stubGlobal('fetch', vi.fn().mockResolvedValue({ ok: true, json: async () => schedule }));
+    await expect(refreshSchedule()).resolves.toBeUndefined();
   });
   it('rejects invalid and unavailable dates instead of selecting a fallback target', () => {
     for (const date of ['2026-02-30', '2026-13-01', '2026-1-1', '2025-12-31', '__proto__']) expect(() => getPuzzle(date)).toThrow();
-    expect(() => getUtcDate(new Date('invalid'))).toThrow();
+    expect(() => getLocalDate(new Date('invalid'))).toThrow();
+    expect(() => nextReset(new Date('invalid'))).toThrow();
   });
   it('is deterministic and changes the target on the next date', () => {
     expect(getPuzzle('2026-10-24')).toEqual(getPuzzle('2026-10-24'));
@@ -187,7 +225,7 @@ describe('date-keyed local progress', () => {
     const values = new Map<string, string>();
     return { values, getItem: (key: string) => values.get(key) ?? null, setItem: (key: string, value: string) => { values.set(key, value); } };
   }
-  it('restores ordered guesses and completion after a reload; separates UTC days', () => {
+  it('restores ordered guesses and completion after a reload; separates puzzle dates', () => {
     const store = memory(), puzzle = getPuzzle('2026-10-24');
     const wrong = countries.find(c => c.id !== puzzle.target)!.id;
     expect(saveProgress(puzzle, [wrong], store)).toBe(true);
@@ -226,7 +264,8 @@ describe('date-keyed local progress', () => {
     const puzzle = getPuzzle('2026-10-24'), correct = evaluateGuess(puzzle, puzzle.target);
     expect(() => shareResult(puzzle, [])).toThrow();
     const text = shareResult(puzzle, [correct]);
-    expect(text).toContain('2026-10-24 UTC');
+    expect(text).toContain('Roamfolio · 2026-10-24\n');
+    expect(text).not.toContain('UTC');
     expect(text).toContain('1 guess');
     expect(text).toContain('🎯');
     expect(text).not.toContain(countries.find(c => c.id === puzzle.target)!.name);

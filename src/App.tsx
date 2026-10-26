@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { countries, evaluateGuess, formatMiles, getPuzzle, getUtcDate, loadProgress, nextReset, proximity, refreshSchedule, saveProgress, shareResult } from './game';
+import { countries, evaluateGuess, formatMiles, getPuzzle, getLocalDate, loadProgress, nextReset, proximity, refreshSchedule, saveProgress, shareResult } from './game';
 import type { Guess, Puzzle } from './game';
 import { CountrySearch } from './components/CountrySearch';
 import { DiscoveryCard } from './components/DiscoveryCard';
@@ -19,8 +19,8 @@ function restore(date: string): Session | null {
 const nameFor = (id: string) => countries.find(country => country.id === id)?.name ?? id;
 
 export default function App() {
-  const [session, setSession] = useState<Session | null>(() => restore(getUtcDate()));
-  const [date, setDate] = useState(getUtcDate);
+  const [session, setSession] = useState<Session | null>(() => restore(getLocalDate()));
+  const [date, setDate] = useState(getLocalDate);
   const dateRef = useRef(date);
   const [now, setNow] = useState(() => new Date());
   const [message, setMessage] = useState('');
@@ -42,7 +42,7 @@ export default function App() {
   const reloadSchedule = useCallback(() => {
     if (scheduleRequest.current) return scheduleRequest.current;
     const request = refreshSchedule().then(() => {
-      const today = getUtcDate();
+      const today = getLocalDate();
       setSession(previous => previous?.puzzle.date === today ? previous : restore(today));
     }).catch(() => {
       // The bundled immutable assignments remain usable when revalidation fails.
@@ -52,11 +52,11 @@ export default function App() {
   }, []);
 
   const refreshDate = useCallback(() => {
-    const currentDate = getUtcDate();
+    const currentDate = getLocalDate();
     if (dateRef.current !== currentDate) {
       dateRef.current = currentDate;
       setDate(currentDate);
-      setSession(restore(currentDate)); setMessage('A new UTC day, a new destination.'); setShowShare(false); setShareMessage('');
+      setSession(restore(currentDate)); setMessage('A new day, a new destination.'); setShowShare(false); setShareMessage('');
       void reloadSchedule();
     }
     setNow(new Date());
@@ -86,7 +86,7 @@ export default function App() {
   }, [completionOpen]);
 
   function guess(countryId: string) {
-    if (getUtcDate() !== date) { refreshDate(); return; }
+    if (getLocalDate() !== date) { refreshDate(); return; }
     if (!session || solved) return;
     const existing = session.guesses.find(item => item.countryId === countryId);
     if (existing) { setMessage(`You already guessed ${nameFor(countryId)}. ${describe(existing, session.guesses.length > 1 ? session.guesses : [])} Your guess count stays the same.`); return; }
@@ -109,7 +109,7 @@ export default function App() {
     catch { setShareMessage('Select and copy your result below.'); }
   }
 
-  const utcDate = new Date(`${date}T12:00:00Z`).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric', timeZone: 'UTC' });
+  const puzzleDateLabel = new Date(`${date}T12:00:00Z`).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric', timeZone: 'UTC' });
   const remaining = Math.max(0, Math.ceil((nextReset(now).getTime() - now.getTime()) / 1000));
   const countdown = [Math.floor(remaining / 3600), Math.floor(remaining % 3600 / 60), remaining % 60].map(part => String(part).padStart(2, '0')).join(':');
 
@@ -117,8 +117,8 @@ export default function App() {
     <a href="#guess-section" className="skip-link">Skip to the game</a>
     <header className="site-header"><a className="wordmark" href="./" aria-label="Roamfolio home"><span className="brand-globe" aria-hidden="true">◎</span>roamfolio<span className="brand-dot">.</span></a><button className="help-button" aria-expanded={helpOpen} aria-controls="how-to-play" onClick={() => setHelpOpen(value => !value)}><span aria-hidden="true">?</span> How to play</button></header>
     <main>
-      <div className="game-heading"><h1>Daily destination</h1><p className="daily-label"><time dateTime={date}>{utcDate}</time><span>UTC</span></p></div>
-      {helpOpen && <section className="how-to-play" id="how-to-play" aria-labelledby="help-heading"><h2 id="help-heading">A small journey, one guess at a time</h2><ol><li>Type a country name, choose a suggestion, then press Guess. The map displays your guesses.</li><li>Follow the shortest distance between country borders. Land neighbors return 0 miles.</li><li>White is very far away; yellow, orange, and red bring you closer. Keep guessing until you find the country.</li><li>Solve to open your country postcard. Everyone gets the same puzzle, changing at midnight UTC.</li></ol><p>Some countries can be guessed for clues but never appear as daily destinations.</p><p>Your progress stays in this browser. No account, no guess limit.</p></section>}
+      <div className="game-heading"><h1>Daily destination</h1><p className="daily-label"><time dateTime={date}>{puzzleDateLabel}</time><span>Local time</span></p></div>
+      {helpOpen && <section className="how-to-play" id="how-to-play" aria-labelledby="help-heading"><h2 id="help-heading">A small journey, one guess at a time</h2><ol><li>Type a country name, choose a suggestion, then press Guess. The map displays your guesses.</li><li>Follow the shortest distance between country borders. Land neighbors return 0 miles.</li><li>White is very far away; yellow, orange, and red bring you closer. Keep guessing until you find the country.</li><li>Solve to open your country postcard. Everyone on the same date gets the same puzzle. A new destination unlocks at midnight in your local time zone.</li></ol><p>Some countries can be guessed for clues but never appear as daily destinations.</p><p>Your progress stays in this browser. No account, no guess limit.</p></section>}
       {!session ? <section className="unavailable" role="status"><h2>Today’s journey isn’t available yet.</h2><p>There is no published puzzle for {date}. Please check back when the schedule has been updated.</p></section> : <>
         <div className="play-area" id="guess-section" tabIndex={-1}>
           <div className="map-column">
@@ -136,7 +136,7 @@ export default function App() {
         {completionOpen && <dialog ref={completionDialog} className="completion-dialog" aria-modal="true" aria-labelledby="completion-heading" aria-describedby="completion-summary" onCancel={event => { event.preventDefault(); setDismissedCompletion(session.puzzle.identity); }}>
           <div className="completion-toolbar"><button className="dialog-close" type="button" onClick={() => setDismissedCompletion(session.puzzle.identity)}>Close <span aria-hidden="true">×</span></button></div>
           <div className="completion-content">
-            <div className="success-panel"><p className="eyebrow">DESTINATION DISCOVERED</p><h2 ref={completionHeading} id="completion-heading" tabIndex={-1}>You’ve arrived in<br/>{nameFor(session.puzzle.target)}<span>!</span></h2><p id="completion-summary">{session.guesses.length} {session.guesses.length === 1 ? 'guess' : 'guesses'}, a world of discovery. Explore your postcard below.</p><button className="primary-button" type="button" onClick={share}>Share your journey <span aria-hidden="true">↗</span></button><p className="next-puzzle">Next destination in <strong>{countdown}</strong><span>Resets at midnight UTC</span></p>{showShare && <div className="share-fallback"><label htmlFor="share-result">Your spoiler-free result</label><textarea id="share-result" readOnly value={shareResult(session.puzzle, session.guesses)} rows={4} onFocus={event => event.target.select()}/><p role="status">{shareMessage}</p></div>}</div>
+            <div className="success-panel"><p className="eyebrow">DESTINATION DISCOVERED</p><h2 ref={completionHeading} id="completion-heading" tabIndex={-1}>You’ve arrived in<br/>{nameFor(session.puzzle.target)}<span>!</span></h2><p id="completion-summary">{session.guesses.length} {session.guesses.length === 1 ? 'guess' : 'guesses'}, a world of discovery. Explore your postcard below.</p><button className="primary-button" type="button" onClick={share}>Share your journey <span aria-hidden="true">↗</span></button><p className="next-puzzle">Next destination in <strong>{countdown}</strong><span>Resets at midnight local time</span></p>{showShare && <div className="share-fallback"><label htmlFor="share-result">Your spoiler-free result</label><textarea id="share-result" readOnly value={shareResult(session.puzzle, session.guesses)} rows={4} onFocus={event => event.target.select()}/><p role="status">{shareMessage}</p></div>}</div>
             <DiscoveryCard key={`${date}-${session.puzzle.target}`} countryId={session.puzzle.target}/>
           </div>
         </dialog>}

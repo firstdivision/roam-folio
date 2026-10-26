@@ -2,7 +2,7 @@
 
 **Discover a country. Collect its story.**
 
-Roamfolio is a daily country-guessing game inspired by geography games such as Globle. Everyone plays the **same mystery country each UTC day**. Players type country names; each guess reveals the nearest-border distance in miles and proximity feedback on a display-only world map. Solving the puzzle unlocks a travel-postcard-style country discovery with culture, history, and food. Recipes are planned for later.
+Roamfolio is a daily country-guessing game inspired by geography games such as Globle. Everyone on the same local calendar date plays the **same mystery country**, unlocking at midnight in their browser's local time zone. Players type country names; each guess reveals the nearest-border distance in miles and proximity feedback on a display-only world map. Solving the puzzle unlocks a travel-postcard-style country discovery with culture, history, and food. Recipes are planned for later.
 
 ## Core experience
 1. Open today's puzzle; no account required.
@@ -32,7 +32,7 @@ npm ci
 npm run dev
 ```
 
-Open the local URL printed by Vite. The puzzle uses the browser's UTC date; current schedules cover 2026-01-01 through 2033-08-03. All 197 countries are accepted as guesses now. The 146-country answer pool begins on 2033-03-11, after the published 125- and 126-country cycles; the other 51 countries are guess-only and never selected as answers. Separate territories remain outside the guess registry.
+Open the local URL printed by Vite. The puzzle uses the browser's local calendar date and resets at local midnight; current schedules cover 2026-01-01 through 2033-08-03. All 197 countries are accepted as guesses now. The 146-country answer pool begins on 2033-03-11, after the published 125- and 126-country cycles; the other 51 countries are guess-only and never selected as answers. Separate territories remain outside the guess registry.
 
 ```sh
 npm test
@@ -62,7 +62,7 @@ The geographic generator verifies retained source archive checksums, records com
 
 ## GitHub Pages
 
-Push to `main` in a GitHub repository and enable **Settings → Pages → GitHub Actions**. The deployment workflow tests and builds the app, using Pages' supplied base path for either a repository URL or custom domain. The CI workflow also runs geographic and desktop/mobile browser tests. Publishing is not tied to the daily UTC reset.
+Push to `main` in a GitHub repository and enable **Settings → Pages → GitHub Actions**. The deployment workflow tests and builds the app, using Pages' supplied base path for either a repository URL or custom domain. The CI workflow also runs geographic and desktop/mobile browser tests. Publishing is not tied to the daily local-midnight reset.
 
 The footer shows the build date and time in UTC to identify the loaded release. Vite embeds this timestamp during each build, so reloading the same release does not change it. During local development it reflects when the Vite server started.
 

@@ -4,7 +4,7 @@
 Before proposing or making changes, read `README.md`, `docs/VISION.md`, `docs/FEATURES.md`, and `docs/ARCHITECTURE.md`.
 
 ## Product invariants
-- **One globally shared puzzle per UTC calendar date.** Never generate a different target per user or per page load.
+- **One shared puzzle per calendar date, unlocking at midnight in the browser's local time zone.** Players on the same local date receive the same target; never generate a different target per user or per page load.
 - A guess must produce a **nearest-border distance in miles** to the target country (0 miles for shared land borders) and a consistent visual proximity cue.
 - The target and its discovery content must not be exposed in the normal user interface before completion; note that purely client-side answers cannot be fully secret from technically skilled users.
 - Preserve today's guesses and completion state across reloads without requiring an account.

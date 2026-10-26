@@ -3,8 +3,8 @@
 Legend: **MVP** = first playable release; **Later** = planned enhancement; **Open** = decision needed.
 
 ## MVP — Daily guessing
-- **MVP:** Every player receives the **same target country for the same UTC date**, regardless of timezone, device, or session.
-- **MVP:** A new puzzle begins at 00:00 UTC; show a countdown to the next puzzle after completion.
+- **MVP:** Every player receives the **same target country for the same local calendar date**, regardless of device or session. Different time zones unlock that date at different moments.
+- **MVP:** A new puzzle begins at midnight in the browser's local time zone; show a countdown to that midnight after completion, accounting for daylight saving changes.
 - **MVP:** Select the day's target deterministically from a curated eligible-country list; never pick independently for each visitor.
 - **MVP:** Avoid repeating a target until the current eligible-country cycle is exhausted; use a stable, versioned schedule or deterministic permutation.
 - **MVP:** Players guess by typing a country name through an accessible search interface with suggestions. Map clicks do not select or submit guesses; the map only displays countries and the guesses made.
@@ -21,9 +21,9 @@ Legend: **MVP** = first playable release; **Later** = planned enhancement; **Ope
 - **MVP:** Proximity uses a continuous gradient from white (very far away), through yellow and orange, to red (very close). Map and history share a fixed global distance-to-color scale; labels and share emojis use the same distance bands. Labels and numeric distances accompany color; outlines distinguish white guesses from unguessed countries.
 - **MVP:** Preserve current day's guesses and completion status across reloads on the same device, without an account.
 - **MVP:** Do not reveal the destination's name, facts, or food before the player solves the puzzle.
-- **MVP:** After solving, automatically open an accessible modal dialog containing “Destination discovered,” the destination name, guess count, sharing, UTC countdown, and a postcard with three sourced facts, one cultural note, and at least one signature food. The dialog opens for restored completed puzzles too. Include a visible close button, Escape dismissal, focus containment, background scroll locking, and focus restoration to a “View your postcard” button that reopens it. Keep long postcard content scrollable on small screens, with the close button reachable. No recipes are required for MVP.
+- **MVP:** After solving, automatically open an accessible modal dialog containing “Destination discovered,” the destination name, guess count, sharing, local-midnight countdown, and a postcard with three sourced facts, one cultural note, and at least one signature food. The dialog opens for restored completed puzzles too. Include a visible close button, Escape dismissal, focus containment, background scroll locking, and focus restoration to a “View your postcard” button that reopens it. Keep long postcard content scrollable on small screens, with the close button reachable. No recipes are required for MVP.
 - **MVP:** Responsive and accessible on mobile and desktop. Use a taller mobile map viewport (360–520 px); enlarge the map to fill it and allow panning across the cropped world at the initial zoom.
-- **MVP:** Once solved, offer spoiler-free text sharing with the UTC puzzle date, guess count, and ordered proximity emojis: white square for very far away, yellow and orange squares for intermediate distances, red square for very close, and a distinct success marker. Do not include country names or discovery content. Provide a copyable text fallback when native sharing is unavailable.
+- **MVP:** Once solved, offer spoiler-free text sharing with the puzzle calendar date, guess count, and ordered proximity emojis: white square for very far away, yellow and orange squares for intermediate distances, red square for very close, and a distinct success marker. Do not include country names or discovery content. Provide a copyable text fallback when native sharing is unavailable.
 - **MVP:** Shared website links include static, spoiler-free Open Graph metadata and a branded preview image readable without JavaScript.
 
 ## Country pool
@@ -41,11 +41,11 @@ Legend: **MVP** = first playable release; **Later** = planned enhancement; **Ope
 - Regional challenges, cultural and food trivia, achievements.
 
 ## Acceptance tests
-1. Two devices in different timezones load the same UTC day and receive the same answer.
+1. Two devices in different time zones on the same local calendar date receive the same answer. At the same instant, devices on different local dates receive their respective scheduled answers.
 2. Reloading does not change today's answer or erase a player's guesses.
 3. A guess displays a finite, nonnegative distance and map proximity feedback.
 4. Repeating a guess returns the same feedback and does not increase the guess count.
-5. On the next UTC day, the puzzle changes for everyone simultaneously.
+5. At local midnight, the puzzle changes to the next calendar date's scheduled answer. The countdown accounts for daylight saving changes; UTC midnight alone does not trigger rollover when the local date stays the same.
 6. No target repeats within one full eligible-country cycle.
 7. Discovery content appears only after solving the puzzle.
 8. Mobile and keyboard users can complete the core game.
@@ -60,7 +60,7 @@ Legend: **MVP** = first playable release; **Later** = planned enhancement; **Ope
 17. History is ordered closest first, including after reload. Correct guesses lead zero-distance ties; other ties retain guess order. Saved progress and share emojis retain the original chronological order.
 18. With JavaScript disabled, the initial HTML still advertises the title, description, canonical URL, and a reachable 1200 × 630 PNG preview.
 19. Chad and Republic of Chad resolve to TCD, return certified border distances, preserve pre-expansion browser progress, and unlock a sourced postcard when solved in the expanded answer schedule.
-20. Solving opens a labeled modal with completion feedback and the postcard. Focus starts on the completion heading and stays inside the modal. Close and Escape restore focus to “View your postcard”; reopening and reloading preserve the win. Long postcards fit and scroll on a 320 × 568 viewport with a reachable close button. Postcard loading failures can retry inside the modal. UTC rollover closes the modal and unlocks the new puzzle.
+20. Solving opens a labeled modal with completion feedback and the postcard. Focus starts on the completion heading and stays inside the modal. Close and Escape restore focus to “View your postcard”; reopening and reloading preserve the win. Long postcards fit and scroll on a 320 × 568 viewport with a reachable close button. Postcard loading failures can retry inside the modal. Local-midnight rollover closes the modal and unlocks the new puzzle.
 
 21. All 197 approved country names resolve as guesses; the 51 guess-only countries have finite distances to every answer and never appear in any schedule. The 20 approved new answers each have a sourced postcard, available only after solving. Preserve all 2,626 previously published assignments, their era metadata and storage identities.
 22. New tiny enclaves and special source IDs (Vatican City, San Marino, Monaco, Kosovo, Palestine and South Sudan) resolve to real source boundaries; shared land borders return exactly zero with a separate adjacency flag.

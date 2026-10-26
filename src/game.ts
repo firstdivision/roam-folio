@@ -22,20 +22,30 @@ let assignments: Record<string, string> = publishedSchedule.assignments;
 const matrixIds = new Map(distances.ids.map((id, index) => [id, index]));
 const borderIndices = new Set(distances.borderIndices);
 const MILE = 1609.344;
-const DAY = 86_400_000;
 
-export function getUtcDate(now = new Date()): string {
+export function getLocalDate(now = new Date()): string {
   if (!Number.isFinite(now.getTime())) throw new Error('Invalid date');
-  return now.toISOString().slice(0, 10);
+  return [now.getFullYear(), now.getMonth() + 1, now.getDate()]
+    .map((part, index) => String(part).padStart(index === 0 ? 4 : 2, '0')).join('-');
 }
 
 export function nextReset(now = new Date()): Date {
-  return new Date(Date.parse(getUtcDate(now) + 'T00:00:00Z') + DAY);
+  if (!Number.isFinite(now.getTime())) throw new Error('Invalid date');
+  const reset = new Date(now);
+  // Advance by a local calendar day: DST days can be shorter or longer than 24 hours.
+  reset.setHours(24, 0, 0, 0);
+  return reset;
+}
+
+function isPuzzleDate(date: string): boolean {
+  // Validate date-only schedule keys independently of the browser's time zone.
+  return /^\d{4}-\d{2}-\d{2}$/.test(date) && Number.isFinite(Date.parse(date))
+    && new Date(date).toISOString().slice(0, 10) === date;
 }
 
 export function getPuzzle(date: string): Puzzle {
-  if (!/^\d{4}-\d{2}-\d{2}$/.test(date) || !Number.isFinite(Date.parse(date)) || getUtcDate(new Date(date)) !== date) {
-    throw new Error('Invalid UTC puzzle date');
+  if (!isPuzzleDate(date)) {
+    throw new Error('Invalid puzzle date');
   }
   const target = assignments[date];
   if (!target || !answerIds.has(target)) throw new Error('No published puzzle for this date');
@@ -112,8 +122,7 @@ export async function refreshSchedule(): Promise<void> {
   const entries = Object.entries(next.assignments);
   if (!entries.every(([date, id]) => {
     const era = publishedSchedule.eras.find(era => date >= era.startsOn && date <= era.endsOn);
-    return /^\d{4}-\d{2}-\d{2}$/.test(date) && Number.isFinite(Date.parse(date))
-      && getUtcDate(new Date(date)) === date && typeof id === 'string'
+    return isPuzzleDate(date) && typeof id === 'string'
       && era && eraAnswerIds[era.poolVersion]?.has(id);
   })) throw new Error('Invalid schedule');
   if (Object.entries(assignments).some(([date, id]) => next.assignments[date] !== id)) throw new Error('Published assignments cannot change');
@@ -153,5 +162,5 @@ export function saveProgress(puzzle: Puzzle, guesses: string[], storage?: Storag
 
 export function shareResult(puzzle: Puzzle, guesses: Guess[]): string {
   if (!guesses.at(-1)?.correct) throw new Error('Solve the puzzle before sharing');
-  return `Roamfolio · ${puzzle.date} UTC\n${guesses.length} ${guesses.length === 1 ? 'guess' : 'guesses'} to discover today's country\n${guesses.map(guess => guess.correct ? '🎯' : proximity(guess.meters).emoji).join('')}\nDiscover a country. Collect its story.`;
+  return `Roamfolio · ${puzzle.date}\n${guesses.length} ${guesses.length === 1 ? 'guess' : 'guesses'} to discover today's country\n${guesses.map(guess => guess.correct ? '🎯' : proximity(guess.meters).emoji).join('')}\nDiscover a country. Collect its story.`;
 }

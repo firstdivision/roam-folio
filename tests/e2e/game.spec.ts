@@ -442,11 +442,11 @@ test('keyboard users solve, unlock a sourced postcard and share without spoilers
   await expect(page.getByRole('heading', { name: 'A taste of the country' })).toBeVisible();
   await expect(page.getByRole('combobox')).toHaveCount(0);
   await expect(page.locator('.next-puzzle strong')).toHaveText(/\d{2}:\d{2}:\d{2}/);
-  await expect(page.locator('.next-puzzle')).toContainText('Resets at midnight UTC');
+  await expect(page.locator('.next-puzzle')).toContainText('Resets at midnight local time');
   // Avoid a native system share sheet so the copyable browser fallback is tested.
   await page.evaluate(() => Object.defineProperty(navigator, 'share', { value: undefined, configurable: true }));
   await page.getByRole('button', { name: 'Share your journey' }).click();
-  await expect(page.getByLabel('Your spoiler-free result')).toHaveValue(/2026-10-24 UTC/);
+  await expect(page.getByLabel('Your spoiler-free result')).toHaveValue(/Roamfolio · 2026-10-24\n/);
   expect(await page.getByLabel('Your spoiler-free result').inputValue()).not.toContain(target.name);
   await page.reload();
   await expect(page.getByRole('heading', { name: target.name, exact: true })).toBeVisible();
@@ -529,27 +529,82 @@ test('a failed postcard can retry inside the completion modal without losing the
   await expect(dialog).toBeVisible();
 });
 
-test('a new UTC day clears active guesses and completion', async ({ page }) => {
-  await page.clock.setSystemTime(new Date(`${date}T23:59:00Z`));
-  await page.goto('/');
-  await guess(page, target.name);
-  await expect(page.locator('.success-panel')).toBeVisible();
-  await page.clock.fastForward(61_000);
-  await expect(page.getByRole('combobox')).toBeVisible();
-  await expect(page.locator('.guess-list li')).toHaveCount(0);
-  await expect(page.locator('.postcard')).toHaveCount(0);
-  await expect(page.getByRole('dialog')).toHaveCount(0);
-  await expect(page.getByRole('button', { name: 'View your postcard' })).toHaveCount(0);
-  expect(await page.evaluate(() => document.documentElement.style.overflow)).not.toBe('hidden');
-  await expect(page.locator('.daily-label')).toContainText('October 25');
+for (const timezoneId of ['UTC', 'America/Chicago', 'Asia/Kolkata', 'Pacific/Kiritimati']) {
+  test.describe(`local rollover in ${timezoneId}`, () => {
+    test.use({ timezoneId });
+    test('midnight closes completion, unlocks the next puzzle, and preserves dated progress', async ({ page }) => {
+      const midnight = await page.evaluate(() => new Date(2026, 9, 25).getTime());
+      await page.clock.setSystemTime(midnight - 60_000);
+      await page.goto('/');
+      await expect(page.locator('.daily-label time')).toHaveAttribute('datetime', date);
+      await expect(page.locator('.daily-label')).toContainText('Local time');
+      await guess(page, target.name);
+      await expect(page.locator('.success-panel')).toBeVisible();
+      await expect(page.locator('.next-puzzle strong')).toHaveText('00:01:00');
+      await expect(page.locator('.next-puzzle')).toContainText('midnight local time');
+      await page.clock.fastForward(61_000);
+      await expect(page.getByRole('combobox')).toBeVisible();
+      await expect(page.locator('.guess-list li')).toHaveCount(0);
+      await expect(page.locator('.postcard')).toHaveCount(0);
+      await expect(page.getByRole('dialog')).toHaveCount(0);
+      await expect(page.getByRole('button', { name: 'View your postcard' })).toHaveCount(0);
+      expect(await page.evaluate(() => document.documentElement.style.overflow)).not.toBe('hidden');
+      await expect(page.locator('.daily-label')).toContainText('October 25');
+      const nextTarget = pool.find(country => country.id === schedule.assignments['2026-10-25'])!;
+      await guess(page, nextTarget.name);
+      await expect(page.locator('.success-panel')).toContainText(nextTarget.name);
+      await page.reload();
+      await expect(page.locator('.success-panel')).toContainText(nextTarget.name);
+      // Returning to the earlier date restores its completed progress under its original key.
+      await page.clock.setSystemTime(midnight - 60_000);
+      await page.reload();
+      await expect(page.locator('.success-panel')).toContainText(target.name);
+      await expect(page.locator('.guess-list li')).toHaveCount(1);
+    });
+    test('rechecks the local date before a guess and when a suspended tab resumes', async ({ page }) => {
+      const midnight = await page.evaluate(() => new Date(2026, 9, 25).getTime());
+      await page.clock.setSystemTime(midnight - 60_000);
+      await page.goto('/');
+      // Move the device clock without running the polling timer.
+      await page.clock.setSystemTime(midnight);
+      await guess(page, wrong.name);
+      await expect(page.locator('.daily-label time')).toHaveAttribute('datetime', '2026-10-25');
+      await expect(page.locator('.guess-list li')).toHaveCount(0);
+      await guess(page, wrong.name);
+      await expect(page.locator('.guess-list li')).toHaveCount(1);
+      await page.clock.setSystemTime(midnight - 60_000);
+      await page.evaluate(() => window.dispatchEvent(new Event('focus')));
+      await expect(page.locator('.daily-label time')).toHaveAttribute('datetime', date);
+      await expect(page.locator('.guess-list li')).toHaveCount(0);
+    });
+  });
+}
+
+test('countdown handles both daylight saving transitions', async ({ browser }) => {
+  const context = await browser.newContext({ timezoneId: 'America/New_York' });
+  try {
+    const page = await context.newPage();
+    await page.clock.install({ time: new Date('2026-03-08T00:00:00-05:00') });
+    for (const [date, instant, countdown] of [
+      ['2026-03-08', '2026-03-08T00:00:00-05:00', '23:00:00'],
+      ['2026-11-01', '2026-11-01T00:00:00-04:00', '25:00:00'],
+    ]) {
+      await page.clock.setSystemTime(new Date(instant));
+      await page.goto('/');
+      const targetId = (schedule.assignments as Record<string, string>)[date];
+      await guess(page, pool.find(country => country.id === targetId)!.name);
+      await expect(page.locator('.next-puzzle strong')).toHaveText(countdown);
+    }
+  } finally { await context.close(); }
 });
 
-test('timezone setting cannot change the daily target or progress identity', async ({ browser }) => {
+test('the same local calendar date shares a target and progress identity across time zones', async ({ browser }) => {
   const contexts = await Promise.all(['Pacific/Honolulu', 'Pacific/Kiritimati'].map(timezoneId => browser.newContext({ timezoneId })));
   const identities: string[] = [];
   for (const context of contexts) {
     const page = await context.newPage();
-    await page.clock.install({ time: new Date('2026-10-24T23:59:00Z') });
+    const instant = await page.evaluate(() => new Date(2026, 9, 24, 12).getTime());
+    await page.clock.install({ time: instant });
     await page.goto('/');
     await guess(page, target.name);
     await expect(page.locator('.success-panel')).toContainText(target.name);
@@ -557,6 +612,26 @@ test('timezone setting cannot change the daily target or progress identity', asy
     await context.close();
   }
   expect(identities[0]).toBe(identities[1]);
+});
+
+test('different local dates at the same instant unlock different scheduled puzzles', async ({ browser }) => {
+  for (const [timezoneId, localDate] of [
+    ['Pacific/Honolulu', '2026-10-24'], ['Pacific/Kiritimati', '2026-10-25'],
+  ]) {
+    const context = await browser.newContext({ timezoneId });
+    try {
+      const page = await context.newPage();
+      await page.clock.install({ time: new Date('2026-10-24T23:59:00Z') });
+      await page.goto('/');
+      await expect(page.locator('.daily-label time')).toHaveAttribute('datetime', localDate);
+      const targetId = (schedule.assignments as Record<string, string>)[localDate];
+      const target = pool.find(country => country.id === targetId)!;
+      await guess(page, target.name);
+      await expect(page.locator('.success-panel')).toContainText(target.name);
+      await page.reload();
+      await expect(page.locator('.success-panel')).toContainText(target.name);
+    } finally { await context.close(); }
+  }
 });
 
 test('unknown input and denied storage keep play accessible without layout overflow', async ({ page }) => {

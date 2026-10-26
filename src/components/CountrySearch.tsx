@@ -45,7 +45,7 @@ export function CountrySearch({ onGuess }: { onGuess: (id: string) => void }) {
   return <form className="guess-form" onSubmit={event => {
     event.preventDefault();
     const country = resolveCountry(query);
-    if (!country) { setError(`Choose a country from the suggestions. Only the ${countries.length} countries in this puzzle’s pool are eligible.`); return; }
+    if (!country) { setError(`Choose a country from the suggestions. There are ${countries.length} countries available to guess.`); return; }
     onGuess(country.id);
     setQuery(''); setError(''); setOpen(false); setActive(-1);
     // Release the software keyboard so touch players can see the map result.

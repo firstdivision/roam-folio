@@ -1,14 +1,23 @@
-import pool from '../data/countries/pool.v2.json';
+import pool from '../data/countries/pool.v3.json';
+import originalPool from '../data/countries/pool.v1.json';
+import chadPool from '../data/countries/pool.v2.json';
 import publishedSchedule from '../data/schedules/schedule.v1.json';
-import distances from '../data/geography/feedback.v2.json';
+import distances from '../data/geography/feedback.v3.json';
 
-export type Country = { id: string; name: string; aliases: string[] };
+export type Country = { id: string; name: string; aliases: string[]; answerEligible: boolean };
 export type Puzzle = { date: string; target: string; identity: string };
 export type Guess = { countryId: string; meters: number; borders: boolean; correct: boolean };
 export type CitedText = { text: string; sourceUrl: string; sourceTitle: string };
 export type Discovery = { facts: CitedText[]; culture: CitedText; food: CitedText & { name: string } };
 export const countries: Country[] = pool;
+export const answerCountries = countries.filter(country => country.answerEligible);
 const countryIds = new Set(countries.map(country => country.id));
+const answerIds = new Set(answerCountries.map(country => country.id));
+const eraAnswerIds: Record<string, Set<string>> = {
+  'pool-v1': new Set(originalPool.map(country => country.id)),
+  'pool-v2': new Set(chadPool.map(country => country.id)),
+  'pool-v3': answerIds,
+};
 let assignments: Record<string, string> = publishedSchedule.assignments;
 const matrixIds = new Map(distances.ids.map((id, index) => [id, index]));
 const borderIndices = new Set(distances.borderIndices);
@@ -29,14 +38,15 @@ export function getPuzzle(date: string): Puzzle {
     throw new Error('Invalid UTC puzzle date');
   }
   const target = assignments[date];
-  if (!target || !countryIds.has(target)) throw new Error('No published puzzle for this date');
+  if (!target || !answerIds.has(target)) throw new Error('No published puzzle for this date');
   const era = publishedSchedule.eras.find(era => date >= era.startsOn && date <= era.endsOn);
   if (!era) throw new Error('No published pool version for this date');
+  if (!eraAnswerIds[era.poolVersion]?.has(target)) throw new Error('Ineligible answer for this pool version');
   return { date, target, identity: `${publishedSchedule.version}:${era.poolVersion}:${era.geographyVersion}:${date}` };
 }
 
 export function evaluateGuess(puzzle: Puzzle, countryId: string): Guess {
-  if (!countryIds.has(countryId) || !countryIds.has(puzzle.target)) throw new Error('Ineligible country');
+  if (!countryIds.has(countryId) || !answerIds.has(puzzle.target)) throw new Error('Ineligible country');
   if (countryId === puzzle.target) return { countryId, meters: 0, borders: false, correct: true };
   const a = matrixIds.get(countryId), b = matrixIds.get(puzzle.target);
   if (a === undefined || b === undefined) throw new Error('Geographic feedback is unavailable');
@@ -100,7 +110,12 @@ export async function refreshSchedule(): Promise<void> {
     throw new Error('A newer game version is required for this schedule');
   }
   const entries = Object.entries(next.assignments);
-  if (!entries.every(([date, id]) => /^\d{4}-\d{2}-\d{2}$/.test(date) && typeof id === 'string' && countryIds.has(id))) throw new Error('Invalid schedule');
+  if (!entries.every(([date, id]) => {
+    const era = publishedSchedule.eras.find(era => date >= era.startsOn && date <= era.endsOn);
+    return /^\d{4}-\d{2}-\d{2}$/.test(date) && Number.isFinite(Date.parse(date))
+      && getUtcDate(new Date(date)) === date && typeof id === 'string'
+      && era && eraAnswerIds[era.poolVersion]?.has(id);
+  })) throw new Error('Invalid schedule');
   if (Object.entries(assignments).some(([date, id]) => next.assignments[date] !== id)) throw new Error('Published assignments cannot change');
   assignments = Object.fromEntries(entries) as Record<string, string>;
 }

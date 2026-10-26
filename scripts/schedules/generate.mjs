@@ -3,7 +3,10 @@ import { mkdir, readFile, writeFile } from 'node:fs/promises';
 
 const readPool = async version => JSON.parse(await readFile(new URL(`../../data/countries/pool.${version}.json`, import.meta.url), 'utf8'));
 const legacyPool = await readPool('v1');
-const currentPool = await readPool('v2');
+const chadPool = await readPool('v2');
+const registry = await readPool('v3');
+if (registry.some(country => typeof country.answerEligible !== 'boolean')) throw new Error('Missing answer eligibility');
+const currentPool = registry.filter(country => country.answerEligible);
 const DAY = 86_400_000;
 const start = Date.parse('2026-01-01T00:00:00Z');
 const seed = 'roamfolio/pool-v1/schedule-v1';
@@ -29,7 +32,8 @@ function appendCycles(pool, poolVersion, geographyVersion, cycleSeed, count) {
 }
 // Preserve all twenty already-published cycles, then begin the expanded pool.
 appendCycles(legacyPool, 'pool-v1', 'natural-earth-5.1.1-policy-1', seed, 20);
-appendCycles(currentPool, 'pool-v2', 'natural-earth-5.1.1-policy-1-pool-2', 'roamfolio/pool-v2/schedule-v1', 1);
+appendCycles(chadPool, 'pool-v2', 'natural-earth-5.1.1-policy-1-pool-2', 'roamfolio/pool-v2/schedule-v1', 1);
+appendCycles(currentPool, 'pool-v3', 'natural-earth-5.1.1-policy-1-pool-3', 'roamfolio/pool-v3/schedule-v1', 1);
 const schedule = {
   version: 'schedule-v1', poolVersion: 'pool-v1', geographyVersion: 'natural-earth-5.1.1-policy-1',
   seed, cycleLength: legacyPool.length, startsOn: '2026-01-01', endsOn: Object.keys(assignments).at(-1), eras, assignments,
@@ -49,4 +53,4 @@ await mkdir(new URL('../../public/data/', import.meta.url), { recursive: true })
 for (const location of [path, new URL('../../public/data/schedule.v1.json', import.meta.url)]) {
   await writeFile(location, JSON.stringify(schedule) + '\n');
 }
-console.log(`Published ${Object.keys(assignments).length} immutable daily assignments through ${schedule.endsOn}; pool-v2 begins ${eras[1].startsOn}.`);
+console.log(`Published ${Object.keys(assignments).length} immutable daily assignments through ${schedule.endsOn}; ${currentPool.length}-answer pool-v3 begins ${eras[2].startsOn}.`);

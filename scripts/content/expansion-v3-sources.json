@@ -1,0 +1,428 @@
+{
+  "retrievedAt": "2026-10-25",
+  "reviewStatus": "Claim support checked against pinned structured country records and consulted travel-guide/institutional excerpts; no independent specialist review.",
+  "countryReference": {
+    "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+    "publisher": "mledoze/countries contributors",
+    "dataSha256": "0d92fb23b43ae080bd439f5dc5d61a8845395fdd0af1479b433c59fe079bd6fd",
+    "license": "ODbL 1.0",
+    "licenseUrl": "https://opendatacommons.org/licenses/odbl/1-0/"
+  },
+  "claimSources": {
+    "BEN": {
+      "claims": {
+        "facts[0]": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "facts[1]": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "facts[2]": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "culture": "https://en.wikivoyage.org/wiki/Benin",
+        "food": "https://en.wikivoyage.org/wiki/Benin#Eat"
+      },
+      "referenceFields": {
+        "capital": [
+          "Porto-Novo"
+        ],
+        "region": "Africa",
+        "landlocked": false,
+        "languages": {
+          "fra": "French"
+        }
+      }
+    },
+    "BDI": {
+      "claims": {
+        "facts[0]": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "facts[1]": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "facts[2]": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "culture": "https://en.wikivoyage.org/wiki/Burundi",
+        "food": "https://en.wikivoyage.org/wiki/Burundi#Eat"
+      },
+      "referenceFields": {
+        "capital": [
+          "Gitega"
+        ],
+        "region": "Africa",
+        "landlocked": true,
+        "languages": {
+          "fra": "French",
+          "run": "Kirundi"
+        }
+      }
+    },
+    "SOM": {
+      "claims": {
+        "facts[0]": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "facts[1]": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "facts[2]": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "culture": "https://en.wikivoyage.org/wiki/Somalia",
+        "food": "https://en.wikivoyage.org/wiki/Somalia#Eat"
+      },
+      "referenceFields": {
+        "capital": [
+          "Mogadishu"
+        ],
+        "region": "Africa",
+        "landlocked": false,
+        "languages": {
+          "ara": "Arabic",
+          "som": "Somali"
+        }
+      }
+    },
+    "SDS": {
+      "claims": {
+        "facts[0]": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "facts[1]": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "facts[2]": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "culture": "https://en.wikivoyage.org/wiki/South_Sudan",
+        "food": "https://en.wikivoyage.org/wiki/South_Sudan#Eat"
+      },
+      "referenceFields": {
+        "capital": [
+          "Juba"
+        ],
+        "region": "Africa",
+        "landlocked": true,
+        "languages": {
+          "eng": "English"
+        }
+      }
+    },
+    "SMR": {
+      "claims": {
+        "facts[0]": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "facts[1]": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "facts[2]": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "culture": "https://en.wikivoyage.org/wiki/San_Marino",
+        "food": "https://www.visitsanmarino.com/pub2/VisitSM/en/contenuto/About-San-Marino/Gastronomia.html"
+      },
+      "referenceFields": {
+        "capital": [
+          "City of San Marino"
+        ],
+        "region": "Europe",
+        "landlocked": true,
+        "languages": {
+          "ita": "Italian"
+        }
+      }
+    },
+    "VAT": {
+      "claims": {
+        "facts[0]": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "facts[1]": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "facts[2]": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "culture": "https://whc.unesco.org/en/list/286/",
+        "food": "https://www.museivaticani.va/content/museivaticani-mobile/en/organizza-visita/consigli-utili.html"
+      },
+      "referenceFields": {
+        "capital": [
+          "Vatican City"
+        ],
+        "region": "Europe",
+        "landlocked": true,
+        "languages": {
+          "ita": "Italian",
+          "lat": "Latin"
+        }
+      }
+    },
+    "MLT": {
+      "claims": {
+        "facts[0]": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "facts[1]": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "facts[2]": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "culture": "https://en.wikivoyage.org/wiki/Malta",
+        "food": "https://en.wikivoyage.org/wiki/Malta#Eat"
+      },
+      "referenceFields": {
+        "capital": [
+          "Valletta"
+        ],
+        "region": "Europe",
+        "landlocked": false,
+        "languages": {
+          "eng": "English",
+          "mlt": "Maltese"
+        }
+      }
+    },
+    "MDA": {
+      "claims": {
+        "facts[0]": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "facts[1]": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "facts[2]": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "culture": "https://en.wikivoyage.org/wiki/Moldova",
+        "food": "https://en.wikivoyage.org/wiki/Moldova#Eat"
+      },
+      "referenceFields": {
+        "capital": [
+          "Chișinău"
+        ],
+        "region": "Europe",
+        "landlocked": true,
+        "languages": {
+          "ron": "Moldavian"
+        }
+      }
+    },
+    "MCO": {
+      "claims": {
+        "facts[0]": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "facts[1]": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "facts[2]": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "culture": "https://en.wikivoyage.org/wiki/Monaco",
+        "food": "https://en.wikivoyage.org/wiki/Monaco#Eat"
+      },
+      "referenceFields": {
+        "capital": [
+          "Monaco"
+        ],
+        "region": "Europe",
+        "landlocked": false,
+        "languages": {
+          "fra": "French"
+        }
+      }
+    },
+    "KOS": {
+      "claims": {
+        "facts[0]": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "facts[1]": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "facts[2]": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "culture": "https://en.wikivoyage.org/wiki/Kosovo",
+        "food": "https://en.wikivoyage.org/wiki/Kosovo#Eat"
+      },
+      "referenceFields": {
+        "capital": [
+          "Pristina"
+        ],
+        "region": "Europe",
+        "landlocked": true,
+        "languages": {
+          "sqi": "Albanian",
+          "srp": "Serbian"
+        }
+      }
+    },
+    "LUX": {
+      "claims": {
+        "facts[0]": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "facts[1]": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "facts[2]": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "culture": "https://en.wikivoyage.org/wiki/Luxembourg",
+        "food": "https://en.wikivoyage.org/wiki/Luxembourg#Eat"
+      },
+      "referenceFields": {
+        "capital": [
+          "Luxembourg"
+        ],
+        "region": "Europe",
+        "landlocked": true,
+        "languages": {
+          "deu": "German",
+          "fra": "French",
+          "ltz": "Luxembourgish"
+        }
+      }
+    },
+    "AFG": {
+      "claims": {
+        "facts[0]": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "facts[1]": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "facts[2]": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "culture": "https://en.wikivoyage.org/wiki/Afghanistan",
+        "food": "https://en.wikivoyage.org/wiki/Afghanistan#Eat"
+      },
+      "referenceFields": {
+        "capital": [
+          "Kabul"
+        ],
+        "region": "Asia",
+        "landlocked": true,
+        "languages": {
+          "prs": "Dari",
+          "pus": "Pashto",
+          "tuk": "Turkmen"
+        }
+      }
+    },
+    "KWT": {
+      "claims": {
+        "facts[0]": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "facts[1]": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "facts[2]": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "culture": "https://en.wikivoyage.org/wiki/Kuwait",
+        "food": "https://en.wikivoyage.org/wiki/Kuwait#Eat"
+      },
+      "referenceFields": {
+        "capital": [
+          "Kuwait City"
+        ],
+        "region": "Asia",
+        "landlocked": false,
+        "languages": {
+          "ara": "Arabic"
+        }
+      }
+    },
+    "KGZ": {
+      "claims": {
+        "facts[0]": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "facts[1]": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "facts[2]": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "culture": "https://en.wikivoyage.org/wiki/Kyrgyzstan",
+        "food": "https://en.wikivoyage.org/wiki/Kyrgyzstan#Eat"
+      },
+      "referenceFields": {
+        "capital": [
+          "Bishkek"
+        ],
+        "region": "Asia",
+        "landlocked": true,
+        "languages": {
+          "kir": "Kyrgyz",
+          "rus": "Russian"
+        }
+      }
+    },
+    "PRK": {
+      "claims": {
+        "facts[0]": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "facts[1]": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "facts[2]": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "culture": "https://ich.unesco.org/en/RL/pyongyang-raengmyon-custom-01695",
+        "food": "https://ich.unesco.org/en/RL/pyongyang-raengmyon-custom-01695"
+      },
+      "referenceFields": {
+        "capital": [
+          "Pyongyang"
+        ],
+        "region": "Asia",
+        "landlocked": false,
+        "languages": {
+          "kor": "Korean"
+        }
+      }
+    },
+    "PSX": {
+      "claims": {
+        "facts[0]": "https://en.wikivoyage.org/wiki/Palestinian_territories",
+        "facts[1]": "https://en.wikivoyage.org/wiki/Palestinian_territories",
+        "facts[2]": "https://en.wikivoyage.org/wiki/Palestinian_territories",
+        "culture": "https://en.wikivoyage.org/wiki/Palestinian_territories",
+        "food": "https://en.wikivoyage.org/wiki/Palestinian_territories#Eat"
+      },
+      "referenceFields": {
+        "capital": [
+          "Ramallah"
+        ],
+        "region": "Asia",
+        "landlocked": false,
+        "languages": {
+          "ara": "Arabic"
+        }
+      }
+    },
+    "SYR": {
+      "claims": {
+        "facts[0]": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "facts[1]": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "facts[2]": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "culture": "https://en.wikivoyage.org/wiki/Syria",
+        "food": "https://en.wikivoyage.org/wiki/Syria#Eat"
+      },
+      "referenceFields": {
+        "capital": [
+          "Damascus"
+        ],
+        "region": "Asia",
+        "landlocked": false,
+        "languages": {
+          "ara": "Arabic"
+        }
+      }
+    },
+    "TJK": {
+      "claims": {
+        "facts[0]": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "facts[1]": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "facts[2]": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "culture": "https://en.wikivoyage.org/wiki/Tajikistan",
+        "food": "https://en.wikivoyage.org/wiki/Tajikistan#Eat"
+      },
+      "referenceFields": {
+        "capital": [
+          "Dushanbe"
+        ],
+        "region": "Asia",
+        "landlocked": true,
+        "languages": {
+          "rus": "Russian",
+          "tgk": "Tajik"
+        }
+      }
+    },
+    "TKM": {
+      "claims": {
+        "facts[0]": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "facts[1]": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "facts[2]": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "culture": "https://en.wikivoyage.org/wiki/Turkmenistan",
+        "food": "https://en.wikivoyage.org/wiki/Turkmenistan#Eat"
+      },
+      "referenceFields": {
+        "capital": [
+          "Ashgabat"
+        ],
+        "region": "Asia",
+        "landlocked": true,
+        "languages": {
+          "rus": "Russian",
+          "tuk": "Turkmen"
+        }
+      }
+    },
+    "YEM": {
+      "claims": {
+        "facts[0]": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "facts[1]": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "facts[2]": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "culture": "https://en.wikivoyage.org/wiki/Yemen",
+        "food": "https://en.wikivoyage.org/wiki/Yemen#Eat"
+      },
+      "referenceFields": {
+        "capital": [
+          "Sana'a"
+        ],
+        "region": "Asia",
+        "landlocked": false,
+        "languages": {
+          "ara": "Arabic"
+        }
+      }
+    }
+  },
+  "licenses": {
+    "Wikivoyage": {
+      "publisher": "Wikivoyage contributors",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "transformation": "Original condensed summaries; source articles link their contributor histories."
+    },
+    "UNESCO World Heritage": {
+      "publisher": "UNESCO World Heritage Centre",
+      "license": "CC BY-SA 3.0 IGO",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/igo/"
+    },
+    "Other institutions": {
+      "transformation": "Short original factual summaries only; no copied prose or media; no reproduction license asserted."
+    }
+  },
+  "editorialNotes": [
+    "Capital, continent and landlocked/coastal fields are basic geography facts. No current leader, population, price or travel-safety claims are reused.",
+    "Palestine uses geographic/language facts instead of the reference database’s capital field.",
+    "Moldova avoids the reference database’s obsolete language label.",
+    "Vatican pizza is explicitly shared Italian cuisine, not claimed as a distinct national dish.",
+    "Country reference classifications do not define game recognition or geometry; source IDs KOS, PSX and SDS map separately to reference codes UNK, PSE and SSD."
+  ]
+}

@@ -10,3 +10,4 @@ playwright-report/
 .env.*
 !.env.example
 data/geography/distances.checkpoint.json
+data/geography/distances.v3.checkpoint.json

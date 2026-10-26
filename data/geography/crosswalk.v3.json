@@ -1,0 +1,1816 @@
+{
+  "ALB": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "ALB",
+    "sourceLabel": "Albania",
+    "mapUnits": [
+      "ALB"
+    ],
+    "components": 1
+  },
+  "AUT": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "AUT",
+    "sourceLabel": "Austria",
+    "mapUnits": [
+      "AUT"
+    ],
+    "components": 1
+  },
+  "BLR": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "BLR",
+    "sourceLabel": "Belarus",
+    "mapUnits": [
+      "BLR"
+    ],
+    "components": 1
+  },
+  "BEL": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "BEL",
+    "sourceLabel": "Belgium",
+    "mapUnits": [
+      "BFR",
+      "BWR",
+      "BCR"
+    ],
+    "components": 1
+  },
+  "BIH": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "BIH",
+    "sourceLabel": "Bosnia and Herzegovina",
+    "mapUnits": [
+      "BHF",
+      "BIS",
+      "BHB"
+    ],
+    "components": 1
+  },
+  "BGR": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "BGR",
+    "sourceLabel": "Bulgaria",
+    "mapUnits": [
+      "BGR"
+    ],
+    "components": 1
+  },
+  "HRV": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "HRV",
+    "sourceLabel": "Croatia",
+    "mapUnits": [
+      "HRV"
+    ],
+    "components": 25
+  },
+  "CYP": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "CYP",
+    "sourceLabel": "Cyprus",
+    "mapUnits": [
+      "CYP"
+    ],
+    "components": 4
+  },
+  "CZE": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "CZE",
+    "sourceLabel": "Czechia",
+    "mapUnits": [
+      "CZE"
+    ],
+    "components": 1
+  },
+  "DNK": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "DNK",
+    "sourceLabel": "Denmark",
+    "mapUnits": [
+      "DNK"
+    ],
+    "components": 15
+  },
+  "EST": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "EST",
+    "sourceLabel": "Estonia",
+    "mapUnits": [
+      "EST"
+    ],
+    "components": 8
+  },
+  "FIN": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "FIN",
+    "sourceLabel": "Finland",
+    "mapUnits": [
+      "FIN"
+    ],
+    "components": 58,
+    "additionalSourceValues": [
+      "ALD"
+    ]
+  },
+  "FRA": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "FRA",
+    "sourceLabel": "France",
+    "mapUnits": [
+      "GUF",
+      "FXX",
+      "MTQ",
+      "GLP",
+      "REU",
+      "MYT"
+    ],
+    "components": 21
+  },
+  "DEU": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "DEU",
+    "sourceLabel": "Germany",
+    "mapUnits": [
+      "DEU"
+    ],
+    "components": 22
+  },
+  "GRC": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "GRC",
+    "sourceLabel": "Greece",
+    "mapUnits": [
+      "GRC"
+    ],
+    "components": 74
+  },
+  "HUN": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "HUN",
+    "sourceLabel": "Hungary",
+    "mapUnits": [
+      "HUN"
+    ],
+    "components": 1
+  },
+  "ISL": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "ISL",
+    "sourceLabel": "Iceland",
+    "mapUnits": [
+      "ISL"
+    ],
+    "components": 5
+  },
+  "IRL": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "IRL",
+    "sourceLabel": "Ireland",
+    "mapUnits": [
+      "IRL"
+    ],
+    "components": 7
+  },
+  "ITA": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "ITA",
+    "sourceLabel": "Italy",
+    "mapUnits": [
+      "ITA"
+    ],
+    "components": 29
+  },
+  "LVA": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "LVA",
+    "sourceLabel": "Latvia",
+    "mapUnits": [
+      "LVA"
+    ],
+    "components": 1
+  },
+  "LTU": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "LTU",
+    "sourceLabel": "Lithuania",
+    "mapUnits": [
+      "LTU"
+    ],
+    "components": 2
+  },
+  "NLD": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "NLD",
+    "sourceLabel": "Netherlands",
+    "mapUnits": [
+      "NLX",
+      "NLY"
+    ],
+    "components": 12
+  },
+  "MKD": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "MKD",
+    "sourceLabel": "North Macedonia",
+    "mapUnits": [
+      "MKD"
+    ],
+    "components": 1
+  },
+  "NOR": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "NOR",
+    "sourceLabel": "Norway",
+    "mapUnits": [
+      "NOW",
+      "NJM",
+      "NSV"
+    ],
+    "components": 119,
+    "excludedMapUnits": [
+      "BVT"
+    ]
+  },
+  "POL": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "POL",
+    "sourceLabel": "Poland",
+    "mapUnits": [
+      "POL"
+    ],
+    "components": 1
+  },
+  "PRT": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "PRT",
+    "sourceLabel": "Portugal",
+    "mapUnits": [
+      "PRX",
+      "PMD",
+      "PAZ"
+    ],
+    "components": 17
+  },
+  "ROU": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "ROU",
+    "sourceLabel": "Romania",
+    "mapUnits": [
+      "ROU"
+    ],
+    "components": 1
+  },
+  "RUS": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "RUS",
+    "sourceLabel": "Russia",
+    "mapUnits": [
+      "RUS"
+    ],
+    "components": 214
+  },
+  "SRB": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "SRB",
+    "sourceLabel": "Republic of Serbia",
+    "mapUnits": [
+      "SRV",
+      "SRS"
+    ],
+    "components": 1
+  },
+  "SVK": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "SVK",
+    "sourceLabel": "Slovakia",
+    "mapUnits": [
+      "SVK"
+    ],
+    "components": 1
+  },
+  "SVN": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "SVN",
+    "sourceLabel": "Slovenia",
+    "mapUnits": [
+      "SVN"
+    ],
+    "components": 1
+  },
+  "ESP": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "ESP",
+    "sourceLabel": "Spain",
+    "mapUnits": [
+      "ESP"
+    ],
+    "components": 23
+  },
+  "SWE": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "SWE",
+    "sourceLabel": "Sweden",
+    "mapUnits": [
+      "SWE"
+    ],
+    "components": 41
+  },
+  "CHE": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "CHE",
+    "sourceLabel": "Switzerland",
+    "mapUnits": [
+      "CHE"
+    ],
+    "components": 1
+  },
+  "UKR": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "UKR",
+    "sourceLabel": "Ukraine",
+    "mapUnits": [
+      "UKR"
+    ],
+    "components": 4
+  },
+  "GBR": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "GBR",
+    "sourceLabel": "United Kingdom",
+    "mapUnits": [
+      "NIR",
+      "WLS",
+      "ENG",
+      "SCT"
+    ],
+    "components": 57
+  },
+  "DZA": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "DZA",
+    "sourceLabel": "Algeria",
+    "mapUnits": [
+      "DZA"
+    ],
+    "components": 1
+  },
+  "AGO": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "AGO",
+    "sourceLabel": "Angola",
+    "mapUnits": [
+      "AGO"
+    ],
+    "components": 3
+  },
+  "BWA": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "BWA",
+    "sourceLabel": "Botswana",
+    "mapUnits": [
+      "BWA"
+    ],
+    "components": 1
+  },
+  "CMR": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "CMR",
+    "sourceLabel": "Cameroon",
+    "mapUnits": [
+      "CMR"
+    ],
+    "components": 1
+  },
+  "COD": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "COD",
+    "sourceLabel": "Democratic Republic of the Congo",
+    "mapUnits": [
+      "COD"
+    ],
+    "components": 2
+  },
+  "EGY": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "EGY",
+    "sourceLabel": "Egypt",
+    "mapUnits": [
+      "EGY"
+    ],
+    "components": 8,
+    "repair": "Shapely make_valid splits source self-touch at (35.621087106,23.139292914); no vertex movement, area change <1e-9 square degrees."
+  },
+  "ETH": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "ETH",
+    "sourceLabel": "Ethiopia",
+    "mapUnits": [
+      "ETH"
+    ],
+    "components": 1
+  },
+  "GHA": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "GHA",
+    "sourceLabel": "Ghana",
+    "mapUnits": [
+      "GHA"
+    ],
+    "components": 1
+  },
+  "KEN": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "KEN",
+    "sourceLabel": "Kenya",
+    "mapUnits": [
+      "KEN"
+    ],
+    "components": 2
+  },
+  "MDG": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "MDG",
+    "sourceLabel": "Madagascar",
+    "mapUnits": [
+      "MDG"
+    ],
+    "components": 3
+  },
+  "MLI": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "MLI",
+    "sourceLabel": "Mali",
+    "mapUnits": [
+      "MLI"
+    ],
+    "components": 1
+  },
+  "MUS": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "MUS",
+    "sourceLabel": "Mauritius",
+    "mapUnits": [
+      "MUS"
+    ],
+    "components": 3
+  },
+  "MAR": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "MAR",
+    "sourceLabel": "Morocco",
+    "mapUnits": [
+      "MAR"
+    ],
+    "components": 1
+  },
+  "MOZ": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "MOZ",
+    "sourceLabel": "Mozambique",
+    "mapUnits": [
+      "MOZ"
+    ],
+    "components": 4
+  },
+  "NAM": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "NAM",
+    "sourceLabel": "Namibia",
+    "mapUnits": [
+      "NAM"
+    ],
+    "components": 1
+  },
+  "NGA": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "NGA",
+    "sourceLabel": "Nigeria",
+    "mapUnits": [
+      "NGA"
+    ],
+    "components": 3
+  },
+  "RWA": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "RWA",
+    "sourceLabel": "Rwanda",
+    "mapUnits": [
+      "RWA"
+    ],
+    "components": 1
+  },
+  "SEN": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "SEN",
+    "sourceLabel": "Senegal",
+    "mapUnits": [
+      "SEN"
+    ],
+    "components": 1
+  },
+  "ZAF": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "ZAF",
+    "sourceLabel": "South Africa",
+    "mapUnits": [
+      "ZAF"
+    ],
+    "components": 3
+  },
+  "SDN": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "SDN",
+    "sourceLabel": "Sudan",
+    "mapUnits": [
+      "SDN"
+    ],
+    "components": 2
+  },
+  "TZA": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "TZA",
+    "sourceLabel": "United Republic of Tanzania",
+    "mapUnits": [
+      "TZA",
+      "TZZ"
+    ],
+    "components": 7
+  },
+  "TUN": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "TUN",
+    "sourceLabel": "Tunisia",
+    "mapUnits": [
+      "TUN"
+    ],
+    "components": 4
+  },
+  "UGA": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "UGA",
+    "sourceLabel": "Uganda",
+    "mapUnits": [
+      "UGA"
+    ],
+    "components": 1
+  },
+  "ZMB": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "ZMB",
+    "sourceLabel": "Zambia",
+    "mapUnits": [
+      "ZMB"
+    ],
+    "components": 1
+  },
+  "ZWE": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "ZWE",
+    "sourceLabel": "Zimbabwe",
+    "mapUnits": [
+      "ZWE"
+    ],
+    "components": 1
+  },
+  "ARG": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "ARG",
+    "sourceLabel": "Argentina",
+    "mapUnits": [
+      "ARG"
+    ],
+    "components": 8
+  },
+  "BHS": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "BHS",
+    "sourceLabel": "The Bahamas",
+    "mapUnits": [
+      "BHS"
+    ],
+    "components": 44
+  },
+  "BLZ": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "BLZ",
+    "sourceLabel": "Belize",
+    "mapUnits": [
+      "BLZ"
+    ],
+    "components": 10
+  },
+  "BOL": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "BOL",
+    "sourceLabel": "Bolivia",
+    "mapUnits": [
+      "BOL"
+    ],
+    "components": 1
+  },
+  "BRA": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "BRA",
+    "sourceLabel": "Brazil",
+    "mapUnits": [
+      "BRA"
+    ],
+    "components": 43
+  },
+  "CAN": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "CAN",
+    "sourceLabel": "Canada",
+    "mapUnits": [
+      "CAN"
+    ],
+    "components": 412
+  },
+  "CHL": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "CHL",
+    "sourceLabel": "Chile",
+    "mapUnits": [
+      "CHL"
+    ],
+    "components": 163
+  },
+  "COL": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "COL",
+    "sourceLabel": "Colombia",
+    "mapUnits": [
+      "COL"
+    ],
+    "components": 11
+  },
+  "CRI": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "CRI",
+    "sourceLabel": "Costa Rica",
+    "mapUnits": [
+      "CRI"
+    ],
+    "components": 4
+  },
+  "CUB": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "CUB",
+    "sourceLabel": "Cuba",
+    "mapUnits": [
+      "CUB"
+    ],
+    "components": 41
+  },
+  "DOM": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "DOM",
+    "sourceLabel": "Dominican Republic",
+    "mapUnits": [
+      "DOM"
+    ],
+    "components": 3
+  },
+  "ECU": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "ECU",
+    "sourceLabel": "Ecuador",
+    "mapUnits": [
+      "ECU"
+    ],
+    "components": 16
+  },
+  "SLV": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "SLV",
+    "sourceLabel": "El Salvador",
+    "mapUnits": [
+      "SLV"
+    ],
+    "components": 3
+  },
+  "GTM": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "GTM",
+    "sourceLabel": "Guatemala",
+    "mapUnits": [
+      "GTM"
+    ],
+    "components": 1
+  },
+  "HTI": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "HTI",
+    "sourceLabel": "Haiti",
+    "mapUnits": [
+      "HTI"
+    ],
+    "components": 5
+  },
+  "HND": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "HND",
+    "sourceLabel": "Honduras",
+    "mapUnits": [
+      "HND"
+    ],
+    "components": 7
+  },
+  "JAM": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "JAM",
+    "sourceLabel": "Jamaica",
+    "mapUnits": [
+      "JAM"
+    ],
+    "components": 1
+  },
+  "MEX": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "MEX",
+    "sourceLabel": "Mexico",
+    "mapUnits": [
+      "MEX"
+    ],
+    "components": 51
+  },
+  "NIC": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "NIC",
+    "sourceLabel": "Nicaragua",
+    "mapUnits": [
+      "NIC"
+    ],
+    "components": 5
+  },
+  "PAN": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "PAN",
+    "sourceLabel": "Panama",
+    "mapUnits": [
+      "PAN"
+    ],
+    "components": 15
+  },
+  "PRY": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "PRY",
+    "sourceLabel": "Paraguay",
+    "mapUnits": [
+      "PRY"
+    ],
+    "components": 1
+  },
+  "PER": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "PER",
+    "sourceLabel": "Peru",
+    "mapUnits": [
+      "PER"
+    ],
+    "components": 5
+  },
+  "TTO": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "TTO",
+    "sourceLabel": "Trinidad and Tobago",
+    "mapUnits": [
+      "TTO"
+    ],
+    "components": 2
+  },
+  "USA": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "USA",
+    "sourceLabel": "United States of America",
+    "mapUnits": [
+      "USA"
+    ],
+    "components": 344
+  },
+  "URY": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "URY",
+    "sourceLabel": "Uruguay",
+    "mapUnits": [
+      "URY"
+    ],
+    "components": 1
+  },
+  "VEN": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "VEN",
+    "sourceLabel": "Venezuela",
+    "mapUnits": [
+      "VEN"
+    ],
+    "components": 29
+  },
+  "ARM": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "ARM",
+    "sourceLabel": "Armenia",
+    "mapUnits": [
+      "ARM"
+    ],
+    "components": 2
+  },
+  "AZE": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "AZE",
+    "sourceLabel": "Azerbaijan",
+    "mapUnits": [
+      "AZE"
+    ],
+    "components": 6
+  },
+  "BGD": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "BGD",
+    "sourceLabel": "Bangladesh",
+    "mapUnits": [
+      "BGD"
+    ],
+    "components": 22
+  },
+  "KHM": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "KHM",
+    "sourceLabel": "Cambodia",
+    "mapUnits": [
+      "KHM"
+    ],
+    "components": 6
+  },
+  "CHN": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "CHN",
+    "sourceLabel": "China",
+    "mapUnits": [
+      "CHN",
+      "PFA"
+    ],
+    "components": 70,
+    "excludedSourceValues": [
+      "HKG",
+      "MAC"
+    ]
+  },
+  "GEO": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "GEO",
+    "sourceLabel": "Georgia",
+    "mapUnits": [
+      "GEG",
+      "GEA"
+    ],
+    "components": 1
+  },
+  "IND": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "IND",
+    "sourceLabel": "India",
+    "mapUnits": [
+      "IND"
+    ],
+    "components": 35
+  },
+  "IDN": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "IDN",
+    "sourceLabel": "Indonesia",
+    "mapUnits": [
+      "IDN"
+    ],
+    "components": 264
+  },
+  "IRN": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "IRN",
+    "sourceLabel": "Iran",
+    "mapUnits": [
+      "IRN"
+    ],
+    "components": 12
+  },
+  "IRQ": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "IRQ",
+    "sourceLabel": "Iraq",
+    "mapUnits": [
+      "IRK",
+      "IRR"
+    ],
+    "components": 1
+  },
+  "ISR": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "ISR",
+    "sourceLabel": "Israel",
+    "mapUnits": [
+      "ISR"
+    ],
+    "components": 1
+  },
+  "JPN": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "JPN",
+    "sourceLabel": "Japan",
+    "mapUnits": [
+      "JPN"
+    ],
+    "components": 109
+  },
+  "JOR": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "JOR",
+    "sourceLabel": "Jordan",
+    "mapUnits": [
+      "JOR"
+    ],
+    "components": 1
+  },
+  "KAZ": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "KAZ",
+    "sourceLabel": "Kazakhstan",
+    "mapUnits": [
+      "KAZ"
+    ],
+    "components": 6
+  },
+  "LAO": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "LAO",
+    "sourceLabel": "Laos",
+    "mapUnits": [
+      "LAO"
+    ],
+    "components": 1
+  },
+  "LBN": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "LBN",
+    "sourceLabel": "Lebanon",
+    "mapUnits": [
+      "LBN"
+    ],
+    "components": 1
+  },
+  "MYS": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "MYS",
+    "sourceLabel": "Malaysia",
+    "mapUnits": [
+      "MYS"
+    ],
+    "components": 17
+  },
+  "MNG": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "MNG",
+    "sourceLabel": "Mongolia",
+    "mapUnits": [
+      "MNG"
+    ],
+    "components": 1
+  },
+  "MMR": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "MMR",
+    "sourceLabel": "Myanmar",
+    "mapUnits": [
+      "MMR"
+    ],
+    "components": 39
+  },
+  "NPL": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "NPL",
+    "sourceLabel": "Nepal",
+    "mapUnits": [
+      "NPL"
+    ],
+    "components": 1
+  },
+  "OMN": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "OMN",
+    "sourceLabel": "Oman",
+    "mapUnits": [
+      "OMN"
+    ],
+    "components": 6
+  },
+  "PAK": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "PAK",
+    "sourceLabel": "Pakistan",
+    "mapUnits": [
+      "PAK"
+    ],
+    "components": 2
+  },
+  "PHL": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "PHL",
+    "sourceLabel": "Philippines",
+    "mapUnits": [
+      "PHL"
+    ],
+    "components": 97
+  },
+  "QAT": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "QAT",
+    "sourceLabel": "Qatar",
+    "mapUnits": [
+      "QAT"
+    ],
+    "components": 1
+  },
+  "SAU": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "SAU",
+    "sourceLabel": "Saudi Arabia",
+    "mapUnits": [
+      "SAU"
+    ],
+    "components": 11
+  },
+  "SGP": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "SGP",
+    "sourceLabel": "Singapore",
+    "mapUnits": [
+      "SGP"
+    ],
+    "components": 1
+  },
+  "KOR": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "KOR",
+    "sourceLabel": "South Korea",
+    "mapUnits": [
+      "KNX",
+      "KOR"
+    ],
+    "components": 53
+  },
+  "LKA": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "LKA",
+    "sourceLabel": "Sri Lanka",
+    "mapUnits": [
+      "LKA"
+    ],
+    "components": 5
+  },
+  "TWN": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "TWN",
+    "sourceLabel": "Taiwan",
+    "mapUnits": [
+      "TWN"
+    ],
+    "components": 8
+  },
+  "THA": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "THA",
+    "sourceLabel": "Thailand",
+    "mapUnits": [
+      "THA"
+    ],
+    "components": 20
+  },
+  "TUR": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "TUR",
+    "sourceLabel": "Turkey",
+    "mapUnits": [
+      "TUR"
+    ],
+    "components": 6
+  },
+  "ARE": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "ARE",
+    "sourceLabel": "United Arab Emirates",
+    "mapUnits": [
+      "ARE"
+    ],
+    "components": 10
+  },
+  "UZB": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "UZB",
+    "sourceLabel": "Uzbekistan",
+    "mapUnits": [
+      "UZB"
+    ],
+    "components": 3
+  },
+  "VNM": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "VNM",
+    "sourceLabel": "Vietnam",
+    "mapUnits": [
+      "VNM"
+    ],
+    "components": 25
+  },
+  "AUS": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "AUS",
+    "sourceLabel": "Australia",
+    "mapUnits": [
+      "AUS"
+    ],
+    "components": 94
+  },
+  "FJI": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "FJI",
+    "sourceLabel": "Fiji",
+    "mapUnits": [
+      "FJI"
+    ],
+    "components": 44
+  },
+  "NZL": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "NZL",
+    "sourceLabel": "New Zealand",
+    "mapUnits": [
+      "NZL",
+      "TKL"
+    ],
+    "components": 26
+  },
+  "PNG": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "PNG",
+    "sourceLabel": "Papua New Guinea",
+    "mapUnits": [
+      "PNX",
+      "PNB"
+    ],
+    "components": 58
+  },
+  "TCD": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "TCD",
+    "sourceLabel": "Chad",
+    "mapUnits": [
+      "TCD"
+    ],
+    "components": 1
+  },
+  "BEN": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "BEN",
+    "sourceLabel": "Benin",
+    "mapUnits": [
+      "BEN"
+    ],
+    "components": 1
+  },
+  "BDI": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "BDI",
+    "sourceLabel": "Burundi",
+    "mapUnits": [
+      "BDI"
+    ],
+    "components": 1
+  },
+  "SOM": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "SOM",
+    "sourceLabel": "Somalia",
+    "mapUnits": [
+      "SOP",
+      "SOX"
+    ],
+    "components": 1
+  },
+  "SDS": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "SDS",
+    "sourceLabel": "South Sudan",
+    "mapUnits": [
+      "SDS"
+    ],
+    "components": 1
+  },
+  "SMR": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "SMR",
+    "sourceLabel": "San Marino",
+    "mapUnits": [
+      "SMR"
+    ],
+    "components": 1
+  },
+  "VAT": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "VAT",
+    "sourceLabel": "Vatican",
+    "mapUnits": [
+      "VAT"
+    ],
+    "components": 1
+  },
+  "MLT": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "MLT",
+    "sourceLabel": "Malta",
+    "mapUnits": [
+      "MLT"
+    ],
+    "components": 2
+  },
+  "MDA": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "MDA",
+    "sourceLabel": "Moldova",
+    "mapUnits": [
+      "MDA"
+    ],
+    "components": 1
+  },
+  "MCO": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "MCO",
+    "sourceLabel": "Monaco",
+    "mapUnits": [
+      "MCO"
+    ],
+    "components": 1
+  },
+  "KOS": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "KOS",
+    "sourceLabel": "Kosovo",
+    "mapUnits": [
+      "KOS"
+    ],
+    "components": 1
+  },
+  "LUX": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "LUX",
+    "sourceLabel": "Luxembourg",
+    "mapUnits": [
+      "LUX"
+    ],
+    "components": 1
+  },
+  "AFG": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "AFG",
+    "sourceLabel": "Afghanistan",
+    "mapUnits": [
+      "AFG"
+    ],
+    "components": 1
+  },
+  "KWT": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "KWT",
+    "sourceLabel": "Kuwait",
+    "mapUnits": [
+      "KWT"
+    ],
+    "components": 4
+  },
+  "KGZ": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "KGZ",
+    "sourceLabel": "Kyrgyzstan",
+    "mapUnits": [
+      "KGZ"
+    ],
+    "components": 1
+  },
+  "PRK": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "PRK",
+    "sourceLabel": "North Korea",
+    "mapUnits": [
+      "KNZ",
+      "PRK"
+    ],
+    "components": 10
+  },
+  "PSX": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "PSX",
+    "sourceLabel": "Palestine",
+    "mapUnits": [
+      "GAZ",
+      "WEB"
+    ],
+    "components": 2
+  },
+  "SYR": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "SYR",
+    "sourceLabel": "Syria",
+    "mapUnits": [
+      "SYU",
+      "SYX"
+    ],
+    "components": 1
+  },
+  "TJK": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "TJK",
+    "sourceLabel": "Tajikistan",
+    "mapUnits": [
+      "TJK"
+    ],
+    "components": 3
+  },
+  "TKM": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "TKM",
+    "sourceLabel": "Turkmenistan",
+    "mapUnits": [
+      "TKM"
+    ],
+    "components": 3
+  },
+  "YEM": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "YEM",
+    "sourceLabel": "Yemen",
+    "mapUnits": [
+      "YEM"
+    ],
+    "components": 9
+  },
+  "BFA": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "BFA",
+    "sourceLabel": "Burkina Faso",
+    "mapUnits": [
+      "BFA"
+    ],
+    "components": 1
+  },
+  "CPV": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "CPV",
+    "sourceLabel": "Cabo Verde",
+    "mapUnits": [
+      "CPV"
+    ],
+    "components": 11
+  },
+  "CAF": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "CAF",
+    "sourceLabel": "Central African Republic",
+    "mapUnits": [
+      "CAF"
+    ],
+    "components": 1
+  },
+  "COM": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "COM",
+    "sourceLabel": "Comoros",
+    "mapUnits": [
+      "COM"
+    ],
+    "components": 3
+  },
+  "CIV": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "CIV",
+    "sourceLabel": "Ivory Coast",
+    "mapUnits": [
+      "CIV"
+    ],
+    "components": 2
+  },
+  "DJI": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "DJI",
+    "sourceLabel": "Djibouti",
+    "mapUnits": [
+      "DJI"
+    ],
+    "components": 1
+  },
+  "GNQ": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "GNQ",
+    "sourceLabel": "Equatorial Guinea",
+    "mapUnits": [
+      "GNQ"
+    ],
+    "components": 3
+  },
+  "ERI": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "ERI",
+    "sourceLabel": "Eritrea",
+    "mapUnits": [
+      "ERI"
+    ],
+    "components": 3
+  },
+  "SWZ": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "SWZ",
+    "sourceLabel": "eSwatini",
+    "mapUnits": [
+      "SWZ"
+    ],
+    "components": 1
+  },
+  "GAB": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "GAB",
+    "sourceLabel": "Gabon",
+    "mapUnits": [
+      "GAB"
+    ],
+    "components": 3
+  },
+  "GMB": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "GMB",
+    "sourceLabel": "Gambia",
+    "mapUnits": [
+      "GMB"
+    ],
+    "components": 1
+  },
+  "GIN": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "GIN",
+    "sourceLabel": "Guinea",
+    "mapUnits": [
+      "GIN"
+    ],
+    "components": 1
+  },
+  "GNB": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "GNB",
+    "sourceLabel": "Guinea-Bissau",
+    "mapUnits": [
+      "GNB"
+    ],
+    "components": 13
+  },
+  "LSO": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "LSO",
+    "sourceLabel": "Lesotho",
+    "mapUnits": [
+      "LSO"
+    ],
+    "components": 1
+  },
+  "LBR": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "LBR",
+    "sourceLabel": "Liberia",
+    "mapUnits": [
+      "LBR"
+    ],
+    "components": 1
+  },
+  "LBY": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "LBY",
+    "sourceLabel": "Libya",
+    "mapUnits": [
+      "LBY"
+    ],
+    "components": 1
+  },
+  "MWI": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "MWI",
+    "sourceLabel": "Malawi",
+    "mapUnits": [
+      "MWI"
+    ],
+    "components": 3
+  },
+  "MRT": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "MRT",
+    "sourceLabel": "Mauritania",
+    "mapUnits": [
+      "MRT"
+    ],
+    "components": 5
+  },
+  "NER": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "NER",
+    "sourceLabel": "Niger",
+    "mapUnits": [
+      "NER"
+    ],
+    "components": 1
+  },
+  "COG": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "COG",
+    "sourceLabel": "Republic of the Congo",
+    "mapUnits": [
+      "COG"
+    ],
+    "components": 1
+  },
+  "STP": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "STP",
+    "sourceLabel": "S\u00e3o Tom\u00e9 and Principe",
+    "mapUnits": [
+      "STP"
+    ],
+    "components": 2
+  },
+  "SYC": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "SYC",
+    "sourceLabel": "Seychelles",
+    "mapUnits": [
+      "SYC"
+    ],
+    "components": 26
+  },
+  "SLE": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "SLE",
+    "sourceLabel": "Sierra Leone",
+    "mapUnits": [
+      "SLE"
+    ],
+    "components": 2
+  },
+  "TGO": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "TGO",
+    "sourceLabel": "Togo",
+    "mapUnits": [
+      "TGO"
+    ],
+    "components": 1
+  },
+  "AND": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "AND",
+    "sourceLabel": "Andorra",
+    "mapUnits": [
+      "AND"
+    ],
+    "components": 1
+  },
+  "LIE": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "LIE",
+    "sourceLabel": "Liechtenstein",
+    "mapUnits": [
+      "LIE"
+    ],
+    "components": 1
+  },
+  "MNE": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "MNE",
+    "sourceLabel": "Montenegro",
+    "mapUnits": [
+      "MNE"
+    ],
+    "components": 1
+  },
+  "BHR": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "BHR",
+    "sourceLabel": "Bahrain",
+    "mapUnits": [
+      "BHR"
+    ],
+    "components": 7
+  },
+  "BTN": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "BTN",
+    "sourceLabel": "Bhutan",
+    "mapUnits": [
+      "BTN"
+    ],
+    "components": 1
+  },
+  "BRN": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "BRN",
+    "sourceLabel": "Brunei",
+    "mapUnits": [
+      "BRN"
+    ],
+    "components": 2
+  },
+  "MDV": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "MDV",
+    "sourceLabel": "Maldives",
+    "mapUnits": [
+      "MDV"
+    ],
+    "components": 176
+  },
+  "TLS": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "TLS",
+    "sourceLabel": "East Timor",
+    "mapUnits": [
+      "TLS"
+    ],
+    "components": 3
+  },
+  "ATG": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "ATG",
+    "sourceLabel": "Antigua and Barbuda",
+    "mapUnits": [
+      "ACA",
+      "ACB"
+    ],
+    "components": 3
+  },
+  "BRB": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "BRB",
+    "sourceLabel": "Barbados",
+    "mapUnits": [
+      "BRB"
+    ],
+    "components": 1
+  },
+  "DMA": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "DMA",
+    "sourceLabel": "Dominica",
+    "mapUnits": [
+      "DMA"
+    ],
+    "components": 1
+  },
+  "GRD": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "GRD",
+    "sourceLabel": "Grenada",
+    "mapUnits": [
+      "GRD"
+    ],
+    "components": 2
+  },
+  "GUY": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "GUY",
+    "sourceLabel": "Guyana",
+    "mapUnits": [
+      "GUY"
+    ],
+    "components": 2
+  },
+  "KNA": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "KNA",
+    "sourceLabel": "Saint Kitts and Nevis",
+    "mapUnits": [
+      "KNA"
+    ],
+    "components": 2
+  },
+  "LCA": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "LCA",
+    "sourceLabel": "Saint Lucia",
+    "mapUnits": [
+      "LCA"
+    ],
+    "components": 1
+  },
+  "VCT": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "VCT",
+    "sourceLabel": "Saint Vincent and the Grenadines",
+    "mapUnits": [
+      "VCT"
+    ],
+    "components": 5
+  },
+  "SUR": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "SUR",
+    "sourceLabel": "Suriname",
+    "mapUnits": [
+      "SUR"
+    ],
+    "components": 1
+  },
+  "KIR": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "KIR",
+    "sourceLabel": "Kiribati",
+    "mapUnits": [
+      "KIR"
+    ],
+    "components": 35
+  },
+  "MHL": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "MHL",
+    "sourceLabel": "Marshall Islands",
+    "mapUnits": [
+      "MHL"
+    ],
+    "components": 22
+  },
+  "FSM": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "FSM",
+    "sourceLabel": "Federated States of Micronesia",
+    "mapUnits": [
+      "FSM"
+    ],
+    "components": 20
+  },
+  "NRU": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "NRU",
+    "sourceLabel": "Nauru",
+    "mapUnits": [
+      "NRU"
+    ],
+    "components": 1
+  },
+  "PLW": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "PLW",
+    "sourceLabel": "Palau",
+    "mapUnits": [
+      "PLW"
+    ],
+    "components": 9
+  },
+  "WSM": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "WSM",
+    "sourceLabel": "Samoa",
+    "mapUnits": [
+      "WSM"
+    ],
+    "components": 2
+  },
+  "SLB": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "SLB",
+    "sourceLabel": "Solomon Islands",
+    "mapUnits": [
+      "SLB"
+    ],
+    "components": 48
+  },
+  "TON": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "TON",
+    "sourceLabel": "Tonga",
+    "mapUnits": [
+      "TON"
+    ],
+    "components": 10
+  },
+  "TUV": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "TUV",
+    "sourceLabel": "Tuvalu",
+    "mapUnits": [
+      "TUV"
+    ],
+    "components": 9
+  },
+  "VUT": {
+    "sourceField": "ADM0_A3",
+    "sourceValue": "VUT",
+    "sourceLabel": "Vanuatu",
+    "mapUnits": [
+      "VUT"
+    ],
+    "components": 27
+  }
+}

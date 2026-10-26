@@ -1,0 +1,1278 @@
+[
+  {
+    "id": "ALB",
+    "name": "Albania",
+    "aliases": [],
+    "answerEligible": true
+  },
+  {
+    "id": "AUT",
+    "name": "Austria",
+    "aliases": [],
+    "answerEligible": true
+  },
+  {
+    "id": "BLR",
+    "name": "Belarus",
+    "aliases": [],
+    "answerEligible": true
+  },
+  {
+    "id": "BEL",
+    "name": "Belgium",
+    "aliases": [],
+    "answerEligible": true
+  },
+  {
+    "id": "BIH",
+    "name": "Bosnia and Herzegovina",
+    "aliases": [],
+    "answerEligible": true
+  },
+  {
+    "id": "BGR",
+    "name": "Bulgaria",
+    "aliases": [],
+    "answerEligible": true
+  },
+  {
+    "id": "HRV",
+    "name": "Croatia",
+    "aliases": [],
+    "answerEligible": true
+  },
+  {
+    "id": "CYP",
+    "name": "Cyprus",
+    "aliases": [],
+    "answerEligible": true
+  },
+  {
+    "id": "CZE",
+    "name": "Czechia",
+    "aliases": [
+      "Czech Republic"
+    ],
+    "answerEligible": true
+  },
+  {
+    "id": "DNK",
+    "name": "Denmark",
+    "aliases": [],
+    "answerEligible": true
+  },
+  {
+    "id": "EST",
+    "name": "Estonia",
+    "aliases": [],
+    "answerEligible": true
+  },
+  {
+    "id": "FIN",
+    "name": "Finland",
+    "aliases": [],
+    "answerEligible": true
+  },
+  {
+    "id": "FRA",
+    "name": "France",
+    "aliases": [],
+    "answerEligible": true
+  },
+  {
+    "id": "DEU",
+    "name": "Germany",
+    "aliases": [],
+    "answerEligible": true
+  },
+  {
+    "id": "GRC",
+    "name": "Greece",
+    "aliases": [],
+    "answerEligible": true
+  },
+  {
+    "id": "HUN",
+    "name": "Hungary",
+    "aliases": [],
+    "answerEligible": true
+  },
+  {
+    "id": "ISL",
+    "name": "Iceland",
+    "aliases": [],
+    "answerEligible": true
+  },
+  {
+    "id": "IRL",
+    "name": "Ireland",
+    "aliases": [],
+    "answerEligible": true
+  },
+  {
+    "id": "ITA",
+    "name": "Italy",
+    "aliases": [],
+    "answerEligible": true
+  },
+  {
+    "id": "LVA",
+    "name": "Latvia",
+    "aliases": [],
+    "answerEligible": true
+  },
+  {
+    "id": "LTU",
+    "name": "Lithuania",
+    "aliases": [],
+    "answerEligible": true
+  },
+  {
+    "id": "NLD",
+    "name": "Netherlands",
+    "aliases": [],
+    "answerEligible": true
+  },
+  {
+    "id": "MKD",
+    "name": "North Macedonia",
+    "aliases": [
+      "Macedonia"
+    ],
+    "answerEligible": true
+  },
+  {
+    "id": "NOR",
+    "name": "Norway",
+    "aliases": [],
+    "answerEligible": true
+  },
+  {
+    "id": "POL",
+    "name": "Poland",
+    "aliases": [],
+    "answerEligible": true
+  },
+  {
+    "id": "PRT",
+    "name": "Portugal",
+    "aliases": [],
+    "answerEligible": true
+  },
+  {
+    "id": "ROU",
+    "name": "Romania",
+    "aliases": [],
+    "answerEligible": true
+  },
+  {
+    "id": "RUS",
+    "name": "Russia",
+    "aliases": [
+      "Russian Federation"
+    ],
+    "answerEligible": true
+  },
+  {
+    "id": "SRB",
+    "name": "Serbia",
+    "aliases": [],
+    "answerEligible": true
+  },
+  {
+    "id": "SVK",
+    "name": "Slovakia",
+    "aliases": [],
+    "answerEligible": true
+  },
+  {
+    "id": "SVN",
+    "name": "Slovenia",
+    "aliases": [],
+    "answerEligible": true
+  },
+  {
+    "id": "ESP",
+    "name": "Spain",
+    "aliases": [],
+    "answerEligible": true
+  },
+  {
+    "id": "SWE",
+    "name": "Sweden",
+    "aliases": [],
+    "answerEligible": true
+  },
+  {
+    "id": "CHE",
+    "name": "Switzerland",
+    "aliases": [],
+    "answerEligible": true
+  },
+  {
+    "id": "UKR",
+    "name": "Ukraine",
+    "aliases": [],
+    "answerEligible": true
+  },
+  {
+    "id": "GBR",
+    "name": "United Kingdom",
+    "aliases": [
+      "UK",
+      "U.K.",
+      "Britain",
+      "Great Britain"
+    ],
+    "answerEligible": true
+  },
+  {
+    "id": "DZA",
+    "name": "Algeria",
+    "aliases": [],
+    "answerEligible": true
+  },
+  {
+    "id": "AGO",
+    "name": "Angola",
+    "aliases": [],
+    "answerEligible": true
+  },
+  {
+    "id": "BWA",
+    "name": "Botswana",
+    "aliases": [],
+    "answerEligible": true
+  },
+  {
+    "id": "CMR",
+    "name": "Cameroon",
+    "aliases": [],
+    "answerEligible": true
+  },
+  {
+    "id": "COD",
+    "name": "Democratic Republic of the Congo",
+    "aliases": [
+      "DR Congo",
+      "DRC",
+      "Congo Kinshasa",
+      "Democratic Republic of Congo"
+    ],
+    "answerEligible": true
+  },
+  {
+    "id": "EGY",
+    "name": "Egypt",
+    "aliases": [],
+    "answerEligible": true
+  },
+  {
+    "id": "ETH",
+    "name": "Ethiopia",
+    "aliases": [],
+    "answerEligible": true
+  },
+  {
+    "id": "GHA",
+    "name": "Ghana",
+    "aliases": [],
+    "answerEligible": true
+  },
+  {
+    "id": "KEN",
+    "name": "Kenya",
+    "aliases": [],
+    "answerEligible": true
+  },
+  {
+    "id": "MDG",
+    "name": "Madagascar",
+    "aliases": [],
+    "answerEligible": true
+  },
+  {
+    "id": "MLI",
+    "name": "Mali",
+    "aliases": [],
+    "answerEligible": true
+  },
+  {
+    "id": "MUS",
+    "name": "Mauritius",
+    "aliases": [],
+    "answerEligible": true
+  },
+  {
+    "id": "MAR",
+    "name": "Morocco",
+    "aliases": [],
+    "answerEligible": true
+  },
+  {
+    "id": "MOZ",
+    "name": "Mozambique",
+    "aliases": [],
+    "answerEligible": true
+  },
+  {
+    "id": "NAM",
+    "name": "Namibia",
+    "aliases": [],
+    "answerEligible": true
+  },
+  {
+    "id": "NGA",
+    "name": "Nigeria",
+    "aliases": [],
+    "answerEligible": true
+  },
+  {
+    "id": "RWA",
+    "name": "Rwanda",
+    "aliases": [],
+    "answerEligible": true
+  },
+  {
+    "id": "SEN",
+    "name": "Senegal",
+    "aliases": [],
+    "answerEligible": true
+  },
+  {
+    "id": "ZAF",
+    "name": "South Africa",
+    "aliases": [],
+    "answerEligible": true
+  },
+  {
+    "id": "SDN",
+    "name": "Sudan",
+    "aliases": [],
+    "answerEligible": true
+  },
+  {
+    "id": "TZA",
+    "name": "Tanzania",
+    "aliases": [
+      "United Republic of Tanzania"
+    ],
+    "answerEligible": true
+  },
+  {
+    "id": "TUN",
+    "name": "Tunisia",
+    "aliases": [],
+    "answerEligible": true
+  },
+  {
+    "id": "UGA",
+    "name": "Uganda",
+    "aliases": [],
+    "answerEligible": true
+  },
+  {
+    "id": "ZMB",
+    "name": "Zambia",
+    "aliases": [],
+    "answerEligible": true
+  },
+  {
+    "id": "ZWE",
+    "name": "Zimbabwe",
+    "aliases": [],
+    "answerEligible": true
+  },
+  {
+    "id": "ARG",
+    "name": "Argentina",
+    "aliases": [],
+    "answerEligible": true
+  },
+  {
+    "id": "BHS",
+    "name": "Bahamas",
+    "aliases": [
+      "The Bahamas"
+    ],
+    "answerEligible": true
+  },
+  {
+    "id": "BLZ",
+    "name": "Belize",
+    "aliases": [],
+    "answerEligible": true
+  },
+  {
+    "id": "BOL",
+    "name": "Bolivia",
+    "aliases": [
+      "Plurinational State of Bolivia"
+    ],
+    "answerEligible": true
+  },
+  {
+    "id": "BRA",
+    "name": "Brazil",
+    "aliases": [],
+    "answerEligible": true
+  },
+  {
+    "id": "CAN",
+    "name": "Canada",
+    "aliases": [],
+    "answerEligible": true
+  },
+  {
+    "id": "CHL",
+    "name": "Chile",
+    "aliases": [],
+    "answerEligible": true
+  },
+  {
+    "id": "COL",
+    "name": "Colombia",
+    "aliases": [],
+    "answerEligible": true
+  },
+  {
+    "id": "CRI",
+    "name": "Costa Rica",
+    "aliases": [],
+    "answerEligible": true
+  },
+  {
+    "id": "CUB",
+    "name": "Cuba",
+    "aliases": [],
+    "answerEligible": true
+  },
+  {
+    "id": "DOM",
+    "name": "Dominican Republic",
+    "aliases": [],
+    "answerEligible": true
+  },
+  {
+    "id": "ECU",
+    "name": "Ecuador",
+    "aliases": [],
+    "answerEligible": true
+  },
+  {
+    "id": "SLV",
+    "name": "El Salvador",
+    "aliases": [],
+    "answerEligible": true
+  },
+  {
+    "id": "GTM",
+    "name": "Guatemala",
+    "aliases": [],
+    "answerEligible": true
+  },
+  {
+    "id": "HTI",
+    "name": "Haiti",
+    "aliases": [],
+    "answerEligible": true
+  },
+  {
+    "id": "HND",
+    "name": "Honduras",
+    "aliases": [],
+    "answerEligible": true
+  },
+  {
+    "id": "JAM",
+    "name": "Jamaica",
+    "aliases": [],
+    "answerEligible": true
+  },
+  {
+    "id": "MEX",
+    "name": "Mexico",
+    "aliases": [],
+    "answerEligible": true
+  },
+  {
+    "id": "NIC",
+    "name": "Nicaragua",
+    "aliases": [],
+    "answerEligible": true
+  },
+  {
+    "id": "PAN",
+    "name": "Panama",
+    "aliases": [],
+    "answerEligible": true
+  },
+  {
+    "id": "PRY",
+    "name": "Paraguay",
+    "aliases": [],
+    "answerEligible": true
+  },
+  {
+    "id": "PER",
+    "name": "Peru",
+    "aliases": [],
+    "answerEligible": true
+  },
+  {
+    "id": "TTO",
+    "name": "Trinidad and Tobago",
+    "aliases": [],
+    "answerEligible": true
+  },
+  {
+    "id": "USA",
+    "name": "United States",
+    "aliases": [
+      "US",
+      "U.S.",
+      "U.S.A.",
+      "United States of America",
+      "America"
+    ],
+    "answerEligible": true
+  },
+  {
+    "id": "URY",
+    "name": "Uruguay",
+    "aliases": [],
+    "answerEligible": true
+  },
+  {
+    "id": "VEN",
+    "name": "Venezuela",
+    "aliases": [
+      "Bolivarian Republic of Venezuela"
+    ],
+    "answerEligible": true
+  },
+  {
+    "id": "ARM",
+    "name": "Armenia",
+    "aliases": [],
+    "answerEligible": true
+  },
+  {
+    "id": "AZE",
+    "name": "Azerbaijan",
+    "aliases": [],
+    "answerEligible": true
+  },
+  {
+    "id": "BGD",
+    "name": "Bangladesh",
+    "aliases": [],
+    "answerEligible": true
+  },
+  {
+    "id": "KHM",
+    "name": "Cambodia",
+    "aliases": [],
+    "answerEligible": true
+  },
+  {
+    "id": "CHN",
+    "name": "China",
+    "aliases": [],
+    "answerEligible": true
+  },
+  {
+    "id": "GEO",
+    "name": "Georgia",
+    "aliases": [],
+    "answerEligible": true
+  },
+  {
+    "id": "IND",
+    "name": "India",
+    "aliases": [],
+    "answerEligible": true
+  },
+  {
+    "id": "IDN",
+    "name": "Indonesia",
+    "aliases": [],
+    "answerEligible": true
+  },
+  {
+    "id": "IRN",
+    "name": "Iran",
+    "aliases": [
+      "Islamic Republic of Iran"
+    ],
+    "answerEligible": true
+  },
+  {
+    "id": "IRQ",
+    "name": "Iraq",
+    "aliases": [],
+    "answerEligible": true
+  },
+  {
+    "id": "ISR",
+    "name": "Israel",
+    "aliases": [],
+    "answerEligible": true
+  },
+  {
+    "id": "JPN",
+    "name": "Japan",
+    "aliases": [],
+    "answerEligible": true
+  },
+  {
+    "id": "JOR",
+    "name": "Jordan",
+    "aliases": [],
+    "answerEligible": true
+  },
+  {
+    "id": "KAZ",
+    "name": "Kazakhstan",
+    "aliases": [],
+    "answerEligible": true
+  },
+  {
+    "id": "LAO",
+    "name": "Laos",
+    "aliases": [
+      "Lao PDR",
+      "Lao People’s Democratic Republic"
+    ],
+    "answerEligible": true
+  },
+  {
+    "id": "LBN",
+    "name": "Lebanon",
+    "aliases": [],
+    "answerEligible": true
+  },
+  {
+    "id": "MYS",
+    "name": "Malaysia",
+    "aliases": [],
+    "answerEligible": true
+  },
+  {
+    "id": "MNG",
+    "name": "Mongolia",
+    "aliases": [],
+    "answerEligible": true
+  },
+  {
+    "id": "MMR",
+    "name": "Myanmar",
+    "aliases": [
+      "Burma"
+    ],
+    "answerEligible": true
+  },
+  {
+    "id": "NPL",
+    "name": "Nepal",
+    "aliases": [],
+    "answerEligible": true
+  },
+  {
+    "id": "OMN",
+    "name": "Oman",
+    "aliases": [],
+    "answerEligible": true
+  },
+  {
+    "id": "PAK",
+    "name": "Pakistan",
+    "aliases": [],
+    "answerEligible": true
+  },
+  {
+    "id": "PHL",
+    "name": "Philippines",
+    "aliases": [],
+    "answerEligible": true
+  },
+  {
+    "id": "QAT",
+    "name": "Qatar",
+    "aliases": [],
+    "answerEligible": true
+  },
+  {
+    "id": "SAU",
+    "name": "Saudi Arabia",
+    "aliases": [],
+    "answerEligible": true
+  },
+  {
+    "id": "SGP",
+    "name": "Singapore",
+    "aliases": [],
+    "answerEligible": true
+  },
+  {
+    "id": "KOR",
+    "name": "South Korea",
+    "aliases": [
+      "Republic of Korea"
+    ],
+    "answerEligible": true
+  },
+  {
+    "id": "LKA",
+    "name": "Sri Lanka",
+    "aliases": [],
+    "answerEligible": true
+  },
+  {
+    "id": "TWN",
+    "name": "Taiwan",
+    "aliases": [
+      "Republic of China"
+    ],
+    "answerEligible": true
+  },
+  {
+    "id": "THA",
+    "name": "Thailand",
+    "aliases": [],
+    "answerEligible": true
+  },
+  {
+    "id": "TUR",
+    "name": "Turkey",
+    "aliases": [
+      "Türkiye",
+      "Turkiye"
+    ],
+    "answerEligible": true
+  },
+  {
+    "id": "ARE",
+    "name": "United Arab Emirates",
+    "aliases": [
+      "UAE",
+      "U.A.E."
+    ],
+    "answerEligible": true
+  },
+  {
+    "id": "UZB",
+    "name": "Uzbekistan",
+    "aliases": [],
+    "answerEligible": true
+  },
+  {
+    "id": "VNM",
+    "name": "Vietnam",
+    "aliases": [
+      "Viet Nam"
+    ],
+    "answerEligible": true
+  },
+  {
+    "id": "AUS",
+    "name": "Australia",
+    "aliases": [],
+    "answerEligible": true
+  },
+  {
+    "id": "FJI",
+    "name": "Fiji",
+    "aliases": [],
+    "answerEligible": true
+  },
+  {
+    "id": "NZL",
+    "name": "New Zealand",
+    "aliases": [],
+    "answerEligible": true
+  },
+  {
+    "id": "PNG",
+    "name": "Papua New Guinea",
+    "aliases": [],
+    "answerEligible": true
+  },
+  {
+    "id": "TCD",
+    "name": "Chad",
+    "aliases": [
+      "Republic of Chad",
+      "Tchad",
+      "République du Tchad"
+    ],
+    "answerEligible": true
+  },
+  {
+    "id": "BEN",
+    "name": "Benin",
+    "aliases": [],
+    "answerEligible": true
+  },
+  {
+    "id": "BDI",
+    "name": "Burundi",
+    "aliases": [],
+    "answerEligible": true
+  },
+  {
+    "id": "SOM",
+    "name": "Somalia",
+    "aliases": [],
+    "answerEligible": true
+  },
+  {
+    "id": "SDS",
+    "name": "South Sudan",
+    "aliases": [
+      "Republic of South Sudan",
+      "SSD"
+    ],
+    "answerEligible": true
+  },
+  {
+    "id": "SMR",
+    "name": "San Marino",
+    "aliases": [],
+    "answerEligible": true
+  },
+  {
+    "id": "VAT",
+    "name": "Vatican City",
+    "aliases": [
+      "Vatican",
+      "Holy See"
+    ],
+    "answerEligible": true
+  },
+  {
+    "id": "MLT",
+    "name": "Malta",
+    "aliases": [],
+    "answerEligible": true
+  },
+  {
+    "id": "MDA",
+    "name": "Moldova",
+    "aliases": [
+      "Republic of Moldova"
+    ],
+    "answerEligible": true
+  },
+  {
+    "id": "MCO",
+    "name": "Monaco",
+    "aliases": [],
+    "answerEligible": true
+  },
+  {
+    "id": "KOS",
+    "name": "Kosovo",
+    "aliases": [
+      "Kosova",
+      "XKX"
+    ],
+    "answerEligible": true
+  },
+  {
+    "id": "LUX",
+    "name": "Luxembourg",
+    "aliases": [],
+    "answerEligible": true
+  },
+  {
+    "id": "AFG",
+    "name": "Afghanistan",
+    "aliases": [],
+    "answerEligible": true
+  },
+  {
+    "id": "KWT",
+    "name": "Kuwait",
+    "aliases": [],
+    "answerEligible": true
+  },
+  {
+    "id": "KGZ",
+    "name": "Kyrgyzstan",
+    "aliases": [
+      "Kyrgyz Republic"
+    ],
+    "answerEligible": true
+  },
+  {
+    "id": "PRK",
+    "name": "North Korea",
+    "aliases": [
+      "DPRK",
+      "Democratic People’s Republic of Korea"
+    ],
+    "answerEligible": true
+  },
+  {
+    "id": "PSX",
+    "name": "Palestine",
+    "aliases": [
+      "State of Palestine",
+      "Palestinian Territories",
+      "PSE"
+    ],
+    "answerEligible": true
+  },
+  {
+    "id": "SYR",
+    "name": "Syria",
+    "aliases": [],
+    "answerEligible": true
+  },
+  {
+    "id": "TJK",
+    "name": "Tajikistan",
+    "aliases": [
+      "Republic of Tajikistan"
+    ],
+    "answerEligible": true
+  },
+  {
+    "id": "TKM",
+    "name": "Turkmenistan",
+    "aliases": [],
+    "answerEligible": true
+  },
+  {
+    "id": "YEM",
+    "name": "Yemen",
+    "aliases": [],
+    "answerEligible": true
+  },
+  {
+    "id": "BFA",
+    "name": "Burkina Faso",
+    "aliases": [],
+    "answerEligible": false
+  },
+  {
+    "id": "CPV",
+    "name": "Cabo Verde",
+    "aliases": [
+      "Cape Verde"
+    ],
+    "answerEligible": false
+  },
+  {
+    "id": "CAF",
+    "name": "Central African Republic",
+    "aliases": [],
+    "answerEligible": false
+  },
+  {
+    "id": "COM",
+    "name": "Comoros",
+    "aliases": [],
+    "answerEligible": false
+  },
+  {
+    "id": "CIV",
+    "name": "Côte d’Ivoire",
+    "aliases": [
+      "Ivory Coast",
+      "Cote d Ivoire"
+    ],
+    "answerEligible": false
+  },
+  {
+    "id": "DJI",
+    "name": "Djibouti",
+    "aliases": [],
+    "answerEligible": false
+  },
+  {
+    "id": "GNQ",
+    "name": "Equatorial Guinea",
+    "aliases": [],
+    "answerEligible": false
+  },
+  {
+    "id": "ERI",
+    "name": "Eritrea",
+    "aliases": [],
+    "answerEligible": false
+  },
+  {
+    "id": "SWZ",
+    "name": "Eswatini",
+    "aliases": [
+      "Swaziland"
+    ],
+    "answerEligible": false
+  },
+  {
+    "id": "GAB",
+    "name": "Gabon",
+    "aliases": [],
+    "answerEligible": false
+  },
+  {
+    "id": "GMB",
+    "name": "Gambia",
+    "aliases": [
+      "The Gambia"
+    ],
+    "answerEligible": false
+  },
+  {
+    "id": "GIN",
+    "name": "Guinea",
+    "aliases": [],
+    "answerEligible": false
+  },
+  {
+    "id": "GNB",
+    "name": "Guinea-Bissau",
+    "aliases": [],
+    "answerEligible": false
+  },
+  {
+    "id": "LSO",
+    "name": "Lesotho",
+    "aliases": [],
+    "answerEligible": false
+  },
+  {
+    "id": "LBR",
+    "name": "Liberia",
+    "aliases": [],
+    "answerEligible": false
+  },
+  {
+    "id": "LBY",
+    "name": "Libya",
+    "aliases": [],
+    "answerEligible": false
+  },
+  {
+    "id": "MWI",
+    "name": "Malawi",
+    "aliases": [],
+    "answerEligible": false
+  },
+  {
+    "id": "MRT",
+    "name": "Mauritania",
+    "aliases": [],
+    "answerEligible": false
+  },
+  {
+    "id": "NER",
+    "name": "Niger",
+    "aliases": [],
+    "answerEligible": false
+  },
+  {
+    "id": "COG",
+    "name": "Republic of the Congo",
+    "aliases": [
+      "Congo-Brazzaville"
+    ],
+    "answerEligible": false
+  },
+  {
+    "id": "STP",
+    "name": "São Tomé and Principe",
+    "aliases": [
+      "Sao Tome and Principe"
+    ],
+    "answerEligible": false
+  },
+  {
+    "id": "SYC",
+    "name": "Seychelles",
+    "aliases": [],
+    "answerEligible": false
+  },
+  {
+    "id": "SLE",
+    "name": "Sierra Leone",
+    "aliases": [],
+    "answerEligible": false
+  },
+  {
+    "id": "TGO",
+    "name": "Togo",
+    "aliases": [],
+    "answerEligible": false
+  },
+  {
+    "id": "AND",
+    "name": "Andorra",
+    "aliases": [],
+    "answerEligible": false
+  },
+  {
+    "id": "LIE",
+    "name": "Liechtenstein",
+    "aliases": [],
+    "answerEligible": false
+  },
+  {
+    "id": "MNE",
+    "name": "Montenegro",
+    "aliases": [],
+    "answerEligible": false
+  },
+  {
+    "id": "BHR",
+    "name": "Bahrain",
+    "aliases": [],
+    "answerEligible": false
+  },
+  {
+    "id": "BTN",
+    "name": "Bhutan",
+    "aliases": [],
+    "answerEligible": false
+  },
+  {
+    "id": "BRN",
+    "name": "Brunei",
+    "aliases": [
+      "Brunei Darussalam"
+    ],
+    "answerEligible": false
+  },
+  {
+    "id": "MDV",
+    "name": "Maldives",
+    "aliases": [],
+    "answerEligible": false
+  },
+  {
+    "id": "TLS",
+    "name": "Timor-Leste",
+    "aliases": [
+      "East Timor"
+    ],
+    "answerEligible": false
+  },
+  {
+    "id": "ATG",
+    "name": "Antigua and Barbuda",
+    "aliases": [],
+    "answerEligible": false
+  },
+  {
+    "id": "BRB",
+    "name": "Barbados",
+    "aliases": [],
+    "answerEligible": false
+  },
+  {
+    "id": "DMA",
+    "name": "Dominica",
+    "aliases": [],
+    "answerEligible": false
+  },
+  {
+    "id": "GRD",
+    "name": "Grenada",
+    "aliases": [],
+    "answerEligible": false
+  },
+  {
+    "id": "GUY",
+    "name": "Guyana",
+    "aliases": [],
+    "answerEligible": false
+  },
+  {
+    "id": "KNA",
+    "name": "Saint Kitts and Nevis",
+    "aliases": [],
+    "answerEligible": false
+  },
+  {
+    "id": "LCA",
+    "name": "Saint Lucia",
+    "aliases": [],
+    "answerEligible": false
+  },
+  {
+    "id": "VCT",
+    "name": "Saint Vincent and the Grenadines",
+    "aliases": [],
+    "answerEligible": false
+  },
+  {
+    "id": "SUR",
+    "name": "Suriname",
+    "aliases": [],
+    "answerEligible": false
+  },
+  {
+    "id": "KIR",
+    "name": "Kiribati",
+    "aliases": [],
+    "answerEligible": false
+  },
+  {
+    "id": "MHL",
+    "name": "Marshall Islands",
+    "aliases": [],
+    "answerEligible": false
+  },
+  {
+    "id": "FSM",
+    "name": "Micronesia",
+    "aliases": [
+      "Federated States of Micronesia"
+    ],
+    "answerEligible": false
+  },
+  {
+    "id": "NRU",
+    "name": "Nauru",
+    "aliases": [],
+    "answerEligible": false
+  },
+  {
+    "id": "PLW",
+    "name": "Palau",
+    "aliases": [],
+    "answerEligible": false
+  },
+  {
+    "id": "WSM",
+    "name": "Samoa",
+    "aliases": [],
+    "answerEligible": false
+  },
+  {
+    "id": "SLB",
+    "name": "Solomon Islands",
+    "aliases": [],
+    "answerEligible": false
+  },
+  {
+    "id": "TON",
+    "name": "Tonga",
+    "aliases": [],
+    "answerEligible": false
+  },
+  {
+    "id": "TUV",
+    "name": "Tuvalu",
+    "aliases": [],
+    "answerEligible": false
+  },
+  {
+    "id": "VUT",
+    "name": "Vanuatu",
+    "aliases": [],
+    "answerEligible": false
+  }
+]

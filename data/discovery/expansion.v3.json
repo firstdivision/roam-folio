@@ -1,0 +1,602 @@
+{
+  "BEN": {
+    "facts": [
+      {
+        "text": "Porto-Novo is the capital of Benin.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — pinned country reference"
+      },
+      {
+        "text": "Benin is in Africa.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — pinned country reference"
+      },
+      {
+        "text": "Benin has a coastline.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — pinned country reference"
+      }
+    ],
+    "culture": {
+      "text": "Vodun traditions are an important part of Benin’s cultural heritage.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Benin",
+      "sourceTitle": "Benin — Wikivoyage"
+    },
+    "food": {
+      "name": "Aloko",
+      "text": "Fried plantains are served with fish in Cotonou.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Benin#Eat",
+      "sourceTitle": "Benin — Wikivoyage — Eat"
+    }
+  },
+  "BDI": {
+    "facts": [
+      {
+        "text": "Gitega is the capital of Burundi.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — pinned country reference"
+      },
+      {
+        "text": "Burundi is in Africa.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — pinned country reference"
+      },
+      {
+        "text": "Burundi is landlocked.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — pinned country reference"
+      }
+    ],
+    "culture": {
+      "text": "Craft traditions include wood carving and landscape painting in Gitega and Bujumbura.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Burundi",
+      "sourceTitle": "Burundi — Wikivoyage"
+    },
+    "food": {
+      "name": "Beef brochettes",
+      "text": "Grilled beef skewers are commonly paired with grilled plantains.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Burundi#Eat",
+      "sourceTitle": "Burundi — Wikivoyage — Eat"
+    }
+  },
+  "SOM": {
+    "facts": [
+      {
+        "text": "Mogadishu is the capital of Somalia.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — pinned country reference"
+      },
+      {
+        "text": "Somalia is in Africa.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — pinned country reference"
+      },
+      {
+        "text": "Somalia has a coastline.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — pinned country reference"
+      }
+    ],
+    "culture": {
+      "text": "Somali cooking reflects long-standing trading links with Arabia, Persia, India and Italy.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Somalia",
+      "sourceTitle": "Somalia — Wikivoyage"
+    },
+    "food": {
+      "name": "Sambusas",
+      "text": "These triangular fried pastries can have meat or vegetable fillings.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Somalia#Eat",
+      "sourceTitle": "Somalia — Wikivoyage — Eat"
+    }
+  },
+  "SDS": {
+    "facts": [
+      {
+        "text": "Juba is the capital of South Sudan.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — pinned country reference"
+      },
+      {
+        "text": "South Sudan is in Africa.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — pinned country reference"
+      },
+      {
+        "text": "South Sudan is landlocked.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — pinned country reference"
+      }
+    ],
+    "culture": {
+      "text": "Maize and sorghum are important grains in South Sudanese cooking.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/South_Sudan",
+      "sourceTitle": "South Sudan — Wikivoyage"
+    },
+    "food": {
+      "name": "Kisra",
+      "text": "This fermented pancake is often made with sorghum.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/South_Sudan#Eat",
+      "sourceTitle": "South Sudan — Wikivoyage — Eat"
+    }
+  },
+  "SMR": {
+    "facts": [
+      {
+        "text": "City of San Marino is the capital of San Marino.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — pinned country reference"
+      },
+      {
+        "text": "San Marino is in Europe.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — pinned country reference"
+      },
+      {
+        "text": "San Marino is landlocked.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — pinned country reference"
+      }
+    ],
+    "culture": {
+      "text": "San Marino produces its own postage stamps and euro-coin designs, collected as souvenirs.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/San_Marino",
+      "sourceTitle": "San Marino — Wikivoyage"
+    },
+    "food": {
+      "name": "Torta Tre Monti",
+      "text": "Layers of round wafers are filled with cocoa and hazelnut cream.",
+      "sourceUrl": "https://www.visitsanmarino.com/pub2/VisitSM/en/contenuto/About-San-Marino/Gastronomia.html",
+      "sourceTitle": "Visit San Marino — Gastronomy"
+    }
+  },
+  "VAT": {
+    "facts": [
+      {
+        "text": "Italian and Latin are languages used in Vatican City.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — pinned country reference"
+      },
+      {
+        "text": "Vatican City is in Europe.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — pinned country reference"
+      },
+      {
+        "text": "Vatican City is landlocked.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — pinned country reference"
+      }
+    ],
+    "culture": {
+      "text": "The Sistine Chapel contains Michelangelo’s ceiling frescoes and his Last Judgement.",
+      "sourceUrl": "https://whc.unesco.org/en/list/286/",
+      "sourceTitle": "UNESCO — Vatican City"
+    },
+    "food": {
+      "name": "Pizza",
+      "text": "Pizza is available inside the Vatican Museums; this is a shared Italian food, rather than a distinct Vatican national dish.",
+      "sourceUrl": "https://www.museivaticani.va/content/museivaticani-mobile/en/organizza-visita/consigli-utili.html",
+      "sourceTitle": "Vatican Museums — Useful information for visitors"
+    }
+  },
+  "MLT": {
+    "facts": [
+      {
+        "text": "Valletta is the capital of Malta.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — pinned country reference"
+      },
+      {
+        "text": "Malta is in Europe.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — pinned country reference"
+      },
+      {
+        "text": "Malta has a coastline.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — pinned country reference"
+      }
+    ],
+    "culture": {
+      "text": "Fenkata is a celebratory rabbit meal, often beginning with spaghetti in rabbit sauce.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Malta",
+      "sourceTitle": "Malta — Wikivoyage"
+    },
+    "food": {
+      "name": "Pastizzi",
+      "text": "Small savoury pastries are a familiar Maltese snack.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Malta#Eat",
+      "sourceTitle": "Malta — Wikivoyage — Eat"
+    }
+  },
+  "MDA": {
+    "facts": [
+      {
+        "text": "Chișinău is the capital of Moldova.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — pinned country reference"
+      },
+      {
+        "text": "Moldova is in Europe.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — pinned country reference"
+      },
+      {
+        "text": "Moldova is landlocked.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — pinned country reference"
+      }
+    ],
+    "culture": {
+      "text": "Home winemaking and grape growing are part of Moldova’s rural traditions.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Moldova",
+      "sourceTitle": "Moldova — Wikivoyage"
+    },
+    "food": {
+      "name": "Mămăligă",
+      "text": "Mămăligă is among the traditional dishes served in Moldova.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Moldova#Eat",
+      "sourceTitle": "Moldova — Wikivoyage — Eat"
+    }
+  },
+  "MCO": {
+    "facts": [
+      {
+        "text": "Monaco is the capital of Monaco.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — pinned country reference"
+      },
+      {
+        "text": "Monaco is in Europe.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — pinned country reference"
+      },
+      {
+        "text": "Monaco has a coastline.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — pinned country reference"
+      }
+    ],
+    "culture": {
+      "text": "Socca and pissaladière are among the regional foods found around Monaco’s markets.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Monaco",
+      "sourceTitle": "Monaco — Wikivoyage"
+    },
+    "food": {
+      "name": "Barbajuan",
+      "text": "This Monégasque fritter has a savoury filling that can include spinach.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Monaco#Eat",
+      "sourceTitle": "Monaco — Wikivoyage — Eat"
+    }
+  },
+  "KOS": {
+    "facts": [
+      {
+        "text": "Pristina is the capital of Kosovo.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — pinned country reference"
+      },
+      {
+        "text": "Kosovo is in Europe.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — pinned country reference"
+      },
+      {
+        "text": "Kosovo is landlocked.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — pinned country reference"
+      }
+    ],
+    "culture": {
+      "text": "Yogurt drinks such as ayran often accompany pastries.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Kosovo",
+      "sourceTitle": "Kosovo — Wikivoyage"
+    },
+    "food": {
+      "name": "Burek",
+      "text": "This baked pastry can be filled with cheese, meat or spinach.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Kosovo#Eat",
+      "sourceTitle": "Kosovo — Wikivoyage — Eat"
+    }
+  },
+  "LUX": {
+    "facts": [
+      {
+        "text": "Luxembourg is the capital of Luxembourg.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — pinned country reference"
+      },
+      {
+        "text": "Luxembourg is in Europe.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — pinned country reference"
+      },
+      {
+        "text": "Luxembourg is landlocked.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — pinned country reference"
+      }
+    ],
+    "culture": {
+      "text": "Bamkuch, a layered cake cooked on a spit, is associated with celebrations such as weddings.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Luxembourg",
+      "sourceTitle": "Luxembourg — Wikivoyage"
+    },
+    "food": {
+      "name": "Gromperekichelchen",
+      "text": "These fried potato cakes include onion and herbs and are sold at markets and fairs.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Luxembourg#Eat",
+      "sourceTitle": "Luxembourg — Wikivoyage — Eat"
+    }
+  },
+  "AFG": {
+    "facts": [
+      {
+        "text": "Kabul is the capital of Afghanistan.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — pinned country reference"
+      },
+      {
+        "text": "Afghanistan is in Asia.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — pinned country reference"
+      },
+      {
+        "text": "Afghanistan is landlocked.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — pinned country reference"
+      }
+    ],
+    "culture": {
+      "text": "Rice dishes feature prominently at weddings and family gatherings.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Afghanistan",
+      "sourceTitle": "Afghanistan — Wikivoyage"
+    },
+    "food": {
+      "name": "Kabuli pulao",
+      "text": "This rice dish combines lamb with carrots and raisins; some versions add nuts.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Afghanistan#Eat",
+      "sourceTitle": "Afghanistan — Wikivoyage — Eat"
+    }
+  },
+  "KWT": {
+    "facts": [
+      {
+        "text": "Kuwait City is the capital of Kuwait.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — pinned country reference"
+      },
+      {
+        "text": "Kuwait is in Asia.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — pinned country reference"
+      },
+      {
+        "text": "Kuwait has a coastline.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — pinned country reference"
+      }
+    ],
+    "culture": {
+      "text": "Restaurants and shared meals are an important part of social outings in Kuwait.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Kuwait",
+      "sourceTitle": "Kuwait — Wikivoyage"
+    },
+    "food": {
+      "name": "Kuwaiti seafood",
+      "text": "Traditional Kuwaiti seafood dishes can be found alongside the country’s many international cuisines.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Kuwait#Eat",
+      "sourceTitle": "Kuwait — Wikivoyage — Eat"
+    }
+  },
+  "KGZ": {
+    "facts": [
+      {
+        "text": "Bishkek is the capital of Kyrgyzstan.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — pinned country reference"
+      },
+      {
+        "text": "Kyrgyzstan is in Asia.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — pinned country reference"
+      },
+      {
+        "text": "Kyrgyzstan is landlocked.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — pinned country reference"
+      }
+    ],
+    "culture": {
+      "text": "Kyrgyz cooking reflects a history of pastoral nomadism and communal meals.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Kyrgyzstan",
+      "sourceTitle": "Kyrgyzstan — Wikivoyage"
+    },
+    "food": {
+      "name": "Besh barmak",
+      "text": "Boiled meat is combined with noodles and sometimes onions, traditionally served from a shared dish.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Kyrgyzstan#Eat",
+      "sourceTitle": "Kyrgyzstan — Wikivoyage — Eat"
+    }
+  },
+  "PRK": {
+    "facts": [
+      {
+        "text": "Pyongyang is the capital of North Korea.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — pinned country reference"
+      },
+      {
+        "text": "North Korea is in Asia.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — pinned country reference"
+      },
+      {
+        "text": "North Korea has a coastline.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — pinned country reference"
+      }
+    ],
+    "culture": {
+      "text": "Pyongyang’s cold-noodle tradition is recognized by UNESCO as intangible cultural heritage.",
+      "sourceUrl": "https://ich.unesco.org/en/RL/pyongyang-raengmyon-custom-01695",
+      "sourceTitle": "UNESCO — Pyongyang Raengmyon custom"
+    },
+    "food": {
+      "name": "Pyongyang raengmyon",
+      "text": "Cold noodles made mainly from buckwheat are part of Pyongyang’s social and culinary traditions.",
+      "sourceUrl": "https://ich.unesco.org/en/RL/pyongyang-raengmyon-custom-01695",
+      "sourceTitle": "UNESCO — Pyongyang Raengmyon custom"
+    }
+  },
+  "PSX": {
+    "facts": [
+      {
+        "text": "Palestine includes the geographically separate West Bank and Gaza Strip.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Palestinian_territories",
+        "sourceTitle": "Palestine — Wikivoyage"
+      },
+      {
+        "text": "Palestine is in the Middle East.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Palestinian_territories",
+        "sourceTitle": "Palestine — Wikivoyage"
+      },
+      {
+        "text": "Arabic is the main language of communication.",
+        "sourceUrl": "https://en.wikivoyage.org/wiki/Palestinian_territories",
+        "sourceTitle": "Palestine — Wikivoyage"
+      }
+    ],
+    "culture": {
+      "text": "Bread commonly accompanies Palestinian meals, including foods such as hummus and falafel.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Palestinian_territories",
+      "sourceTitle": "Palestine — Wikivoyage"
+    },
+    "food": {
+      "name": "Knafeh",
+      "text": "This sweet cheese dessert is soaked in syrup and topped with shredded pastry; Nablus is known for its version.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Palestinian_territories#Eat",
+      "sourceTitle": "Palestine — Wikivoyage — Eat"
+    }
+  },
+  "SYR": {
+    "facts": [
+      {
+        "text": "Damascus is the capital of Syria.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — pinned country reference"
+      },
+      {
+        "text": "Syria is in Asia.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — pinned country reference"
+      },
+      {
+        "text": "Syria has a coastline.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — pinned country reference"
+      }
+    ],
+    "culture": {
+      "text": "Syrian dessert traditions include baklava, knafeh and a distinctive local style of ice cream.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Syria",
+      "sourceTitle": "Syria — Wikivoyage"
+    },
+    "food": {
+      "name": "Fattoush",
+      "text": "Chopped vegetables and herbs are dressed and topped with pieces of fried bread.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Syria#Eat",
+      "sourceTitle": "Syria — Wikivoyage — Eat"
+    }
+  },
+  "TJK": {
+    "facts": [
+      {
+        "text": "Dushanbe is the capital of Tajikistan.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — pinned country reference"
+      },
+      {
+        "text": "Tajikistan is in Asia.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — pinned country reference"
+      },
+      {
+        "text": "Tajikistan is landlocked.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — pinned country reference"
+      }
+    ],
+    "culture": {
+      "text": "Osh and qurutob may be shared from a communal plate.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Tajikistan",
+      "sourceTitle": "Tajikistan — Wikivoyage"
+    },
+    "food": {
+      "name": "Qurutob",
+      "text": "Flaky bread and vegetables are combined with a sauce made from dried sour cheese, then topped with fried onions.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Tajikistan#Eat",
+      "sourceTitle": "Tajikistan — Wikivoyage — Eat"
+    }
+  },
+  "TKM": {
+    "facts": [
+      {
+        "text": "Ashgabat is the capital of Turkmenistan.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — pinned country reference"
+      },
+      {
+        "text": "Turkmenistan is in Asia.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — pinned country reference"
+      },
+      {
+        "text": "Turkmenistan is landlocked.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — pinned country reference"
+      }
+    ],
+    "culture": {
+      "text": "Green tea, sometimes accompanied by dried fruit or herbs, is part of local food culture.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Turkmenistan",
+      "sourceTitle": "Turkmenistan — Wikivoyage"
+    },
+    "food": {
+      "name": "Ichlekli",
+      "text": "This savoury pie is filled with meat and onions.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Turkmenistan#Eat",
+      "sourceTitle": "Turkmenistan — Wikivoyage — Eat"
+    }
+  },
+  "YEM": {
+    "facts": [
+      {
+        "text": "Sana'a is the capital of Yemen.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — pinned country reference"
+      },
+      {
+        "text": "Yemen is in Asia.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — pinned country reference"
+      },
+      {
+        "text": "Yemen has a coastline.",
+        "sourceUrl": "https://github.com/mledoze/countries/blob/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+        "sourceTitle": "mledoze/countries — pinned country reference"
+      }
+    ],
+    "culture": {
+      "text": "Honey features prominently in Yemeni sweets, including bint al-sahn.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Yemen",
+      "sourceTitle": "Yemen — Wikivoyage"
+    },
+    "food": {
+      "name": "Salta",
+      "text": "This meat-based stew is seasoned with fenugreek and often served toward the end of a meal.",
+      "sourceUrl": "https://en.wikivoyage.org/wiki/Yemen#Eat",
+      "sourceTitle": "Yemen — Wikivoyage — Eat"
+    }
+  }
+}

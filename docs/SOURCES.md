@@ -2,7 +2,7 @@
 
 ## Status
 
-The approved boundary archives, geographic derivatives, and all 146 answer-country postcards (197 countries have geographic feedback) are included. No images or recipes have been imported. This register links the artifact locks and claim-level research records.
+The approved boundary archives, geographic derivatives, all 146 answer-country postcards, and one licensed photo per postcard are included (197 countries have geographic feedback). No recipes have been imported. This register links the artifact locks and claim-level research records.
 
 ## Geographic and technical references
 
@@ -37,7 +37,18 @@ Every answer-eligible country needs three sourced facts, one cultural note, and 
 
 Prefer identifiable authoritative sources such as cultural institutions, museums, heritage organizations, and official tourism bodies, and assess each source's suitability for the specific claim. Do not fabricate facts or present a disputed cultural claim as universal.
 
-Images are optional; any image used needs an explicit license and attribution record. Recipes are later scope and require their own provenance and reproduction-permission review.
+Each answer-country postcard now includes a freely reusable photo with an explicit license and attribution record. Recipes are later scope and require their own provenance and reproduction-permission review.
+
+## Postcard photographs
+
+The 146 photos are retained from Wikimedia Commons, selected using country-guide captions and file descriptions, then visually reviewed for subject and suitability. Commons licenses vary by file: the collection uses CC BY, CC BY-SA (including 3.0 IGO), CC0, and explicit public-domain notices. [Commons reuse guidance](https://commons.wikimedia.org/wiki/Commons:Reusing_content_outside_Wikimedia) and [Creative Commons attribution guidance](https://creativecommons.org/reusing-cc-licensed-content/) informed the credit layout. Commons metadata is a source record, not independent legal or specialist verification.
+
+- `data/photos/postcards.v1.json` records exact answer-country coverage, author/required attribution, original title, source and license URLs, alt text, original upload identifiers, download URLs, retrieval timestamps, dimensions, bytes, SHA-256, and resizing notices.
+- `scripts/content/photos/sources.v1.json` retains the consulted author, attribution, description, permission and license metadata, source-page revisions, and relevant guide context. See its accompanying README for selection and verification notes.
+- `public/data/postcards/` holds local JPEGs at up to 960 pixels wide, roughly 26 MB in total. Only the solved country's image is requested. Files retain their original aspect ratio; Wikimedia-generated thumbnails are resized, with no Roamfolio crop, color changes, or generated image content.
+- Every postcard includes the photographer's credit, a Commons source link, its particular license link, and a resize notice. `public/data/photo-credits.html` lists the original titles and all credits. Each photo retains its own terms independently of the application code; ShareAlike terms continue to apply to the photo copies.
+- Some photos are historical. A photograph illustrates a place when it was taken and does not establish current conditions. Source descriptions and dates remain available through the file records.
+- The downloader refuses changed bytes; replacing a source requires reviewing the country/subject, author, license, changes, and checksums together. No live image search, API key, paid image service, or random image selection is used during play.
 
 ## Discovery research and distribution
 

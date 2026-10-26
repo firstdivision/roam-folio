@@ -14,6 +14,7 @@
     "test:e2e": "playwright test",
     "data:schedule": "node scripts/schedules/generate.mjs",
     "data:discovery": "node scripts/content/build.mjs",
+    "data:photos": "node scripts/content/photos/download.mjs",
     "image:social": "node scripts/social/generate.mjs",
     "test:geography": ".venv/bin/python -m unittest discover -s tests/geography -v"
   },

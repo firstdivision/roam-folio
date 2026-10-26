@@ -584,6 +584,48 @@ test('a failed postcard can retry inside the completion modal without losing the
   await expect(dialog).toBeVisible();
 });
 
+test('the licensed country photo loads only after solving and precedes the postcard facts', async ({ page }, testInfo) => {
+  const requests: string[] = [];
+  page.on('request', request => { if (request.url().includes('/data/postcards/')) requests.push(request.url()); });
+  await page.goto('/');
+  await guess(page, wrong.name);
+  expect(requests).toEqual([]);
+  await expect(page.locator('.postcard-photo')).toHaveCount(0);
+  await guess(page, target.name);
+  const figure = page.locator('.postcard-photo');
+  const image = figure.getByRole('img');
+  await expect(image).toBeVisible();
+  await expect(image).toHaveAttribute('alt', 'Trakai Island Castle, Lithuania');
+  await expect.poll(() => image.evaluate(element => (element as HTMLImageElement).naturalWidth)).toBe(960);
+  expect(requests).toHaveLength(1);
+  expect(await figure.evaluate(element => {
+    const heading = element.previousElementSibling, facts = element.nextElementSibling;
+    return heading?.textContent === 'A few things to take with you' && facts?.classList.contains('country-facts');
+  })).toBe(true);
+  await expect(figure.locator('figcaption')).toContainText('Dudva');
+  await expect(figure.getByRole('link', { name: 'CC BY-SA 3.0', exact: true })).toHaveAttribute('href', 'https://creativecommons.org/licenses/by-sa/3.0');
+  await expect(figure.locator('figcaption a').first()).toHaveAttribute('href', /commons\.wikimedia\.org\/wiki\/File:/);
+  await image.scrollIntoViewIfNeeded();
+  await page.screenshot({ path: testInfo.outputPath('postcard-photo.png') });
+  expect(await page.getByRole('dialog').evaluate(element => element.scrollWidth <= element.clientWidth)).toBe(true);
+  await page.reload();
+  await expect(page.locator('.postcard-photo img')).toBeVisible();
+});
+
+test('a missing photograph leaves facts, credit, and completion usable', async ({ page }) => {
+  await page.route('**/data/postcards/*.jpg', route => route.abort());
+  await page.goto('/');
+  await guess(page, target.name);
+  await expect(page.locator('.postcard-photo')).toContainText('Photo unavailable.');
+  await expect(page.locator('.postcard-photo figcaption')).toContainText('Dudva');
+  await expect(page.locator('.country-facts li')).toHaveCount(3);
+  await expect(page.locator('.postcard h4')).toBeVisible();
+  await page.getByRole('button', { name: 'Close', exact: true }).click();
+  await page.unroute('**/data/postcards/*.jpg');
+  await page.getByRole('button', { name: 'View your postcard' }).click();
+  await expect(page.locator('.postcard-photo img')).toBeVisible();
+});
+
 for (const timezoneId of ['UTC', 'America/Chicago', 'Asia/Kolkata', 'Pacific/Kiritimati']) {
   test.describe(`local rollover in ${timezoneId}`, () => {
     test.use({ timezoneId });

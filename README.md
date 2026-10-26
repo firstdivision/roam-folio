@@ -9,7 +9,7 @@ Roamfolio is a daily country-guessing game inspired by geography games such as G
 2. Start typing an eligible country's name in the field directly above the map, using accessible search and suggestions. Map clicks do not select or submit guesses.
 3. See the nearest-border distance in miles and map proximity feedback, moving from white for very far away through yellow and orange to red for very close. Drag to pan the map, scroll or pinch to zoom, or use its keyboard shortcuts. More detailed boundaries load when zooming in, up to 32×; map countries have no hover-name labels. On mobile, a taller map fills the viewport area and can be panned sideways. A compact notice under the submit row shows the latest distance and, after the first guess, whether it is closer than, farther away than, or matches the best earlier guess. The travel log lists closest guesses first.
 4. Keep guessing until the target country is found; there is no guess limit or give-up option. Today's progress survives refreshes on the same browser.
-5. Solving opens a completion dialog with your destination postcard, country facts, cultural notes, a signature food, and spoiler-free emoji sharing. The postcard and share text include your average guesses per solve across completed puzzles saved in this browser, including today's solve. Close it to review the map and travel log, then select “View your postcard” to reopen it. Recipes and a passport collection come later.
+5. Solving opens a completion dialog with your destination postcard, a licensed country photograph above its facts, cultural notes, a signature food, and spoiler-free emoji sharing. The postcard and share text include your average guesses per solve across completed puzzles saved in this browser, including today's solve. Close it to review the map and travel log, then select “View your postcard” to reopen it. Recipes and a passport collection come later.
 
 ## Product documents
 - [Vision](docs/VISION.md)
@@ -56,6 +56,8 @@ npm run data:schedule
 npm run data:discovery
 ```
 
+All 146 postcard photos are included as local JPEGs. `npm run data:photos` verifies their pinned checksums and re-downloads missing files from Wikimedia Commons; it never selects new photos or updates a license silently. Source and license snapshots are in `scripts/content/photos/`, with the image lock in `data/photos/postcards.v1.json`. Discovery generation validates photo coverage, attribution, licenses, and retained bytes before publishing the country cards and photo credits.
+
 For map-display changes alone, use `.venv/bin/python scripts/geography/generate.py --display-only` to retain the existing puzzle and distance data.
 
 The geographic generator verifies retained source archive checksums, records component mapping and calculation bounds, and writes reproducible browser assets. The additive geography extensions preserve every earlier distance exactly. The v3 matrix covers all 197 guessable countries, while schedules and discovery cards use only the 146 answer-eligible countries. Schedule generation refuses to rewrite existing assignments or their pool/geography versions; `npm run data:schedule -- --check` verifies reproducibility without writing files. Discovery generation validates exact answer-pool coverage and citations. Read `AGENTS.md` and all documentation before changing rules or data policies.
@@ -74,4 +76,4 @@ The preview image is committed and needs no runtime service or routine regenerat
 
 ## Attribution
 
-Map data: Natural Earth, public domain. Discovery summaries include Wikivoyage contributor material and an attributed country-reference extraction; license and modification notices are in [SOURCES.md](docs/SOURCES.md) and `public/data/attribution.html`. No country photos or recipes are included.
+Map data: Natural Earth, public domain. Discovery summaries include Wikivoyage contributor material and an attributed country-reference extraction. Country photos come from Wikimedia Commons under their individual Creative Commons or public-domain terms; each postcard displays its photographer, source, license, and resize notice. License and modification records are in [SOURCES.md](docs/SOURCES.md), `public/data/attribution.html`, and `public/data/photo-credits.html`. No recipes are included.

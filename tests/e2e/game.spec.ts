@@ -921,10 +921,12 @@ test('countdown handles both daylight saving transitions', async ({ browser }) =
       ['2026-03-08', '2026-03-08T00:00:00-05:00', '23:00:00'],
       ['2026-11-01', '2026-11-01T00:00:00-04:00', '25:00:00'],
     ]) {
-      await page.clock.setSystemTime(new Date(instant));
+      await page.clock.setFixedTime(new Date(instant));
       await page.goto('/');
       const targetId = (schedule.assignments as Record<string, string>)[date];
       await guess(page, pool.find(country => country.id === targetId)!.name);
+      await expect(page.locator('.next-puzzle strong')).toHaveText(countdown);
+      await page.clock.runFor(1500);
       await expect(page.locator('.next-puzzle strong')).toHaveText(countdown);
     }
   } finally { await context.close(); }

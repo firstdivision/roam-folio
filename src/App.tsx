@@ -24,6 +24,7 @@ export default function App() {
   const dateRef = useRef(date);
   const [now, setNow] = useState(() => new Date());
   const [message, setMessage] = useState('');
+  const [repeatedCountryId, setRepeatedCountryId] = useState<string | null>(null);
   const [showShare, setShowShare] = useState(false);
   const [shareMessage, setShareMessage] = useState('');
   const [helpOpen, setHelpOpen] = useState(false);
@@ -37,6 +38,10 @@ export default function App() {
   const rankedGuesses = session?.guesses.map((result, index) => ({ result, number: index + 1 }))
     .sort((a, b) => a.result.meters - b.result.meters || Number(b.result.correct) - Number(a.result.correct) || a.number - b.number) ?? [];
   const latest = session?.guesses.at(-1);
+  const displayedGuess = (repeatedCountryId ? session?.guesses.find(guess => guess.countryId === repeatedCountryId) : latest);
+  const comparison = displayedGuess ? compareGuess(displayedGuess, repeatedCountryId
+    ? session && session.guesses.length > 1 ? session.guesses : []
+    : session?.guesses.slice(0, -1)) : null;
   const feedback = message || (latest ? `${nameFor(latest.countryId)}. ${describe(latest, session?.guesses.slice(0, -1))}` : '');
 
   const reloadSchedule = useCallback(() => {
@@ -56,7 +61,7 @@ export default function App() {
     if (dateRef.current !== currentDate) {
       dateRef.current = currentDate;
       setDate(currentDate);
-      setSession(restore(currentDate)); setMessage('A new day, a new destination.'); setShowShare(false); setShareMessage('');
+      setSession(restore(currentDate)); setMessage('A new day, a new destination.'); setRepeatedCountryId(null); setShowShare(false); setShareMessage('');
       void reloadSchedule();
     }
     setNow(new Date());
@@ -98,12 +103,13 @@ export default function App() {
     if (getLocalDate() !== date) { refreshDate(); return; }
     if (!session || solved) return;
     const existing = session.guesses.find(item => item.countryId === countryId);
-    if (existing) { setMessage(`You already guessed ${nameFor(countryId)}. ${describe(existing, session.guesses.length > 1 ? session.guesses : [])} Your guess count stays the same.`); return; }
+    if (existing) { setRepeatedCountryId(countryId); setMessage(`You already guessed ${nameFor(countryId)}. ${describe(existing, session.guesses.length > 1 ? session.guesses : [])} Your guess count stays the same.`); return; }
     const result = evaluateGuess(session.puzzle, countryId);
     const guesses = [...session.guesses, result];
     const storageAvailable = saveProgress(session.puzzle, guesses.map(item => item.countryId));
     const statistics = getSolveStatistics(session.puzzle, guesses.map(item => item.countryId));
     setSession({ ...session, guesses, storageAvailable, statistics });
+    setRepeatedCountryId(null);
     setMessage(result.correct ? `You found ${nameFor(countryId)} in ${guesses.length} ${guesses.length === 1 ? 'guess' : 'guesses'}! Your postcard is ready.` : `${nameFor(countryId)}. ${describe(result, session.guesses)}`);
   }
 
@@ -128,12 +134,18 @@ export default function App() {
     <header className="site-header"><a className="wordmark" href="./" aria-label="Roamfolio home"><span className="brand-globe" aria-hidden="true">◎</span>roamfolio<span className="brand-dot">.</span></a><button className="help-button" aria-expanded={helpOpen} aria-controls="how-to-play" onClick={() => setHelpOpen(value => !value)}><span aria-hidden="true">?</span> How to play</button></header>
     <main>
       <div className="game-heading"><h1>Daily destination</h1><p className="daily-label"><time dateTime={date}>{puzzleDateLabel}</time><span>Local time</span></p></div>
-      {helpOpen && <section className="how-to-play" id="how-to-play" aria-labelledby="help-heading"><h2 id="help-heading">A small journey, one guess at a time</h2><ol><li>Type a country name, choose a suggestion, then press Guess. The map displays your guesses.</li><li>Follow the shortest distance between country borders. Land neighbors return 0 miles.</li><li>White is very far away; yellow, orange, and red bring you closer. Keep guessing until you find the country.</li><li>Solve to open your country postcard. Everyone on the same date gets the same puzzle. A new destination unlocks at midnight in your local time zone.</li></ol><p>Some countries can be guessed for clues but never appear as daily destinations.</p><p>Your progress stays in this browser. No account, no guess limit.</p></section>}
+      {helpOpen && <section className="how-to-play" id="how-to-play" aria-labelledby="help-heading"><h2 id="help-heading">A small journey, one guess at a time</h2><ol><li>Type a country name, choose a suggestion, then press Guess. The map displays your guesses.</li><li>Follow the shortest distance between country borders. Land neighbors return 0 miles.</li><li>White is very far away; yellow, orange, and red bring you closer. Keep guessing until you find the country.</li><li>Solve to open your country postcard. Everyone on the same date gets the same puzzle. A new destination unlocks at midnight in your local time zone.</li></ol><p>Drag the map to pan. Scroll or pinch to zoom. With the map focused, use + / − to zoom, arrow keys to pan, and 0 or Home to reset.</p><p>Some countries can be guessed for clues but never appear as daily destinations.</p><p>Your progress stays in this browser. No account, no guess limit.</p></section>}
       {!session ? <section className="unavailable" role="status"><h2>Today’s journey isn’t available yet.</h2><p>There is no published puzzle for {date}. Please check back when the schedule has been updated.</p></section> : <>
         <div className="play-area" id="guess-section" tabIndex={-1}>
           <div className="map-column">
-            <WorldMap guesses={session.guesses}>
-              {!solved && <section className="guess-panel" aria-label="Guess a country"><CountrySearch key={date} onGuess={guess}/>{feedback && <p className="latest-feedback">{feedback}</p>}</section>}
+            <WorldMap key={session.puzzle.identity} guesses={session.guesses}>
+              {!solved && <section className="guess-panel" aria-label="Guess a country"><CountrySearch key={date} onGuess={guess}/>{feedback && <p className="latest-feedback">{displayedGuess ? <>
+                <span className="feedback-country" title={nameFor(displayedGuess.countryId)}>{nameFor(displayedGuess.countryId)}</span>
+                <span className="feedback-detail" aria-label={formatMiles(displayedGuess.meters)}>{formatMiles(displayedGuess.meters).replace(/ miles?$/, ' mi')}</span>
+                {displayedGuess.borders && <span className="feedback-detail">Borders</span>}
+                {comparison && <span className="feedback-detail" aria-label={comparison === 'Tied' ? 'Matches your closest guess' : `${comparison} than your closest guess`}>{comparison}</span>}
+                {repeatedCountryId && <span className="feedback-detail" aria-label="Already guessed; guess count unchanged">Repeat</span>}
+              </> : feedback}</p>}</section>}
             </WorldMap>
             <section className="feedback-panel" aria-label={solved ? 'Journey complete' : 'Journey status'}>
               {solved && <div className="completed-journey"><p>You found <strong>{nameFor(session.puzzle.target)}</strong> in {session.guesses.length} {session.guesses.length === 1 ? 'guess' : 'guesses'}.</p><button ref={postcardButton} className="primary-button" type="button" aria-haspopup="dialog" onClick={() => setDismissedCompletion(null)}>View your postcard <span aria-hidden="true">↗</span></button></div>}
@@ -141,7 +153,7 @@ export default function App() {
               <p className="sr-only" role="status" aria-live="polite" aria-atomic="true">{feedback}</p>
             </section>
           </div>
-          <section className="history-panel" aria-labelledby="history-heading"><div className="section-title"><h2 id="history-heading">Your travel log</h2><span>{session.guesses.length} {session.guesses.length === 1 ? 'GUESS' : 'GUESSES'}</span></div><p className="history-order">Closest guesses first</p>{!session.guesses.length ? <div className="empty-history"><span aria-hidden="true">⌁</span><p>Every journey starts somewhere.</p><span>Make your first guess to get your bearings.</span></div> : <ol className="guess-list">{rankedGuesses.map(({ result, number }) => <li key={result.countryId} value={number}><span className="guess-number" aria-label={`Guess ${number}`}>{String(number).padStart(2, '0')}</span><span className="guess-swatch" style={{ background: result.correct ? '#c74332' : proximity(result.meters).color }} aria-hidden="true">{result.correct ? '✓' : ''}</span><div className="guess-country"><strong>{nameFor(result.countryId)}</strong><span>{result.correct ? 'Destination found' : result.borders ? 'It borders this country!' : proximity(result.meters).label}</span></div><span className="guess-distance">{result.correct ? 'Found!' : formatMiles(result.meters)}</span></li>)}</ol>}</section>
+          <section className="history-panel" aria-label="Your travel log"><p className="history-order">Closest guesses first</p>{!session.guesses.length ? <div className="empty-history"><span aria-hidden="true">⌁</span><p>Every journey starts somewhere.</p><span>Make your first guess to get your bearings.</span></div> : <ol className="guess-list">{rankedGuesses.map(({ result, number }) => <li key={result.countryId} value={number}><span className="guess-number" aria-label={`Guess ${number}`}>{String(number).padStart(2, '0')}</span><span className="guess-swatch" style={{ background: result.correct ? '#c74332' : proximity(result.meters).color }} aria-hidden="true">{result.correct ? '✓' : ''}</span><div className="guess-country"><strong>{nameFor(result.countryId)}</strong><span>{result.correct ? 'Destination found' : result.borders ? 'It borders this country!' : proximity(result.meters).label}</span></div><span className="guess-distance">{result.correct ? 'Found!' : formatMiles(result.meters)}</span></li>)}</ol>}</section>
         </div>
         {completionOpen && <dialog ref={completionDialog} className="completion-dialog" aria-modal="true" aria-labelledby="completion-heading" aria-describedby="completion-summary" onCancel={event => { event.preventDefault(); setDismissedCompletion(session.puzzle.identity); }}>
           <div className="completion-toolbar"><button className="dialog-close" type="button" onClick={() => setDismissedCompletion(session.puzzle.identity)}>Close <span aria-hidden="true">×</span></button></div>
@@ -158,8 +170,14 @@ export default function App() {
 
 function describe(guess: Guess, previous: Guess[] = []) {
   if (guess.correct) return 'Destination found!';
-  const closest = Math.min(...previous.map(item => item.meters));
-  const comparison = !previous.length ? '' : guess.meters < closest ? ' Closer than your previous closest guess.'
-    : guess.meters > closest ? ' Farther away than your closest guess so far.' : ' Matches your closest guess so far.';
+  const direction = compareGuess(guess, previous);
+  const comparison = !direction ? '' : direction === 'Closer' ? ' Closer than your previous closest guess.'
+    : direction === 'Farther' ? ' Farther away than your closest guess so far.' : ' Matches your closest guess so far.';
   return `${formatMiles(guess.meters)} away. ${guess.borders ? 'It borders this country!' : proximity(guess.meters).label + '.'}${comparison}`;
+}
+
+function compareGuess(guess: Guess, previous: Guess[] = []) {
+  if (!previous.length) return null;
+  const closest = Math.min(...previous.map(item => item.meters));
+  return guess.meters < closest ? 'Closer' : guess.meters > closest ? 'Farther' : 'Tied';
 }

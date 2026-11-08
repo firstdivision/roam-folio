@@ -1,28 +1,14 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import type { PointerEvent as ReactPointerEvent, ReactNode } from 'react';
 import { geoEqualEarth, geoPath } from 'd3-geo';
-import type { FeatureCollection, Geometry } from 'geojson';
 import { assetUrl, countries, proximity } from '../game';
 import type { Guess } from '../game';
+import { constrain, fitBounds, framingBounds, HEIGHT, initialView, MAX_ZOOM, MIN_ZOOM, WIDTH } from './framing';
+import type { Bounds, MapWorld as World, Point, View } from './framing';
 
-type World = FeatureCollection<Geometry, { id: string; name: string; eligible: boolean }>;
-type Point = { x: number; y: number };
-type View = Point & { scale: number };
 // Eligibility lives in the current registry. Display geometry retains its
 // original provenance, including the historical pool-v1 eligibility property.
 const eligibleIds = new Set(countries.map(country => country.id));
-const WIDTH = 1000, HEIGHT = 530, MAX_ZOOM = 32;
-const initialView: View = { x: 0, y: 0, scale: 1 };
-
-function constrain(view: View, viewport: { width: number; height: number }): View {
-  const scale = Math.max(1, Math.min(MAX_ZOOM, view.scale));
-  // Fill taller phone viewports by cropping the sides. Allow panning across
-  // that crop even at 1×, with bounds expressed in SVG coordinates.
-  const ratio = Math.max(viewport.width / WIDTH, viewport.height / HEIGHT);
-  const width = viewport.width / ratio, height = viewport.height / ratio;
-  const left = (WIDTH - width) / 2, top = (HEIGHT - height) / 2;
-  return { scale, x: Math.max(left + width - WIDTH * scale, Math.min(left, view.x)), y: Math.max(top + height - HEIGHT * scale, Math.min(top, view.y)) };
-}
 const midpoint = (a: Point, b: Point): Point => ({ x: (a.x + b.x) / 2, y: (a.y + b.y) / 2 });
 const separation = (a: Point, b: Point) => Math.hypot(a.x - b.x, a.y - b.y);
 
@@ -35,28 +21,43 @@ export function WorldMap({ guesses, children }: { guesses: Guess[]; children?: R
   const [attempt, setAttempt] = useState(0);
   const [view, setView] = useState(initialView);
   const [dragging, setDragging] = useState(false);
+  const [framingError, setFramingError] = useState('');
   const viewRef = useRef(initialView);
   const canvas = useRef<HTMLDivElement>(null);
   const svg = useRef<SVGSVGElement>(null);
   const pointers = useRef(new Map<number, Point>());
+  const automaticBounds = useRef<Bounds | null>(null);
+  const framedCountry = useRef<string | undefined>(undefined);
   const needsDetail = view.scale >= 3;
+  const latest = guesses.at(-1);
+  const viewport = useCallback(() => {
+    const box = svg.current?.getBoundingClientRect();
+    return { width: box?.width || WIDTH, height: box?.height || HEIGHT };
+  }, []);
+
+  const manualNavigation = useCallback(() => {
+    automaticBounds.current = null;
+  }, []);
 
   const updateView = useCallback((next: View) => {
-    const element = svg.current;
-    const bounded = constrain(next, element ? { width: element.clientWidth, height: element.clientHeight } : { width: WIDTH, height: HEIGHT });
+    const bounded = constrain(next, viewport());
     viewRef.current = bounded;
     setView(bounded);
-  }, []);
+  }, [viewport]);
+  const frame = useCallback((bounds: Bounds) => {
+    updateView(fitBounds(bounds, viewport()));
+  }, [updateView, viewport]);
   const pointAt = useCallback((clientX: number, clientY: number): Point => {
     const matrix = svg.current?.getScreenCTM();
     return matrix ? new DOMPoint(clientX, clientY).matrixTransform(matrix.inverse()) : { x: WIDTH / 2, y: HEIGHT / 2 };
   }, []);
   const zoom = useCallback((factor: number, anchor: Point = { x: WIDTH / 2, y: HEIGHT / 2 }) => {
+    manualNavigation();
     const current = viewRef.current;
-    const scale = Math.max(1, Math.min(MAX_ZOOM, current.scale * factor));
+    const scale = Math.max(MIN_ZOOM, Math.min(MAX_ZOOM, current.scale * factor));
     const ratio = scale / current.scale;
     updateView({ scale, x: anchor.x - (anchor.x - current.x) * ratio, y: anchor.y - (anchor.y - current.y) * ratio });
-  }, [updateView]);
+  }, [manualNavigation, updateView, viewport]);
 
   useEffect(() => {
     const controller = new AbortController();
@@ -96,6 +97,30 @@ export function WorldMap({ guesses, children }: { guesses: Guess[]; children?: R
     const mapWorld = { ...world, features: world.features.filter(feature => feature.properties.id !== 'ATA') };
     return geoEqualEarth().fitExtent([[16, 10], [984, 510]], mapWorld);
   }, [world]);
+  useEffect(() => {
+    if (!world || !projection || !latest || framedCountry.current === latest.countryId) return;
+    framedCountry.current = latest.countryId;
+    try {
+      const bounds = framingBounds(world, projection, latest.countryId, latest.meters);
+      setFramingError('');
+      if (pointers.current.size) { automaticBounds.current = null; return; }
+      automaticBounds.current = bounds;
+      frame(bounds);
+    } catch (error) {
+      automaticBounds.current = null;
+      setFramingError(error instanceof Error ? `${error.message}. You can still navigate the map manually.` : 'Automatic map framing is unavailable. You can still navigate the map manually.');
+    }
+  }, [world, projection, latest, frame]);
+  useEffect(() => {
+    const element = canvas.current;
+    if (!element || !world) return;
+    const observer = new ResizeObserver(() => {
+      if (automaticBounds.current) frame(automaticBounds.current);
+      else updateView(viewRef.current);
+    });
+    observer.observe(element);
+    return () => observer.disconnect();
+  }, [world, frame, updateView]);
   const displayedWorld = needsDetail && detail ? detail : world;
   const paths = useMemo(() => {
     if (!displayedWorld || !projection) return [];
@@ -113,6 +138,7 @@ export function WorldMap({ guesses, children }: { guesses: Guess[]; children?: R
 
   function pointerDown(event: ReactPointerEvent<SVGSVGElement>) {
     if (event.button !== 0) return;
+    manualNavigation();
     canvas.current?.focus({ preventScroll: true });
     pointers.current.set(event.pointerId, pointAt(event.clientX, event.clientY));
     event.currentTarget.setPointerCapture(event.pointerId);
@@ -132,7 +158,7 @@ export function WorldMap({ guesses, children }: { guesses: Guess[]; children?: R
       const distance = separation(before[0], before[1]);
       if (distance < 1) return;
       const from = midpoint(before[0], before[1]), to = midpoint(after[0], after[1]);
-      const scale = Math.max(1, Math.min(MAX_ZOOM, current.scale * separation(after[0], after[1]) / distance));
+      const scale = Math.max(MIN_ZOOM, Math.min(MAX_ZOOM, current.scale * separation(after[0], after[1]) / distance));
       const ratio = scale / current.scale;
       updateView({ scale, x: to.x - (from.x - current.x) * ratio, y: to.y - (from.y - current.y) * ratio });
     }
@@ -147,7 +173,7 @@ export function WorldMap({ guesses, children }: { guesses: Guess[]; children?: R
     <div ref={canvas} className={`map-canvas${dragging ? ' is-dragging' : ''}`} role="region" aria-label="Map navigation" aria-describedby="map-navigation-help" tabIndex={world ? 0 : undefined} onKeyDown={event => {
       if (!world) return;
       const current = viewRef.current;
-      if (['+', '=', '-', '_', '0', 'Home', 'ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown'].includes(event.key)) event.preventDefault();
+      if (['+', '=', '-', '_', '0', 'Home', 'ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown'].includes(event.key)) { event.preventDefault(); manualNavigation(); }
       if (event.key === '+' || event.key === '=') zoom(1.5);
       else if (event.key === '-' || event.key === '_') zoom(1 / 1.5);
       else if (event.key === '0' || event.key === 'Home') updateView(initialView);
@@ -165,7 +191,7 @@ export function WorldMap({ guesses, children }: { guesses: Guess[]; children?: R
       </svg>}
     </div>
     {needsDetail && !detail && <p className="map-detail-status" role="status">{detailFailed ? <>Showing the overview map. <button className="text-button" type="button" onClick={() => setDetailAttempt(value => value + 1)}>Retry map detail</button></> : 'Loading map detail…'}</p>}
-    <div className="map-bottomline"><span className="legend-label">FARTHER</span><span className="distance-gradient" aria-hidden="true"/><span className="legend-label">CLOSER</span></div>
-    <p id="map-navigation-help" className="map-navigation-help">Drag to pan. Scroll or pinch to zoom.<span> Keyboard: + / − to zoom, arrow keys to pan, 0 to reset.</span></p>
+    {framingError && <p className="map-detail-status" role="status">{framingError}</p>}
+    <p id="map-navigation-help" className="sr-only">Drag to pan. Scroll or pinch to zoom. Keyboard: + / − to zoom, arrow keys to pan, 0 to reset.</p>
   </section>;
 }

@@ -4,6 +4,9 @@ import AxeBuilder from '@axe-core/playwright';
 import pool from '../../data/countries/pool.v3.json' with { type: 'json' };
 import schedule from '../../data/schedules/schedule.v1.json' with { type: 'json' };
 import distances from '../../data/geography/distances.v3.json' with { type: 'json' };
+import { geoEqualEarth } from 'd3-geo';
+import { fitBounds, framingBounds, HEIGHT, WIDTH } from '../../src/map/framing';
+import type { Bounds, MapWorld, View } from '../../src/map/framing';
 
 const date = '2026-10-24';
 const targetId = schedule.assignments[date];
@@ -12,6 +15,36 @@ const wrong = pool.find(country => country.id !== targetId)!;
 async function guess(page: Page, name: string) {
   await page.getByRole('combobox').fill(name);
   await page.getByRole('button', { name: 'Guess', exact: false }).click();
+}
+async function camera(page: Page): Promise<View> {
+  const transform = (await page.locator('.map-countries').getAttribute('transform'))!;
+  const match = transform.match(/translate\(([^ ]+) ([^)]+)\) scale\(([^)]+)\)/)!;
+  return { x: Number(match[1]), y: Number(match[2]), scale: Number(match[3]) };
+}
+async function expectCamera(page: Page, expected: View) {
+  await expect.poll(async () => {
+    const actual = await camera(page);
+    return Math.max(Math.abs(actual.x - expected.x), Math.abs(actual.y - expected.y), Math.abs(actual.scale - expected.scale));
+  }).toBeLessThan(0.001);
+}
+async function expectFraming(page: Page, bounds: Bounds) {
+  const viewport = (await page.locator('.map-canvas').boundingBox())!;
+  const expected = fitBounds(bounds, viewport);
+  await expectCamera(page, expected);
+  expect(expected.scale).toBeGreaterThanOrEqual(1.2);
+  if (expected.scale === 1.2) return;
+  const positions = await page.locator('.map-canvas svg').evaluate((element, bounds) => {
+    const svg = element as SVGSVGElement;
+    const group = svg.querySelector<SVGGElement>('.map-countries')!;
+    const matrix = group.getScreenCTM()!;
+    const a = new DOMPoint(...bounds[0]).matrixTransform(matrix);
+    const b = new DOMPoint(...bounds[1]).matrixTransform(matrix);
+    return { left: a.x, top: a.y, right: b.x, bottom: b.y };
+  }, bounds);
+  expect(positions.left).toBeGreaterThanOrEqual(viewport.x + viewport.width * 0.1 - 0.1);
+  expect(positions.top).toBeGreaterThanOrEqual(viewport.y + viewport.height * 0.1 - 0.1);
+  expect(positions.right).toBeLessThanOrEqual(viewport.x + viewport.width * 0.9 + 0.1);
+  expect(positions.bottom).toBeLessThanOrEqual(viewport.y + viewport.height * 0.9 + 0.1);
 }
 test.beforeEach(async ({ page }) => {
   await page.clock.install({ time: new Date(`${date}T12:00:00Z`) });
@@ -45,17 +78,35 @@ test('link previews work without JavaScript and advertise a reachable PNG', asyn
 test('country entry and submit are above the fold, including a small phone', async ({ page }) => {
   await page.goto('/');
   await expect(page.getByRole('combobox')).toBeInViewport({ ratio: 1 });
+  await expect(page.getByRole('combobox', { name: 'Country name', exact: true })).toBeVisible();
+  await expect(page.getByRole('region', { name: 'Your travel log', exact: true })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Your travel log', exact: true })).toHaveCount(0);
+  await expect(page.locator('.history-panel .section-title')).toHaveCount(0);
+  await expect(page.locator('.history-order')).toHaveCSS('margin-top', '0px');
+  await expect(page.getByText('Where shall we go?', { exact: true })).toHaveCount(0);
+  const entryTop = (await page.locator('.map-entry').boundingBox())!.y;
+  expect((await page.locator('.input-row').boundingBox())!.y - entryTop).toBe(10);
   await expect(page.getByRole('button', { name: 'Guess', exact: false })).toBeInViewport({ ratio: 1 });
   await expect(page.locator('.intro')).toHaveCount(0);
   await expect(page.getByText('Your world of possibilities', { exact: true })).toHaveCount(0);
   await expect(page.getByRole('group', { name: 'Map controls' })).toHaveCount(0);
   await expect(page.getByRole('button', { name: /^(Zoom in|Zoom out|Reset map)$/ })).toHaveCount(0);
   await expect(page.getByLabel('Map zoom level')).toHaveCount(0);
+  await expect(page.locator('.map-bottomline')).toHaveCount(0);
+  await expect(page.getByText('FARTHER', { exact: true })).toHaveCount(0);
+  await expect(page.getByText('CLOSER', { exact: true })).toHaveCount(0);
+  await expect(page.locator('#map-navigation-help')).toHaveClass('sr-only');
+  await expect(page.getByRole('region', { name: 'Map navigation', exact: true })).toHaveAttribute('aria-describedby', 'map-navigation-help');
+  await expect(page.locator('.map-canvas')).toHaveCSS('aspect-ratio', page.viewportSize()!.width > 700 ? '1000 / 430' : 'auto');
+  expect((await page.locator('.map-canvas').boundingBox())!.height).toBeLessThanOrEqual(410);
   await page.setViewportSize({ width: 320, height: 568 });
   await expect(page.getByRole('combobox')).toBeInViewport({ ratio: 1 });
   await expect(page.getByRole('button', { name: 'Guess', exact: false })).toBeInViewport({ ratio: 1 });
   expect(await page.evaluate(() => window.scrollY)).toBe(0);
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
+  await page.getByRole('button', { name: 'How to play' }).click();
+  await expect(page.locator('#how-to-play')).toContainText('Drag the map to pan. Scroll or pinch to zoom.');
+  await expect(page.locator('#how-to-play')).toContainText('arrow keys to pan, and 0 or Home to reset.');
 });
 
 for (const submit of ['button', 'Enter'] as const) {
@@ -93,10 +144,13 @@ test('entry and latest guess notice sit above the map without an initial helper 
   await checkOrder();
   await guess(page, wrong.name);
   await checkOrder();
+  await expect(page.locator('.latest-feedback-label')).toHaveCount(0);
+  await expect(page.locator('.latest-feedback')).not.toContainText('Latest guess');
+  await expect(page.locator('.latest-feedback')).toHaveCSS('font-size', page.viewportSize()!.width > 700 ? '14px' : '12px');
   await page.setViewportSize({ width: 320, height: 568 });
   await checkOrder();
   const canvas = (await page.locator('.map-canvas').boundingBox())!;
-  expect(canvas.height).toBeGreaterThanOrEqual(360);
+  expect(canvas.height).toBe(300);
   // The actual geography fills the taller viewport rather than letterboxing.
   const svgScale = await page.locator('.map-canvas svg').evaluate(element => (element as SVGSVGElement).getScreenCTM()!.a);
   expect(svgScale).toBeCloseTo(canvas.height / 530, 3);
@@ -114,31 +168,35 @@ test('latest notice compares with the best earlier guess and survives reloads', 
   await page.goto('/');
   await expect(notice).toHaveCount(0);
   await guess(page, farthest.name);
-  await expect(notice).toContainText(`${farthest.name}.`);
-  await expect(notice).toContainText(`${Math.round(farthest.meters / 1609.344).toLocaleString('en-US')} miles away.`);
+  await expect(notice).toContainText(farthest.name);
+  await expect(notice).toContainText(`${Math.round(farthest.meters / 1609.344).toLocaleString('en-US')} mi`);
   await expect(notice).not.toContainText(/closer|farther|matches/i);
   await page.reload();
-  await expect(notice).toContainText(`${farthest.name}.`);
+  await expect(notice).toContainText(farthest.name);
   await expect(notice).not.toContainText(/closer|farther|matches/i);
   await guess(page, nearest.name);
-  await expect(notice).toContainText('0 miles away. It borders this country!');
-  await expect(notice).toContainText('Closer than your previous closest guess.');
+  await expect(notice).toContainText('0 mi');
+  await expect(notice).toContainText('Borders');
+  await expect(notice).toContainText('Closer');
   await guess(page, middle.name);
-  await expect(notice).toContainText('Farther away than your closest guess so far.');
+  await expect(notice).toContainText('Farther');
   await page.reload();
-  await expect(notice).toContainText(`${middle.name}.`);
-  await expect(notice).toContainText('Farther away than your closest guess so far.');
+  await expect(notice).toContainText(middle.name);
+  await expect(notice).toContainText('Farther');
   await guess(page, neighbor.name);
-  await expect(notice).toContainText('Matches your closest guess so far.');
+  await expect(notice).toContainText('Tied');
   await guess(page, farthest.name);
-  await expect(notice).toContainText(`already guessed ${farthest.name}`);
-  await expect(notice).toContainText('Farther away than your closest guess so far.');
+  await expect(notice).toContainText(farthest.name);
+  await expect(notice).toContainText('Repeat');
+  await expect(notice).toContainText('Farther');
   await expect(page.locator('.guess-list li')).toHaveCount(4);
   await guess(page, nearest.name);
-  await expect(notice).toContainText('Matches your closest guess so far.');
+  await expect(notice).toContainText('Tied');
   await guess(page, 'Atlantis');
   await expect(page.getByRole('alert')).toBeVisible();
-  await expect(notice).toContainText(`already guessed ${nearest.name}`);
+  await expect(notice).toContainText(nearest.name);
+  await expect(notice).toContainText('Repeat');
+  await expect(page.locator('.feedback-panel [role="status"]').last()).toContainText(`already guessed ${nearest.name}`);
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
   const scan = await new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa']).analyze();
   expect(scan.violations).toEqual([]);
@@ -146,6 +204,42 @@ test('latest notice compares with the best earlier guess and survives reloads', 
   await guess(page, target.name);
   await expect(notice).toHaveCount(0);
   await expect(page.locator('.success-panel')).toBeVisible();
+});
+
+test('compact feedback stays on one line for every country and repeated guess on a small phone', async ({ page }) => {
+  test.setTimeout(180_000);
+  await page.setViewportSize({ width: 320, height: 568 });
+  await page.goto('/');
+  const checkLine = async (country: string) => {
+    await expect(page.locator('.feedback-country')).toHaveText(country);
+    const layout = await page.locator('.latest-feedback').evaluate(element => {
+      const children = [...element.children].map(child => child.getBoundingClientRect());
+      const country = element.querySelector('.feedback-country')!;
+      return {
+        top: children.map(child => child.top),
+        heights: children.map(child => child.height),
+        fits: element.scrollWidth <= element.clientWidth,
+        countryWidth: country.getBoundingClientRect().width,
+        height: element.getBoundingClientRect().height,
+      };
+    });
+    expect(layout.fits, country).toBe(true);
+    expect(layout.countryWidth, country).toBeGreaterThan(0);
+    expect(new Set(layout.top).size, country).toBe(1);
+    expect(Math.max(...layout.heights), country).toBe(18);
+    expect(layout.height, country).toBe(34);
+  };
+  // Exercise the longest names first, then every other guessable country.
+  const countries = pool.filter(country => country.id !== targetId).sort((a, b) => b.name.length - a.name.length);
+  for (const country of countries) {
+    await guess(page, country.name);
+    await checkLine(country.name);
+    await guess(page, country.name);
+    await expect(page.locator('.latest-feedback')).toContainText('Repeat');
+    await checkLine(country.name);
+  }
+  await expect(page.locator('.guess-list li')).toHaveCount(countries.length);
+  await expect(page.locator('.feedback-country')).toHaveCSS('text-overflow', 'ellipsis');
 });
 
 test('history sorts by exact distance while persistence and sharing retain guess order', async ({ page }) => {
@@ -177,13 +271,14 @@ test('history sorts by exact distance while persistence and sharing retain guess
   await expect(page.getByLabel('Your spoiler-free result')).toHaveValue(new RegExp(entered.map(country => emoji(country.meters)).join('') + '🎯'));
 });
 
-test('a tall mobile map can pan to both sides at the initial zoom', async ({ page }) => {
+test('a compact mobile map can pan to both sides at the initial zoom', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto('/');
   const map = page.locator('.map-canvas svg');
   await expect(map).toBeVisible();
   await map.scrollIntoViewIfNeeded();
   const box = (await map.boundingBox())!;
+  expect(box.height).toBe(400);
   const x = box.x + box.width / 2, y = box.y + box.height / 2;
   const drag = async (offset: number) => {
     await page.mouse.move(x, y);
@@ -192,11 +287,13 @@ test('a tall mobile map can pan to both sides at the initial zoom', async ({ pag
     await page.mouse.up();
   };
   await drag(90);
-  await expect(page.locator('.map-countries')).toHaveAttribute('transform', /translate\([1-9]/);
+  await expect(page.locator('.map-countries')).not.toHaveAttribute('transform', 'translate(-100 -53) scale(1.2)');
+  const right = await page.locator('.map-countries').getAttribute('transform');
   await page.getByRole('region', { name: 'Map navigation', exact: true }).press('0');
   await drag(-90);
   await expect(page.locator('.map-countries')).toHaveAttribute('transform', /translate\(-/);
-  await expect(page.locator('.map-countries')).toHaveAttribute('transform', /scale\(1\)/);
+  expect(await page.locator('.map-countries').getAttribute('transform')).not.toBe(right);
+  await expect(page.locator('.map-countries')).toHaveAttribute('transform', /scale\(1.2\)/);
   await expect(page.locator('.guess-list li')).toHaveCount(0);
 });
 
@@ -204,15 +301,16 @@ test('keyboard, wheel and drag navigate without submitting guesses', async ({ pa
   await page.goto('/');
   const navigation = page.getByRole('region', { name: 'Map navigation', exact: true });
   const layer = page.locator('.map-countries');
-  await expect(layer).toHaveAttribute('transform', 'translate(0 0) scale(1)');
+  const scale = async () => Number((await layer.getAttribute('transform'))!.match(/scale\(([^)]+)\)/)![1]);
+  await expect(layer).toHaveAttribute('transform', 'translate(-100 -53) scale(1.2)');
   await navigation.press('+');
-  await expect(layer).toHaveAttribute('transform', /scale\(1.5\)/);
+  expect(await scale()).toBeCloseTo(1.8);
   await navigation.focus();
   const beforeKey = await layer.getAttribute('transform');
   await navigation.press('ArrowRight');
   expect(await layer.getAttribute('transform')).not.toBe(beforeKey);
   await navigation.press('+');
-  await expect(layer).toHaveAttribute('transform', /scale\(2.25\)/);
+  expect(await scale()).toBeCloseTo(2.7);
   const map = page.locator('.map-canvas svg');
   await map.scrollIntoViewIfNeeded();
   const box = (await map.boundingBox())!;
@@ -229,9 +327,14 @@ test('keyboard, wheel and drag navigate without submitting guesses', async ({ pa
   await expect(layer).not.toHaveAttribute('transform', beforeWheel!);
   expect(await page.evaluate(() => window.scrollY)).toBe(scrollBefore);
   await navigation.press('Home');
-  await expect(layer).toHaveAttribute('transform', 'translate(0 0) scale(1)');
+  await expect(layer).toHaveAttribute('transform', 'translate(-100 -53) scale(1.2)');
   await navigation.press('-');
-  await expect(layer).toHaveAttribute('transform', 'translate(0 0) scale(1)');
+  await expectCamera(page, { x: -100, y: -53, scale: 1.2 });
+  await navigation.press('-');
+  await expectCamera(page, { x: -100, y: -53, scale: 1.2 });
+  await page.locator('.map-canvas svg').hover();
+  await page.mouse.wheel(0, 1000);
+  await expectCamera(page, { x: -100, y: -53, scale: 1.2 });
   await expect(page.locator('.guess-list li')).toHaveCount(0);
   await expect(page.getByRole('combobox')).toHaveValue('');
 });
@@ -251,12 +354,17 @@ test('touch gestures pinch and pan the map without scrolling the page', async ({
   await touch('touchMove', [{ x: x - 65, y, id: 0 }, { x: x + 65, y, id: 1 }]);
   await touch('touchEnd', []);
   const layer = page.locator('.map-countries');
-  await expect(layer).not.toHaveAttribute('transform', 'translate(0 0) scale(1)');
+  await expect(layer).not.toHaveAttribute('transform', 'translate(-100 -53) scale(1.2)');
   const beforePan = await layer.getAttribute('transform');
   await touch('touchStart', [{ x, y, id: 0 }]);
   await touch('touchMove', [{ x: x + 30, y: y + 20, id: 0 }]);
   await touch('touchEnd', []);
   await expect(layer).not.toHaveAttribute('transform', beforePan!);
+  await page.getByRole('region', { name: 'Map navigation', exact: true }).press('Home');
+  await touch('touchStart', [{ x: x - 65, y, id: 0 }, { x: x + 65, y, id: 1 }]);
+  await touch('touchMove', [{ x: x - 10, y, id: 0 }, { x: x + 10, y, id: 1 }]);
+  await touch('touchEnd', []);
+  expect((await camera(page)).scale).toBe(1.2);
   expect(await page.evaluate(() => window.scrollY)).toBe(scrollBefore);
   await expect(page.locator('.guess-list li')).toHaveCount(0);
   await client.detach();
@@ -291,7 +399,7 @@ test('more detailed boundaries load only on zoom and support 32x magnification',
   for (let i = 0; i < 12; i++) await navigation.press('+');
   await expect(page.locator('.map-countries')).toHaveAttribute('transform', /scale\(32\)/);
   await navigation.press('0');
-  await expect(page.locator('.map-countries')).toHaveAttribute('transform', 'translate(0 0) scale(1)');
+  await expect(page.locator('.map-countries')).toHaveAttribute('transform', 'translate(-100 -53) scale(1.2)');
   for (let i = 0; i < 3; i++) await navigation.press('+');
   await expect.poll(drawingLength).toBeGreaterThan(overviewLength * 2);
   expect(detailRequests).toHaveLength(1);
@@ -314,6 +422,131 @@ test('overview stays usable when detail fails, and detail can be retried', async
   await expect(page.getByRole('button', { name: 'Retry map detail' })).toHaveCount(0);
 });
 
+test('distinct guesses fit their distance area, restore, and respect manual navigation', async ({ page }, testInfo) => {
+  const world = await (await page.request.get('/data/world.v1.geojson')).json() as MapWorld;
+  const projection = geoEqualEarth().fitExtent([[16, 10], [984, 510]], { ...world, features: world.features.filter(feature => feature.properties.id !== 'ATA') });
+  const candidates = pool.filter(country => country.id !== targetId).map(country => {
+    const key = [country.id, targetId].sort().join(':') as keyof typeof distances.pairs;
+    return { ...country, ...distances.pairs[key] };
+  }).sort((a, b) => a.meters - b.meters);
+  const nearest = candidates.find(country => fitBounds(framingBounds(world, projection, country.id, country.meters), { width: 350, height: 400 }).scale >= 3)!;
+  expect(nearest).toBeDefined();
+  const farthest = candidates.at(-1)!;
+  const bounds = framingBounds(world, projection, nearest.id, nearest.meters);
+  let releaseDetail!: () => void;
+  const detailGate = new Promise<void>(resolve => { releaseDetail = resolve; });
+  await page.route('**/world.detail.v1.geojson', async route => {
+    await detailGate;
+    await route.continue();
+  });
+  await page.goto('/');
+  await expect(page.locator('.map-countries')).toBeAttached();
+  const drawingLength = () => page.locator('.map-countries path').evaluateAll(elements => elements.reduce((sum, element) => sum + (element.getAttribute('d')?.length ?? 0), 0));
+  const overviewLength = await drawingLength();
+  const scrollBefore = await page.evaluate(() => window.scrollY);
+  await guess(page, nearest.name);
+  try { await expectFraming(page, bounds); }
+  finally { releaseDetail(); }
+  const framed = await camera(page);
+  expect(await page.evaluate(() => window.scrollY)).toBe(scrollBefore);
+  await expect.poll(drawingLength).toBeGreaterThan(overviewLength * 2);
+  await expectCamera(page, framed);
+  await page.screenshot({ path: testInfo.outputPath('regional-framing.png'), fullPage: true });
+  const navigation = page.getByRole('region', { name: 'Map navigation', exact: true });
+  await navigation.press('+');
+  const manual = await camera(page);
+  await guess(page, nearest.name);
+  await expectCamera(page, manual);
+  await guess(page, 'Atlantis');
+  await expect(page.getByRole('alert')).toBeVisible();
+  await expectCamera(page, manual);
+  await page.reload();
+  await expectFraming(page, bounds);
+  await page.setViewportSize({ width: 320, height: 568 });
+  await expectFraming(page, bounds);
+  await navigation.press('+');
+  const manualBeforeResize = await camera(page);
+  await page.setViewportSize({ width: 390, height: 844 });
+  expect((await camera(page)).scale).toBeCloseTo(manualBeforeResize.scale);
+  await guess(page, farthest.name);
+  await expectFraming(page, framingBounds(world, projection, farthest.id, farthest.meters));
+  await page.screenshot({ path: testInfo.outputPath('distant-framing.png'), fullPage: true });
+  await navigation.press('Home');
+  await expectCamera(page, { x: -100, y: -53, scale: 1.2 });
+  await expect(page.locator('.guess-list li')).toHaveCount(2);
+});
+
+test('camera refocuses immediately without animation and never zooms below the initial scale', async ({ page }) => {
+  const wholeWorld: Bounds = [[0, 0], [WIDTH, HEIGHT]];
+  await page.emulateMedia({ reducedMotion: 'no-preference' });
+  await page.goto('/');
+  await expect(page.locator('.map-countries')).toBeAttached();
+  await page.evaluate(() => {
+    const request = window.requestAnimationFrame;
+    Object.defineProperty(window, 'framingAnimationRequests', { value: 0, writable: true, configurable: true });
+    window.requestAnimationFrame = callback => {
+      Reflect.set(window, 'framingAnimationRequests', Reflect.get(window, 'framingAnimationRequests') + 1);
+      return request(callback);
+    };
+  });
+  await guess(page, 'Fiji');
+  await expectFraming(page, wholeWorld);
+  await expectCamera(page, { x: -100, y: -53, scale: 1.2 });
+  expect(await page.evaluate(() => Reflect.get(window, 'framingAnimationRequests'))).toBe(0);
+  await guess(page, 'Germany');
+  const world = await (await page.request.get('/data/world.v1.geojson')).json() as MapWorld;
+  const projection = geoEqualEarth().fitExtent([[16, 10], [984, 510]], { ...world, features: world.features.filter(feature => feature.properties.id !== 'ATA') });
+  const key = ['DEU', targetId].sort().join(':') as keyof typeof distances.pairs;
+  await expectFraming(page, framingBounds(world, projection, 'DEU', distances.pairs[key].meters));
+  expect((await camera(page)).scale).toBeGreaterThan(1.2);
+  expect(await page.evaluate(() => Reflect.get(window, 'framingAnimationRequests'))).toBe(0);
+  const navigation = page.getByRole('region', { name: 'Map navigation', exact: true });
+  await navigation.press('Home');
+  await expectCamera(page, { x: -100, y: -53, scale: 1.2 });
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  await page.reload();
+  await expectFraming(page, framingBounds(world, projection, 'DEU', distances.pairs[key].meters));
+  await expect(page.locator('.guess-list li')).toHaveCount(2);
+});
+
+test('local midnight resets the camera and restores the next date independently', async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  await page.goto('/');
+  await guess(page, 'Fiji');
+  await expectFraming(page, [[0, 0], [WIDTH, HEIGHT]]);
+  await page.clock.setSystemTime(new Date('2026-10-25T00:00:00Z'));
+  await page.clock.runFor(1100);
+  await expect(page.locator('.guess-list li')).toHaveCount(0);
+  await expectCamera(page, { x: -100, y: -53, scale: 1.2 });
+  await guess(page, 'Fiji');
+  await expectFraming(page, [[0, 0], [WIDTH, HEIGHT]]);
+  await page.reload();
+  await expectFraming(page, [[0, 0], [WIDTH, HEIGHT]]);
+  await expect(page.locator('.guess-list li')).toHaveCount(1);
+});
+
+test('the same guess and border distance frame identically for different hidden targets', async ({ page }) => {
+  const dates = Object.entries(schedule.assignments).filter(([date, id]) => {
+    if (date > '2026-12-31' || id === 'DEU') return false;
+    const key = ['DEU', id].sort().join(':') as keyof typeof distances.pairs;
+    return distances.pairs[key]?.meters === 0;
+  });
+  const first = dates[0], second = dates.find(([, id]) => id !== first[1])!;
+  expect(second).toBeDefined();
+  let firstCamera: View | undefined;
+  for (const [date] of [first, second]) {
+    await page.clock.setSystemTime(new Date(`${date}T12:00:00Z`));
+    await page.goto('/');
+    await guess(page, 'Germany');
+    await expect(page.locator('.latest-feedback')).toContainText('0 mi');
+    const world = await (await page.request.get('/data/world.v1.geojson')).json() as MapWorld;
+    const projection = geoEqualEarth().fitExtent([[16, 10], [984, 510]], { ...world, features: world.features.filter(feature => feature.properties.id !== 'ATA') });
+    await expectFraming(page, framingBounds(world, projection, 'DEU', 0));
+    if (firstCamera) await expectCamera(page, firstCamera);
+    else firstCamera = await camera(page);
+  }
+});
+
 test('typed guesses persist; duplicate guesses and map clicks never increase count', async ({ page }) => {
   const errors: string[] = [];
   page.on('pageerror', error => errors.push(error.message));
@@ -327,7 +560,7 @@ test('typed guesses persist; duplicate guesses and map clicks never increase cou
   await expect(page.getByRole('img', { name: /showing 1 guessed country/ })).toBeVisible();
   await expect(page.locator('.guess-list li')).toHaveCount(1);
   await guess(page, wrong.name);
-  await expect(page.locator('.latest-feedback')).toContainText('already guessed');
+  await expect(page.locator('.latest-feedback')).toContainText('Repeat');
   await expect(page.locator('.guess-list li')).toHaveCount(1);
   await page.locator('.map-canvas svg').click({ position: { x: 80, y: 60 } });
   await expect(page.locator('.guess-list li')).toHaveCount(1);
@@ -351,10 +584,11 @@ test('Chad aliases are accepted alongside existing saved progress', async ({ pag
   await guess(page, 'Republic of Chad');
   await expect(page.locator('.guess-list li')).toHaveCount(2);
   await expect(page.locator('.guess-country strong')).toContainText(['Chad']);
-  await expect(page.locator('.latest-feedback')).toContainText('Chad.');
+  await expect(page.locator('.latest-feedback')).toContainText('Chad');
   await guess(page, 'Chad');
   await expect(page.locator('.guess-list li')).toHaveCount(2);
-  await expect(page.locator('.latest-feedback')).toContainText('already guessed Chad');
+  await expect(page.locator('.latest-feedback')).toContainText('Chad');
+  await expect(page.locator('.latest-feedback')).toContainText('Repeat');
   await page.reload();
   await expect(page.locator('.guess-list li')).toHaveCount(2);
   await expect(page.locator('.guess-country strong')).toContainText(['Chad']);
@@ -389,8 +623,8 @@ test('guess-only countries offer suggestions, distance feedback, map color and s
   await page.getByRole('combobox').press('Escape');
   await guess(page, 'Burkina Faso');
   await expect(page.locator('.guess-list li')).toHaveCount(1);
-  await expect(page.locator('.latest-feedback')).toContainText('0 miles');
-  await expect(page.locator('.latest-feedback')).toContainText('It borders this country');
+  await expect(page.locator('.latest-feedback')).toContainText('0 mi');
+  await expect(page.locator('.latest-feedback')).toContainText('Borders');
   await expect(page.locator('.map-countries path[stroke="#253c3e"]').first()).toHaveAttribute('fill', /rgb/);
   await expect(page.locator('.postcard')).toHaveCount(0);
   expect(requests).toEqual([]);
@@ -398,7 +632,7 @@ test('guess-only countries offer suggestions, distance feedback, map color and s
   await expect(page.locator('.guess-list li')).toHaveCount(1);
   await guess(page, 'Vanuatu');
   await expect(page.locator('.guess-list li')).toHaveCount(2);
-  await expect(page.locator('.latest-feedback')).toContainText(/Vanuatu.+miles/);
+  await expect(page.locator('.latest-feedback')).toContainText(/Vanuatu.+mi/);
   await page.reload();
   await expect(page.locator('.guess-list li')).toHaveCount(2);
   await expect(page.locator('.guess-country strong')).toContainText(['Burkina Faso', 'Vanuatu']);
@@ -631,7 +865,8 @@ for (const timezoneId of ['UTC', 'America/Chicago', 'Asia/Kolkata', 'Pacific/Kir
     test.use({ timezoneId });
     test('midnight closes completion, unlocks the next puzzle, and preserves dated progress', async ({ page }) => {
       const midnight = await page.evaluate(() => new Date(2026, 9, 25).getTime());
-      await page.clock.setSystemTime(midnight - 60_000);
+      await page.clock.setSystemTime(midnight - 61_000);
+      await page.clock.pauseAt(midnight - 60_000);
       await page.goto('/');
       await expect(page.locator('.daily-label time')).toHaveAttribute('datetime', date);
       await expect(page.locator('.daily-label')).toContainText('Local time');

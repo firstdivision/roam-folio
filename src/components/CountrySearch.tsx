@@ -52,11 +52,10 @@ export function CountrySearch({ onGuess }: { onGuess: (id: string) => void }) {
     if (window.matchMedia('(pointer: coarse)').matches) input.current?.blur();
     else input.current?.focus();
   }}>
-    <label htmlFor={id}>Where shall we go?</label>
     <div className="input-row">
       <div className="search-field">
         <span className="search-symbol" aria-hidden="true">⌕</span>
-        <input ref={input} id={id} role="combobox" aria-autocomplete="list" aria-expanded={expanded} aria-controls={`${id}-options`} aria-activedescendant={expanded && active >= 0 ? `${id}-option-${active}` : undefined} aria-describedby={error ? `${id}-error` : undefined} aria-invalid={Boolean(error)} autoComplete="off" spellCheck={false} placeholder="Type a country name…" value={query} onChange={event => { setQuery(event.target.value); setOpen(true); setActive(-1); setError(''); }} onKeyDown={onKeyDown} onFocus={() => setOpen(true)} onBlur={() => { setOpen(false); setActive(-1); }}/>
+        <input ref={input} id={id} role="combobox" aria-label="Country name" aria-autocomplete="list" aria-expanded={expanded} aria-controls={`${id}-options`} aria-activedescendant={expanded && active >= 0 ? `${id}-option-${active}` : undefined} aria-describedby={error ? `${id}-error` : undefined} aria-invalid={Boolean(error)} autoComplete="off" spellCheck={false} placeholder="Type a country name…" value={query} onChange={event => { setQuery(event.target.value); setOpen(true); setActive(-1); setError(''); }} onKeyDown={onKeyDown} onFocus={() => setOpen(true)} onBlur={() => { setOpen(false); setActive(-1); }}/>
         {expanded && <ul id={`${id}-options`} role="listbox" aria-label="Country suggestions" className="suggestions">
           {suggestions.map((country, index) => <li key={country.id} id={`${id}-option-${index}`} role="option" aria-selected={index === active} className={index === active ? 'active' : ''} onMouseDown={event => event.preventDefault()} onClick={() => select(country.name)}>{country.name}<span aria-hidden="true">↖</span></li>)}
         </ul>}

@@ -156,6 +156,38 @@ test('entry and latest guess notice sit above the map without an initial helper 
   expect(svgScale).toBeCloseTo(canvas.height / 530, 3);
 });
 
+test('latest guess notice has high text contrast and stands out from its surroundings', async ({ page }) => {
+  await page.goto('/');
+  await guess(page, wrong.name);
+  const contrast = await page.locator('.latest-feedback').evaluate(element => {
+    const luminance = (color: string) => {
+      const channels = color.match(/\d+/g)!.slice(0, 3).map(Number).map(value => {
+        const channel = value / 255;
+        return channel <= 0.04045 ? channel / 12.92 : ((channel + 0.055) / 1.055) ** 2.4;
+      });
+      return channels[0] * 0.2126 + channels[1] * 0.7152 + channels[2] * 0.0722;
+    };
+    const ratio = (a: string, b: string) => {
+      const values = [luminance(a), luminance(b)];
+      return (Math.max(...values) + 0.05) / (Math.min(...values) + 0.05);
+    };
+    const style = getComputedStyle(element);
+    let surrounding = element.parentElement!;
+    while (getComputedStyle(surrounding).backgroundColor === 'rgba(0, 0, 0, 0)' && surrounding.parentElement) {
+      surrounding = surrounding.parentElement;
+    }
+    const detail = element.querySelector('.feedback-detail')!;
+    return {
+      text: ratio(style.color, style.backgroundColor),
+      separator: ratio(getComputedStyle(detail, '::before').color, style.backgroundColor),
+      surrounding: ratio(style.backgroundColor, getComputedStyle(surrounding).backgroundColor),
+    };
+  });
+  expect(contrast.text).toBeGreaterThanOrEqual(7);
+  expect(contrast.separator).toBeGreaterThanOrEqual(7);
+  expect(contrast.surrounding).toBeGreaterThanOrEqual(3);
+});
+
 test('latest notice compares with the best earlier guess and survives reloads', async ({ page }, testInfo) => {
   const candidates = pool.filter(country => country.id !== targetId).map(country => {
     const key = [country.id, targetId].sort().join(':') as keyof typeof distances.pairs;

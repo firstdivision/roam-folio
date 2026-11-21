@@ -33,11 +33,11 @@ main{max-width:1144px;margin:0 auto;padding:0 0 30px}.eyebrow{font-size:11px;let
 .guess-form{width:100%}
 .guess-form label{font-size:19px;margin-bottom:9px}
 .latest-feedback,.storage-warning{margin-top:0}
-.guess-panel .latest-feedback{margin-top:10px;margin-bottom:10px;padding:10px 12px;border-left:4px solid var(--ink);background:#e7ebdf;color:var(--ink);font-size:14px;line-height:1.5}
+.guess-panel .latest-feedback{margin-top:10px;margin-bottom:10px;padding:10px 12px;border-left:4px solid var(--ink);background:var(--ink);color:#fffef9;font-size:14px;font-weight:600;line-height:1.5}
 .latest-feedback{display:flex;align-items:center;gap:6px;white-space:nowrap;min-width:0}
 .feedback-country{min-width:0;overflow:hidden;text-overflow:ellipsis}
 .feedback-detail{flex-shrink:0;display:flex;align-items:center;gap:6px}
-.feedback-detail::before{content:"\00b7";color:var(--muted)}
+.feedback-detail::before{content:"\00b7";color:inherit}
 @media(max-width:700px){.guess-panel .latest-feedback{font-size:12px;padding:8px}.latest-feedback,.feedback-detail{gap:4px}}
 .map-panel{min-width:0}
 .history-panel{grid-area:history;min-width:0}

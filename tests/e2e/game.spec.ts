@@ -299,8 +299,45 @@ test('history sorts by exact distance while persistence and sharing retain guess
   await expect(names).toHaveText([target, ...ordered].map(country => country.name));
   await page.evaluate(() => Object.defineProperty(navigator, 'share', { value: undefined, configurable: true }));
   await page.getByRole('button', { name: 'Share your journey' }).click();
-  const emoji = (meters: number) => meters / 1609.344 <= 250 ? '🟥' : meters / 1609.344 <= 1000 ? '🟧' : meters / 1609.344 <= 3000 ? '🟨' : '⬜';
+  const emoji = (meters: number) => meters / 1609.344 <= 250 ? '🟥' : meters / 1609.344 <= 3000 ? '🟧' : meters / 1609.344 <= 9000 ? '🟨' : '⬜';
   await expect(page.getByLabel('Your spoiler-free result')).toHaveValue(new RegExp(entered.map(country => emoji(country.meters)).join('') + '🎯'));
+});
+
+test('six distance bands appear in history, announcements, map colors, and sharing', async ({ page }) => {
+  const bands = [
+    { min: -1, max: 250, label: 'Very close', emoji: '🟥' },
+    { min: 250, max: 1000, label: 'Close', emoji: '🟧' },
+    { min: 1000, max: 3000, label: 'Far', emoji: '🟧' },
+    { min: 3000, max: 6000, label: 'Farther away', emoji: '🟨' },
+    { min: 6000, max: 9000, label: 'Distant', emoji: '🟨' },
+    { min: 9000, max: Infinity, label: 'Very far away', emoji: '⬜' },
+  ];
+  const candidates = pool.filter(country => country.id !== targetId).map(country => {
+    const key = [country.id, targetId].sort().join(':') as keyof typeof distances.pairs;
+    return { ...country, ...distances.pairs[key] };
+  });
+  await page.goto('/');
+  for (const band of bands) {
+    const candidate = candidates.find(country => country.meters > 0
+      && country.meters / 1609.344 > band.min && country.meters / 1609.344 <= band.max)!;
+    expect(candidate, `Fixture for ${band.label}`).toBeDefined();
+    await guess(page, candidate.name);
+    const row = page.locator('.guess-list li').filter({ has: page.getByText(candidate.name, { exact: true }) });
+    await expect(row.locator('.guess-country>span')).toHaveText(band.label);
+    await expect(page.locator('.feedback-panel [role="status"]').last()).toContainText(`${band.label}.`);
+    const color = await row.locator('.guess-swatch').evaluate(element => getComputedStyle(element).backgroundColor);
+    if (band.label === 'Very far away') expect(color).toBe('rgb(255, 255, 255)');
+    else expect(color).not.toBe('rgb(255, 255, 255)');
+    await expect(page.locator('.map-countries path[stroke="#253c3e"]').first()).toBeAttached();
+    await expect.poll(() => page.locator('.map-countries path[stroke="#253c3e"]').evaluateAll(elements =>
+      elements.map(element => getComputedStyle(element).fill))).toContain(color);
+  }
+  await page.reload();
+  for (const band of bands) await expect(page.locator('.guess-country>span').filter({ hasText: new RegExp(`^${band.label}$`) })).toBeVisible();
+  await guess(page, target.name);
+  await page.evaluate(() => Object.defineProperty(navigator, 'share', { value: undefined, configurable: true }));
+  await page.getByRole('button', { name: 'Share your journey' }).click();
+  await expect(page.getByLabel('Your spoiler-free result')).toHaveValue(new RegExp(bands.map(band => band.emoji).join('') + '🎯'));
 });
 
 test('a compact mobile map can pan to both sides at the initial zoom', async ({ page }) => {

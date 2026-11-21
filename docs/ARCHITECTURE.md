@@ -60,13 +60,17 @@ The user approved switching from a simultaneous UTC reset to local-midnight avai
 
 Apply thresholds to unrounded distance. Use a continuous gradient from white for very far away through yellow and orange to red for very close. The bands below provide consistent labels and share emojis; map and history colors use the same global distance-to-color scale, never a scale relative to the player's other guesses.
 
-| Distance | Label | Share symbol |
-|---|---|---|
-| 0–250 miles | Very close | 🟥 |
-| Over 250–1,000 miles | Close | 🟧 |
-| Over 1,000–3,000 miles | Far | 🟨 |
-| Over 3,000 miles | Very far away | ⬜ |
-| Correct country | Found | 🎯 |
+| Distance | Label | Color progression | Share symbol |
+|---|---|---|---|
+| 0–250 miles | Very close | Red to red-orange | 🟥 |
+| Over 250–1,000 miles | Close | Red-orange to orange | 🟧 |
+| Over 1,000–3,000 miles | Far | Orange to yellow | 🟧 |
+| Over 3,000–6,000 miles | Farther away | Yellow to pale yellow | 🟨 |
+| Over 6,000–9,000 miles | Distant | Pale yellow to white | 🟨 |
+| Over 9,000 miles | Very far away | White | ⬜ |
+| Correct country | Found | Red | 🎯 |
+
+The six-band scale was approved on 2026-11-21. Colors continue to interpolate smoothly, reaching white at exactly 9,000 miles; the “Very far away” label and white share square apply only above 9,000 miles. Standard square emojis have no red-orange or pale-yellow variant, so the two orange bands share 🟧 and the two yellow bands share 🟨. Saved guesses and distances remain unchanged; restored progress and sharing use the current presentation scale.
 
 Exact gradient colors and interpolation are styling choices to document and check for accessibility during implementation. Differentiate unguessed countries with a neutral fill and guessed countries with an outline so white feedback remains visible. Always accompany color with text and distance. No feedback uses green.
 
@@ -125,7 +129,7 @@ Work in small, testable increments within each phase. Required checks cover loca
 - All 197 guessable IDs resolve through `data/geography/crosswalk.v3.json`; the v1 and v2 crosswalks remain unchanged. Checksummed source archives are retained under `data/geography/source/`.
 - The v3 matrix records 19,306 pairwise upper/lower bounds, preserving all 7,875 v2 records exactly and adding 11,431 pairs. The historical v2 matrix preserves all 7,750 v1 records and adds 125 Chad pairs. A compact triangular matrix supplies browser feedback without shipping proof metadata in the JavaScript bundle.
 - Twenty deterministic 125-country cycles cover 2026-01-01 through 2032-11-04. Published assignments and pinned geography are immutable. The expanded 126-country cycle begins on 2032-11-05 and runs through 2033-03-10. The appended 146-answer cycle runs from 2033-03-11 through 2033-08-03. The generation command refuses to overwrite existing dates or published era metadata. `data/schedules/legacy.v1.json` records a regression hash of the original 2,500 assignments, and `legacy.v2.json` preserves the 2,626 pre-v3 assignments and their eras.
-- The gradient has fixed mile/color anchors: 0/red, 250/red-orange, 1,000/orange, 2,000/yellow, and 3,000/white; distances above 3,000 remain white. Share labels use the approved bands above.
+- The gradient has fixed mile/color anchors: 0/red (`#c74332`), 250/red-orange (`#e35b3a`), 1,000/orange (`#f39d44`), 3,000/yellow (`#f7db6a`), 6,000/pale yellow (`#fbedb4`), and 9,000/white (`#ffffff`); distances above 9,000 remain white. Share labels use the approved bands above.
 - Geographic generation uses pyproj/PROJ's compiled GeographicLib C routines for performance; tests compare against the independent Python GeographicLib interface.
 - Browser preview and CI use committed geographic artifacts. Recomputing geography is a separate offline command, not part of every frontend build.
 - Deployment workflows are prepared for GitHub Pages; an actual deployment needs a GitHub checkout with Pages enabled.

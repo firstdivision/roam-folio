@@ -212,11 +212,28 @@ describe('eligible guesses and geographic feedback', () => {
     }
   });
   it('applies fixed unrounded proximity bands and the white/red endpoints', () => {
-    for (const [miles, emoji] of [[0, '🟥'], [250, '🟥'], [250.0001, '🟧'], [1000, '🟧'], [1000.0001, '🟨'], [3000, '🟨'], [3000.0001, '⬜']] as const) {
-      expect(proximity(miles * 1609.344).emoji).toBe(emoji);
+    for (const [miles, label, emoji] of [
+      [0, 'Very close', '🟥'], [250, 'Very close', '🟥'],
+      [250.0001, 'Close', '🟧'], [1000, 'Close', '🟧'],
+      [1000.0001, 'Far', '🟧'], [3000, 'Far', '🟧'],
+      [3000.0001, 'Farther away', '🟨'], [6000, 'Farther away', '🟨'],
+      [6000.0001, 'Distant', '🟨'], [9000, 'Distant', '🟨'],
+      [9000.0001, 'Very far away', '⬜'],
+    ] as const) {
+      expect(proximity(miles * 1609.344)).toMatchObject({ label, emoji });
     }
-    expect(proximity(10_000_000).color).toBe('#ffffff');
+    expect(proximity(10_000 * 1609.344).color).toBe('#ffffff');
     expect(proximity(0).color).toBe('rgb(199, 67, 50)');
+  });
+  it('interpolates the extended fixed gradient through yellow and pale yellow to white', () => {
+    for (const [miles, color] of [
+      [250, 'rgb(227, 91, 58)'], [1000, 'rgb(243, 157, 68)'],
+      [2000, 'rgb(245, 188, 87)'], [3000, 'rgb(247, 219, 106)'],
+      [4500, 'rgb(249, 228, 143)'], [6000, 'rgb(251, 237, 180)'],
+      [7500, 'rgb(253, 246, 218)'], [9000, 'rgb(255, 255, 255)'],
+    ] as const) {
+      expect(proximity(miles * 1609.344).color).toBe(color);
+    }
   });
 });
 

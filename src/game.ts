@@ -93,12 +93,14 @@ export function proximity(meters: number): { label: string; color: string; emoji
   const miles = meters / MILE;
   const band = miles <= 250 ? { label: 'Very close', emoji: '🟥' }
     : miles <= 1000 ? { label: 'Close', emoji: '🟧' }
-    : miles <= 3000 ? { label: 'Far', emoji: '🟨' } : { label: 'Very far away', emoji: '⬜' };
+    : miles <= 3000 ? { label: 'Far', emoji: '🟧' }
+    : miles <= 6000 ? { label: 'Farther away', emoji: '🟨' }
+    : miles <= 9000 ? { label: 'Distant', emoji: '🟨' } : { label: 'Very far away', emoji: '⬜' };
   // Continuous fixed gradient, with a white plateau for very far distances.
   const stops = [
     { at: 0, rgb: [199, 67, 50] }, { at: 250, rgb: [227, 91, 58] },
-    { at: 1000, rgb: [243, 157, 68] }, { at: 2000, rgb: [247, 219, 106] },
-    { at: 3000, rgb: [255, 255, 255] },
+    { at: 1000, rgb: [243, 157, 68] }, { at: 3000, rgb: [247, 219, 106] },
+    { at: 6000, rgb: [251, 237, 180] }, { at: 9000, rgb: [255, 255, 255] },
   ];
   const end = stops.findIndex(stop => stop.at >= miles);
   if (end === -1) return { ...band, color: '#ffffff' };

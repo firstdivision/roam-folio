@@ -70,6 +70,8 @@ Push to `main` in a GitHub repository and enable **Settings → Pages → GitHub
 
 The footer shows the build date and time in UTC to identify the loaded release. Vite embeds this timestamp during each build, so reloading the same release does not change it. During local development it reflects when the Vite server started.
 
+Each build also emits `version.txt` at the deployed base path. The app checks it on startup, window/tab resume, and every 60 seconds while visible. If the deployed build differs from the running build, a dismissible banner offers an explicit reload so progress is not interrupted unexpectedly.
+
 ## Link previews
 
 The initial HTML includes Open Graph and Twitter card metadata and a spoiler-free 1200 × 630 PNG for messaging and social apps. The canonical URL defaults to `https://roam-folio.com/`. Set `VITE_SITE_URL` to the complete public site URL (including any repository subpath) for other deployments; the Pages workflow supplies it from `actions/configure-pages`.

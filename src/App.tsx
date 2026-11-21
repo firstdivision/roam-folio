@@ -4,6 +4,7 @@ import type { Guess, Puzzle, SolveStatistics } from './game';
 import { CountrySearch } from './components/CountrySearch';
 import { DiscoveryCard } from './components/DiscoveryCard';
 import { WorldMap } from './map/WorldMap';
+import { fetchDeployedBuild, runningBuild } from './version';
 
 const buildTimestamp = import.meta.env.VITE_BUILD_TIMESTAMP as string;
 const buildLabel = buildTimestamp.replace('T', ' ').replace(/\.\d{3}Z$/, ' UTC');
@@ -27,6 +28,7 @@ export default function App() {
   const [repeatedCountryId, setRepeatedCountryId] = useState<string | null>(null);
   const [showShare, setShowShare] = useState(false);
   const [shareMessage, setShareMessage] = useState('');
+  const [updateAvailable, setUpdateAvailable] = useState(false);
   const [helpOpen, setHelpOpen] = useState(false);
   const [dismissedCompletion, setDismissedCompletion] = useState<string | null>(null);
   const completionDialog = useRef<HTMLDialogElement>(null);
@@ -74,6 +76,39 @@ export default function App() {
     window.addEventListener('focus', wake);
     return () => { window.clearInterval(timer); document.removeEventListener('visibilitychange', wake); window.removeEventListener('focus', wake); };
   }, [refreshDate, reloadSchedule]);
+
+  useEffect(() => {
+    let checking = false;
+    const checkForUpdate = async () => {
+      if (checking || document.visibilityState === 'hidden') return;
+      checking = true;
+      try {
+        const deployedBuild = await fetchDeployedBuild();
+        if (deployedBuild && deployedBuild !== runningBuild) setUpdateAvailable(true);
+      } catch {
+        // Offline or temporarily unavailable version checks should not interrupt play.
+      } finally {
+        checking = false;
+      }
+    };
+    const wake = () => {
+      if (document.visibilityState === 'visible') void checkForUpdate();
+    };
+    const pageshow = (event: PageTransitionEvent) => {
+      if (event.persisted) wake();
+    };
+    void checkForUpdate();
+    const timer = window.setInterval(checkForUpdate, 60_000);
+    document.addEventListener('visibilitychange', wake);
+    window.addEventListener('focus', wake);
+    window.addEventListener('pageshow', pageshow);
+    return () => {
+      window.clearInterval(timer);
+      document.removeEventListener('visibilitychange', wake);
+      window.removeEventListener('focus', wake);
+      window.removeEventListener('pageshow', pageshow);
+    };
+  }, []);
 
   useEffect(() => {
     const refreshStatistics = (event: StorageEvent) => {
@@ -131,6 +166,11 @@ export default function App() {
 
   return <>
     <a href="#guess-section" className="skip-link">Skip to the game</a>
+    {updateAvailable && <aside className="update-banner" role="status" aria-live="polite">
+      <span>A new version of Roamfolio is available.</span>
+      <button type="button" onClick={() => window.location.reload()}>Update now</button>
+      <button className="update-dismiss" type="button" aria-label="Dismiss update notice" onClick={() => setUpdateAvailable(false)}>×</button>
+    </aside>}
     <header className="site-header"><a className="wordmark" href="./" aria-label="Roamfolio home"><span className="brand-globe" aria-hidden="true">◎</span>roamfolio<span className="brand-dot">.</span></a><button className="help-button" aria-expanded={helpOpen} aria-controls="how-to-play" onClick={() => setHelpOpen(value => !value)}><span aria-hidden="true">?</span> How to play</button></header>
     <main>
       <div className="game-heading"><h1>Daily destination</h1><p className="daily-label"><time dateTime={date}>{puzzleDateLabel}</time><span>Local time</span></p></div>

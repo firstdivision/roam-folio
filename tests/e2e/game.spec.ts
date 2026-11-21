@@ -860,6 +860,19 @@ test('a missing photograph leaves facts, credit, and completion usable', async (
   await expect(page.locator('.postcard-photo img')).toBeVisible();
 });
 
+test('deployment update is offered as a dismissible banner', async ({ page }) => {
+  await page.route('**/version.txt', route => route.fulfill({
+    status: 200,
+    contentType: 'text/plain',
+    headers: { 'Cache-Control': 'no-store' },
+    body: '2030-01-01T00:00:00.000Z\n',
+  }));
+  await page.goto('/');
+  await expect(page.getByRole('status').filter({ hasText: 'A new version of Roamfolio is available.' })).toBeVisible();
+  await page.getByRole('button', { name: 'Dismiss update notice' }).click();
+  await expect(page.locator('.update-banner')).toHaveCount(0);
+});
+
 for (const timezoneId of ['UTC', 'America/Chicago', 'Asia/Kolkata', 'Pacific/Kiritimati']) {
   test.describe(`local rollover in ${timezoneId}`, () => {
     test.use({ timezoneId });

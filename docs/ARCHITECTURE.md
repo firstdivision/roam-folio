@@ -10,6 +10,7 @@ The technical proposal was approved on 2026-10-24, with these product correction
 - **Hosting:** static GitHub Pages deployed with GitHub Actions; no required backend, production database, or authentication system.
 - **Content:** versioned JSON files, with attributed country discovery content.
 - **Persistence:** browser local storage for date-keyed progress; no account required.
+- **Deployment updates:** Vite emits a build-timestamp `version.txt` at the deployed base path. The app checks it on startup, tab/window resume, and every 60 seconds while visible; an available update is shown as a dismissible banner with an explicit reload action.
 - **Geography:** Natural Earth Admin 0 at 1:10 million as the MVP starting dataset, with an offline Python pipeline and a precomputed, versioned distance matrix. See [GEOGRAPHY.md](GEOGRAPHY.md).
 - **Tests:** Vitest for TypeScript game logic, geographic pipeline tests, and Playwright for browser acceptance tests.
 
